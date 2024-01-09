@@ -1,7 +1,0 @@
-# CMake generation dependency list for this directory.
-C:/Tools/CMake/share/cmake-3.17/Modules/FindOpenAL.cmake
-C:/Tools/CMake/share/cmake-3.17/Modules/FindPackageHandleStandardArgs.cmake
-C:/Tools/CMake/share/cmake-3.17/Modules/FindPackageMessage.cmake
-C:/Users/Халил/Desktop/VSProjects/Tetris/Tetris/build/_deps/sfml-src/cmake/Modules/FindFLAC.cmake
-C:/Users/Халил/Desktop/VSProjects/Tetris/Tetris/build/_deps/sfml-src/cmake/Modules/FindVORBIS.cmake
-C:/Users/Халил/Desktop/VSProjects/Tetris/Tetris/build/_deps/sfml-src/src/SFML/Audio/CMakeLists.txt

@@ -1,21 +1,21 @@
 #include "Game.h"
 
 Game::Game():
-	view(sf::Vector2f{ 400,600 }, "Tetris"),
-	model(3, sf::Vector2i(20, 40))
+	view(sf::VideoMode(400,600), "Tetris", sf::Style::Titlebar),
+	model(Size(20,40))
 {
-    view.init(model.getConfig());
-	controller.init(&model, &view);
+    view.Init(model.GetConfig());
+    model.AddView(&view);
 
-    model.addView(&view);
+    controller.Init(&model, &view);
 }
 
-void Game::run()
+void Game::Run()
 {
-    controller.start();
+    controller.Start();
 
-    while (view.isOpen())
+    while (view.IsOpen())
     {
-        controller.update();
+        controller.Update();
     }
 }
