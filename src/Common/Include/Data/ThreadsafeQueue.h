@@ -2,7 +2,8 @@
 
 #include "Precompile.h"
 
-namespace Tetris::Data
+
+namespace Tetris::Common::Data
 {
 
     /// @brief Потокобезопасная реализация очереди с блокировкой
@@ -44,7 +45,7 @@ namespace Tetris::Data
         bool try_pop(T &value)
         {
             std::unique_ptr<Node> const old_head=try_pop_head(value);
-            return old_head;
+            return old_head.get();
         }
 
         /// @brief Ожидать если нет значения и получить значение 

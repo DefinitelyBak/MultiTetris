@@ -14,32 +14,34 @@ namespace Tetris::Model::Blocks
 		/// @param color цвет блока
 		Oblock(Common::Data::Color color) : AbstractBlock(color) 
 		{
-			_positionToDescription = {
+			_stateToPositions = {
 				{State::Up, {
-				    PosotionFiel( 0, 1 ), // o  o  * 
-				    PosotionFiel( 0, 0 ), // o  0  *
-				    PosotionFiel( 1, 0 ), // *  *  *
-				    PosotionFiel( 1, 1 )
+				    Position( 0, 1 ), // *  o  O 
+				    Position( 1, 1 ), // *  0  O
+				    Position( 1, 0 ), // *  *  *
+				    Position( 0, 0 )
 				}},
 				{State::Right, {
-				    PosotionFiel( 0, 1 ), // o  o  *  
-				    PosotionFiel( 0, 0 ), // o  0  *  
-				    PosotionFiel( 1, 0 ), // *  *  *  
-				    PosotionFiel( 1, 1 )
+				    Position( 1, 0 ), // *  *  *  
+				    Position( 1,-1 ), // *  0  o  
+				    Position( 0,-1 ), // *  o  o  
+				    Position( 0, 0 )
 				}},
 				{State::Down, {
-				    PosotionFiel( 0, 1 ), // o  o  *
-				    PosotionFiel( 0, 0 ), // o  0  *
-				    PosotionFiel( 1, 0 ), // *  *  *
-				    PosotionFiel( 1, 1 )
+				    Position( 0,-1 ), // *  *  *
+				    Position(-1,-1 ), // o  0  *
+				    Position(-1, 0 ), // o  o  *
+				    Position( 0, 0 )
 				}},
 				{State::Left, {
-				    PosotionFiel( 0, 1 ), // o  o  *
-				    PosotionFiel( 0, 0 ), // o  0  *
-				    PosotionFiel( 1, 0 ), // *  *  *
-				    PosotionFiel( 1, 1 )
+				    Position( 0, 1 ), // o  o  *
+				    Position(-1, 1 ), // o  0  *
+				    Position(-1, 0 ), // *  *  *
+				    Position( 0, 0 )
 				}}
 			};
+
+			_stateToOffset = OOffset;
 
 		};
 

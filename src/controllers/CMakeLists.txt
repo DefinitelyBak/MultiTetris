@@ -1,21 +1,19 @@
 add_library(
-    Model
+    Controllers
   ##SHARED пока не разобрался как правильно работать с shared library
+  ${CMAKE_CURRENT_SOURCE_DIR}/Source/MoveController.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/Source/Precompile.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/Source/Model.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/Source/Blocks/AbstractBlock.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/Source/Types.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/Source/Map/Map.cpp
 )
 
 target_include_directories(
-    Model 
+    Controllers 
   PUBLIC 
     ${CMAKE_CURRENT_SOURCE_DIR}/Include
 )
 
 target_link_libraries(
-    Model
+    Controllers
   PUBLIC
     Common
 )
+

@@ -1,8 +1,16 @@
-#include "BlockTest.h"
+#include <gtest/gtest.h>
+
+#include "Precompile.h"
+
+#include "Factory/ShapeFactory.h"
 
 
 namespace Tetris::Tests
 {
+
+    using namespace Model; 
+    using namespace Model::Blocks;
+    using namespace Common::Data;
 
     class BlockTest : public ::testing::Test 
     {
@@ -21,59 +29,144 @@ namespace Tetris::Tests
         Model::Blocks::ShapeFactory _factory;
     };
 
-    TEST_F(BlockTest, Iblock)
+    TEST_F(BlockTest, blockColor)
     {
-        auto positions = InitIblock();
+        std::shared_ptr<AbstractBlock> block(_factory.Create(IdShape::Iblock, Color::Green));
+
+        ASSERT_TRUE(block->GetColor() == Color::Green);
+    }
+
+    TEST_F(BlockTest, statusBlockTurningClockwise)
+    {
+        std::shared_ptr<AbstractBlock> block(_factory.Create(IdShape::Iblock, Color::Green));
+        
+        ASSERT_TRUE(block->GeCurrentState() == State::Up);
+
+        ASSERT_TRUE(block->GetNextState(Command::RotateRight) == State::Right);
+        block->RotateBlock(Command::RotateRight);
+        ASSERT_TRUE(block->GeCurrentState() == State::Right);
+
+        ASSERT_TRUE(block->GetNextState(Command::RotateRight) == State::Down);
+        block->RotateBlock(Command::RotateRight);
+        ASSERT_TRUE(block->GeCurrentState() == State::Down);
+
+        ASSERT_TRUE(block->GetNextState(Command::RotateRight) == State::Left);
+        block->RotateBlock(Command::RotateRight);
+        ASSERT_TRUE(block->GeCurrentState() == State::Left);
+
+        ASSERT_TRUE(block->GetNextState(Command::RotateRight) == State::Up);
+        block->RotateBlock(Command::RotateRight);
+        ASSERT_TRUE(block->GeCurrentState() == State::Up);
+    }
+
+    TEST_F(BlockTest, statusBlockTurningCounterclockwise)
+    {
+        std::shared_ptr<AbstractBlock> block(_factory.Create(IdShape::Iblock, Color::Green));
+        
+        ASSERT_TRUE(block->GeCurrentState() == State::Up);
+
+        ASSERT_TRUE(block->GetNextState(Command::RotateLeft) == State::Left);
+        block->RotateBlock(Command::RotateLeft);
+        ASSERT_TRUE(block->GeCurrentState() == State::Left);
+
+        ASSERT_TRUE(block->GetNextState(Command::RotateLeft) == State::Down);
+        block->RotateBlock(Command::RotateLeft);
+        ASSERT_TRUE(block->GeCurrentState() == State::Down);
+
+        ASSERT_TRUE(block->GetNextState(Command::RotateLeft) == State::Right);
+        block->RotateBlock(Command::RotateLeft);
+        ASSERT_TRUE(block->GeCurrentState() == State::Right);
+
+        ASSERT_TRUE(block->GetNextState(Command::RotateLeft) == State::Up);
+        block->RotateBlock(Command::RotateLeft);
+        ASSERT_TRUE(block->GeCurrentState() == State::Up);
+    }
+
+    TEST_F(BlockTest, JLSTZOffsets)
+    {
+        std::shared_ptr<AbstractBlock> Lblock(_factory.Create(IdShape::Lblock, Color::Green));
+        
+        // Up -> Right: ( 0, 0), (-1, 0), (-1,+1), ( 0,-2), (-1,-2). 
+        Offsets templateOffset = {Position(0,0), Position(-1,0), Position(-1,1), Position(0,-2), Position(-1,-2)};
+        auto offset = Lblock->GetOffsets(State::Up, State::Right);
+
+        ASSERT_TRUE(templateOffset == offset);
+
+        // Right -> Down: ( 0, 0), (1, 0), (1,-1), ( 0,2), (1,2). 
+        templateOffset = {Position(0,0), Position(1,0), Position(1,-1), Position(0,2), Position(1,2)};
+        offset = Lblock->GetOffsets(State::Right, State::Down);
+
+        ASSERT_TRUE(templateOffset == offset);
+
+        // Down -> Left: ( 0, 0), (1, 0), (1,1), ( 0, -2), (1,-2).
+        templateOffset = {Position(0,0), Position(1,0), Position(1,1), Position(0,-2), Position(1,-2)};
+        offset = Lblock->GetOffsets(State::Down, State::Left);
+
+        ASSERT_TRUE(templateOffset == offset);
+
+        // Left -> Up: ( 0, 0), (-1, 0), (-1,-1), ( 0, 2), (-1,2).
+        templateOffset = {Position(0,0), Position(-1,0), Position(-1,-1), Position(0,2), Position(-1,2)};
+        offset = Lblock->GetOffsets(State::Left, State::Up);
+
+        ASSERT_TRUE(templateOffset == offset);
+    }
+
+    TEST_F(BlockTest, IOffsets)
+    {
         std::shared_ptr<AbstractBlock> Iblock(_factory.Create(IdShape::Iblock, Color::Green));
+        
+        // Up -> Right: ( 1, 0), (-1, 0), (2,0), ( -1,-1), (2,2).
+        Offsets templateOffset = {Position(1,0), Position(-1,0), Position(2,0), Position(-1,-1), Position(2,2)};
+        auto offset = Iblock->GetOffsets(State::Up, State::Right);
 
-        TestTemplate(positions, Iblock, Color::Green);
+        ASSERT_TRUE(templateOffset == offset);
+
+        // Right -> Down: ( 0, -1), (-1, -1), (2,-1), ( -1,1), (2,-2).
+        templateOffset = {Position(0,-1), Position(-1,-1), Position(2,-1), Position(-1,1), Position(2,-2)};
+        offset = Iblock->GetOffsets(State::Right, State::Down);
+
+        ASSERT_TRUE(templateOffset == offset);
+
+        // Down -> Left: ( -1, 0), (1, 0), (-2,0), ( 1,1), (-2,-2).
+        templateOffset = {Position(-1,0), Position(1,0), Position(-2,0), Position(1,1), Position(-2,-2)};
+        offset = Iblock->GetOffsets(State::Down, State::Left);
+
+        ASSERT_TRUE(templateOffset == offset);
+
+        // Left -> Up: ( 0, 1), (1, 1), (-2,1), ( 1,-1), (-2,2).
+        templateOffset = {Position(0,1), Position(1,1), Position(-2,1), Position(1,-1), Position(-2,2)};
+        offset = Iblock->GetOffsets(State::Left, State::Up);
+
+        ASSERT_TRUE(templateOffset == offset);
     }
 
-    TEST_F(BlockTest, Jblock)
+    TEST_F(BlockTest, OOffsets)
     {
-        auto positions = InitJblock();
-        std::shared_ptr<AbstractBlock> Jblock(_factory.Create(IdShape::Jblock, Color::Green));
-
-        TestTemplate(positions, Jblock, Color::Green);
-    }
-
-    TEST_F(BlockTest, Lblock)
-    {
-        auto positions = InitJblock();
-        std::shared_ptr<AbstractBlock> Jblock(_factory.Create(IdShape::Jblock, Color::Green));
-
-        TestTemplate(positions, Jblock, Color::Green);
-    }
-
-    TEST_F(BlockTest, Oblock)
-    {
-        auto positions = InitOblock();
         std::shared_ptr<AbstractBlock> Oblock(_factory.Create(IdShape::Oblock, Color::Green));
+        
+        // Up -> Right: ( 0, 1), ( 0, 1), ( 0, 1), ( 0, 1), ( 0, 1).
+        Offsets templateOffset = {Position(0,1), Position(0,1), Position(0,1), Position(0,1), Position(0,1)};
+        auto offset = Oblock->GetOffsets(State::Up, State::Right);
 
-        TestTemplate(positions, Oblock, Color::Green);
+        ASSERT_TRUE(templateOffset == offset);
+
+        // Right -> Down: ( 1, 0), ( 1, 0), ( 1, 0), ( 1, 0), ( 1, 0).
+        templateOffset = {Position(1,0), Position(1,0), Position(1,0), Position(1,0), Position(1,0)};
+        offset = Oblock->GetOffsets(State::Right, State::Down);
+
+        ASSERT_TRUE(templateOffset == offset);
+
+        // Down -> Left: ( 0,-1), ( 0,-1), ( 0,-1), ( 0,-1), ( 0,-1).
+        templateOffset = {Position(0,-1), Position(0,-1), Position(0,-1), Position(0,-1), Position(0,-1)};
+        offset = Oblock->GetOffsets(State::Down, State::Left);
+
+        ASSERT_TRUE(templateOffset == offset);
+
+        // Left -> Up: (-1, 0), (-1, 0), (-1, 0), (-1, 0), (-1, 0).
+        templateOffset = {Position(-1,0), Position(-1,0), Position(-1,0), Position(-1,0), Position(-1,0)};
+        offset = Oblock->GetOffsets(State::Left, State::Up);
+
+        ASSERT_TRUE(templateOffset == offset);
     }
 
-    TEST_F(BlockTest, Sblock)
-    {
-        auto positions = InitSblock();
-        std::shared_ptr<AbstractBlock> Sblock(_factory.Create(IdShape::Sblock, Color::Green));
-
-        TestTemplate(positions, Sblock, Color::Green);
-    }
-
-    TEST_F(BlockTest, Tblock)
-    {
-        auto positions = InitTblock();
-        std::shared_ptr<AbstractBlock> Tblock(_factory.Create(IdShape::Tblock, Color::Green));
-
-        TestTemplate(positions, Tblock, Color::Green);
-    }
-
-    TEST_F(BlockTest, Zblock)
-    {
-        auto positions = InitZblock();
-        std::shared_ptr<AbstractBlock> Zblock(_factory.Create(IdShape::Zblock, Color::Green));
-
-        TestTemplate(positions, Zblock, Color::Green);
-    }
 }

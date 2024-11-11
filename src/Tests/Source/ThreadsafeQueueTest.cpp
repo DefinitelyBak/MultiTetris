@@ -8,6 +8,8 @@
 namespace Tetris::Tests
 {
 
+    using namespace Common;
+
     TEST(ThreadSafeQueueTest, PushPopSingleElement)
     {
         Data::ThreadsafeQueue<int> queue_;

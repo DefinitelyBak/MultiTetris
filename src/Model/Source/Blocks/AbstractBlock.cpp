@@ -6,62 +6,72 @@ namespace Tetris::Model::Blocks
 
 	AbstractBlock::AbstractBlock(Common::Data::Color color): _color(color){};
 
-    AbstractBlock::DescriptionFigure AbstractBlock::GetDescription()
-	{
-        if (_positionToDescription.contains(_state))
-            return _positionToDescription[_state];
-
-        return AbstractBlock::DescriptionFigure();
-    };
-
-    AbstractBlock::State AbstractBlock::GetState() const
-    {
-        return _state;
-    };
-
 	Common::Data::Color AbstractBlock::GetColor() const
 	{
-		return _color;
-	};
+		return _color; 
+	}
 
-    void AbstractBlock::RotateShape()
-    {
-		if(!_positionToDescription.contains(_state))
-			return;
-		
-		ChangeState(_state);
-	};
-
-    AbstractBlock::DescriptionFigure AbstractBlock::TryRotateShape() 
+	Positions AbstractBlock::GeCurrentDescription()
 	{
-		State state = _state;
-		ChangeState(state);
+		return _stateToPositions[_state];
+	}
 
-		if(_positionToDescription.contains(state))
-			return _positionToDescription[state];
-
-		return AbstractBlock::DescriptionFigure();
-	};
-
-    void AbstractBlock::ChangeState(State& state)
+	Positions AbstractBlock::GetDescription(State state)
 	{
-		switch (state)
+		return _stateToPositions[state];
+	}
+
+	State AbstractBlock::GeCurrentState() const
+	{
+		return _state;
+	}
+
+	State AbstractBlock::GetNextState(Command cmd) const
+	{
+		if(cmd == Command::RotateRight)
 		{
-		case State::Left:
-			state = State::Up;
-			break;
-		case State::Up:
-			state = State::Right;
-			break;				
-		case State::Right:
-			state = State::Down;
-			break;
-		case State::Down:
-			state = State::Left;
-			break;
-		default:
-			break;
+			switch (_state)
+			{
+			case State::Up:
+				return State::Right;
+			case State::Right:
+				return State::Down;
+			case State::Down:
+				return State::Left; 
+			case State::Left:
+				return State::Up; 
+			default:
+				return _state;
+			}
 		}
-    };
+		else if(cmd == Command::RotateLeft)
+		{
+			switch (_state)
+			{
+			case State::Up:
+				return State::Left;
+			case State::Left:
+				return State::Down;
+			case State::Down:
+				return State::Right; 
+			case State::Right:
+				return State::Up; 
+			default:
+				return _state;
+			}
+		}
+
+		return _state;
+	}
+
+	Offsets AbstractBlock::GetOffsets(State from, State to)
+	{
+		return _stateToOffset[from] - _stateToOffset[to];
+	}
+
+	void AbstractBlock::RotateBlock(Command cmd)
+	{
+		_state = GetNextState(cmd);
+	}
 
 }

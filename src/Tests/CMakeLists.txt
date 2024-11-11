@@ -1,3 +1,7 @@
+set(CMAKE_CXX_STANDARD 23)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+
 include(FetchContent)
 FetchContent_Declare(
   googletest
@@ -10,6 +14,7 @@ FetchContent_MakeAvailable(googletest)
 add_executable(
   Tests
   ## Model
+  ${CMAKE_CURRENT_SOURCE_DIR}/Source/Precompile.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/Source/BlockTest.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/Source/ThreadsafeQueueTest.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/Source/MapTest.cpp

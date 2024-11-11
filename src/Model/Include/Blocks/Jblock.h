@@ -15,32 +15,42 @@ namespace Tetris::Model::Blocks
 		/// @param color цвет блока
 		Jblock(Common::Data::Color color) : AbstractBlock(color) 
 		{
-			_positionToDescription = {
-				{State::Up, {
-					PosotionFiel( 0, 1 ), // *  o  *
-					PosotionFiel( 0, 0 ), // *  0  *
-					PosotionFiel( 0,-1 ), // o  o  *
-					PosotionFiel(-1,-1 )
-				}},
-				{State::Right, {
-					PosotionFiel( 1, 0 ), // o  *  *
-					PosotionFiel( 0, 0 ), // o  0  o
-					PosotionFiel(-1, 0 ), // *  *  *
-					PosotionFiel(-1, 1 )
-				}},
-				{State::Down, {
-					PosotionFiel( 0,-1 ), // *  o  o
-					PosotionFiel( 0, 0 ), // *  0  *
-					PosotionFiel( 0, 1 ), // *  o  *
-					PosotionFiel( 1, 1 )
-				}},
-				{State::Left, {
-					PosotionFiel(-1, 0 ), // *  *  *
-					PosotionFiel( 0, 0 ), // o  0  o
-					PosotionFiel( 1, 0 ), // *  *  o
-					PosotionFiel( 1,-1 )
-				}}
+			_stateToPositions = {
+				{State::Up, 
+					{
+						Position(-1, 1 ), // o  *  *
+						Position(-1, 0 ), // o  0  o
+						Position( 0, 0 ), // *  *  *
+						Position( 1, 0 )
+					}
+				},
+				{State::Right,
+					{
+						Position( 1, 1 ), // *  o  o
+						Position( 0, 1 ), // *  0  *
+						Position( 0, 0 ), // *  o  *
+						Position( 0,-1 )
+					}
+				},
+				{State::Down,
+					{
+						Position( 1,-1 ), // *  *  *
+						Position( 1, 0 ), // o  0  o
+						Position( 0, 0 ), // *  *  o
+						Position(-1, 0 )
+					}
+				},
+				{State::Left,
+					{
+						Position(-1,-1 ), // *  o  *
+						Position( 0,-1 ), // *  0  *
+						Position( 0, 0 ), // o  o  *
+						Position( 0, 1 )
+					}
+				}
 			};
+
+			_stateToOffset = JLSTZOffset;
 
 		};
 		
