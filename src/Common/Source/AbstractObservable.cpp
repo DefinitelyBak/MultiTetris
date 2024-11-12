@@ -4,6 +4,13 @@
 
 namespace Tetris::Common
 {
+    AbstractObservable::~AbstractObservable()
+    {
+        std::lock_guard<std::mutex> lock(_mutex);
+
+        for(auto& observer: _observers)
+            observer->AddObservable(nullptr);
+    }
 
     void AbstractObservable::Add(AbstarctObserver* observer)
     {

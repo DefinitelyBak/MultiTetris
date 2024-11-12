@@ -6,6 +6,8 @@
 
 namespace Tetris::Common
 {
+    class AbstractObservable;
+
     using AbstractCommandPtr = std::shared_ptr<AbstractCommand>;
 
     /// @brief 
@@ -13,7 +15,7 @@ namespace Tetris::Common
     {
     public:
         /// @brief 
-        virtual ~AbstarctObserver() = default;
+        virtual ~AbstarctObserver();
 
         /// @brief 
         /// @param command 
@@ -24,8 +26,14 @@ namespace Tetris::Common
         /// @return 
         bool GetCommand(AbstractCommandPtr& command);
 
-    protected:
         /// @brief 
+        /// @param observable 
+        void AddObservable(AbstractObservable* observable);
+
+    protected:
+        AbstractObservable* _observable{nullptr};
+
+        /// @brief
         Data::ThreadsafeQueue<AbstractCommandPtr> _queueCommands;
     };
 

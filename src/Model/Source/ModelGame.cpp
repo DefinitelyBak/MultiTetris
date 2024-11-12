@@ -20,11 +20,6 @@ namespace Tetris::Model
 		_map.SetNewBlock(CreateRandomBlock());
 	}
 
-    ModelGame::~ModelGame()
-    {
-		
-    }
-
     void ModelGame::Update()
 	{
 		Common::AbstractCommandPtr newCommand;

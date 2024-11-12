@@ -1,5 +1,6 @@
 #include "AbstractObserver.h"
 
+#include "AbstractObservable.h"
 
 namespace Tetris::Common
 {
@@ -16,6 +17,17 @@ namespace Tetris::Common
 
         command = newCommand;
         return true;
+    }
+
+    void AbstarctObserver::AddObservable(AbstractObservable *observable)
+    {
+        _observable = observable;
+    }
+
+    AbstarctObserver::~AbstarctObserver()
+    {
+        if(_observable)
+            _observable->Remove(this);
     }
 
     void AbstarctObserver::HandleEvent(AbstractCommandPtr command)
