@@ -2,11 +2,14 @@
 
 #include "Precompile.h"
 
-#include "AbstractObserver.h"
-
+#include "Commands/AbstractCommand.h"
 
 namespace Tetris::Common
 {
+
+    class AbstarctObserver;
+
+    using AbstractCommandPtr = std::shared_ptr<AbstractCommand>;
 
     class AbstractObservable
     {
@@ -23,7 +26,7 @@ namespace Tetris::Common
         void Remove(AbstarctObserver* observer);
 
         /// @brief 
-        void NotifyAll(const AbstractCommand& command);
+        void NotifyAll(AbstractCommandPtr command);
 
     private:
         /// @brief 

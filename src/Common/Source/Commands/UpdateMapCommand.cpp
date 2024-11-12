@@ -4,7 +4,7 @@
 namespace Tetris::Common
 {
 
-    UpdateMapCommand::UpdateMapCommand(Data::MapPtr map, Data::MapSize size, CommonType type): AbstractCommand(type), _map(map), _size(size)
+    UpdateMapCommand::UpdateMapCommand(Data::MapPtr map, Data::MapSize size): AbstractCommand(CommonType::UpdateMap), _map(map), _size(size)
     {}
 
     std::pair<Data::MapPtr, Data::MapSize> UpdateMapCommand::GetData() const

@@ -6,7 +6,7 @@
 
 
 /// 1 линия — 100 очков, 2 линии — 300 очков, 3 линии — 700 очков, 4 линии (то есть сделать Тетрис) — 1500 очков
-namespace Tetris::Model::Map
+namespace Tetris::Model
 {
 
 	using namespace Model;
@@ -27,7 +27,7 @@ namespace Tetris::Model::Map
 
 		/// @brief Получить карту
 		/// @return Карта
-		std::vector<Data::Color> GetMap() const;
+		Data::MapPtr GetMap() const;
 
 		/// @brief 
 		/// @return 
@@ -56,6 +56,8 @@ namespace Tetris::Model::Map
 		/// @return 
 		bool CheckLine(std::size_t numberLine) const;
 
+		/// @brief 
+		/// @return 
 		int DeleteLines();
 
 		/// @brief 

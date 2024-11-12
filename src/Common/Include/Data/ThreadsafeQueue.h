@@ -1,6 +1,8 @@
 #pragma once
 
-#include "Precompile.h"
+#include <condition_variable>
+#include <mutex>
+#include <memory>
 
 
 namespace Tetris::Common::Data

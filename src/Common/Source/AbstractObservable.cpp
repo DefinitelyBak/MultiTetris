@@ -1,5 +1,6 @@
 #include "AbstractObservable.h"
 
+#include "AbstractObserver.h"
 
 namespace Tetris::Common
 {
@@ -24,7 +25,7 @@ namespace Tetris::Common
             _observers.erase(observer);
     }
 
-    void AbstractObservable::NotifyAll(const AbstractCommand& command)
+    void AbstractObservable::NotifyAll(AbstractCommandPtr command)
     {
         std::lock_guard<std::mutex> lock(_mutex);
 

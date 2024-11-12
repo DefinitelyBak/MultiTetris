@@ -17,7 +17,7 @@ namespace Tetris::Common
         /// @param map 
         /// @param size 
         /// @param type 
-        UpdateMapCommand(Data::MapPtr map, Data::MapSize size, CommonType type = CommonType::UpdateMap);
+        UpdateMapCommand(Data::MapPtr map, Data::MapSize size);
 
         /// @brief 
         /// @return 

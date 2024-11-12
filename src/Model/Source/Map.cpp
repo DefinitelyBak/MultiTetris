@@ -1,7 +1,7 @@
-#include "Map/Map.h"
+#include "Map.h"
 
 
-namespace Tetris::Model::Map
+namespace Tetris::Model
 {
 
     Map::Map(size_t columns, size_t rows): _columns(columns), _rows(rows)
@@ -13,9 +13,9 @@ namespace Tetris::Model::Map
     _columns(columns), _rows(rows), _data(map)
     {}
 
-    std::vector<Data::Color> Map::GetMap() const
+    Data::MapPtr Map::GetMap() const
     {
-        return _data;
+        return std::make_shared<Data::Map>(_data);
     }
 
     std::pair<size_t, size_t> Map::GetSize()

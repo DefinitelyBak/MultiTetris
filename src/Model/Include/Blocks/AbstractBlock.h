@@ -3,11 +3,12 @@
 #include "../Precompile.h"
 
 #include "Types.h"
-#include "Data/Color.h"
+#include "Data/Types.h"
 
 
 namespace Tetris::Model::Blocks
 {
+	using namespace Common::Data;
 
 	/// @brief Базовый класс блока 
 	class AbstractBlock

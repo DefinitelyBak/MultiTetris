@@ -3,19 +3,10 @@
 #include "Precompile.h"
 
 
+/// @brief Типы используемые в  
 namespace Tetris::Model
 {
 	
-	/// @brief 
-	enum class Command: int
-	{
-		RotateRight = 1,
-		RotateLeft,
-		Right,
-		Left,
-		Down
-	};
-
     /// @brief Состояние фигуры
 	enum class State: int
 	{
@@ -33,6 +24,8 @@ namespace Tetris::Model
 
 	/// @brief 
 	using Offsets = std::array<Position, 5>;
+
+	/// Операции с типами
 
 	Offsets operator+(const Offsets& lhs, const Offsets& rhs);
 	Offsets operator-(const Offsets& lhs, const Offsets& rhs);

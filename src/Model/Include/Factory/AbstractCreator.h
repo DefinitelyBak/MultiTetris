@@ -2,7 +2,7 @@
 
 #include "../Precompile.h"
 
-#include "Data/Color.h"
+#include "Data/Types.h"
 
 
 namespace Tetris::Model::Blocks

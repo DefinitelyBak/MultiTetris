@@ -3,21 +3,11 @@
 #include "Precompile.h"
 
 #include "AbstractObservable.h"
-
+#include "Data/Types.h"
 
 /// @brief 
 namespace Tetris::Controller
 {
-
-	enum class Command: int
-	{
-		Right,
-		Left,
-		Down,
-		RotateRight,
-		RotateLeft
-	};
-
 	using namespace Common;
 
 	/// @brief 
@@ -28,7 +18,7 @@ namespace Tetris::Controller
 		MoveController();
 
 		/// @brief 
-		void Move(Command cmn);
+		void Move(Data::Command cmn);
 	};
 
 }

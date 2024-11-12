@@ -4,12 +4,12 @@
 namespace Tetris::Common
 {
 
-    bool AbstarctObserver::GetCommand(AbstractCommand& command)
+    bool AbstarctObserver::GetCommand(AbstractCommandPtr& command)
     {
         if (_queueCommands.empty())
             return false;
 
-        AbstractCommand newCommand;
+        AbstractCommandPtr newCommand;
 
         if(!_queueCommands.try_pop(newCommand))
             return false;
@@ -18,7 +18,7 @@ namespace Tetris::Common
         return true;
     }
 
-    void AbstarctObserver::HandleEvent(const AbstractCommand& command)
+    void AbstarctObserver::HandleEvent(AbstractCommandPtr command)
     {
         _queueCommands.push(command);
     }

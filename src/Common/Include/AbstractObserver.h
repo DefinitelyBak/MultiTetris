@@ -6,6 +6,8 @@
 
 namespace Tetris::Common
 {
+    using AbstractCommandPtr = std::shared_ptr<AbstractCommand>;
+
     /// @brief 
     class AbstarctObserver
     {
@@ -15,16 +17,16 @@ namespace Tetris::Common
 
         /// @brief 
         /// @param command 
-        void HandleEvent(const AbstractCommand& command);
+        void HandleEvent(AbstractCommandPtr command);
 
         /// @brief 
         /// @param command 
         /// @return 
-        bool GetCommand(AbstractCommand& command);
+        bool GetCommand(AbstractCommandPtr& command);
 
     protected:
         /// @brief 
-        Data::ThreadsafeQueue<AbstractCommand> _queueCommands;
+        Data::ThreadsafeQueue<AbstractCommandPtr> _queueCommands;
     };
 
 }

@@ -7,7 +7,8 @@ namespace Tetris::Common
     enum class CommonType:  int
     {
         None,
-        UpdateMap
+        UpdateMap,
+        MoveBlock
     };
 
     /// @brief 
