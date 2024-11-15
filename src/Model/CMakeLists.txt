@@ -14,8 +14,8 @@ target_include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/Include
 )
 
-target_link_libraries(
-    Model
-  PUBLIC
-    Common
-)
+#target_link_libraries(
+ #   Model
+#  PUBLIC
+ #   Common
+#)

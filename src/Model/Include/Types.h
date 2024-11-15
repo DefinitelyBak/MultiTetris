@@ -7,13 +7,34 @@
 namespace Tetris::Model
 {
 	
-    /// @brief Состояние фигуры
-	enum class State: int
+	/// @brief 
+	enum class Command: int
 	{
-		Up = 1,
 		Right,
+		Left,
 		Down,
-		Left
+		RotateRight,
+		RotateLeft
+	};
+
+    /// @brief Цвет поля карты
+    enum class Color: int
+    {
+        None,
+        Red,
+        Green,
+        Yellow,
+        Blue,
+        Orange
+    };
+
+    using DataMap = std::vector<Color>;
+
+    /// @brief 
+    struct MapSize
+	{
+		size_t columns;
+		size_t rows;
 	};
 
 	/// @brief Координаты поля фигры относительно центра фигуры, координаты x, y
@@ -26,7 +47,6 @@ namespace Tetris::Model
 	using Offsets = std::array<Position, 5>;
 
 	/// Операции с типами
-
 	Offsets operator+(const Offsets& lhs, const Offsets& rhs);
 	Offsets operator-(const Offsets& lhs, const Offsets& rhs);
 

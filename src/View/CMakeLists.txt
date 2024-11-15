@@ -11,8 +11,9 @@ target_include_directories(
   )
 
 target_link_libraries(
-  View
+    View
   PUBLIC
-    Common
+    Model
+    Controllers
   PRIVATE
     sfml-graphics)

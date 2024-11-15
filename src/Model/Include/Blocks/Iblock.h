@@ -13,7 +13,7 @@ namespace Tetris::Model::Blocks
 	public:
 		/// @brief Конструктор
 		/// @param color цвет блока
-		Iblock(Common::Data::Color color) : AbstractBlock(color)
+		Iblock(Color color) : AbstractBlock(color)
 		{
 			_stateToPositions = {
 				{State::Up,

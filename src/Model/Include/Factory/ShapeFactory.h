@@ -1,14 +1,13 @@
 #pragma once
 
 #include "ObjectFactory.h"
-
-#include "Blocks/Iblock.h"
-#include "Blocks/Jblock.h"
-#include "Blocks/Lblock.h"
-#include "Blocks/Oblock.h"
-#include "Blocks/Sblock.h"
-#include "Blocks/Tblock.h"
-#include "Blocks/Zblock.h"
+#include "blocks/Iblock.h"
+#include "blocks/Jblock.h"
+#include "blocks/Lblock.h"
+#include "blocks/Oblock.h"
+#include "blocks/Sblock.h"
+#include "blocks/Tblock.h"
+#include "blocks/Zblock.h"
 
 
 namespace Tetris::Model::Blocks
@@ -34,13 +33,13 @@ namespace Tetris::Model::Blocks
 		/// @param id ID блока
 		/// @param color Цвет блока
 		/// @return Блок
-		AbstractBlock* Create(IdShape id, Common::Data::Color color) 
+		AbstractBlock* Create(IdShape id, Color color) 
 		{
 			return _factory[id]->Create(color);
 		}
 
-		/// @brief Получить кол-во блоков
-		/// @return Кол-во блоков
+		/// @brief Получить кол-во инициализированных блоков
+		/// @return Колличество
 		int Size() const 
 		{
 			return _factory.size();

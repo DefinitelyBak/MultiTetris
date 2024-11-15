@@ -2,44 +2,48 @@
 
 #include "Precompile.h" 
 
-#include "AbstractObservable.h"
-#include "AbstractObserver.h"
 #include "Map.h"
 #include "Factory/ShapeFactory.h"
 
+#include <wigwag/signal.hpp>
 
 
 namespace Tetris::Model
 {
 
-    class ModelGame: public Tetris::Common::AbstarctObserver, public Tetris::Common::AbstractObservable
+    /// @brief Модель игры
+    class ModelGame
     {
     public:
-        /// @brief 
+        /// @brief Конструктор по умолчанию
         ModelGame();
 
-        ~ModelGame();
-
         /// @brief 
-        void Update();
+        /// @param command 
+        void SlotUpdate(Command command);
+
+        /// @brief Сигнал на обновление карты
+        wigwag::signal<void(DataMap, MapSize, unsigned int)> UpdateView;
 
     private:
         /// @brief 
-        /// @return 
-        const std::shared_ptr<AbstractBlock> CreateRandomBlock(); 
+        /// @param lines 
+        void AddScore(unsigned int lines);
+
+        /// @brief Создание случайного блока
+        /// @return Новый блок
+        std::unique_ptr<AbstractBlock> CreateRandomBlock(); 
 
         Map _map;
         Blocks::ShapeFactory _factory;
 
+        unsigned int _score{0};
+
         IdShape _lastTypeBlock{IdShape::None};
         Color _lasTypeColor{Color::None};
 
-        std::random_device _dev;
-        std::mt19937 _rng;
-        std::uniform_int_distribution<int> _dist7;
-        std::uniform_int_distribution<int> _dist5;
-
-
+        std::random_device _device;
+        std::mt19937 _randomEngine;
     };
 
 }

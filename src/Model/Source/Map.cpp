@@ -4,43 +4,32 @@
 namespace Tetris::Model
 {
 
-    Map::Map(size_t columns, size_t rows): _columns(columns), _rows(rows)
+    Map::Map(size_t columns, size_t rows)
     {
-        _data.resize(columns * rows);
+        _size.columns = columns;
+        _size.rows = rows;
+        _data.resize(columns * rows, Color::None);
     }
 
-    Map::Map(const std::vector<Data::Color>& map, size_t columns, size_t rows): 
-    _columns(columns), _rows(rows), _data(map)
-    {}
-
-    Data::MapPtr Map::GetMap() const
+    DataMap Map::GetMap() const
     {
-        return std::make_shared<Data::Map>(_data);
+        return _data;
     }
 
-    std::pair<size_t, size_t> Map::GetSize()
+    MapSize Map::GetSize()
     {
-        return std::pair<size_t, size_t>(_columns, _rows);
+        return _size;
     }
 
-    size_t Map::GetLastNotFreeLine() const
+    void Map::SetBlock(std::unique_ptr<AbstractBlock> shape)
     {
-        for(size_t row = 0; row < _rows; ++row)
-            if (!CheckLine(row))
-                return row;
-
-        return _rows;
+        _activeBlock = std::move(shape);
+        _positionBlock = Position(_size.columns/2, _size.rows/2 + 2);
     }
 
-    void Map::SetNewBlock(const std::shared_ptr<AbstractBlock> shape)
+    bool Map::HasActiveBlock()
     {
-        _activeBlock = shape;
-        _positionBlock = Position(_columns/2, _rows/2 + 2);
-    }
-
-    bool Map::HasActiveBlock() const
-    {
-        return _activeBlock.get();
+        return bool(_activeBlock);
     }
 
 	void Map::MoveBlock(Command cmn)
@@ -61,7 +50,7 @@ namespace Tetris::Model
 
             Positions newDescriptionBlock = _activeBlock->GeCurrentDescription()  + newPos;
             
-            if (CheckMoveBlock(newDescriptionBlock))
+            if (IsBlockCanMove(newDescriptionBlock))
             {
                 _positionBlock = newPos;
                 return;
@@ -70,7 +59,9 @@ namespace Tetris::Model
             if(cmn == Command::Down)
             {
                 SetBlockOnMap();
-                _deletedLine = DeleteLines();
+                _activeBlock = nullptr;
+                DeleteLines();
+                _deletedLine = GetCountDeletedLines();
             }
 
             return;
@@ -80,16 +71,67 @@ namespace Tetris::Model
         {
             auto from = _activeBlock->GeCurrentState();
             auto to = _activeBlock->GetNextState(cmn);
-
             Positions newDescriptionBlock = _activeBlock->GetDescription(to);
 
             for(const auto& offset : _activeBlock->GetOffsets(from, to))
-                if(CheckMoveBlock(newDescriptionBlock + offset))
+                if(IsBlockCanMove(newDescriptionBlock + offset))
                 {
                     _activeBlock->RotateBlock(cmn);
                     return;
                 }
         }
+    }
+
+    unsigned int Map::GetCountDeletedLines()
+    {
+        return _deletedLine;
+    }
+
+    void Map::DeleteLines()
+    {
+        _deletedLine = 0;
+
+        for(int row = 0; row < _size.rows; ++row)
+        {
+            bool lineFull = true;
+
+            for(int column = 0; column < _size.columns; ++column)
+                if(_data[row * _size.columns + column] == Color::None)
+                {
+                    lineFull = false;
+                    break;
+                }
+
+            if(!lineFull)
+                continue;
+
+            ++_deletedLine;
+
+            for(int nextRow = row + 1; nextRow < _size.rows; ++nextRow)
+                for(int column = 0; column < _size.columns; ++column)
+                    _data[row * _size.columns + column] = _data[nextRow * _size.columns + column]; 
+        }
+    }
+
+    bool Map::IsBlockCanMove(Positions cmn)
+    {
+        for(auto fill: cmn)
+        {
+            if(fill.first > _size.columns || fill.first < 0 ||
+               fill.second > _size.rows || fill.second < 0)
+                return false;
+
+            if (_data[_size.columns * fill.second + fill.first] != Color::None)
+                return false;
+        }
+
+        return true;
+    }
+
+    void Map::SetBlockOnMap()
+    {
+        for(auto fill :_positionBlock+ _activeBlock->GeCurrentDescription())
+            _data[_size.columns * fill.second + fill.first] = _activeBlock->GetColor();
 
     }
 

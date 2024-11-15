@@ -2,23 +2,25 @@
 
 #include "Precompile.h"
 
-#include "AbstractObservable.h"
-#include "Data/Types.h"
+#include "Types.h"
+#include <wigwag/signal.hpp>
+
 
 /// @brief 
 namespace Tetris::Controller
 {
-	using namespace Common;
-
 	/// @brief 
-	class MoveController: public AbstractObservable
+	class MoveController
 	{
 	public:
 		/// @brief 
-		MoveController();
+		MoveController() = default;
 
 		/// @brief 
-		void Move(Data::Command cmn);
+		void Move(Model::Command cmn);
+
+		/// @brief 
+		wigwag::signal<void(Model::Command)> UpdateModel;
 	};
 
 }

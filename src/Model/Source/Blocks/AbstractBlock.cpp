@@ -1,12 +1,12 @@
-#include "Blocks/AbstractBlock.h"
+#include "blocks/AbstractBlock.h"
 
 
 namespace Tetris::Model::Blocks
 {
 
-	AbstractBlock::AbstractBlock(Common::Data::Color color): _color(color){};
+	AbstractBlock::AbstractBlock(Color color): _color(color){};
 
-	Common::Data::Color AbstractBlock::GetColor() const
+	Color AbstractBlock::GetColor() const
 	{
 		return _color; 
 	}

@@ -3,12 +3,19 @@
 #include "../Precompile.h"
 
 #include "Types.h"
-#include "Data/Types.h"
 
 
 namespace Tetris::Model::Blocks
 {
-	using namespace Common::Data;
+
+	/// @brief Состояние фигуры
+	enum class State: int
+	{
+		Up = 1,
+		Right,
+		Down,
+		Left
+	};
 
 	/// @brief Базовый класс блока 
 	class AbstractBlock
@@ -21,14 +28,14 @@ namespace Tetris::Model::Blocks
 		using StateToOffsets = std::unordered_map<State, Offsets>;
 
 		/// @brief Дефолдный конструктор
-		AbstractBlock(Common::Data::Color color);
+		AbstractBlock(Color color);
 
 		/// @brief Виртуальный деструктор
 		virtual ~AbstractBlock() = default;
 
 		/// @brief Вернуть цвет блока
 		/// @return Цвет блока 
-		Common::Data::Color GetColor() const;
+		Color GetColor() const;
 
 		/// @brief Получить текущее положение блока
 		/// @return Описание блока
@@ -68,10 +75,10 @@ namespace Tetris::Model::Blocks
 		State _state {State::Up};
 
 		/// @brief Цвет блока
-		Common::Data::Color _color; 
+		Color _color; 
 	};
 
-	const AbstractBlock::StateToOffsets JLSTZOffset
+	inline const AbstractBlock::StateToOffsets JLSTZOffset
 	{
 		{State::Up,
 			{
@@ -111,7 +118,7 @@ namespace Tetris::Model::Blocks
 		} 
 	};
 
-	const AbstractBlock::StateToOffsets IOffset
+	inline const AbstractBlock::StateToOffsets IOffset
 	{
 		{State::Up,
 			{
@@ -151,7 +158,7 @@ namespace Tetris::Model::Blocks
 		} 
 	};
 
-const AbstractBlock::StateToOffsets OOffset
+	inline const AbstractBlock::StateToOffsets OOffset
 	{
 		{State::Up,
 			{
