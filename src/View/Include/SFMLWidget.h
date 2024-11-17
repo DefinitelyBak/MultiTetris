@@ -2,7 +2,7 @@
 
 #include <SFML/Graphics.hpp>
 
-//#include "wigwag/thread_task_executor.hpp"
+
 #include "wigwag/life_token.hpp"
 #include "ModelGame.h"
 #include "MoveController.h"

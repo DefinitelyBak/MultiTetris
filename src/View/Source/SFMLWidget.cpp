@@ -1,4 +1,4 @@
-#include "SFMLView.h"
+#include "SFMLWidget.h"
 
 
 namespace Tetris::View

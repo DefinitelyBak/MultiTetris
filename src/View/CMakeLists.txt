@@ -1,7 +1,7 @@
 add_library(
     View
   ##SHARED пока не разобрался как правильно работать с shared library
-    ${CMAKE_CURRENT_SOURCE_DIR}/Source/SFMLView.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/Source/SFMLWidget.cpp
 )
 
 target_include_directories(
