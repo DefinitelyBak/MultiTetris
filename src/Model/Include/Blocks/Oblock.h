@@ -12,7 +12,7 @@ namespace Tetris::Model::Blocks
 	public:
 		/// @brief Конструктор
 		/// @param color цвет блока
-		Oblock(Color color) : AbstractBlock(color) 
+		Oblock(TypeColor color) : AbstractBlock(color) 
 		{
 			_stateToPositions = {
 				{State::Up, {
@@ -42,7 +42,6 @@ namespace Tetris::Model::Blocks
 			};
 
 			_stateToOffset = OOffset;
-
 		};
 
 	};

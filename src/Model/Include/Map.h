@@ -22,7 +22,7 @@ namespace Tetris::Model
 
 		/// @brief Получить карту
 		/// @return Карта
-		DataMap GetMap() const;
+		DataMap GetMap();
 
 		/// @brief 
 		/// @return 
@@ -32,7 +32,7 @@ namespace Tetris::Model
 
 		/// @brief Установить активную фигуру
 		/// @param shape Фигура
-		void SetBlock(std::unique_ptr<AbstractBlock> shape);
+		void SetBlock(std::shared_ptr<AbstractBlock> shape);
 
 		/// @brief Имеется активная фигура
 		/// @return Да/нет
@@ -56,10 +56,10 @@ namespace Tetris::Model
 		bool IsBlockCanMove(Positions cmn);
 
 		/// @brief 
-		void SetBlockOnMap();
+		void SetBlockOnMap(DataMap& map);
 
 		/// @brief 
-		std::unique_ptr<AbstractBlock> _activeBlock;
+		std::shared_ptr<AbstractBlock> _activeBlock;
 
 		/// @brief 
 		Position _positionBlock;

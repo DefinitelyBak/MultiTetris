@@ -4,9 +4,9 @@
 namespace Tetris::Model::Blocks
 {
 
-	AbstractBlock::AbstractBlock(Color color): _color(color){};
+	AbstractBlock::AbstractBlock(TypeColor color): _color(color){};
 
-	Color AbstractBlock::GetColor() const
+	TypeColor AbstractBlock::GetColor() const
 	{
 		return _color; 
 	}

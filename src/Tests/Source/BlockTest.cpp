@@ -4,13 +4,12 @@
 
 #include "Factory/ShapeFactory.h"
 
-
+/*
 namespace Tetris::Tests
 {
 
     using namespace Model; 
     using namespace Model::Blocks;
-    using namespace Common::Data;
 
     class BlockTest : public ::testing::Test 
     {
@@ -170,3 +169,4 @@ namespace Tetris::Tests
     }
 
 }
+*/

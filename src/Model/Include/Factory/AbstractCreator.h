@@ -23,7 +23,7 @@ namespace Tetris::Model::Blocks
 		/// @brief Создать объект
 		/// @param color Цыет объекта 
 		/// @return Возвращает созданный объект
-		virtual Base* Create(Color color) const = 0;
+		virtual Base* Create(TypeColor color) const = 0;
 	};
 
 	/// @brief Креетер
@@ -42,7 +42,7 @@ namespace Tetris::Model::Blocks
 		/// @brief Создать блок
 		/// @param color Цвет создаваемого блока
 		/// @return Блок
-		Base* Create(Color color) const override{ return new C(color); }
+		Base* Create(TypeColor color) const override{ return new C(color); }
 	};
 
 }

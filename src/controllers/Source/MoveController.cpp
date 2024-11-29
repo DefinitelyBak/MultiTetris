@@ -6,7 +6,7 @@ namespace Tetris::Controller
 	
 	void MoveController::Move(Model::Command cmn)
 	{
-		UpdateModel(cmn);
+		SignalUpdateModel(cmn);
 	}
 
 }

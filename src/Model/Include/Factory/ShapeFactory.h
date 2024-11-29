@@ -33,7 +33,7 @@ namespace Tetris::Model::Blocks
 		/// @param id ID блока
 		/// @param color Цвет блока
 		/// @return Блок
-		AbstractBlock* Create(IdShape id, Color color) 
+		AbstractBlock* Create(IdShape id, TypeColor color) 
 		{
 			return _factory[id]->Create(color);
 		}

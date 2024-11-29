@@ -2,47 +2,100 @@
 
 #include "Precompile.h"
 
-/*
-// #include "Map/Map.h"
-#include <iostream>
-#include <string>
-#include <flat_map>
+#include "Map.h"
+#include "Factory/ShapeFactory.h"
+
+#define X Model::TypeColor::None
+#define Y Model::TypeColor::Green
+#define Z Model::TypeColor::Red
+
 
 namespace Tetris::Test
 {
 
-    void println(auto const comment, auto const &map)
+    bool operator==(const Model::DataMap& lhs, const Model::DataMap& rhs)
     {
-        std::cout << comment << '{';
-        for (const auto &pair : map)
-            std::cout << '{' << pair.first << ": " << pair.second << '}';
-        std::cout << "}\n";
-    }
+        if(lhs.size() != rhs.size())
+            return false;
 
-    TEST(Map, SizeMap)
-    {
-        std::flat_map<char, int> letter_counts{{'a', 27}, {'b', 3}, {'c', 1}};
+        for (int i = 0; i < lhs.size(); ++i)
+            if(lhs[i] != rhs[i])
+                return false;
 
-        println("letter_counts initially contains: ", letter_counts);
-
-        letter_counts['b'] = 42; // updates an existing value
-        letter_counts['x'] = 9;  // inserts a new value
-
-        println("after modifications it contains: ", letter_counts);
-
-        // count the number of occurrences of each word
-        // (the first call to operator[] initialized the counter with zero)
-        std::flat_map<std::string, int> word_map;
-        for (const auto &w : {"this", "sentence", "is", "not", "a", "sentence",
-                              "this", "sentence", "is", "a", "hoax"})
-            ++word_map[w];
-        word_map["that"]; // just inserts the pair {"that", 0}
-
-        for (const auto &[word, count] : word_map)
-            std::cout << count << " occurrence(s) of word '" << word << "'\n";
-
-        EXPECT_EQ(1, 1);
+        return true;
     };
 
+    TEST(MapTests, EmptyMap)
+    {
+        /// Здесь будет moc карты
+        Model::DataMap mocMap = {X, X, X, X, X, X, X, X, X, X, // 1 строка
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X }; // 25 строка
+
+        Model::Map map;
+        EXPECT_EQ(mocMap, map.GetMap());
+    }
+
+    TEST(MapTests, MapWithTBlock)
+    {
+        /// Здесь будет moc карты
+        Model::DataMap mocMap = {X, X, X, X, X, X, X, X, X, X, // 1 строка
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, Y, Y, Y, X, X, X, X,
+                                 X, X, X, X, Y, X, X, X, X, X }; // 25 строка
+        Model::Map map;
+
+        Model::ShapeFactory factory;
+        factory.add<Model::Tblock>(Model::IdShape::Tblock);
+        map.SetBlock(std::shared_ptr<Model::AbstractBlock>(factory.Create(Model::IdShape::Tblock, Y)));
+
+        auto temp = map.GetMap();
+        temp == mocMap;
+
+        EXPECT_EQ(mocMap, map.GetMap());
+    }
+
 }
-*/

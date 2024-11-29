@@ -1,10 +1,5 @@
-add_executable(main main.cpp Source/SFMLApplication.cpp)
-target_link_libraries(
-    main
-    PUBLIC
-    Model
- PRIVATE
-  sfml-graphics)
+add_executable(main main.cpp)
+
 #target_compile_features(main PRIVATE cxx_std_14)
 
 
@@ -14,4 +9,21 @@ target_include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/Include
   )
 
-  set_property(TARGET main PROPERTY CXX_STANDARD 14)
+  target_link_libraries(
+    main
+  PUBLIC
+    View
+    Controllers
+    Model
+  PRIVATE
+    sfml-graphics
+    )
+
+
+if(WIN32)
+    add_custom_command(
+        TARGET main
+        COMMENT "Copy OpenAL DLL"
+        PRE_BUILD COMMAND ${CMAKE_COMMAND} -E copy ${SFML_SOURCE_DIR}/extlibs/bin/$<IF:$<EQUAL:${CMAKE_SIZEOF_VOID_P},8>,x64,x86>/openal32.dll $<TARGET_FILE_DIR:main>
+        VERBATIM)
+endif()

@@ -1,5 +1,7 @@
 #include "Map.h"
 
+#include "Factory/ShapeFactory.h"
+#include <cmath>
 
 namespace Tetris::Model
 {
@@ -8,12 +10,15 @@ namespace Tetris::Model
     {
         _size.columns = columns;
         _size.rows = rows;
-        _data.resize(columns * rows, Color::None);
+        _data.resize(columns * rows, TypeColor::None);
     }
 
-    DataMap Map::GetMap() const
+    DataMap Map::GetMap()
     {
-        return _data;
+        DataMap data = _data;
+        if(_activeBlock)
+            SetBlockOnMap(data);
+        return data;
     }
 
     MapSize Map::GetSize()
@@ -21,10 +26,11 @@ namespace Tetris::Model
         return _size;
     }
 
-    void Map::SetBlock(std::unique_ptr<AbstractBlock> shape)
+    void Map::SetBlock(std::shared_ptr<AbstractBlock> shape)
     {
-        _activeBlock = std::move(shape);
-        _positionBlock = Position(_size.columns/2, _size.rows/2 + 2);
+        _activeBlock = shape;
+        /// Тут надо смотреть на тип фигуры и выбирать смещение отсносительно начала
+        _positionBlock = Position(std::round(_size.columns/2.0), _size.rows-2);
     }
 
     bool Map::HasActiveBlock()
@@ -58,7 +64,7 @@ namespace Tetris::Model
 
             if(cmn == Command::Down)
             {
-                SetBlockOnMap();
+                SetBlockOnMap(_data);
                 _activeBlock = nullptr;
                 DeleteLines();
                 _deletedLine = GetCountDeletedLines();
@@ -96,7 +102,7 @@ namespace Tetris::Model
             bool lineFull = true;
 
             for(int column = 0; column < _size.columns; ++column)
-                if(_data[row * _size.columns + column] == Color::None)
+                if(_data[row * _size.columns + column] == TypeColor::None)
                 {
                     lineFull = false;
                     break;
@@ -121,17 +127,17 @@ namespace Tetris::Model
                fill.second > _size.rows || fill.second < 0)
                 return false;
 
-            if (_data[_size.columns * fill.second + fill.first] != Color::None)
+            if (_data[_size.columns * fill.second + fill.first] != TypeColor::None)
                 return false;
         }
 
         return true;
     }
 
-    void Map::SetBlockOnMap()
+    void Map::SetBlockOnMap(DataMap& map)
     {
-        for(auto fill :_positionBlock+ _activeBlock->GeCurrentDescription())
-            _data[_size.columns * fill.second + fill.first] = _activeBlock->GetColor();
+        for(auto fill : _positionBlock + _activeBlock->GeCurrentDescription())
+            map[_size.columns * fill.second + fill.first] = _activeBlock->GetColor();
 
     }
 

@@ -28,8 +28,8 @@ namespace Tetris::Model
 		unsigned int deletedLines = _map.GetCountDeletedLines();
 		if (deletedLines)
 			AddScore(deletedLines);
-
-		UpdateView(_map.GetMap(), _map.GetSize(), _score);
+ 
+		SignalUpdateView(DescriptionMap(_map.GetMap(), _map.GetSize(), 1));
 		
     }
 
@@ -54,26 +54,26 @@ namespace Tetris::Model
 		}
     }
 
-    std::unique_ptr<AbstractBlock> ModelGame::CreateRandomBlock()
+    std::shared_ptr<AbstractBlock> ModelGame::CreateRandomBlock()
     {
 		static const IdShape typesShapes[7] = {IdShape::Iblock, IdShape::Jblock, IdShape::Lblock, IdShape::Oblock, IdShape::Sblock, IdShape::Tblock, IdShape::Zblock};
-		static const Color typesColor[5] = {Color::Red, Color::Green, Color::Yellow, Color::Blue, Color::Orange};
+		static const TypeColor typesColor[4] = {TypeColor::Red, TypeColor::Green, TypeColor::Yellow, TypeColor::Blue};
 
 		std::uniform_int_distribution<int> randomTypeShape(0,6);
-        std::uniform_int_distribution<int> randomTypeColor(0,5);
+        std::uniform_int_distribution<int> randomTypeColor(0,4);
 
-		int typeShape = randomTypeShape(_randomEngine);
-		int typeColor = randomTypeColor(_randomEngine);
+		int randomShape = randomTypeShape(_randomEngine);
+		int randomColor = randomTypeColor(_randomEngine);
 
-		while(typesShapes[typeShape] == _lastTypeBlock)
-			typeShape = randomTypeShape(_randomEngine);
+		while(typesShapes[randomShape] == _lastTypeBlock)
+			randomShape = randomTypeShape(_randomEngine);
 
-		while(typesColor[typeColor] == _lasTypeColor)
-			typeColor = randomTypeColor(_randomEngine);
+		while(typesColor[randomColor] == _lasTypeColor)
+			randomColor = randomTypeColor(_randomEngine);
 
-		_lastTypeBlock = typesShapes[typeShape];
-		_lasTypeColor = typesColor[typeColor];
-		std::unique_ptr<AbstractBlock> result(_factory.Create(typesShapes[typeShape],typesColor[typeColor]));
+		_lastTypeBlock = typesShapes[randomShape];
+		_lasTypeColor = typesColor[randomColor];
+		std::shared_ptr<AbstractBlock> result(_factory.Create(typesShapes[randomShape],typesColor[randomColor]));
 
 		return result;
 	}

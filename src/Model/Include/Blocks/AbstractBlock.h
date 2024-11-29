@@ -28,14 +28,14 @@ namespace Tetris::Model::Blocks
 		using StateToOffsets = std::unordered_map<State, Offsets>;
 
 		/// @brief Дефолдный конструктор
-		AbstractBlock(Color color);
+		AbstractBlock(TypeColor color);
 
 		/// @brief Виртуальный деструктор
 		virtual ~AbstractBlock() = default;
 
 		/// @brief Вернуть цвет блока
 		/// @return Цвет блока 
-		Color GetColor() const;
+		TypeColor GetColor() const;
 
 		/// @brief Получить текущее положение блока
 		/// @return Описание блока
@@ -75,7 +75,7 @@ namespace Tetris::Model::Blocks
 		State _state {State::Up};
 
 		/// @brief Цвет блока
-		Color _color; 
+		TypeColor _color; 
 	};
 
 	inline const AbstractBlock::StateToOffsets JLSTZOffset

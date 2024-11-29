@@ -18,17 +18,16 @@ namespace Tetris::Model
 	};
 
     /// @brief Цвет поля карты
-    enum class Color: int
+    enum class TypeColor: int
     {
         None,
         Red,
         Green,
         Yellow,
-        Blue,
-        Orange
+        Blue
     };
 
-    using DataMap = std::vector<Color>;
+    using DataMap = std::vector<TypeColor>;
 
     /// @brief 
     struct MapSize

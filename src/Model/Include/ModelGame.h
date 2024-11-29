@@ -5,11 +5,20 @@
 #include "Map.h"
 #include "Factory/ShapeFactory.h"
 
-#include <wigwag/signal.hpp>
+#include <boost/signals2.hpp>
 
 
 namespace Tetris::Model
 {
+
+    struct DescriptionMap
+    {
+        DescriptionMap(DataMap _map, MapSize _size, int _score): map(_map), size(_size), score(_score){};
+
+        DataMap map;
+        MapSize size;
+        int score;
+    };
 
     /// @brief Модель игры
     class ModelGame
@@ -23,7 +32,7 @@ namespace Tetris::Model
         void SlotUpdate(Command command);
 
         /// @brief Сигнал на обновление карты
-        wigwag::signal<void(DataMap, MapSize, unsigned int)> UpdateView;
+        boost::signals2::signal<void(DescriptionMap)> SignalUpdateView; 
 
     private:
         /// @brief 
@@ -32,7 +41,7 @@ namespace Tetris::Model
 
         /// @brief Создание случайного блока
         /// @return Новый блок
-        std::unique_ptr<AbstractBlock> CreateRandomBlock(); 
+        std::shared_ptr<AbstractBlock> CreateRandomBlock(); 
 
         Map _map;
         Blocks::ShapeFactory _factory;
@@ -40,7 +49,7 @@ namespace Tetris::Model
         unsigned int _score{0};
 
         IdShape _lastTypeBlock{IdShape::None};
-        Color _lasTypeColor{Color::None};
+        TypeColor _lasTypeColor{TypeColor::None};
 
         std::random_device _device;
         std::mt19937 _randomEngine;

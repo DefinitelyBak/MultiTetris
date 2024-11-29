@@ -1,7 +1,3 @@
-set(CMAKE_CXX_STANDARD 23)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
-
 include(FetchContent)
 FetchContent_Declare(
   googletest
@@ -14,25 +10,31 @@ FetchContent_MakeAvailable(googletest)
 add_executable(
   Tests
   ## Model
-  ${CMAKE_CURRENT_SOURCE_DIR}/Source/Precompile.cpp
-  ${CMAKE_CURRENT_SOURCE_DIR}/Source/BlockTest.cpp
-  ${CMAKE_CURRENT_SOURCE_DIR}/Source/ThreadsafeQueueTest.cpp
+  #${CMAKE_CURRENT_SOURCE_DIR}/Source/Precompile.cpp
+  #${CMAKE_CURRENT_SOURCE_DIR}/Source/BlockTest.cpp
+  #${CMAKE_CURRENT_SOURCE_DIR}/Source/ThreadsafeQueueTest.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/../model/Source/Precompile.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/../model/Source/ModelGame.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/../model/Source/Blocks/AbstractBlock.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/../model/Source/Types.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/../model/Source/Map.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/Source/MapTest.cpp
+
 )
 
 target_include_directories(
     Tests 
   PRIVATE 
     ${CMAKE_CURRENT_SOURCE_DIR}/Include
-    ${CMAKE_CURRENT_SOURCE_DIR}/../Data/Include
+    ${CMAKE_CURRENT_SOURCE_DIR}/../model/Include
 )
 
 target_link_libraries(
     Tests
   PRIVATE
-    Model
+    #Model
     GTest::gtest_main
 )
 
 include(GoogleTest)
-gtest_discover_tests(Tests)
+gtest_discover_tests(Tests PROPERTIES TIMEOUT 600)

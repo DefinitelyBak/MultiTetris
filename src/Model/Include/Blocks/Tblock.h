@@ -12,7 +12,7 @@ namespace Tetris::Model::Blocks
 	public:
 		/// @brief Конструктор
 		/// @param color цвет блока
-		Tblock(Color color) : AbstractBlock(color) 
+		Tblock(TypeColor color) : AbstractBlock(color) 
 		{
 			// (1, 0) -> (0, -1) -> (-1, 0) -> (0, 1)
 			_stateToPositions = {
@@ -43,7 +43,6 @@ namespace Tetris::Model::Blocks
 			};
 
 			_stateToOffset = JLSTZOffset;
-
 		};
 
 	};

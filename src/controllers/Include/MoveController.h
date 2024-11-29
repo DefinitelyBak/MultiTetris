@@ -3,7 +3,7 @@
 #include "Precompile.h"
 
 #include "Types.h"
-#include <wigwag/signal.hpp>
+#include <boost/signals2.hpp>
 
 
 /// @brief 
@@ -20,7 +20,7 @@ namespace Tetris::Controller
 		void Move(Model::Command cmn);
 
 		/// @brief 
-		wigwag::signal<void(Model::Command)> UpdateModel;
+		boost::signals2::signal<void(Model::Command)> SignalUpdateModel; 
 	};
 
 }

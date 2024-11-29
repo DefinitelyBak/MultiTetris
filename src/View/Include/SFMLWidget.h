@@ -1,11 +1,13 @@
 #pragma once
 
+#include "AbstractWidget.h"
+
 #include <SFML/Graphics.hpp>
 
 
-#include "wigwag/life_token.hpp"
 #include "ModelGame.h"
 #include "MoveController.h"
+#include "SFMLMap.h"
 
 #include "Types.h"
 
@@ -13,26 +15,26 @@
 namespace Tetris::View
 {
     using namespace Model;
+    using ModelGamePtr = std::shared_ptr<ModelGame>;
 
-    class SFMLWidget
+    class SFMLWidget : public AbstractWidget
     {
     public:
     
-        SFMLWidget(/*std::shared_ptr<wigwag::thread_task_executor>& uiThread,*/ ModelGame& model);
+        SFMLWidget(ModelGamePtr& model);
 
-        void Update();
+        void Update() override;
 
-        void SlotUpdate(DataMap map, MapSize size, unsigned int score);
+        void SlotUpdateView(DescriptionMap);
+
+        bool IsOpen() const override;
 
     private:
-
         sf::RenderWindow _window;
 
         Controller::MoveController _controller;
 
         bool _windowOpen{true};
-
-        wigwag::token _token;
-        //sf::VertexArray triangle(sf::Triangles, 3);
+        SFMLMap _map;
     };
 }
