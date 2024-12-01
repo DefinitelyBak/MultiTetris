@@ -92,8 +92,236 @@ namespace Tetris::Test
         factory.add<Model::Tblock>(Model::IdShape::Tblock);
         map.SetBlock(std::shared_ptr<Model::AbstractBlock>(factory.Create(Model::IdShape::Tblock, Y)));
 
-        auto temp = map.GetMap();
-        temp == mocMap;
+        EXPECT_EQ(mocMap, map.GetMap());
+    }
+
+    TEST(MapTests, MapWithTBlockOneStepDown)
+    {
+        /// Здесь будет moc карты
+        Model::DataMap mocMap = {X, X, X, X, X, X, X, X, X, X, // 1 строка
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, Y, Y, Y, X, X, X, X,
+                                 X, X, X, X, Y, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X }; // 25 строка
+        Model::Map map;
+
+        Model::ShapeFactory factory;
+        factory.add<Model::Tblock>(Model::IdShape::Tblock);
+        map.SetBlock(std::shared_ptr<Model::AbstractBlock>(factory.Create(Model::IdShape::Tblock, Y)));
+        map.MoveBlock(Model::Command::Down);
+
+        EXPECT_EQ(mocMap, map.GetMap());
+    }
+
+    TEST(MapTests, MapWithTBlockOneStepLeft)
+    {
+        /// Здесь будет moc карты
+        Model::DataMap mocMap = {X, X, X, X, X, X, X, X, X, X, // 1 строка
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, Y, Y, Y, X, X, X, X, X,
+                                 X, X, X, Y, X, X, X, X, X, X }; // 25 строка
+        Model::Map map;
+
+        Model::ShapeFactory factory;
+        factory.add<Model::Tblock>(Model::IdShape::Tblock);
+        map.SetBlock(std::shared_ptr<Model::AbstractBlock>(factory.Create(Model::IdShape::Tblock, Y)));
+        map.MoveBlock(Model::Command::Left);
+
+        EXPECT_EQ(mocMap, map.GetMap());
+    }
+
+    TEST(MapTests, MapWithTBlockOneStepRight)
+    {
+        /// Здесь будет moc карты
+        Model::DataMap mocMap = {X, X, X, X, X, X, X, X, X, X, // 1 строка
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, Y, Y, Y, X, X, X,
+                                 X, X, X, X, X, Y, X, X, X, X }; // 25 строка
+        Model::Map map;
+
+        Model::ShapeFactory factory;
+        factory.add<Model::Tblock>(Model::IdShape::Tblock);
+        map.SetBlock(std::shared_ptr<Model::AbstractBlock>(factory.Create(Model::IdShape::Tblock, Y)));
+        map.MoveBlock(Model::Command::Right);
+
+        EXPECT_EQ(mocMap, map.GetMap());
+    }
+
+    TEST(MapTests, MapWithTBlockFiveStepsRight)
+    {
+        /// Здесь будет moc карты
+        Model::DataMap mocMap = {X, X, X, X, X, X, X, X, X, X, // 1 строка
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, Y, Y, Y,
+                                 X, X, X, X, X, X, X, X, Y, X }; // 25 строка
+        Model::Map map;
+
+        Model::ShapeFactory factory;
+        factory.add<Model::Tblock>(Model::IdShape::Tblock);
+        map.SetBlock(std::shared_ptr<Model::AbstractBlock>(factory.Create(Model::IdShape::Tblock, Y)));
+        for(int i = 0; i < 5; ++i)
+            map.MoveBlock(Model::Command::Right);
+
+        EXPECT_EQ(mocMap, map.GetMap());
+    }
+
+    TEST(MapTests, MapWithTBlockFiveStepsLeft)
+    {
+        /// Здесь будет moc карты
+        Model::DataMap mocMap = {X, X, X, X, X, X, X, X, X, X, // 1 строка
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 Y, Y, Y, X, X, X, X, X, X, X,
+                                 X, Y, X, X, X, X, X, X, X, X }; // 25 строка
+        Model::Map map;
+
+        Model::ShapeFactory factory;
+        factory.add<Model::Tblock>(Model::IdShape::Tblock);
+        map.SetBlock(std::shared_ptr<Model::AbstractBlock>(factory.Create(Model::IdShape::Tblock, Y)));
+        for(int i = 0; i < 5; ++i)
+            map.MoveBlock(Model::Command::Left);
+
+        EXPECT_EQ(mocMap, map.GetMap());
+    }
+
+    TEST(MapTests, MapWithTBlock25StepsDown)
+    {
+        /// Здесь будет moc карты
+        Model::DataMap mocMap = {X, X, X, Y, Y, Y, X, X, X, X, // 1 строка
+                                 X, X, X, X, Y, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X,
+                                 X, X, X, X, X, X, X, X, X, X }; // 25 строка
+        Model::Map map;
+
+        Model::ShapeFactory factory;
+        factory.add<Model::Tblock>(Model::IdShape::Tblock);
+        map.SetBlock(std::shared_ptr<Model::AbstractBlock>(factory.Create(Model::IdShape::Tblock, Y)));
+        for(int i = 0; i < 25; ++i)
+            map.MoveBlock(Model::Command::Down);
 
         EXPECT_EQ(mocMap, map.GetMap());
     }

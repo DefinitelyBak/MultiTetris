@@ -12,39 +12,10 @@
 
 namespace Tetris::View
 {
-    SFMLWidget::SFMLWidget(ModelGamePtr& model): AbstractWidget(),  _window({640u,800u}, "Tetris"), _map(sf::Vector2f(640,800))
+    SFMLWidget::SFMLWidget(ModelGamePtr& model): AbstractWidget(),  _window({420u,800u}, "Tetris"), _map(sf::Vector2f(420,800))
     {
         _controller.SignalUpdateModel.connect(boost::signals2::signal<void(Model::Command)>::slot_type
             (&ModelGame::SlotUpdate, model.get(), boost::placeholders::_1).track_foreign(model));
-
-        /// Здесь будет moc карты
-        DataMap mocMap = {Y, X, X, X, Y, X, X, X, X, Y, // 1 строка
-                          Z, X, X, X, X, X, X, X, X, Z,
-                          X, X, X, X, X, X, X, X, X, X,
-                          X, X, X, X, X, X, X, X, X, X,
-                          X, X, X, X, X, X, X, X, X, X,
-                          X, X, X, X, X, X, X, X, X, X,
-                          X, X, X, X, X, X, X, X, X, X,
-                          X, X, X, X, X, X, X, X, X, X,
-                          X, X, X, X, X, X, X, X, X, X,
-                          X, X, X, X, X, X, X, X, X, X,
-                          X, X, X, X, X, X, X, X, X, X,
-                          X, X, X, X, X, X, X, X, X, X,
-                          X, X, X, X, X, X, X, X, X, X,
-                          X, X, X, X, X, X, X, X, X, X,
-                          X, X, X, X, X, X, X, X, X, X,
-                          X, X, X, X, X, X, X, X, X, X,
-                          X, X, X, X, X, X, X, X, X, X,
-                          X, X, X, X, X, X, X, X, X, X,
-                          X, X, X, X, X, X, X, X, X, X,
-                          X, X, X, X, X, X, X, X, X, X,
-                          X, X, X, X, X, X, X, X, X, X,
-                          X, X, X, X, X, X, X, X, X, X,
-                          X, X, X, Y, Y, Y, X, X, X, X,
-                          Z, X, X, X, Y, X, X, X, X, Z,
-                          Y, X, X, X, X, X, X, X, X, Y }; // 25 строка
-
-        _map.SetMap(mocMap, 25, 10);
     }
 
     void SFMLWidget::Update()
@@ -91,8 +62,7 @@ namespace Tetris::View
 
     void SFMLWidget::SlotUpdateView(DescriptionMap map)
     {
-        //_map = map.map;
-        //_size = map.size;
+        _map.SetMap(map.map, map.size.rows, map.size.columns);
     }
 
     bool SFMLWidget::IsOpen() const

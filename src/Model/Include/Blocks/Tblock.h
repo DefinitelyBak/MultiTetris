@@ -45,6 +45,14 @@ namespace Tetris::Model::Blocks
 			_stateToOffset = JLSTZOffset;
 		};
 
+		IdShape GetType() const override
+		{
+			return IdShape::Tblock;
+		}
+
+	protected:
+	
+
 	};
 
 } // namespace

@@ -56,13 +56,13 @@ namespace Tetris::Model
 
     std::shared_ptr<AbstractBlock> ModelGame::CreateRandomBlock()
     {
-		static const IdShape typesShapes[7] = {IdShape::Iblock, IdShape::Jblock, IdShape::Lblock, IdShape::Oblock, IdShape::Sblock, IdShape::Tblock, IdShape::Zblock};
+		static const IdShape typesShapes[7] = {IdShape::Iblock, IdShape::Jblock, IdShape::Lblock, IdShape::Oblock, IdShape::Sblock, IdShape::Tblock, IdShape::Zblock}; //  IdShape::Tblock};//
 		static const TypeColor typesColor[4] = {TypeColor::Red, TypeColor::Green, TypeColor::Yellow, TypeColor::Blue};
 
 		std::uniform_int_distribution<int> randomTypeShape(0,6);
-        std::uniform_int_distribution<int> randomTypeColor(0,4);
+        std::uniform_int_distribution<int> randomTypeColor(0,3);
 
-		int randomShape = randomTypeShape(_randomEngine);
+		int randomShape = randomTypeShape(_randomEngine);//0; //randomTypeShape(_randomEngine);
 		int randomColor = randomTypeColor(_randomEngine);
 
 		while(typesShapes[randomShape] == _lastTypeBlock)

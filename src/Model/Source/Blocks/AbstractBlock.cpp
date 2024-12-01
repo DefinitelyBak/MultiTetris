@@ -66,7 +66,7 @@ namespace Tetris::Model::Blocks
 
 	Offsets AbstractBlock::GetOffsets(State from, State to)
 	{
-		return _stateToOffset[from] - _stateToOffset[to];
+		return _stateToOffset[to] - _stateToOffset[from];
 	}
 
 	void AbstractBlock::RotateBlock(Command cmd)
