@@ -11,7 +11,7 @@ void Run()
 };
 
 // Внутри SFMLWidget соединяется _controller.SignalUpdate с ModelGame::SlotUpdateGame
-// Теперь надо связать ModelGame::SignalUpdateView с SFMLWidget::UpdateView
+// Теперь надо связать ModelGame::SignalUpdateView с SFMLWidget::UpdateView // Можно сделать в Model метод SetView(std::shared_ptr<SFMLWidget>)
 
 int main()
 {
@@ -22,8 +22,7 @@ int main()
     std::shared_ptr<Tetris::Model::ModelGame> modelPtr = std::make_shared<Tetris::Model::ModelGame>();
     std::shared_ptr<Tetris::View::SFMLWidget> viewPtr = std::make_shared<Tetris::View::SFMLWidget>(modelPtr);
     
-    modelPtr->SignalUpdateView.connect(boost::signals2::signal<void(Tetris::Model::DescriptionMap)>::slot_type
-        (&SFMLWidget::SlotUpdateView, viewPtr.get(), boost::placeholders::_1).track_foreign(viewPtr));
+    modelPtr->SetView(viewPtr);
 
     while(viewPtr->IsOpen())
     {

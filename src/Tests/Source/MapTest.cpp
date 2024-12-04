@@ -88,7 +88,7 @@ namespace Tetris::Test
                                  X, X, X, X, Y, X, X, X, X, X }; // 25 строка
         Model::Map map;
 
-        Model::ShapeFactory factory;
+        Model::BlocksFactory factory;
         factory.add<Model::Tblock>(Model::IdShape::Tblock);
         map.SetBlock(std::shared_ptr<Model::AbstractBlock>(factory.Create(Model::IdShape::Tblock, Y)));
 
@@ -125,7 +125,7 @@ namespace Tetris::Test
                                  X, X, X, X, X, X, X, X, X, X }; // 25 строка
         Model::Map map;
 
-        Model::ShapeFactory factory;
+        Model::BlocksFactory factory;
         factory.add<Model::Tblock>(Model::IdShape::Tblock);
         map.SetBlock(std::shared_ptr<Model::AbstractBlock>(factory.Create(Model::IdShape::Tblock, Y)));
         map.MoveBlock(Model::Command::Down);
@@ -163,7 +163,7 @@ namespace Tetris::Test
                                  X, X, X, Y, X, X, X, X, X, X }; // 25 строка
         Model::Map map;
 
-        Model::ShapeFactory factory;
+        Model::BlocksFactory factory;
         factory.add<Model::Tblock>(Model::IdShape::Tblock);
         map.SetBlock(std::shared_ptr<Model::AbstractBlock>(factory.Create(Model::IdShape::Tblock, Y)));
         map.MoveBlock(Model::Command::Left);
@@ -201,7 +201,7 @@ namespace Tetris::Test
                                  X, X, X, X, X, Y, X, X, X, X }; // 25 строка
         Model::Map map;
 
-        Model::ShapeFactory factory;
+        Model::BlocksFactory factory;
         factory.add<Model::Tblock>(Model::IdShape::Tblock);
         map.SetBlock(std::shared_ptr<Model::AbstractBlock>(factory.Create(Model::IdShape::Tblock, Y)));
         map.MoveBlock(Model::Command::Right);
@@ -239,7 +239,7 @@ namespace Tetris::Test
                                  X, X, X, X, X, X, X, X, Y, X }; // 25 строка
         Model::Map map;
 
-        Model::ShapeFactory factory;
+        Model::BlocksFactory factory;
         factory.add<Model::Tblock>(Model::IdShape::Tblock);
         map.SetBlock(std::shared_ptr<Model::AbstractBlock>(factory.Create(Model::IdShape::Tblock, Y)));
         for(int i = 0; i < 5; ++i)
@@ -278,7 +278,7 @@ namespace Tetris::Test
                                  X, Y, X, X, X, X, X, X, X, X }; // 25 строка
         Model::Map map;
 
-        Model::ShapeFactory factory;
+        Model::BlocksFactory factory;
         factory.add<Model::Tblock>(Model::IdShape::Tblock);
         map.SetBlock(std::shared_ptr<Model::AbstractBlock>(factory.Create(Model::IdShape::Tblock, Y)));
         for(int i = 0; i < 5; ++i)
@@ -317,7 +317,7 @@ namespace Tetris::Test
                                  X, X, X, X, X, X, X, X, X, X }; // 25 строка
         Model::Map map;
 
-        Model::ShapeFactory factory;
+        Model::BlocksFactory factory;
         factory.add<Model::Tblock>(Model::IdShape::Tblock);
         map.SetBlock(std::shared_ptr<Model::AbstractBlock>(factory.Create(Model::IdShape::Tblock, Y)));
         for(int i = 0; i < 25; ++i)

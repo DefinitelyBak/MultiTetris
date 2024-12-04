@@ -7,6 +7,18 @@
 namespace Tetris::Model
 {
 	
+	/// @brief ID блоков
+	enum class IdShape {
+		None,
+		Iblock,
+		Jblock,
+		Lblock,
+		Oblock,
+		Sblock,
+		Tblock,
+		Zblock
+	};
+
 	/// @brief 
 	enum class Command: int
 	{
@@ -65,5 +77,16 @@ namespace Tetris::Model
 	Positions operator+(const Positions& lhs, const Position& rhs);
 	Positions operator+(const Position& lhs, const Positions& rhs);
 	Positions operator-(const Positions& lhs, const Position& rhs);
+
+
+    struct DescriptionMap
+    {
+        DescriptionMap(DataMap _map, MapSize _size, int _score, IdShape nextBlock): map(_map), size(_size), score(_score), _nextBlock(nextBlock){};
+
+        DataMap map;
+        MapSize size;
+        int score;
+		IdShape _nextBlock;
+    };
 
 }

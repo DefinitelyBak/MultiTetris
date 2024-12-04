@@ -52,6 +52,11 @@ namespace Tetris::Model::Blocks
 
 			_stateToOffset = IOffset;
 		};
+
+		IdShape GetType() const
+		{
+			return IdShape::Iblock;
+		};
 	};
 
 } // namespace

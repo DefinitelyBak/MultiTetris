@@ -44,6 +44,11 @@ namespace Tetris::Model::Blocks
 			_stateToOffset = JLSTZOffset;
 		};
 
+		IdShape GetType() const
+		{
+			return IdShape::Zblock;
+		};
+
 	};
 
 } // namespace

@@ -7,18 +7,11 @@
 
 #include <boost/signals2.hpp>
 
+#include "C:\Projects\ProjectTetris\Tetris\src\view\Include\AbstractWidget.h"
+
 
 namespace Tetris::Model
 {
-
-    struct DescriptionMap
-    {
-        DescriptionMap(DataMap _map, MapSize _size, int _score): map(_map), size(_size), score(_score){};
-
-        DataMap map;
-        MapSize size;
-        int score;
-    };
 
     /// @brief Модель игры
     class ModelGame
@@ -30,6 +23,8 @@ namespace Tetris::Model
         /// @brief 
         /// @param command 
         void SlotUpdate(Command command);
+
+        void SetView(std::shared_ptr<View::AbstractWidget> view);
 
         /// @brief Сигнал на обновление карты
         boost::signals2::signal<void(DescriptionMap)> SignalUpdateView; 
@@ -44,7 +39,7 @@ namespace Tetris::Model
         std::shared_ptr<AbstractBlock> CreateRandomBlock(); 
 
         Map _map;
-        Blocks::ShapeFactory _factory;
+        Blocks::BlocksFactory _factory;
 
         unsigned int _score{0};
 
@@ -53,6 +48,9 @@ namespace Tetris::Model
 
         std::random_device _device;
         std::mt19937 _randomEngine;
+
+        std::shared_ptr<AbstractBlock> _currentBlock;
+        std::shared_ptr<AbstractBlock> _nextBlock;
     };
 
 }

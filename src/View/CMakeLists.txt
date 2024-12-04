@@ -4,6 +4,7 @@ add_library(
   STATIC
     ${CMAKE_CURRENT_SOURCE_DIR}/Source/SFMLWidget.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/Source/SFMLMap.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/Source/SFMLPreviewBlock.cpp
 )
 
 target_include_directories(

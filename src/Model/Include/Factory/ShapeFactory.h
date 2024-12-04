@@ -13,7 +13,7 @@
 namespace Tetris::Model::Blocks
 {
 	/// @brief Фабрика блоков
-	class ShapeFactory : public ObjectFactory<AbstractBlock, IdShape>
+	class BlocksFactory : public ObjectFactory<AbstractBlock, IdShape>
 	{
 	public:
 		/// @brief Создать блок

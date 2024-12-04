@@ -43,6 +43,8 @@ namespace Tetris::Model
         if(!HasActiveBlock())
             return;
 
+        _deletedLine = 0;
+
         if (cmn == Command::Down || cmn == Command::Right || cmn == Command::Left)
         {
             Position newPos;
@@ -67,7 +69,6 @@ namespace Tetris::Model
                 SetBlockOnMap(_data);
                 _activeBlock = nullptr;
                 DeleteLines();
-                _deletedLine = GetCountDeletedLines();
             }
 
             return;
@@ -95,8 +96,6 @@ namespace Tetris::Model
 
     void Map::DeleteLines()
     {
-        _deletedLine = 0;
-
         // Пройтись по всем строкам
         for(int row = 0; row < _size.rows; ++row)
         {

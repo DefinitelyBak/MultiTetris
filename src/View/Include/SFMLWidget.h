@@ -8,6 +8,7 @@
 #include "ModelGame.h"
 #include "MoveController.h"
 #include "SFMLMap.h"
+#include "SFMLPreviewBlock.h"
 
 #include "Types.h"
 
@@ -23,9 +24,11 @@ namespace Tetris::View
     
         SFMLWidget(ModelGamePtr& model);
 
+        ~SFMLWidget() override = default;
+
         void Update() override;
 
-        void SlotUpdateView(DescriptionMap);
+        void SlotUpdateView(DescriptionMap) override;
 
         bool IsOpen() const override;
 
@@ -36,5 +39,8 @@ namespace Tetris::View
 
         bool _windowOpen{true};
         SFMLMap _map;
+        SFMLPreviewBlock _previwBlock;
+        sf::Text _score;
+        sf::Font _font;
     };
 }

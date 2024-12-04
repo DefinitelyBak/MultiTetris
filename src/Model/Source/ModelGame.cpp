@@ -15,13 +15,19 @@ namespace Tetris::Model
         _factory.add<Tblock>(IdShape::Tblock);
         _factory.add<Zblock>(IdShape::Zblock);
 
-		_map.SetBlock(CreateRandomBlock());
+		_currentBlock = CreateRandomBlock(); 
+		_nextBlock = CreateRandomBlock();
+		_map.SetBlock(_currentBlock);
 	}
 
     void ModelGame::SlotUpdate(Command command)
     {
 		if(!_map.HasActiveBlock())
-			_map.SetBlock(CreateRandomBlock());
+		{
+			_currentBlock = _nextBlock;
+			_nextBlock = CreateRandomBlock();
+			_map.SetBlock(_currentBlock);
+		}
 
 		_map.MoveBlock(command);
 
@@ -29,8 +35,13 @@ namespace Tetris::Model
 		if (deletedLines)
 			AddScore(deletedLines);
  
-		SignalUpdateView(DescriptionMap(_map.GetMap(), _map.GetSize(), 1));
-		
+		SignalUpdateView(DescriptionMap(_map.GetMap(), _map.GetSize(), _score, _nextBlock->GetType()));
+    }
+
+    void ModelGame::SetView(std::shared_ptr<View::AbstractWidget> view)
+    {
+		SignalUpdateView.connect(boost::signals2::signal<void(Tetris::Model::DescriptionMap)>::slot_type
+        	(&View::AbstractWidget::SlotUpdateView, view.get(), boost::placeholders::_1).track_foreign(view));
     }
 
     void ModelGame::AddScore(unsigned int lines)

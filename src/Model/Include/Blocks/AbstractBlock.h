@@ -8,18 +8,6 @@
 namespace Tetris::Model::Blocks
 {
 
-	/// @brief ID блоков
-	enum class IdShape {
-		None,
-		Iblock,
-		Jblock,
-		Lblock,
-		Oblock,
-		Sblock,
-		Tblock,
-		Zblock
-	};
-
 	/// @brief Состояние фигуры
 	enum class State: int
 	{

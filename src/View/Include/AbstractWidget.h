@@ -1,6 +1,5 @@
 #pragma once
 
-
 #include "Types.h"
 
 namespace Tetris::View
@@ -10,12 +9,11 @@ namespace Tetris::View
     class AbstractWidget
     {
     public:
-    
-        ~AbstractWidget() = default;
+        virtual ~AbstractWidget() = default;
 
         virtual void Update() = 0;
 
-        //virtual void SlotUpdateView(DataMap map, MapSize size, unsigned int score) = 0;
+        virtual void SlotUpdateView(Model::DescriptionMap) = 0;
 
         virtual bool IsOpen() const = 0;
     };

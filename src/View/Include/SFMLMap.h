@@ -21,7 +21,7 @@ namespace Tetris::View
             /// @param windowSize 
             /// @param rows 
             /// @param column 
-            SFMLMap(sf::Vector2f windowSize);
+            SFMLMap(sf::Vector2f windowSize, bool withBorder = false);
 
             /// @brief 
             /// @param map 
@@ -56,5 +56,9 @@ namespace Tetris::View
             /// @brief Шаг между одним и другим элементом
             float _offsetX;
             float _offsetY;
+
+            float _borderWidth{0};
+
+            std::list<sf::RectangleShape> _borders;
     };
 }
