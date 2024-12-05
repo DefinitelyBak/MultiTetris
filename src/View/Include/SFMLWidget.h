@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Precompile.h"
 #include "AbstractWidget.h"
 
 #include <SFML/Graphics.hpp>
@@ -18,7 +19,7 @@ namespace Tetris::View
     using namespace Model;
     using ModelGamePtr = std::shared_ptr<ModelGame>;
 
-    class SFMLWidget : public AbstractWidget
+    class SFMLWidget final : public AbstractWidget 
     {
     public:
     
@@ -26,11 +27,19 @@ namespace Tetris::View
 
         ~SFMLWidget() override = default;
 
-        void Update() override;
-
-        void SlotUpdateView(DescriptionMap) override;
-
         bool IsOpen() const override;
+
+    protected:
+
+        void UpdateWidget() override;
+
+        void ProcessingEvents() override;
+
+        void UpdateView(Model::DescriptionMap) override;
+
+        void SetNextBlock(Model::DescriptionBlock) override;
+
+        void SetScore(unsigned int) override;
 
     private:
         sf::RenderWindow _window;
@@ -42,5 +51,7 @@ namespace Tetris::View
         SFMLPreviewBlock _previwBlock;
         sf::Text _score;
         sf::Font _font;
+
+        std::stack<sf::Event> _uievents;
     };
 }

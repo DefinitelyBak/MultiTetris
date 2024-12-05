@@ -19,9 +19,28 @@ FetchContent_Declare(SFML
 FetchContent_MakeAvailable(SFML)
 
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/src/tests)
-add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/src/app)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/src/model)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/src/controllers)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/src/view)
 
 #add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/src)
+
+add_executable(Tetris ${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp)
+
+target_link_libraries(
+    Tetris
+  PUBLIC
+    View
+    Controllers
+    Model
+  PRIVATE
+    sfml-graphics
+    )
+
+if(WIN32)
+    add_custom_command(
+        TARGET Tetris
+        COMMENT "Copy OpenAL DLL"
+        PRE_BUILD COMMAND ${CMAKE_COMMAND} -E copy ${SFML_SOURCE_DIR}/extlibs/bin/$<IF:$<EQUAL:${CMAKE_SIZEOF_VOID_P},8>,x64,x86>/openal32.dll $<TARGET_FILE_DIR:Tetris>
+        VERBATIM)
+endif()

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Precompile.h"
+#include "Forwards.h"
 
 #include "Types.h"
 #include "blocks/AbstractBlock.h"
@@ -32,7 +33,7 @@ namespace Tetris::Model
 
 		/// @brief Установить активную фигуру
 		/// @param shape Фигура
-		void SetBlock(std::shared_ptr<AbstractBlock> shape);
+		void SetBlock(AbstractBlockPtr shape);
 
 		/// @brief Имеется активная фигура
 		/// @return Да/нет
@@ -59,7 +60,7 @@ namespace Tetris::Model
 		void SetBlockOnMap(DataMap& map);
 
 		/// @brief 
-		std::shared_ptr<AbstractBlock> _activeBlock;
+		AbstractBlockPtr _activeBlock;
 
 		/// @brief 
 		Position _positionBlock;

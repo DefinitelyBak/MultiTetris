@@ -1,5 +1,7 @@
 #include "ModelGame.h"
 
+#include "blocks/AbstractBlock.h"
+
 
 
 namespace Tetris::Model
@@ -27,21 +29,34 @@ namespace Tetris::Model
 			_currentBlock = _nextBlock;
 			_nextBlock = CreateRandomBlock();
 			_map.SetBlock(_currentBlock);
+			SignalSetNextBlock(DescriptionBlock(_nextBlock->GetType(), _nextBlock->GetColor()));
 		}
 
 		_map.MoveBlock(command);
-
-		unsigned int deletedLines = _map.GetCountDeletedLines();
-		if (deletedLines)
-			AddScore(deletedLines);
  
-		SignalUpdateView(DescriptionMap(_map.GetMap(), _map.GetSize(), _score, _nextBlock->GetType()));
+		if (auto deletedLines = _map.GetCountDeletedLines(); deletedLines)
+		{
+			AddScore(deletedLines);
+			SignalSetScore(_score);
+		}
+ 
+		SignalUpdateView(DescriptionMap(_map.GetMap(), _map.GetSize(), _score));
     }
 
-    void ModelGame::SetView(std::shared_ptr<View::AbstractWidget> view)
+    void ModelGame::SetView(AbstractWidgetPtr view)
     {
 		SignalUpdateView.connect(boost::signals2::signal<void(Tetris::Model::DescriptionMap)>::slot_type
-        	(&View::AbstractWidget::SlotUpdateView, view.get(), boost::placeholders::_1).track_foreign(view));
+        	(&AbstractWidget::SlotUpdateView, view.get(), boost::placeholders::_1).track_foreign(view));
+
+		SignalSetNextBlock.connect(boost::signals2::signal<void(Tetris::Model::DescriptionBlock)>::slot_type
+        	(&AbstractWidget::SlotSetNextBlock, view.get(), boost::placeholders::_1).track_foreign(view));
+
+		SignalSetScore.connect(boost::signals2::signal<void(unsigned int)>::slot_type
+        	(&AbstractWidget::SlotSetScore, view.get(), boost::placeholders::_1).track_foreign(view));
+		
+		SignalSetNextBlock(DescriptionBlock(_nextBlock->GetType(), _nextBlock->GetColor()));
+		SignalUpdateView(DescriptionMap(_map.GetMap(), _map.GetSize(), _score));
+		SignalSetScore(_score);
     }
 
     void ModelGame::AddScore(unsigned int lines)
@@ -65,7 +80,7 @@ namespace Tetris::Model
 		}
     }
 
-    std::shared_ptr<AbstractBlock> ModelGame::CreateRandomBlock()
+    AbstractBlockPtr ModelGame::CreateRandomBlock()
     {
 		static const IdShape typesShapes[7] = {IdShape::Iblock, IdShape::Jblock, IdShape::Lblock, IdShape::Oblock, IdShape::Sblock, IdShape::Tblock, IdShape::Zblock}; //  IdShape::Tblock};//
 		static const TypeColor typesColor[4] = {TypeColor::Red, TypeColor::Green, TypeColor::Yellow, TypeColor::Blue};
@@ -84,7 +99,7 @@ namespace Tetris::Model
 
 		_lastTypeBlock = typesShapes[randomShape];
 		_lasTypeColor = typesColor[randomColor];
-		std::shared_ptr<AbstractBlock> result(_factory.Create(typesShapes[randomShape],typesColor[randomColor]));
+		AbstractBlockPtr result(_factory.Create(typesShapes[randomShape],typesColor[randomColor]));
 
 		return result;
 	}

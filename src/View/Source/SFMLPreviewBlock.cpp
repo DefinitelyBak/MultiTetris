@@ -8,8 +8,10 @@ namespace Tetris::View
     SFMLPreviewBlock::SFMLPreviewBlock(sf::Vector2f windowSize, bool withBorder): _map(windowSize, withBorder)
     {}
 
-    void SFMLPreviewBlock::SetType(Model::IdShape typeColor)
+    void SFMLPreviewBlock::SetBlock(Model::IdShape typeColor,  Model::TypeColor color)
     {
+        using Model::TypeColor::None;
+
         if (typeColor == _typeShape)
             return;
         
@@ -22,64 +24,64 @@ namespace Tetris::View
         case Model::IdShape::Iblock:
             rows = 4;
             columns = 6;
-            map = {Model::TypeColor::None, Model::TypeColor::None, Model::TypeColor::None, Model::TypeColor::None, Model::TypeColor::None, Model::TypeColor::None, // 1 строка
-                   Model::TypeColor::None, Model::TypeColor::None, Model::TypeColor::None, Model::TypeColor::None, Model::TypeColor::None, Model::TypeColor::None,
-                   Model::TypeColor::None, Model::TypeColor::Green, Model::TypeColor::Green, Model::TypeColor::Green, Model::TypeColor::Green, Model::TypeColor::None,
-                   Model::TypeColor::None, Model::TypeColor::None, Model::TypeColor::None, Model::TypeColor::None, Model::TypeColor::None, Model::TypeColor::None}; // 4 строка
+            map = {None, None, None, None, None, None, // 1 строка
+                   None, None, None, None, None, None,
+                   None, color, color, color, color, None,
+                   None, None, None, None, None, None}; // 4 строка
             break;
 
         case Model::IdShape::Jblock:
             rows = 4;
             columns = 5;
-            map = {Model::TypeColor::None, Model::TypeColor::None, Model::TypeColor::None, Model::TypeColor::None,  Model::TypeColor::None, // 1 строка
-                   Model::TypeColor::None, Model::TypeColor::Green, Model::TypeColor::Green, Model::TypeColor::Green, Model::TypeColor::None,
-                   Model::TypeColor::None, Model::TypeColor::Green, Model::TypeColor::None, Model::TypeColor::None, Model::TypeColor::None,
-                   Model::TypeColor::None, Model::TypeColor::None, Model::TypeColor::None, Model::TypeColor::None, Model::TypeColor::None}; // 4 строка
+            map = {None, None, None, None,  None, // 1 строка
+                   None, color, color, color, None,
+                   None, color, None, None, None,
+                   None, None, None, None, None}; // 4 строка
             break;
 
         case Model::IdShape::Lblock:
             rows = 4;
             columns = 5;
-            map = {Model::TypeColor::None, Model::TypeColor::None, Model::TypeColor::None, Model::TypeColor::None,  Model::TypeColor::None, // 1 строка
-                   Model::TypeColor::None, Model::TypeColor::Green, Model::TypeColor::Green, Model::TypeColor::Green, Model::TypeColor::None,
-                   Model::TypeColor::None, Model::TypeColor::None, Model::TypeColor::None, Model::TypeColor::Green, Model::TypeColor::None,
-                   Model::TypeColor::None, Model::TypeColor::None, Model::TypeColor::None, Model::TypeColor::None, Model::TypeColor::None}; // 4 строка
+            map = {None, None, None, None,  None, // 1 строка
+                   None, color, color, color, None,
+                   None, None, None, color, None,
+                   None, None, None, None, None}; // 4 строка
             break;
 
         case Model::IdShape::Oblock:
             rows = 4;
             columns = 4;
-            map = {Model::TypeColor::None, Model::TypeColor::None, Model::TypeColor::None, Model::TypeColor::None, // 1 строка
-                   Model::TypeColor::None, Model::TypeColor::Green, Model::TypeColor::Green, Model::TypeColor::None,
-                   Model::TypeColor::None, Model::TypeColor::Green, Model::TypeColor::Green, Model::TypeColor::None, 
-                   Model::TypeColor::None, Model::TypeColor::None, Model::TypeColor::None, Model::TypeColor::None }; // 4 строка
+            map = {None, None, None, None, // 1 строка
+                   None, color, color, None,
+                   None, color, color, None, 
+                   None, None, None, None }; // 4 строка
             break;
 
         case Model::IdShape::Sblock:
             rows = 4;
-            columns = 4;
-            map = {Model::TypeColor::None, Model::TypeColor::None, Model::TypeColor::None, Model::TypeColor::None, Model::TypeColor::None, // 1 строка
-                   Model::TypeColor::None, Model::TypeColor::None, Model::TypeColor::Green, Model::TypeColor::Green, Model::TypeColor::None, 
-                   Model::TypeColor::None, Model::TypeColor::Green, Model::TypeColor::Green, Model::TypeColor::None, Model::TypeColor::None, 
-                   Model::TypeColor::None, Model::TypeColor::None, Model::TypeColor::None, Model::TypeColor::None, Model::TypeColor::None}; // 4 строка
+            columns = 5;
+            map = {None, None, None, None, None, // 1 строка
+                   None, color, color, None, None, 
+                   None, None, color, color, None, 
+                   None, None, None, None, None}; // 4 строка
             break;
 
         case Model::IdShape::Tblock:
             rows = 4;
-            columns = 4;
-            map = {Model::TypeColor::None, Model::TypeColor::None, Model::TypeColor::None, Model::TypeColor::None, Model::TypeColor::None, // 1 строка
-                   Model::TypeColor::None, Model::TypeColor::Green, Model::TypeColor::Green, Model::TypeColor::Green, Model::TypeColor::None, 
-                   Model::TypeColor::None, Model::TypeColor::None, Model::TypeColor::Green, Model::TypeColor::None, Model::TypeColor::None, 
-                   Model::TypeColor::None, Model::TypeColor::None, Model::TypeColor::None, Model::TypeColor::None, Model::TypeColor::None}; // 4 строка
+            columns = 5;
+            map = {None, None, None, None, None, // 1 строка
+                   None, color, color,color, None, 
+                   None, None, color, None, None, 
+                   None, None, None, None, None}; // 4 строка
             break;
 
         case Model::IdShape::Zblock:
             rows = 4;
-            columns = 4;
-            map = {Model::TypeColor::None, Model::TypeColor::None, Model::TypeColor::None, Model::TypeColor::None, Model::TypeColor::None, // 1 строка
-                   Model::TypeColor::None, Model::TypeColor::Green, Model::TypeColor::Green, Model::TypeColor::None, Model::TypeColor::None, 
-                   Model::TypeColor::None, Model::TypeColor::None, Model::TypeColor::Green, Model::TypeColor::Green, Model::TypeColor::None, 
-                   Model::TypeColor::None, Model::TypeColor::None, Model::TypeColor::None, Model::TypeColor::None, Model::TypeColor::None}; // 4 строка
+            columns = 5;
+            map = {None, None, None, None, None, // 1 строка
+                   None, None, color, color, None, 
+                   None, color, color, None, None, 
+                   None, None, None, None, None}; // 4 строка
             break;
         default:
             break;

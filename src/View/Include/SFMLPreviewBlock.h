@@ -23,7 +23,7 @@ namespace Tetris::View
 
             /// @brief 
             /// @param typeColor 
-            void SetType(Model::IdShape TypeBlock);
+            void SetBlock(Model::IdShape TypeBlock, Model::TypeColor color);
 
             /// @brief 
             /// @return 

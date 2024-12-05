@@ -25,11 +25,11 @@ namespace Tetris::View
         _score.setPosition(sf::Vector2f(460, 400));
 
         /// Превью фигуры.
-        _previwBlock.SetType(Model::IdShape::None);
+        _previwBlock.SetBlock(Model::IdShape::None, Model::TypeColor::None);
         _previwBlock.setPosition(sf::Vector2f(420, 0));
     }
 
-    void SFMLWidget::Update()
+    void SFMLWidget::UpdateWidget()
     {
         if (_windowOpen)
         {
@@ -37,13 +37,16 @@ namespace Tetris::View
             {
                if (event.type == sf::Event::Closed)
                {
-                   _window.close();
-                   _windowOpen = false;
-                   break;
+                    _uievents.push(event);
+                   //_window.close();
+                   //_windowOpen = false;
+                   //break;
                }
 
                 if (event.type == sf::Event::KeyPressed)
                 {
+                    _uievents.push(event);
+                    /*
                     switch (event.key.scancode)
                     {
                     case sf::Keyboard::Scan::Left:
@@ -61,6 +64,7 @@ namespace Tetris::View
                     default:
                         break;
                     }
+                    */
                 }
             }
 
@@ -72,11 +76,56 @@ namespace Tetris::View
         }
     }
 
-    void SFMLWidget::SlotUpdateView(DescriptionMap map)
+    void SFMLWidget::ProcessingEvents()
+    {
+        while(!_uievents.empty())
+        {
+            sf::Event event = _uievents.top();
+            _uievents.pop();
+            
+            if (event.type == sf::Event::Closed)
+            {
+               _window.close();
+               _windowOpen = false;
+               break;
+            }
+            if (event.type == sf::Event::KeyPressed)
+            {
+                
+                switch (event.key.scancode)
+                {
+                case sf::Keyboard::Scan::Left:
+                    _controller.Move(Command::Left);
+                    break;
+                case sf::Keyboard::Scan::Right:
+                    _controller.Move(Command::Right);
+                    break;
+                case sf::Keyboard::Scan::Up:
+                    _controller.Move(Command::RotateRight);
+                    break;
+                case sf::Keyboard::Scan::Down:
+                    _controller.Move(Command::Down);
+                    break;
+                default:
+                    break;
+                }
+            }
+        }
+    }
+
+    void SFMLWidget::UpdateView(DescriptionMap map)
     {
         _map.SetMap(map.map, map.size.rows, map.size.columns);
-        _score.setString("Score:\n" + std::to_string(map.score));
-        _previwBlock.SetType(map._nextBlock);
+    }
+
+    void SFMLWidget::SetNextBlock(Model::DescriptionBlock nextBlock)
+    {
+        _previwBlock.SetBlock(nextBlock.nextBlock, nextBlock.color);
+    }
+
+    void SFMLWidget::SetScore(unsigned int score)
+    {
+        _score.setString("Score:\n" + std::to_string(score));
     }
 
     bool SFMLWidget::IsOpen() const

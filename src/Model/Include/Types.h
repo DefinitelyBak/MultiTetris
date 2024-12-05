@@ -8,7 +8,8 @@ namespace Tetris::Model
 {
 	
 	/// @brief ID блоков
-	enum class IdShape {
+	enum class IdShape: int 
+	{
 		None,
 		Iblock,
 		Jblock,
@@ -81,12 +82,18 @@ namespace Tetris::Model
 
     struct DescriptionMap
     {
-        DescriptionMap(DataMap _map, MapSize _size, int _score, IdShape nextBlock): map(_map), size(_size), score(_score), _nextBlock(nextBlock){};
+        DescriptionMap(DataMap _map, MapSize _size, int _score): map(_map), size(_size), score(_score){};
 
         DataMap map;
         MapSize size;
         int score;
-		IdShape _nextBlock;
     };
+
+	struct DescriptionBlock
+	{
+		DescriptionBlock(IdShape id, TypeColor color): nextBlock(id), color(color){}
+		IdShape nextBlock;
+		TypeColor color;
+	};
 
 }

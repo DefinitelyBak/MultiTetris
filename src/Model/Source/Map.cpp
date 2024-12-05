@@ -26,7 +26,7 @@ namespace Tetris::Model
         return _size;
     }
 
-    void Map::SetBlock(std::shared_ptr<AbstractBlock> shape)
+    void Map::SetBlock(AbstractBlockPtr shape)
     {
         _activeBlock = shape;
         /// Тут надо смотреть на тип фигуры и выбирать смещение отсносительно начала

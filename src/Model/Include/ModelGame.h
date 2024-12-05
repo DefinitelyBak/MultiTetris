@@ -1,20 +1,26 @@
 #pragma once
 
 #include "Precompile.h" 
+#include "Forwards.h"
+
+#include "Types.h"
+
+#include "AbstractModel.h"
 
 #include "Map.h"
 #include "Factory/ShapeFactory.h"
 
+#include "AbstractWidget.h"
+
 #include <boost/signals2.hpp>
 
-#include "C:\Projects\ProjectTetris\Tetris\src\view\Include\AbstractWidget.h"
 
 
 namespace Tetris::Model
 {
 
     /// @brief Модель игры
-    class ModelGame
+    class ModelGame final: public AbstractModel
     {
     public:
         /// @brief Конструктор по умолчанию
@@ -22,12 +28,16 @@ namespace Tetris::Model
 
         /// @brief 
         /// @param command 
-        void SlotUpdate(Command command);
+        void SlotUpdate(Command command) override;
 
-        void SetView(std::shared_ptr<View::AbstractWidget> view);
+        void SetView(AbstractWidgetPtr view) override;
 
         /// @brief Сигнал на обновление карты
-        boost::signals2::signal<void(DescriptionMap)> SignalUpdateView; 
+        boost::signals2::signal<void(Tetris::Model::DescriptionMap)> SignalUpdateView; 
+
+        boost::signals2::signal<void(Tetris::Model::DescriptionBlock)> SignalSetNextBlock;
+
+        boost::signals2::signal<void(unsigned int)> SignalSetScore;
 
     private:
         /// @brief 
@@ -36,7 +46,7 @@ namespace Tetris::Model
 
         /// @brief Создание случайного блока
         /// @return Новый блок
-        std::shared_ptr<AbstractBlock> CreateRandomBlock(); 
+        AbstractBlockPtr CreateRandomBlock(); 
 
         Map _map;
         Blocks::BlocksFactory _factory;
@@ -49,8 +59,8 @@ namespace Tetris::Model
         std::random_device _device;
         std::mt19937 _randomEngine;
 
-        std::shared_ptr<AbstractBlock> _currentBlock;
-        std::shared_ptr<AbstractBlock> _nextBlock;
+        AbstractBlockPtr _currentBlock;
+        AbstractBlockPtr _nextBlock;
     };
 
 }
