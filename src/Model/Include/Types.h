@@ -79,21 +79,20 @@ namespace Tetris::Model
 	Positions operator+(const Position& lhs, const Positions& rhs);
 	Positions operator-(const Positions& lhs, const Position& rhs);
 
-
-    struct DescriptionMap
-    {
-        DescriptionMap(DataMap _map, MapSize _size, int _score): map(_map), size(_size), score(_score){};
-
-        DataMap map;
-        MapSize size;
-        int score;
-    };
-
 	struct DescriptionBlock
 	{
+		DescriptionBlock(){};
 		DescriptionBlock(IdShape id, TypeColor color): nextBlock(id), color(color){}
 		IdShape nextBlock;
 		TypeColor color;
 	};
+
+    struct DescriptionModel
+    {
+        DataMap map;
+        MapSize size;
+		std::optional<DescriptionBlock> nextBlock;
+		std::optional<unsigned int> score;
+    };
 
 }

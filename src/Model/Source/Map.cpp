@@ -9,8 +9,8 @@ namespace Tetris::Model
     Map::Map(size_t columns, size_t rows)
     {
         _size.columns = columns;
-        _size.rows = rows;
-        _data.resize(columns * rows, TypeColor::None);
+        _size.rows = rows + 1;
+        _data.resize(_size.columns * _size.rows, TypeColor::None);
     }
 
     DataMap Map::GetMap()
@@ -23,14 +23,34 @@ namespace Tetris::Model
 
     MapSize Map::GetSize()
     {
-        return _size;
+        MapSize size;
+        size.columns = _size.columns;
+        size.rows = _size.rows - 1; 
+        return size;
+    }
+
+    bool Map::IsFullMap() const
+    {
+        for (int i = 0; i < _size.columns; ++i)
+            if (_data[(_size.rows - 1) * _size.columns + i] != TypeColor::None)
+                return true;
+
+        return false;
+    }
+
+    void Map::Restart()
+    {
+        _data.clear();
+        _data.resize(_size.columns * _size.rows, TypeColor::None);
     }
 
     void Map::SetBlock(AbstractBlockPtr shape)
     {
-        _activeBlock = shape;
-        /// Тут надо смотреть на тип фигуры и выбирать смещение отсносительно начала
-        _positionBlock = Position(std::round(_size.columns/2.0), _size.rows-1);
+        if(shape->GetType() != IdShape::None)
+        {
+            _activeBlock = shape;
+            _positionBlock = Position(std::round(_size.columns/2.0), _size.rows-1);
+        }
     }
 
     bool Map::HasActiveBlock()

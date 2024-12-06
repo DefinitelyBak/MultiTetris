@@ -5,6 +5,8 @@ add_library(
     ${CMAKE_CURRENT_SOURCE_DIR}/Source/SFMLWidget.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/Source/SFMLMap.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/Source/SFMLPreviewBlock.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/Source/SFMLApplication.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/Source/SFMLText.cpp
 )
 
 target_include_directories(

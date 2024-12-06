@@ -10,11 +10,6 @@
 #include "Map.h"
 #include "Factory/ShapeFactory.h"
 
-#include "AbstractWidget.h"
-
-#include <boost/signals2.hpp>
-
-
 
 namespace Tetris::Model
 {
@@ -32,13 +27,6 @@ namespace Tetris::Model
 
         void SetView(AbstractWidgetPtr view) override;
 
-        /// @brief Сигнал на обновление карты
-        boost::signals2::signal<void(Tetris::Model::DescriptionMap)> SignalUpdateView; 
-
-        boost::signals2::signal<void(Tetris::Model::DescriptionBlock)> SignalSetNextBlock;
-
-        boost::signals2::signal<void(unsigned int)> SignalSetScore;
-
     private:
         /// @brief 
         /// @param lines 
@@ -47,6 +35,9 @@ namespace Tetris::Model
         /// @brief Создание случайного блока
         /// @return Новый блок
         AbstractBlockPtr CreateRandomBlock(); 
+
+        /// @brief Сигнал на обновление карты
+        boost::signals2::signal<void(Model::DescriptionModel)> SignalUpdateView; 
 
         Map _map;
         Blocks::BlocksFactory _factory;
@@ -61,6 +52,8 @@ namespace Tetris::Model
 
         AbstractBlockPtr _currentBlock;
         AbstractBlockPtr _nextBlock;
+
+        std::mutex _mutex;
     };
 
 }

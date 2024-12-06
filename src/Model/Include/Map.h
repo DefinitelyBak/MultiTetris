@@ -29,7 +29,9 @@ namespace Tetris::Model
 		/// @return 
 		MapSize GetSize();
 
-		//size_t GetLastNotFreeLine() const;
+		bool IsFullMap() const;
+
+		void Restart();
 
 		/// @brief Установить активную фигуру
 		/// @param shape Фигура

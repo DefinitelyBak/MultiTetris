@@ -10,3 +10,6 @@
 #include <unordered_map>
 #include <random>
 #include <stack>
+#include <optional>
+
+#include <boost/signals2.hpp>

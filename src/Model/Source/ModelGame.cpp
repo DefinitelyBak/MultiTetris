@@ -3,11 +3,10 @@
 #include "blocks/AbstractBlock.h"
 
 
-
 namespace Tetris::Model
 {
 
-    ModelGame::ModelGame():_map(), _device(), _randomEngine(_device())
+    ModelGame::ModelGame():_map(10, 22), _device(), _randomEngine(_device())
 	{
 		_factory.add<Iblock>(IdShape::Iblock);
         _factory.add<Jblock>(IdShape::Jblock);
@@ -17,46 +16,59 @@ namespace Tetris::Model
         _factory.add<Tblock>(IdShape::Tblock);
         _factory.add<Zblock>(IdShape::Zblock);
 
-		_currentBlock = CreateRandomBlock(); 
 		_nextBlock = CreateRandomBlock();
-		_map.SetBlock(_currentBlock);
 	}
 
     void ModelGame::SlotUpdate(Command command)
     {
-		if(!_map.HasActiveBlock())
+		DescriptionModel descriptionModel;
+
 		{
-			_currentBlock = _nextBlock;
-			_nextBlock = CreateRandomBlock();
-			_map.SetBlock(_currentBlock);
-			SignalSetNextBlock(DescriptionBlock(_nextBlock->GetType(), _nextBlock->GetColor()));
+			std::lock_guard<std::mutex> l(_mutex);
+			if (_map.IsFullMap())
+				_map.Restart();
+
+			if(!_map.HasActiveBlock())
+			{
+				_currentBlock = _nextBlock;
+				_nextBlock = CreateRandomBlock();
+				_map.SetBlock(_currentBlock);
+				descriptionModel.nextBlock = DescriptionBlock(_nextBlock->GetType(), _nextBlock->GetColor());
+			}
+
+			_map.MoveBlock(command);
+	
+			if (auto deletedLines = _map.GetCountDeletedLines(); deletedLines)
+			{
+				AddScore(deletedLines);
+				descriptionModel.score = _score;
+			}
+
+			descriptionModel.map = _map.GetMap();
+			descriptionModel.size = _map.GetSize(); 
 		}
 
-		_map.MoveBlock(command);
- 
-		if (auto deletedLines = _map.GetCountDeletedLines(); deletedLines)
-		{
-			AddScore(deletedLines);
-			SignalSetScore(_score);
-		}
- 
-		SignalUpdateView(DescriptionMap(_map.GetMap(), _map.GetSize(), _score));
+		SignalUpdateView(descriptionModel);
     }
 
     void ModelGame::SetView(AbstractWidgetPtr view)
     {
-		SignalUpdateView.connect(boost::signals2::signal<void(Tetris::Model::DescriptionMap)>::slot_type
-        	(&AbstractWidget::SlotUpdateView, view.get(), boost::placeholders::_1).track_foreign(view));
+		DescriptionModel descriptionModel;
+		std::optional<DescriptionBlock> descriptionBlock;
+		std::optional<unsigned int> newScore;
 
-		SignalSetNextBlock.connect(boost::signals2::signal<void(Tetris::Model::DescriptionBlock)>::slot_type
-        	(&AbstractWidget::SlotSetNextBlock, view.get(), boost::placeholders::_1).track_foreign(view));
+		{
+			std::lock_guard<std::mutex> l(_mutex);
+			SignalUpdateView.connect(boost::signals2::signal<void(Model::DescriptionModel)>::slot_type
+				(&AbstractWidget::SlotUpdateView, view.get(), boost::placeholders::_1).track_foreign(view));
 
-		SignalSetScore.connect(boost::signals2::signal<void(unsigned int)>::slot_type
-        	(&AbstractWidget::SlotSetScore, view.get(), boost::placeholders::_1).track_foreign(view));
-		
-		SignalSetNextBlock(DescriptionBlock(_nextBlock->GetType(), _nextBlock->GetColor()));
-		SignalUpdateView(DescriptionMap(_map.GetMap(), _map.GetSize(), _score));
-		SignalSetScore(_score);
+			descriptionModel.map = _map.GetMap();
+			descriptionModel.size = _map.GetSize();
+			descriptionModel.nextBlock = DescriptionBlock(_nextBlock->GetType(), _nextBlock->GetColor()); 
+			descriptionModel.score = _score;
+		}
+
+		SignalUpdateView(descriptionModel);
     }
 
     void ModelGame::AddScore(unsigned int lines)

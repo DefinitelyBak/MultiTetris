@@ -1,7 +1,6 @@
 #include "Precompile.h"
 
-#include "C:/Projects/ProjectTetris/Tetris/src/model/Include/ModelGame.h"
-//#include ""
+#include "AbstractModel.h"
 
 
 namespace Tetris::View
@@ -9,14 +8,19 @@ namespace Tetris::View
     class SFMLApplication
     {
     public:
-        SFMLApplication(std::shared_ptr<Model::ModelGame> model, unsigned int countWidgets);
+        SFMLApplication(std::shared_ptr<Model::AbstractModel> model, unsigned int countWidgets);
 
         void Run();
 
     private:
+
+        std::string _pathFont;
+
         unsigned int _count;
 
-        std::list<>
-    }
+        std::list<AbstractWidgetPtr> _widgets;
+
+        std::shared_ptr<Model::AbstractModel> _model;
+    };
 
 }

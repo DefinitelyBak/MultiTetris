@@ -1,32 +1,16 @@
-//#include <SFML/Graphics.hpp>
+#include "Precompile.h"
 
 #include "ModelGame.h"
-#include "SFMLWidget.h"
+#include "SFMLApplication.h"
 
-#include "boost/signals2.hpp"
-
-void Run()
-{
-
-};
 
 int main()
 {
-    using namespace Tetris;
-    using namespace Tetris::Model;
-    using namespace Tetris::View;
-
     std::shared_ptr<Tetris::Model::ModelGame> modelPtr = std::make_shared<Tetris::Model::ModelGame>();
-    std::shared_ptr<Tetris::View::SFMLWidget> viewPtr = std::make_shared<Tetris::View::SFMLWidget>(modelPtr);
-    std::shared_ptr<Tetris::View::SFMLWidget> viewPtr1 = std::make_shared<Tetris::View::SFMLWidget>(modelPtr);
+
+    Tetris::View::SFMLApplication appSfml(modelPtr, 2);
     
-    modelPtr->SetView(viewPtr);
-    modelPtr->SetView(viewPtr1);
+    std::thread thread(Tetris::View::SFMLApplication::Run,std::move(appSfml));
 
-    while(viewPtr->IsOpen())
-    {
-        viewPtr->Update();
-        viewPtr1->Update();
-    }
-
+    thread.join();
 }

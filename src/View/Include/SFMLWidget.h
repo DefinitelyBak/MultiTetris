@@ -2,6 +2,7 @@
 
 #include "Precompile.h"
 #include "AbstractWidget.h"
+#include "AbstractModel.h"
 
 #include <SFML/Graphics.hpp>
 
@@ -9,6 +10,7 @@
 #include "ModelGame.h"
 #include "MoveController.h"
 #include "SFMLMap.h"
+#include "SFMLText.h"
 #include "SFMLPreviewBlock.h"
 
 #include "Types.h"
@@ -23,7 +25,7 @@ namespace Tetris::View
     {
     public:
     
-        SFMLWidget(ModelGamePtr& model);
+        SFMLWidget(std::shared_ptr<AbstractModel> model, std::string pathFont);
 
         ~SFMLWidget() override = default;
 
@@ -35,11 +37,7 @@ namespace Tetris::View
 
         void ProcessingEvents() override;
 
-        void UpdateView(Model::DescriptionMap) override;
-
-        void SetNextBlock(Model::DescriptionBlock) override;
-
-        void SetScore(unsigned int) override;
+        void UpdateView(Model::DescriptionModel descriptionModel) override;
 
     private:
         sf::RenderWindow _window;
@@ -49,8 +47,7 @@ namespace Tetris::View
         bool _windowOpen{true};
         SFMLMap _map;
         SFMLPreviewBlock _previwBlock;
-        sf::Text _score;
-        sf::Font _font;
+        SFMLText _score;
 
         std::stack<sf::Event> _uievents;
     };

@@ -44,6 +44,7 @@ namespace Tetris::View
             border.setFillColor(sf::Color::White);
             _borders.push_back(border);
             
+            
             /// Горизонтальные линии
             border = sf::RectangleShape(sf::Vector2f(windowSize.x, _borderWidth));
             border.setPosition(sf::Vector2f(0, 0));
@@ -60,7 +61,7 @@ namespace Tetris::View
     void SFMLMap::SetMap(Model::DataMap map, int rows, int columns)
     {
         // Проверка на дурака
-        if(map.empty() || rows == 0 || columns == 0 || map.size() != rows* columns)
+        if(map.empty() || rows == 0 || columns == 0 )
             return;
 
         _map = map;
@@ -73,7 +74,7 @@ namespace Tetris::View
             _offsetX = (_windowSize.x - 2*_borderWidth)/_columns;
             _offsetY = (_windowSize.y - 2*_borderWidth)/_rows;
 
-            _filds.resize(_map.size());
+            _filds.resize(rows*columns);
             for(auto& fild: _filds)
             {
                 fild.setSize(sf::Vector2f(_offsetX, _offsetY));
@@ -97,8 +98,10 @@ namespace Tetris::View
         if(_map.empty() || _filds.empty())
             return;
 
-        for(const auto& fild: _filds)
-            target.draw(fild, states);
+        for(int i = 0; i < _columns * _rows; ++i)
+        {
+            target.draw(_filds[i], states);
+        }
     }
 
     void SFMLMap::UpdateView()
