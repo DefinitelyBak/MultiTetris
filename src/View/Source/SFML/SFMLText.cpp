@@ -1,4 +1,4 @@
-#include "SFMLText.h"
+#include "SFML/SFMLText.h"
 
 
 namespace Tetris::View

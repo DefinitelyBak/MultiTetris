@@ -31,7 +31,11 @@ namespace Tetris::Model
 		{
 			std::lock_guard<std::mutex> l(_mutex);
 			if (_map.IsFullMap())
+			{
 				_map.Restart();
+				_score = 0;
+				descriptionModel.score = _score;
+			}
 
 			if(!_map.HasActiveBlock())
 			{

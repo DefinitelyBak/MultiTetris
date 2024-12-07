@@ -25,7 +25,7 @@ namespace Tetris::View
         AbstractModelPtr _model;
 
         std::thread _thread;
-        bool _execution;
+        std::atomic<bool> _execution;
     };
 
 } // namespace

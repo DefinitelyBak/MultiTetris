@@ -112,6 +112,8 @@
         "typeindex": "cpp",
         "valarray": "cpp",
         "variant": "cpp",
-        "stack": "cpp"
+        "stack": "cpp",
+        "qwidget": "cpp",
+        "qapplication": "cpp"
     }
 }

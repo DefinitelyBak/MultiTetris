@@ -3,6 +3,7 @@
 #include <thread>
 #include <utility>
 #include <stdexcept>
+#include <atomic>
 
 #include <boost/signals2.hpp>
 

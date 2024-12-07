@@ -1,4 +1,4 @@
-#include "SFMLWidget.h"
+#include "SFML/SFMLWidget.h"
 
 #include "AbstractModel.h"
 
@@ -25,12 +25,9 @@ namespace Tetris::View
         if (_windowOpen)
         {
             for (auto event = sf::Event(); _window.pollEvent(event);)
-            {
-               if (event.type == sf::Event::Closed || event.type == sf::Event::KeyPressed)
-               {
+                if (event.type == sf::Event::Closed || event.type == sf::Event::KeyPressed)
                     _uievents.push(event);
-               }
-            }
+
 
             _window.clear();
             _window.draw(_map);

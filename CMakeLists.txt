@@ -6,6 +6,18 @@ enable_testing()
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTORCC ON)
+set(CMAKE_AUTOUIC ON)
+
+if(CMAKE_VERSION VERSION_LESS "3.7.0")
+    set(CMAKE_INCLUDE_CURRENT_DIR ON)
+endif()
+
+set(Qt5_DIR "C:/Qt/5.15.2/mingw81_64/lib/cmake/Qt5") 
+
+find_package(Qt5 COMPONENTS Widgets REQUIRED)
+
 find_package(Boost REQUIRED)
 include_directories(SYSTEM ${Boost_INCLUDE_DIRS})
 
@@ -35,6 +47,7 @@ target_link_libraries(
     Model
   PRIVATE
     sfml-graphics
+    Qt5::Widgets
     )
 
 if(WIN32)

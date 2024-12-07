@@ -42,6 +42,8 @@ namespace Tetris::Model
     {
         _data.clear();
         _data.resize(_size.columns * _size.rows, TypeColor::None);
+        _activeBlock = nullptr;
+        _deletedLine = 0;
     }
 
     void Map::SetBlock(AbstractBlockPtr shape)

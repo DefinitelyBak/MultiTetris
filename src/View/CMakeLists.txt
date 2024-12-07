@@ -2,11 +2,13 @@ add_library(
     View
   ##SHARED пока не разобрался как правильно работать с shared library
   STATIC
-    ${CMAKE_CURRENT_SOURCE_DIR}/Source/SFMLWidget.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/Source/SFMLMap.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/Source/SFMLPreviewBlock.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/Source/SFMLApplication.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/Source/SFMLText.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/Source/SFML/SFMLWidget.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/Source/SFML/SFMLMap.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/Source/SFML/SFMLPreviewBlock.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/Source/SFML/SFMLApplication.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/Source/SFML/SFMLText.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/Source/Qt/Widget.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/Source/Qt/QtApplicaion.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/Source/Precompile.cpp
 )
 
@@ -22,7 +24,8 @@ target_link_libraries(
     Model
     Controllers
   PRIVATE
-    sfml-graphics)
+    sfml-graphics
+    Qt5::Widgets)
 
 if(WIN32)
   add_custom_command(

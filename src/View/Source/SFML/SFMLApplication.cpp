@@ -1,6 +1,6 @@
-#include "SFMLApplication.h"
+#include "SFML/SFMLApplication.h"
 
-#include "SFMLWidget.h"
+#include "SFML/SFMLWidget.h"
 
 
 namespace Tetris::View
