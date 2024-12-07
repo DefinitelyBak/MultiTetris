@@ -19,4 +19,4 @@ namespace Tetris::Model
         virtual void SetView(AbstractWidgetPtr view) = 0;
     };
 
-}
+} // namespace

@@ -6,9 +6,16 @@
 namespace Tetris::View
 {
 
-        SFMLApplication::SFMLApplication(std::shared_ptr<Model::AbstractModel> model, unsigned int countWidgets): _model(model), _count(countWidgets)
+        SFMLApplication::SFMLApplication(AbstractModelPtr model, unsigned int countWidgets): _model(model), _count(countWidgets)
         {
-            _pathFont = "C:\\Projects\\ProjectTetris\\Tetris\\src\\view\\Resources\\tuffy.ttf";
+            _pathFont = "C:\\Projects\\ProjectTetris\\Tetris\\src\\view\\Resources\\tuffy.ttf"; // Будет исправлено как разберусь с тем как работать с ресурсами в cmake
+            _execution = true;
+            _thread = std::thread(Tetris::View::SFMLApplication::Run, this);
+        }
+
+        SFMLApplication::~SFMLApplication()
+        {
+            _thread.join();
         }
 
         void SFMLApplication::Run()
@@ -37,6 +44,11 @@ namespace Tetris::View
                 }
             }
 
+            _execution = false;
         }
 
+        bool SFMLApplication::isExecution() const
+        {
+            return _execution;
+        }
 }

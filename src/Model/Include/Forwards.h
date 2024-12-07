@@ -7,7 +7,7 @@ namespace Tetris
 {
     namespace Model
     {
-        class AbtractModel;
+        class AbstractModel;
         class AbstractWidget;
 
         namespace Blocks
@@ -18,5 +18,6 @@ namespace Tetris
 
     typedef std::shared_ptr<Model::Blocks::AbstractBlock> AbstractBlockPtr;
     typedef std::shared_ptr<Model::AbstractWidget> AbstractWidgetPtr;
-    typedef std::shared_ptr<Model::AbtractModel> AbtractModelPtr;
-}
+    typedef std::shared_ptr<Model::AbstractModel> AbstractModelPtr;
+
+} // namespace

@@ -2,8 +2,6 @@
 
 #include "Precompile.h"
 
-#include "SFML/Graphics/Text.hpp"
-
 
 namespace Tetris::View
 {

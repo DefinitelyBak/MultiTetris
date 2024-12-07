@@ -58,6 +58,21 @@ namespace Tetris::Model
 	/// @brief 
 	using Offsets = std::array<Position, 5>;
 
+	struct DescriptionBlock
+	{
+		DescriptionBlock(IdShape id, TypeColor color): typeBlock(id), color(color){}
+		IdShape typeBlock;
+		TypeColor color;
+	};
+
+    struct DescriptionModel
+    {
+        DataMap map;
+        MapSize size;
+		std::optional<DescriptionBlock> nextBlock;
+		std::optional<unsigned int> score;
+    };
+
 	/// Операции с типами
 	Offsets operator+(const Offsets& lhs, const Offsets& rhs);
 	Offsets operator-(const Offsets& lhs, const Offsets& rhs);
@@ -79,20 +94,6 @@ namespace Tetris::Model
 	Positions operator+(const Position& lhs, const Positions& rhs);
 	Positions operator-(const Positions& lhs, const Position& rhs);
 
-	struct DescriptionBlock
-	{
-		DescriptionBlock(){};
-		DescriptionBlock(IdShape id, TypeColor color): nextBlock(id), color(color){}
-		IdShape nextBlock;
-		TypeColor color;
-	};
 
-    struct DescriptionModel
-    {
-        DataMap map;
-        MapSize size;
-		std::optional<DescriptionBlock> nextBlock;
-		std::optional<unsigned int> score;
-    };
 
 }

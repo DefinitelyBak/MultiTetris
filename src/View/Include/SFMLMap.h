@@ -1,32 +1,28 @@
 #pragma once
 
-#include "SFML/Graphics/Drawable.hpp"
-#include "SFML/Graphics/Transformable.hpp"
-#include "SFML/Graphics/RectangleShape.hpp"
-
+#include "Precompile.h"
 #include "Types.h"
 
 
 namespace Tetris::View
 {
-    /// @brief 
-    /// @param color 
-    /// @return 
+    /// @brief Метод конвертации TypeColor в sf::Color
+    /// @param color Цвет
+    /// @return Цвет sf::Color
     sf::Color ColorFromTypeColor(Model::TypeColor color);
 
     class SFMLMap: public sf::Drawable, public sf::Transformable
     {
         public:
             /// @brief Конструкторк
-            /// @param windowSize 
-            /// @param rows 
-            /// @param column 
+            /// @param windowSize Размер окна
+            /// @param withBorder С рамкой
             SFMLMap(sf::Vector2f windowSize, bool withBorder = false);
 
-            /// @brief 
-            /// @param map 
-            /// @param rows 
-            /// @param columns 
+            /// @brief Установить карту
+            /// @param map Карта с блоками
+            /// @param rows Кол-вл строк на карте
+            /// @param columns Кол-во столбцов на карте
             void SetMap(Model::DataMap map, int rows, int columns);
 
         private:
@@ -47,13 +43,9 @@ namespace Tetris::View
             /// @brief Размер окна отображения
             sf::Vector2f _windowSize;
 
-            /// @brief Колличество строк и столбцов.
-            // СТРОКИ (для дураков)
             int _rows;
-            // СТОЛБЦЫ (для дураков)
             int _columns;
 
-            /// @brief Шаг между одним и другим элементом
             float _offsetX;
             float _offsetY;
 

@@ -2,9 +2,9 @@
 
 #include "Precompile.h"
 
-#include "Factory/ShapeFactory.h"
+#include "Factory/BlocksFactory.h"
 
-/*
+
 namespace Tetris::Tests
 {
 
@@ -25,19 +25,19 @@ namespace Tetris::Tests
             _factory.add<Zblock>(IdShape::Zblock);
         }
 
-        Model::Blocks::ShapeFactory _factory;
+        Model::Blocks::BlocksFactory _factory;
     };
 
     TEST_F(BlockTest, blockColor)
     {
-        std::shared_ptr<AbstractBlock> block(_factory.Create(IdShape::Iblock, Color::Green));
+        std::shared_ptr<AbstractBlock> block(_factory.Create(IdShape::Iblock, TypeColor::Green));
 
-        ASSERT_TRUE(block->GetColor() == Color::Green);
+        ASSERT_TRUE(block->GetColor() == TypeColor::Green);
     }
 
     TEST_F(BlockTest, statusBlockTurningClockwise)
     {
-        std::shared_ptr<AbstractBlock> block(_factory.Create(IdShape::Iblock, Color::Green));
+        std::shared_ptr<AbstractBlock> block(_factory.Create(IdShape::Iblock, TypeColor::Green));
         
         ASSERT_TRUE(block->GeCurrentState() == State::Up);
 
@@ -60,7 +60,7 @@ namespace Tetris::Tests
 
     TEST_F(BlockTest, statusBlockTurningCounterclockwise)
     {
-        std::shared_ptr<AbstractBlock> block(_factory.Create(IdShape::Iblock, Color::Green));
+        std::shared_ptr<AbstractBlock> block(_factory.Create(IdShape::Iblock, TypeColor::Green));
         
         ASSERT_TRUE(block->GeCurrentState() == State::Up);
 
@@ -83,7 +83,7 @@ namespace Tetris::Tests
 
     TEST_F(BlockTest, JLSTZOffsets)
     {
-        std::shared_ptr<AbstractBlock> Lblock(_factory.Create(IdShape::Lblock, Color::Green));
+        std::shared_ptr<AbstractBlock> Lblock(_factory.Create(IdShape::Lblock, TypeColor::Green));
         
         // Up -> Right: ( 0, 0), (-1, 0), (-1,+1), ( 0,-2), (-1,-2). 
         Offsets templateOffset = {Position(0,0), Position(-1,0), Position(-1,1), Position(0,-2), Position(-1,-2)};
@@ -112,7 +112,7 @@ namespace Tetris::Tests
 
     TEST_F(BlockTest, IOffsets)
     {
-        std::shared_ptr<AbstractBlock> Iblock(_factory.Create(IdShape::Iblock, Color::Green));
+        std::shared_ptr<AbstractBlock> Iblock(_factory.Create(IdShape::Iblock, TypeColor::Green));
         
         // Up -> Right: ( 1, 0), (-1, 0), (2,0), ( -1,-1), (2,2).
         Offsets templateOffset = {Position(1,0), Position(-1,0), Position(2,0), Position(-1,-1), Position(2,2)};
@@ -141,7 +141,7 @@ namespace Tetris::Tests
 
     TEST_F(BlockTest, OOffsets)
     {
-        std::shared_ptr<AbstractBlock> Oblock(_factory.Create(IdShape::Oblock, Color::Green));
+        std::shared_ptr<AbstractBlock> Oblock(_factory.Create(IdShape::Oblock, TypeColor::Green));
         
         // Up -> Right: ( 0, 1), ( 0, 1), ( 0, 1), ( 0, 1), ( 0, 1).
         Offsets templateOffset = {Position(0,1), Position(0,1), Position(0,1), Position(0,1), Position(0,1)};
@@ -169,4 +169,3 @@ namespace Tetris::Tests
     }
 
 }
-*/

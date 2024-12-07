@@ -1,6 +1,6 @@
 #include "Map.h"
 
-#include "Factory/ShapeFactory.h"
+#include "Factory/BlocksFactory.h"
 #include <cmath>
 
 namespace Tetris::Model
@@ -21,7 +21,7 @@ namespace Tetris::Model
         return data;
     }
 
-    MapSize Map::GetSize()
+    MapSize Map::GetSize() const
     {
         MapSize size;
         size.columns = _size.columns;

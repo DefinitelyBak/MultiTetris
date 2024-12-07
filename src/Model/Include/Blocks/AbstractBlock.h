@@ -1,7 +1,6 @@
 #pragma once
 
-#include "../Precompile.h"
-
+#include "Precompile.h"
 #include "Types.h"
 
 
@@ -203,5 +202,5 @@ namespace Tetris::Model::Blocks
 		} 
 	};
 
-}
+} // namespace
 

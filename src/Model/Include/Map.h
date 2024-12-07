@@ -17,20 +17,23 @@ namespace Tetris::Model
 	{
 	public:
 		/// @brief Конструктор по умолчанию, инициализирует пустую карту
-		/// @param x 
-		/// @param y 
+		/// @param columns столбцы
+		/// @param rows строки 
 		Map(size_t columns = 10, size_t rows = 25);
 
 		/// @brief Получить карту
 		/// @return Карта
 		DataMap GetMap();
 
-		/// @brief 
-		/// @return 
-		MapSize GetSize();
+		/// @brief Получиьт размер карты
+		/// @return Размер карт
+		MapSize GetSize() const;
 
+		/// @brief Блоки заполнелы карту
+		/// @return да/нет
 		bool IsFullMap() const;
 
+		/// @brief Перезапустить карту
 		void Restart();
 
 		/// @brief Установить активную фигуру
@@ -49,29 +52,21 @@ namespace Tetris::Model
 		unsigned int GetCountDeletedLines();
 
 	private:
-		/// @brief 
-		/// @return 
+		/// @brief Удалить линии
 		void DeleteLines();
 
-		/// @brief 
-		/// @param cmn 
-		/// @return 
-		bool IsBlockCanMove(Positions cmn);
+		/// @brief Возможно ли утсановить блок
+		/// @param pos Положение болка
+		/// @return да/нет
+		bool IsBlockCanMove(Positions pos);
 
-		/// @brief 
+		/// @brief Установить блок на карту
 		void SetBlockOnMap(DataMap& map);
 
-		/// @brief 
 		AbstractBlockPtr _activeBlock;
-
-		/// @brief 
 		Position _positionBlock;
-	
 		DataMap _data;
-
 		MapSize _size;
-
-		/// @brief 
 		unsigned int _deletedLine{0};
 	};
 

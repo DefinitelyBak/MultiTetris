@@ -1,7 +1,6 @@
 #pragma once
 
-#include "../Precompile.h"
-
+#include "Precompile.h"
 #include "Types.h"
 
 
@@ -30,7 +29,7 @@ namespace Tetris::Model::Blocks
 	/// @tparam C Тип создаваемого объекта
 	/// @tparam Base Базовый класс создаваемых объектов
 	template <class C, class Base>
-	class Creator : public AbstractCreator<Base>
+	class Creator final : public AbstractCreator<Base>
 	{
 	public:
 		/// @brief Конструктор
@@ -45,4 +44,4 @@ namespace Tetris::Model::Blocks
 		Base* Create(TypeColor color) const override{ return new C(color); }
 	};
 
-}
+} // namespace

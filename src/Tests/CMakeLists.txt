@@ -11,8 +11,7 @@ add_executable(
   Tests
   ## Model
   #${CMAKE_CURRENT_SOURCE_DIR}/Source/Precompile.cpp
-  #${CMAKE_CURRENT_SOURCE_DIR}/Source/BlockTest.cpp
-  #${CMAKE_CURRENT_SOURCE_DIR}/Source/ThreadsafeQueueTest.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/Source/BlockTest.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/../model/Source/Precompile.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/../model/Source/ModelGame.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/../model/Source/Blocks/AbstractBlock.cpp

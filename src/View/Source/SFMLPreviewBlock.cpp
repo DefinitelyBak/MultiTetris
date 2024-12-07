@@ -1,7 +1,5 @@
 #include "SFMLPreviewBlock.h"
 
-#include "SFML/Graphics/RenderTarget.hpp"
-
 
 namespace Tetris::View
 {

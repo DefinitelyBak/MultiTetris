@@ -27,6 +27,12 @@ namespace Tetris::Model
             UpdateView(descp);
         };
 
+        void SlotCLoseEvent()
+        {
+            std::lock_guard<std::mutex> loc(_mutex);
+            CloseEvent();
+        };
+
     protected:
 
         virtual void UpdateWidget() = 0;
@@ -35,7 +41,10 @@ namespace Tetris::Model
 
         virtual void UpdateView(DescriptionModel) = 0;
 
+        virtual void CloseEvent() = 0;
+
     private:
         std::mutex _mutex;
     };
-}
+    
+} // namespace

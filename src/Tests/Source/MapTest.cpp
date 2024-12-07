@@ -3,15 +3,14 @@
 #include "Precompile.h"
 
 #include "Map.h"
-#include "Factory/ShapeFactory.h"
+#include "Factory/BlocksFactory.h"
 
-#define X Model::TypeColor::None
-#define Y Model::TypeColor::Green
-#define Z Model::TypeColor::Red
 
 
 namespace Tetris::Test
 {
+    using Model::TypeColor::None;
+    using Model::TypeColor::Green;
 
     bool operator==(const Model::DataMap& lhs, const Model::DataMap& rhs)
     {
@@ -25,305 +24,295 @@ namespace Tetris::Test
         return true;
     };
 
-    TEST(MapTests, EmptyMap)
+    class MapTest : public ::testing::Test
+    {
+    protected:
+        MapTest()
+        {
+            factorGreen.add<Model::Tblock>(Model::IdShape::Tblock);
+        };
+
+        Model::BlocksFactory factorGreen;
+    };
+
+    TEST(MapTests, EmptGreenMap)
     {
         /// Здесь будет moc карты
-        Model::DataMap mocMap = {X, X, X, X, X, X, X, X, X, X, // 1 строка
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X }; // 25 строка
+        Model::DataMap mocMap = {None, None, None, None, None, None, None, None, None, None, // 1 строка
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None }; // 25 строка
 
-        Model::Map map;
-        EXPECT_EQ(mocMap, map.GetMap());
+        Model::Map map(10,24);
+        ASSERT_EQ(mocMap, map.GetMap());
     }
 
-    TEST(MapTests, MapWithTBlock)
+    TEST_F(MapTest, MapWithTBlock)
     {
         /// Здесь будет moc карты
-        Model::DataMap mocMap = {X, X, X, X, X, X, X, X, X, X, // 1 строка
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, Y, Y, Y, X, X, X, X,
-                                 X, X, X, X, Y, X, X, X, X, X }; // 25 строка
-        Model::Map map;
+        Model::DataMap mocMap = {None, None, None, None, None, None, None, None, None, None, // 1 строка
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, Green, Green, Green, None, None, None, None,
+                                 None, None, None, None, Green, None, None, None, None, None }; // 25 строка
+        Model::Map map(10,24);
+        map.SetBlock(std::shared_ptr<Model::AbstractBlock>(factorGreen.Create(Model::IdShape::Tblock, Green)));
 
-        Model::BlocksFactory factory;
-        factory.add<Model::Tblock>(Model::IdShape::Tblock);
-        map.SetBlock(std::shared_ptr<Model::AbstractBlock>(factory.Create(Model::IdShape::Tblock, Y)));
-
-        EXPECT_EQ(mocMap, map.GetMap());
+        ASSERT_EQ(mocMap, map.GetMap());
     }
 
-    TEST(MapTests, MapWithTBlockOneStepDown)
+    TEST_F(MapTest, MapWithTBlockOneStepDown)
     {
         /// Здесь будет moc карты
-        Model::DataMap mocMap = {X, X, X, X, X, X, X, X, X, X, // 1 строка
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, Y, Y, Y, X, X, X, X,
-                                 X, X, X, X, Y, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X }; // 25 строка
-        Model::Map map;
-
-        Model::BlocksFactory factory;
-        factory.add<Model::Tblock>(Model::IdShape::Tblock);
-        map.SetBlock(std::shared_ptr<Model::AbstractBlock>(factory.Create(Model::IdShape::Tblock, Y)));
+        Model::DataMap mocMap = {None, None, None, None, None, None, None, None, None, None, // 1 строка
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, Green, Green, Green, None, None, None, None,
+                                 None, None, None, None, Green, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None }; // 25 строка
+        Model::Map map(10,24);
+        map.SetBlock(std::shared_ptr<Model::AbstractBlock>(factorGreen.Create(Model::IdShape::Tblock, Green)));
         map.MoveBlock(Model::Command::Down);
 
-        EXPECT_EQ(mocMap, map.GetMap());
+        ASSERT_EQ(mocMap, map.GetMap());
     }
 
-    TEST(MapTests, MapWithTBlockOneStepLeft)
+    TEST_F(MapTest, MapWithTBlockOneStepLeft)
     {
         /// Здесь будет moc карты
-        Model::DataMap mocMap = {X, X, X, X, X, X, X, X, X, X, // 1 строка
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, Y, Y, Y, X, X, X, X, X,
-                                 X, X, X, Y, X, X, X, X, X, X }; // 25 строка
-        Model::Map map;
-
-        Model::BlocksFactory factory;
-        factory.add<Model::Tblock>(Model::IdShape::Tblock);
-        map.SetBlock(std::shared_ptr<Model::AbstractBlock>(factory.Create(Model::IdShape::Tblock, Y)));
+        Model::DataMap mocMap = {None, None, None, None, None, None, None, None, None, None, // 1 строка
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, Green, Green, Green, None, None, None, None, None,
+                                 None, None, None, Green, None, None, None, None, None, None }; // 25 строка
+        Model::Map map(10,24);
+        map.SetBlock(std::shared_ptr<Model::AbstractBlock>(factorGreen.Create(Model::IdShape::Tblock, Green)));
         map.MoveBlock(Model::Command::Left);
 
-        EXPECT_EQ(mocMap, map.GetMap());
+        ASSERT_EQ(mocMap, map.GetMap());
     }
 
-    TEST(MapTests, MapWithTBlockOneStepRight)
+    TEST_F(MapTest, MapWithTBlockOneStepRight)
     {
         /// Здесь будет moc карты
-        Model::DataMap mocMap = {X, X, X, X, X, X, X, X, X, X, // 1 строка
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, Y, Y, Y, X, X, X,
-                                 X, X, X, X, X, Y, X, X, X, X }; // 25 строка
-        Model::Map map;
-
-        Model::BlocksFactory factory;
-        factory.add<Model::Tblock>(Model::IdShape::Tblock);
-        map.SetBlock(std::shared_ptr<Model::AbstractBlock>(factory.Create(Model::IdShape::Tblock, Y)));
+        Model::DataMap mocMap = {None, None, None, None, None, None, None, None, None, None, // 1 строка
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, Green, Green, Green, None, None, None,
+                                 None, None, None, None, None, Green, None, None, None, None }; // 25 строка
+        Model::Map map(10,24);
+        map.SetBlock(std::shared_ptr<Model::AbstractBlock>(factorGreen.Create(Model::IdShape::Tblock, Green)));
         map.MoveBlock(Model::Command::Right);
 
-        EXPECT_EQ(mocMap, map.GetMap());
+        ASSERT_EQ(mocMap, map.GetMap());
     }
 
-    TEST(MapTests, MapWithTBlockFiveStepsRight)
+    TEST_F(MapTest, MapWithTBlockFiveStepsRight)
     {
         /// Здесь будет moc карты
-        Model::DataMap mocMap = {X, X, X, X, X, X, X, X, X, X, // 1 строка
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, Y, Y, Y,
-                                 X, X, X, X, X, X, X, X, Y, X }; // 25 строка
-        Model::Map map;
-
-        Model::BlocksFactory factory;
-        factory.add<Model::Tblock>(Model::IdShape::Tblock);
-        map.SetBlock(std::shared_ptr<Model::AbstractBlock>(factory.Create(Model::IdShape::Tblock, Y)));
+        Model::DataMap mocMap = {None, None, None, None, None, None, None, None, None, None, // 1 строка
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, Green, Green, Green,
+                                 None, None, None, None, None, None, None, None, Green, None }; // 25 строка
+        Model::Map map(10,24);
+        map.SetBlock(std::shared_ptr<Model::AbstractBlock>(factorGreen.Create(Model::IdShape::Tblock, Green)));
         for(int i = 0; i < 5; ++i)
             map.MoveBlock(Model::Command::Right);
 
-        EXPECT_EQ(mocMap, map.GetMap());
+        ASSERT_EQ(mocMap, map.GetMap());
     }
 
-    TEST(MapTests, MapWithTBlockFiveStepsLeft)
+    TEST_F(MapTest, MapWithTBlockFiveStepsLeft)
     {
         /// Здесь будет moc карты
-        Model::DataMap mocMap = {X, X, X, X, X, X, X, X, X, X, // 1 строка
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 Y, Y, Y, X, X, X, X, X, X, X,
-                                 X, Y, X, X, X, X, X, X, X, X }; // 25 строка
-        Model::Map map;
-
-        Model::BlocksFactory factory;
-        factory.add<Model::Tblock>(Model::IdShape::Tblock);
-        map.SetBlock(std::shared_ptr<Model::AbstractBlock>(factory.Create(Model::IdShape::Tblock, Y)));
+        Model::DataMap mocMap = {None, None, None, None, None, None, None, None, None, None, // 1 строка
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 Green, Green, Green, None, None, None, None, None, None, None,
+                                 None, Green, None, None, None, None, None, None, None, None }; // 25 строка
+        Model::Map map(10,24);
+        map.SetBlock(std::shared_ptr<Model::AbstractBlock>(factorGreen.Create(Model::IdShape::Tblock, Green)));
         for(int i = 0; i < 5; ++i)
             map.MoveBlock(Model::Command::Left);
 
-        EXPECT_EQ(mocMap, map.GetMap());
+        ASSERT_EQ(mocMap, map.GetMap());
     }
 
-    TEST(MapTests, MapWithTBlock25StepsDown)
+    TEST_F(MapTest, MapWithTBlock25StepsDown)
     {
         /// Здесь будет moc карты
-        Model::DataMap mocMap = {X, X, X, Y, Y, Y, X, X, X, X, // 1 строка
-                                 X, X, X, X, Y, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X,
-                                 X, X, X, X, X, X, X, X, X, X }; // 25 строка
-        Model::Map map;
-
-        Model::BlocksFactory factory;
-        factory.add<Model::Tblock>(Model::IdShape::Tblock);
-        map.SetBlock(std::shared_ptr<Model::AbstractBlock>(factory.Create(Model::IdShape::Tblock, Y)));
+        Model::DataMap mocMap = {None, None, None, Green, Green, Green, None, None, None, None, // 1 строка
+                                 None, None, None, None, Green, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None,
+                                 None, None, None, None, None, None, None, None, None, None }; // 25 строка
+        Model::Map map(10,24);
+        map.SetBlock(std::shared_ptr<Model::AbstractBlock>(factorGreen.Create(Model::IdShape::Tblock, Green)));
         for(int i = 0; i < 25; ++i)
             map.MoveBlock(Model::Command::Down);
 
-        EXPECT_EQ(mocMap, map.GetMap());
+        ASSERT_EQ(mocMap, map.GetMap());
     }
 
 }

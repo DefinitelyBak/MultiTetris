@@ -1,7 +1,6 @@
-#include "Precompile.h"
-
 #include "ModelGame.h"
 #include "SFMLApplication.h"
+#include "TimeController.h"
 
 
 int main()
@@ -10,7 +9,10 @@ int main()
 
     Tetris::View::SFMLApplication appSfml(modelPtr, 2);
     
-    std::thread thread(Tetris::View::SFMLApplication::Run,std::move(appSfml));
+    Tetris::Controller::TimeController timer(modelPtr, std::chrono::seconds(1));
 
-    thread.join();
+    while(appSfml.isExecution())
+    {
+        timer.CheckTimer();
+    }
 }

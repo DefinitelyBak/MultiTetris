@@ -1,26 +1,23 @@
 #pragma once
 
 #include "Precompile.h"
-
 #include "Types.h"
-#include <boost/signals2.hpp>
+
+#include "AbstractModel.h"
 
 
-/// @brief 
 namespace Tetris::Controller
 {
-	/// @brief 
+
 	class MoveController
 	{
 	public:
-		/// @brief 
-		MoveController() = default;
+		MoveController(AbstractModelPtr model);
 
-		/// @brief 
 		void Move(Model::Command cmn);
 
-		/// @brief 
-		boost::signals2::signal<void(Model::Command)> SignalUpdateModel; 
+	private:
+		boost::signals2::signal<void(Model::Command)> SignalUpdateModel;
 	};
 
 }

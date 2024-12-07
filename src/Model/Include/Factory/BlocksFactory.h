@@ -13,7 +13,7 @@
 namespace Tetris::Model::Blocks
 {
 	/// @brief Фабрика блоков
-	class BlocksFactory : public ObjectFactory<AbstractBlock, IdShape>
+	class BlocksFactory final : public ObjectFactory<AbstractBlock, IdShape>
 	{
 	public:
 		/// @brief Создать блок
@@ -33,4 +33,4 @@ namespace Tetris::Model::Blocks
 		};
 	};
 
-}
+} // namespace

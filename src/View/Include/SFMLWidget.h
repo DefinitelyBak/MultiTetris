@@ -1,31 +1,24 @@
 #pragma once
 
 #include "Precompile.h"
-#include "AbstractWidget.h"
+#include "Forwards.h"
+
 #include "AbstractModel.h"
-
-#include <SFML/Graphics.hpp>
-
-
 #include "ModelGame.h"
 #include "MoveController.h"
 #include "SFMLMap.h"
 #include "SFMLText.h"
 #include "SFMLPreviewBlock.h"
 
-#include "Types.h"
-
 
 namespace Tetris::View
 {
-    using namespace Model;
-    using ModelGamePtr = std::shared_ptr<ModelGame>;
 
-    class SFMLWidget final : public AbstractWidget 
+    class SFMLWidget final : public Model::AbstractWidget 
     {
     public:
     
-        SFMLWidget(std::shared_ptr<AbstractModel> model, std::string pathFont);
+        SFMLWidget(AbstractModelPtr model, std::string pathFont);
 
         ~SFMLWidget() override = default;
 
@@ -38,6 +31,8 @@ namespace Tetris::View
         void ProcessingEvents() override;
 
         void UpdateView(Model::DescriptionModel descriptionModel) override;
+
+        void CloseEvent() override;
 
     private:
         sf::RenderWindow _window;

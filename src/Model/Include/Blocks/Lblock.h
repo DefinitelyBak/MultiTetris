@@ -7,7 +7,7 @@ namespace Tetris::Model::Blocks
 {
 
 	/// @brief класс L блок
-	class Lblock : public AbstractBlock
+	class Lblock final : public AbstractBlock
 	{
 	public:
 		/// @brief Конструктор

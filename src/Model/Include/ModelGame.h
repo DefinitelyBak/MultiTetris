@@ -8,7 +8,7 @@
 #include "AbstractModel.h"
 
 #include "Map.h"
-#include "Factory/ShapeFactory.h"
+#include "Factory/BlocksFactory.h"
 
 
 namespace Tetris::Model
@@ -21,10 +21,15 @@ namespace Tetris::Model
         /// @brief Конструктор по умолчанию
         ModelGame();
 
-        /// @brief 
-        /// @param command 
-        void SlotUpdate(Command command) override;
+        ///@brief Деструктор
+        ~ModelGame();
 
+        /// @brief Слот обновление модели игры
+        /// @param command Команда для обновления игры
+        void SlotUpdate(Command command) override;
+        
+        /// @brief Добавить отображение модели
+        /// @param view отображение
         void SetView(AbstractWidgetPtr view) override;
 
     private:
@@ -36,8 +41,9 @@ namespace Tetris::Model
         /// @return Новый блок
         AbstractBlockPtr CreateRandomBlock(); 
 
-        /// @brief Сигнал на обновление карты
-        boost::signals2::signal<void(Model::DescriptionModel)> SignalUpdateView; 
+        boost::signals2::signal<void(Model::DescriptionModel)> SignalUpdateView;
+
+        boost::signals2::signal<void()> SignalCloseViews; 
 
         Map _map;
         Blocks::BlocksFactory _factory;

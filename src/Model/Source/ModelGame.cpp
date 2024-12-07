@@ -19,6 +19,11 @@ namespace Tetris::Model
 		_nextBlock = CreateRandomBlock();
 	}
 
+    ModelGame::~ModelGame()
+    {
+		SignalCloseViews();
+    }
+
     void ModelGame::SlotUpdate(Command command)
     {
 		DescriptionModel descriptionModel;
@@ -62,6 +67,9 @@ namespace Tetris::Model
 			SignalUpdateView.connect(boost::signals2::signal<void(Model::DescriptionModel)>::slot_type
 				(&AbstractWidget::SlotUpdateView, view.get(), boost::placeholders::_1).track_foreign(view));
 
+			SignalCloseViews.connect(boost::signals2::signal<void()>::slot_type
+				(boost::bind(&AbstractWidget::SlotCLoseEvent, view.get())).track_foreign(view));
+
 			descriptionModel.map = _map.GetMap();
 			descriptionModel.size = _map.GetSize();
 			descriptionModel.nextBlock = DescriptionBlock(_nextBlock->GetType(), _nextBlock->GetColor()); 
@@ -100,7 +108,7 @@ namespace Tetris::Model
 		std::uniform_int_distribution<int> randomTypeShape(0,6);
         std::uniform_int_distribution<int> randomTypeColor(0,3);
 
-		int randomShape = randomTypeShape(_randomEngine);//0; //randomTypeShape(_randomEngine);
+		int randomShape = randomTypeShape(_randomEngine);
 		int randomColor = randomTypeColor(_randomEngine);
 
 		while(typesShapes[randomShape] == _lastTypeBlock)

@@ -1,7 +1,5 @@
 #include "SFMLMap.h"
 
-#include "SFML/Graphics/RenderTarget.hpp"
-
 
 namespace Tetris::View
 {
@@ -44,8 +42,7 @@ namespace Tetris::View
             border.setFillColor(sf::Color::White);
             _borders.push_back(border);
             
-            
-            /// Горизонтальные линии
+            /// Горизонтальные границы
             border = sf::RectangleShape(sf::Vector2f(windowSize.x, _borderWidth));
             border.setPosition(sf::Vector2f(0, 0));
             border.setFillColor(sf::Color::White);
