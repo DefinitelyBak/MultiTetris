@@ -10,6 +10,7 @@ namespace Tetris::Model
     public:
         virtual ~AbstractWidget() = default;
 
+        /// @brief Обновление виджета
         virtual void Update()
         {
             {
@@ -37,6 +38,7 @@ namespace Tetris::Model
 
         virtual void UpdateWidget() = 0;
 
+        /// @brief Обработка событий изменений модели
         virtual void ProcessingEvents() = 0;
 
         virtual void UpdateView(DescriptionModel) = 0;

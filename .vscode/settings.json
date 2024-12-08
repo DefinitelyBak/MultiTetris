@@ -114,6 +114,7 @@
         "variant": "cpp",
         "stack": "cpp",
         "qwidget": "cpp",
-        "qapplication": "cpp"
+        "qapplication": "cpp",
+        "text_encoding": "cpp"
     }
 }

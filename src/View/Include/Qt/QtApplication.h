@@ -2,7 +2,8 @@
 
 #include "Forwards.h"
 #include "AbstractModel.h"
-#include <QWidget>
+#include <Qt/Widget.h>
+
 
 namespace Tetris::View
 {
@@ -10,7 +11,7 @@ namespace Tetris::View
     class QtApplicaion
     {
     public:
-        QtApplicaion(AbstractModelPtr model, unsigned int countWidgets, int argc, char *argv[]);
+        QtApplicaion(AbstractModelPtr model, unsigned int countWidgets);
         ~QtApplicaion();
 
         void Run();
@@ -20,10 +21,8 @@ namespace Tetris::View
     private:
         unsigned int _count;
 
-        std::list<QWidget> _widgets;
+        std::list<Qt::Widget*> _widgets;
         AbstractModelPtr _model;
-        int _argc;
-        char** _argv;
 
         std::thread _thread;
         std::atomic<bool> _execution;

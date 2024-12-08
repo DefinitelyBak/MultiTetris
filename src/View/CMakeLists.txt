@@ -1,3 +1,7 @@
+#include_directories(${Qt5Widgets_INCLUDE_DIRS})
+
+
+
 add_library(
     View
   ##SHARED пока не разобрался как правильно работать с shared library
@@ -10,6 +14,7 @@ add_library(
     ${CMAKE_CURRENT_SOURCE_DIR}/Source/Qt/Widget.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/Source/Qt/QtApplicaion.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/Source/Precompile.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/Include/Qt/Widget.h
 )
 
 target_include_directories(
@@ -23,9 +28,14 @@ target_link_libraries(
   PUBLIC
     Model
     Controllers
+    Qt5::Widgets
+    Qt5::Core
+    Qt5::Gui
   PRIVATE
     sfml-graphics
-    Qt5::Widgets)
+  )
+
+target_compile_definitions(View PRIVATE VIEW_LIBRARY)
 
 if(WIN32)
   add_custom_command(

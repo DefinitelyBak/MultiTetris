@@ -5,10 +5,8 @@
 namespace Tetris::View
 {
 
-        QtApplicaion::QtApplicaion(AbstractModelPtr model, unsigned int countWidgets, int argc, char *argv[]): _model(model), _count(countWidgets)
+        QtApplicaion::QtApplicaion(AbstractModelPtr model, unsigned int countWidgets): _model(model), _count(countWidgets)
         {
-            _argc = argc;
-            _argv = argv;
             _execution = true;
             _thread = std::thread(Tetris::View::QtApplicaion::Run, this);
         }
@@ -20,12 +18,15 @@ namespace Tetris::View
 
         void QtApplicaion::Run()
         {
-            int argc;
-            char* argv;
-            QApplication app(_argc, _argv);
+            char* argv[] = {"Tetris"};
+            int args = 1;
+            QApplication app(args, argv);
 
-            QWidget widget;
-            widget.show();
+            for(int i = 0; i < _count; ++i)
+            {
+                _widgets.push_back(new Qt::Widget(_model));
+                _widgets.back()->show();
+            }
 
             app.exec();
             _execution = false;
