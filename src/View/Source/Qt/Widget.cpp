@@ -10,7 +10,9 @@ namespace Tetris::View::Qt
 {
     
     Widget::Widget(AbstractModelPtr model): AbstractWidget(), QWidget(nullptr), _controller(model)
-    {};
+    {
+        setFocusPolicy(::Qt::ClickFocus);
+    };
 
     bool Widget::IsOpen() const
     {
@@ -40,18 +42,22 @@ namespace Tetris::View::Qt
         case ::Qt::Key_A:
         case ::Qt::Key_Left:
             _modelEvents.push(Model::Command::Left);
+            update();
             return;
         case ::Qt::Key_W:
         case ::Qt::Key_Up:
             _modelEvents.push(Model::Command::RotateRight);
+            update();
             return;
         case ::Qt::Key_D:
         case ::Qt::Key_Right:
             _modelEvents.push(Model::Command::Right);
+            update();
             return;
         case ::Qt::Key_S:
         case ::Qt::Key_Down:
             _modelEvents.push(Model::Command::Down);
+            update();
             return;
         default:
             QWidget::keyPressEvent(event);
