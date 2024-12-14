@@ -11,10 +11,12 @@ add_library(
     ${CMAKE_CURRENT_SOURCE_DIR}/Source/SFML/SFMLPreviewBlock.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/Source/SFML/SFMLApplication.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/Source/SFML/SFMLText.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/Source/Qt/Widget.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/Source/Qt/QtApplicaion.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/Source/Precompile.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/Source/Qt/QtApplicaion.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/Source/Qt/Widget.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/Source/Qt/Map.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/Include/Qt/Widget.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/Include/Qt/Map.h
 )
 
 target_include_directories(

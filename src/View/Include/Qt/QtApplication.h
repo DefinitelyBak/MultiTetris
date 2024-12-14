@@ -21,7 +21,7 @@ namespace Tetris::View
     private:
         unsigned int _count;
 
-        std::list<Qt::Widget*> _widgets;
+        std::list<AbstractWidgetPtr> _widgets;
         AbstractModelPtr _model;
 
         std::thread _thread;

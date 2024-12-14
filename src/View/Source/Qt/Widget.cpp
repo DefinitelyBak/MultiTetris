@@ -5,13 +5,25 @@
 #include <QWidget>
 #include <iostream>
 
+#include <QVBoxLayout>
+
+//#include <QQuickView>
+
 
 namespace Tetris::View::Qt
 {
     
-    Widget::Widget(AbstractModelPtr model): AbstractWidget(), QWidget(nullptr), _controller(model)
+    Widget::Widget(AbstractModelPtr model): AbstractWidget(), QWidget(nullptr), _controller(model), _map(new Map(nullptr, true))
     {
         setFocusPolicy(::Qt::ClickFocus);
+
+        QWidget *container = QWidget::createWindowContainer(_map, this);
+        container->setMinimumSize(600,800);
+        //container->setMaximumSize(...);
+        container->setFocusPolicy(::Qt::ClickFocus);
+        QVBoxLayout *layout = new QVBoxLayout;
+        layout->addWidget(container);
+        setLayout(layout);
     };
 
     bool Widget::IsOpen() const
@@ -19,7 +31,7 @@ namespace Tetris::View::Qt
         return _windowOpen;
     }
 
-/// Обарботчик событий Qt по факту надо сбытия Qt переводить в AbstractWidget
+    /// Обарботчик событий Qt по факту надо сбытия Qt переводить в AbstractWidget
     bool Widget::event(QEvent* event)
     {
         if (event->type() == QEvent::Type::Paint ||
@@ -42,22 +54,18 @@ namespace Tetris::View::Qt
         case ::Qt::Key_A:
         case ::Qt::Key_Left:
             _modelEvents.push(Model::Command::Left);
-            update();
             return;
         case ::Qt::Key_W:
         case ::Qt::Key_Up:
             _modelEvents.push(Model::Command::RotateRight);
-            update();
             return;
         case ::Qt::Key_D:
         case ::Qt::Key_Right:
             _modelEvents.push(Model::Command::Right);
-            update();
             return;
         case ::Qt::Key_S:
         case ::Qt::Key_Down:
             _modelEvents.push(Model::Command::Down);
-            update();
             return;
         default:
             QWidget::keyPressEvent(event);
@@ -74,7 +82,7 @@ namespace Tetris::View::Qt
         }
     }
         
-// Тут должны быть события для модели.
+    // Тут должны быть события для модели.
     void Widget::ProcessingEvents()
     {
         if (! _modelEvents.empty())
@@ -87,7 +95,9 @@ namespace Tetris::View::Qt
 
     // Обновление карты
     void Widget::UpdateView(Model::DescriptionModel descriptionModel)
-    {}
+    {
+        _map->SetMap(descriptionModel.map,descriptionModel.size.rows,descriptionModel.size.columns);
+    }
 
     /// Событие закрытие окна из модели 
     void Widget::CloseEvent()

@@ -21,16 +21,13 @@ namespace Tetris::Model
         /// @brief Конструктор по умолчанию
         ModelGame();
 
-        ///@brief Деструктор
-        ~ModelGame();
+   protected:
 
-        /// @brief Слот обновление модели игры
-        /// @param command Команда для обновления игры
-        void SlotUpdate(Command command) override;
-        
-        /// @brief Добавить отображение модели
-        /// @param view отображение
-        void SetView(AbstractWidgetPtr view) override;
+        void UpdateModel(Command command, DescriptionModel& desc) override;
+
+        virtual void EmitSugnals(DescriptionModel& desc) override;
+
+        virtual void SetSignals(AbstractWidgetPtr& view, DescriptionModel& desc) override;
 
     private:
         /// @brief 
@@ -58,8 +55,6 @@ namespace Tetris::Model
 
         AbstractBlockPtr _currentBlock;
         AbstractBlockPtr _nextBlock;
-
-        std::mutex _mutex;
     };
 
 }

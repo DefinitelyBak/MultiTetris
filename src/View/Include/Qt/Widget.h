@@ -5,6 +5,7 @@
 
 #include "AbstractModel.h"
 #include "MoveController.h"
+#include "Qt/Map.h"
 
 #include <QWidget>
 #include <QObject>
@@ -41,6 +42,8 @@ namespace Tetris::View::Qt
 
         QEvent* _qtEvent{nullptr};
         std::stack<Tetris::Model::Command> _modelEvents;
+
+        Map* _map;
 
         std::atomic<bool> _windowOpen{true};
     };

@@ -24,8 +24,11 @@ namespace Tetris::View
 
             for(int i = 0; i < _count; ++i)
             {
-                _widgets.push_back(new Qt::Widget(_model));
-                _widgets.back()->show();
+                Qt::Widget* wptr = new Qt::Widget(_model);
+                AbstractWidgetPtr w(wptr);
+                _widgets.push_back(w);
+                _model->SetView(w);
+                wptr->show();
             }
 
             app.exec();

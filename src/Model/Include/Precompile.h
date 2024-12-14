@@ -11,5 +11,6 @@
 #include <random>
 #include <stack>
 #include <optional>
+#include <thread>
 
 #include <boost/signals2.hpp>

@@ -9,7 +9,7 @@ int main(int argc, char *argv[])
     
     std::shared_ptr<Tetris::Model::ModelGame> modelPtr = std::make_shared<Tetris::Model::ModelGame>();
 
-    Tetris::View::SFMLApplication appSfml(modelPtr, 2);
+    Tetris::View::SFMLApplication appSfml(modelPtr, 1);
     Tetris::View::QtApplicaion qApp(modelPtr,1);
 
     Tetris::Controller::TimeController timer(modelPtr, std::chrono::seconds(1));

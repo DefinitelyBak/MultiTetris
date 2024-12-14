@@ -19,68 +19,52 @@ namespace Tetris::Model
 		_nextBlock = CreateRandomBlock();
 	}
 
-    ModelGame::~ModelGame()
+    void ModelGame::UpdateModel(Command command, DescriptionModel &desc)
     {
-		SignalCloseViews();
-    }
-
-    void ModelGame::SlotUpdate(Command command)
-    {
-		DescriptionModel descriptionModel;
-
+		if (_map.IsFullMap())
 		{
-			std::lock_guard<std::mutex> l(_mutex);
-			if (_map.IsFullMap())
-			{
-				_map.Restart();
-				_score = 0;
-				descriptionModel.score = _score;
-			}
-
-			if(!_map.HasActiveBlock())
-			{
-				_currentBlock = _nextBlock;
-				_nextBlock = CreateRandomBlock();
-				_map.SetBlock(_currentBlock);
-				descriptionModel.nextBlock = DescriptionBlock(_nextBlock->GetType(), _nextBlock->GetColor());
-			}
-
-			_map.MoveBlock(command);
-	
-			if (auto deletedLines = _map.GetCountDeletedLines(); deletedLines)
-			{
-				AddScore(deletedLines);
-				descriptionModel.score = _score;
-			}
-
-			descriptionModel.map = _map.GetMap();
-			descriptionModel.size = _map.GetSize(); 
+			_map.Restart();
+			_score = 0;
+			desc.score = _score;
 		}
 
-		SignalUpdateView(descriptionModel);
+		if(!_map.HasActiveBlock())
+		{
+			_currentBlock = _nextBlock;
+			_nextBlock = CreateRandomBlock();
+			_map.SetBlock(_currentBlock);
+			desc.nextBlock = DescriptionBlock(_nextBlock->GetType(), _nextBlock->GetColor());
+		}
+
+		_map.MoveBlock(command);
+	
+		if (auto deletedLines = _map.GetCountDeletedLines(); deletedLines)
+		{
+			AddScore(deletedLines);
+			desc.score = _score;
+		}
+
+		desc.map = _map.GetMap();
+		desc.size = _map.GetSize(); 
     }
 
-    void ModelGame::SetView(AbstractWidgetPtr view)
+    void ModelGame::EmitSugnals(DescriptionModel &desc)
     {
-		DescriptionModel descriptionModel;
+		SignalUpdateView(desc);
+    }
+
+    void ModelGame::SetSignals(AbstractWidgetPtr &view, DescriptionModel &desc)
+    {
 		std::optional<DescriptionBlock> descriptionBlock;
 		std::optional<unsigned int> newScore;
 
-		{
-			std::lock_guard<std::mutex> l(_mutex);
-			SignalUpdateView.connect(boost::signals2::signal<void(Model::DescriptionModel)>::slot_type
-				(&AbstractWidget::SlotUpdateView, view.get(), boost::placeholders::_1).track_foreign(view));
+		SignalUpdateView.connect(TypeSignalUpdateView::slot_type(&AbstractWidget::SlotUpdateView, view.get(), boost::placeholders::_1).track_foreign(view));
+		SignalCloseViews.connect(TypeSignalCloseViews::slot_type(boost::bind(&AbstractWidget::SlotCLoseEvent, view.get())).track_foreign(view));
 
-			SignalCloseViews.connect(boost::signals2::signal<void()>::slot_type
-				(boost::bind(&AbstractWidget::SlotCLoseEvent, view.get())).track_foreign(view));
-
-			descriptionModel.map = _map.GetMap();
-			descriptionModel.size = _map.GetSize();
-			descriptionModel.nextBlock = DescriptionBlock(_nextBlock->GetType(), _nextBlock->GetColor()); 
-			descriptionModel.score = _score;
-		}
-
-		SignalUpdateView(descriptionModel);
+		desc.map = _map.GetMap();
+		desc.size = _map.GetSize();
+		desc.nextBlock = DescriptionBlock(_nextBlock->GetType(), _nextBlock->GetColor()); 
+		desc.score = _score;
     }
 
     void ModelGame::AddScore(unsigned int lines)

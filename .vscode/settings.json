@@ -115,6 +115,8 @@
         "stack": "cpp",
         "qwidget": "cpp",
         "qapplication": "cpp",
-        "text_encoding": "cpp"
+        "text_encoding": "cpp",
+        "generator": "cpp",
+        "print": "cpp"
     }
 }
