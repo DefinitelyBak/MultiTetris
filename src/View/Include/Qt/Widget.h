@@ -6,9 +6,11 @@
 #include "AbstractModel.h"
 #include "MoveController.h"
 #include "Qt/Map.h"
+#include "Qt/PreviewBlock.h"
 
 #include <QWidget>
 #include <QObject>
+#include <QLabel>
 
 
 /// Состояние карты меняется только из методов UpdateView, просто надо какие соыбятие
@@ -28,6 +30,10 @@ namespace Tetris::View::Qt
         void SlotUpdateView(Model::DescriptionModel descp)
         {
             _map->SetMap(descp.map, descp.size.rows, descp.size.columns);
+            if (descp.nextBlock)
+                _preview->SetBlock(descp.nextBlock->typeBlock, descp.nextBlock->color);
+            if (descp.score)
+                _text->setText(QString("Score:\n") + QString::number(*descp.score));
         }
 
     signals:
@@ -42,8 +48,10 @@ namespace Tetris::View::Qt
 
     private:
         Map* _map;
-        
 
+        QLabel* _text;
+        
+        PreviewBlock* _preview;
 
     };
 }

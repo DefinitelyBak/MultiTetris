@@ -15,7 +15,7 @@ public:
 public slots:
     bool eventFilter(QObject *obj, QEvent *event) override
     {
-        if (event->type() == QEvent::KeyRelease) {
+        if (event->type() == QEvent::KeyPress) {
             QKeyEvent *keyEvent = static_cast<QKeyEvent*>(event);
             qApp->sendEvent(parent(), keyEvent); // Перенаправляем событие родителю
             return true; // Событие обработано

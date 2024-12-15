@@ -18,6 +18,7 @@ add_library(
     ${CMAKE_CURRENT_SOURCE_DIR}/Source/Qt/Widget.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/Source/Qt/Map.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/Source/Qt/QAdapterWidget.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/Source/Qt/PreviewBlock.cpp
 
     ${CMAKE_CURRENT_SOURCE_DIR}/Include/Qt/QtApplication.h
     ${CMAKE_CURRENT_SOURCE_DIR}/Include/Qt/QAdapterWidget.h
@@ -25,6 +26,7 @@ add_library(
     ${CMAKE_CURRENT_SOURCE_DIR}/Include/Qt/Widget.h
     ${CMAKE_CURRENT_SOURCE_DIR}/Include/Qt/Map.h
     ${CMAKE_CURRENT_SOURCE_DIR}/Include/Qt/Adapter.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/Include/Qt/PreviewBlock.h
 )
 
 target_include_directories(

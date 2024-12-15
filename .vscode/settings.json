@@ -117,6 +117,9 @@
         "qapplication": "cpp",
         "text_encoding": "cpp",
         "generator": "cpp",
-        "print": "cpp"
+        "print": "cpp",
+        "qvboxlayout": "cpp",
+        "qhboxlayout": "cpp",
+        "qtextedit": "cpp"
     }
 }
