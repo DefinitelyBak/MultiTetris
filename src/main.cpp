@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
 
     Tetris::Controller::TimeController timer(modelPtr, std::chrono::seconds(1));
 
-    while(appSfml.isExecution())
+    while(appSfml.isExecution() || qApp.isExecution())
     {
         timer.CheckTimer();
     }

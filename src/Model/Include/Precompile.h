@@ -14,3 +14,4 @@
 #include <thread>
 
 #include <boost/signals2.hpp>
+#include <boost/lockfree/stack.hpp>

@@ -48,25 +48,6 @@ namespace Tetris::Model
 		desc.size = _map.GetSize(); 
     }
 
-    void ModelGame::EmitSugnals(DescriptionModel &desc)
-    {
-		SignalUpdateView(desc);
-    }
-
-    void ModelGame::SetSignals(AbstractWidgetPtr &view, DescriptionModel &desc)
-    {
-		std::optional<DescriptionBlock> descriptionBlock;
-		std::optional<unsigned int> newScore;
-
-		SignalUpdateView.connect(TypeSignalUpdateView::slot_type(&AbstractWidget::SlotUpdateView, view.get(), boost::placeholders::_1).track_foreign(view));
-		SignalCloseViews.connect(TypeSignalCloseViews::slot_type(boost::bind(&AbstractWidget::SlotCLoseEvent, view.get())).track_foreign(view));
-
-		desc.map = _map.GetMap();
-		desc.size = _map.GetSize();
-		desc.nextBlock = DescriptionBlock(_nextBlock->GetType(), _nextBlock->GetColor()); 
-		desc.score = _score;
-    }
-
     void ModelGame::AddScore(unsigned int lines)
     {
 		switch (lines)

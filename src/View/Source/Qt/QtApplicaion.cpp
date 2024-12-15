@@ -1,6 +1,7 @@
 #include "Qt/QtApplication.h"
-
 #include <QApplication>
+#include "Qt/QAdapterWidget.h"
+
 
 namespace Tetris::View
 {
@@ -20,17 +21,20 @@ namespace Tetris::View
         {
             char* argv[] = {"Tetris"};
             int args = 1;
-            QApplication app(args, argv);
 
+            qRegisterMetaType<Model::DescriptionModel>("Model::DescriptionModel");
+            qRegisterMetaType<Model::Command>("Model::Command");
+
+            QApplication app(args, argv);
+            std::shared_ptr<Qt::QAdapterWidget> adapter = std::make_shared<Qt::QAdapterWidget>(_model);
+            AbstractWidgetPtr ptr = adapter;
+            
             for(int i = 0; i < _count; ++i)
             {
-                Qt::Widget* wptr = new Qt::Widget(_model);
-                AbstractWidgetPtr w(wptr);
-                _widgets.push_back(w);
-                _model->SetView(w);
-                wptr->show();
+                adapter->SetWidget();
             }
-
+            
+            _model->SetView(ptr);
             app.exec();
             _execution = false;
         }

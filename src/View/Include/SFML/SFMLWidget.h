@@ -24,22 +24,18 @@ namespace Tetris::View
 
         bool IsOpen() const override;
 
+        void SlotCLoseEvent() override;
+
     protected:
 
         void UpdateWidget() override;
-
-        void ProcessingEvents() override;
-
-        void UpdateView(Model::DescriptionModel descriptionModel) override;
-
-        void CloseEvent() override;
 
     private:
         sf::RenderWindow _window;
 
         Controller::MoveController _controller;
 
-        bool _windowOpen{true};
+        std::atomic<bool> _windowOpen{true};
         SFMLMap _map;
         SFMLPreviewBlock _previwBlock;
         SFMLText _score;

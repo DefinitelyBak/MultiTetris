@@ -16,35 +16,34 @@
 namespace Tetris::View::Qt
 {
 
-    class Widget final : public Model::AbstractWidget, public QWidget
+    class Widget : public QWidget
     {
+        Q_OBJECT 
     public:
     
-        Widget(AbstractModelPtr model);
+        Widget(QWidget* parent = nullptr);
 
-        bool IsOpen() const override;
+    public slots:
+
+        void SlotUpdateView(Model::DescriptionModel descp)
+        {
+            _map->SetMap(descp.map, descp.size.rows, descp.size.columns);
+        }
+
+    signals:
+
+        void SignalUpdateModel(Model::Command);
 
     protected:
-        bool event(QEvent*) override;
         void keyPressEvent(QKeyEvent *event) override;
         /// Qt events из этих событий должен вызываться AbstractWidget::Update
         // а из него вызывается UpdateWidget
         // closeEvent(QCloseEvent *event) нужнен тут или нет? Думаю нет.
 
-        /// AbstractWidget events
-        void UpdateWidget() override;
-        void ProcessingEvents() override;
-        void UpdateView(Model::DescriptionModel descriptionModel) override;
-        void CloseEvent() override;
-
     private:
-        Controller::MoveController _controller;
-
-        QEvent* _qtEvent{nullptr};
-        std::stack<Tetris::Model::Command> _modelEvents;
-
         Map* _map;
+        
 
-        std::atomic<bool> _windowOpen{true};
+
     };
 }

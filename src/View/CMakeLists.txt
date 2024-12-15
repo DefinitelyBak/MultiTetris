@@ -12,11 +12,19 @@ add_library(
     ${CMAKE_CURRENT_SOURCE_DIR}/Source/SFML/SFMLApplication.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/Source/SFML/SFMLText.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/Source/Precompile.cpp
+
+    ${CMAKE_CURRENT_SOURCE_DIR}/Source/Qt/Adapter.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/Source/Qt/QtApplicaion.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/Source/Qt/Widget.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/Source/Qt/Map.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/Source/Qt/QAdapterWidget.cpp
+
+    ${CMAKE_CURRENT_SOURCE_DIR}/Include/Qt/QtApplication.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/Include/Qt/QAdapterWidget.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/Include/Qt/KeyPressFilter.h
     ${CMAKE_CURRENT_SOURCE_DIR}/Include/Qt/Widget.h
     ${CMAKE_CURRENT_SOURCE_DIR}/Include/Qt/Map.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/Include/Qt/Adapter.h
 )
 
 target_include_directories(

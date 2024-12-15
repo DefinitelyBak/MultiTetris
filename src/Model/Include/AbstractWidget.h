@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Types.h"
+#include <mutex>
 
 
 namespace Tetris::Model
@@ -13,40 +14,33 @@ namespace Tetris::Model
         /// @brief Обновление виджета
         virtual void Update()
         {
-            {
-                std::lock_guard<std::mutex> loc(_mutex);
-                UpdateWidget();
-            }
-            ProcessingEvents(); 
+            UpdateWidget();
+        };
+  
+        Model::DescriptionModel GetDescriptionModel()
+        {
+            std::scoped_lock<std::mutex> loc(_mutex);
+            return _desc;            
+        }
+
+        virtual void SlotUpdateView(Model::DescriptionModel descp)
+        {
+            std::scoped_lock<std::mutex> loc(_mutex);
+            _desc = descp;
         };
 
         virtual bool IsOpen() const = 0;
 
-        void SlotUpdateView(Model::DescriptionModel descp)
-        {
-            std::lock_guard<std::mutex> loc(_mutex);
-            UpdateView(descp);
-        };
-
-        void SlotCLoseEvent()
-        {
-            std::lock_guard<std::mutex> loc(_mutex);
-            CloseEvent();
-        };
+        virtual void SlotCLoseEvent() = 0;
 
     protected:
 
         virtual void UpdateWidget() = 0;
 
-        /// @brief Обработка событий изменений модели
-        virtual void ProcessingEvents() = 0;
-
-        virtual void UpdateView(DescriptionModel) = 0;
-
-        virtual void CloseEvent() = 0;
-
     private:
         std::mutex _mutex;
+
+        Model::DescriptionModel _desc;
     };
     
 } // namespace

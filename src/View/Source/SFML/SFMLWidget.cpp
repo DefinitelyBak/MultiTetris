@@ -20,14 +20,51 @@ namespace Tetris::View
         _previwBlock.SetBlock(Model::IdShape::None, Model::TypeColor::None);
     }
 
+    bool SFMLWidget::IsOpen() const
+    {
+        return _windowOpen;
+    }
+
     void SFMLWidget::UpdateWidget()
     {
-        if (_windowOpen)
+        if (IsOpen())
         {
             for (auto event = sf::Event(); _window.pollEvent(event);)
-                if (event.type == sf::Event::Closed || event.type == sf::Event::KeyPressed)
-                    _uievents.push(event);
+            {
+                if (event.type == sf::Event::Closed)
+                {
+                    _window.close();
+                    _windowOpen = false;
+                    break;
+                }
+                if (event.type == sf::Event::KeyPressed)
+                { 
+                    switch (event.key.scancode)
+                    {
+                    case sf::Keyboard::Scan::Left:
+                        _controller.Move(Model::Command::Left);
+                        break;
+                    case sf::Keyboard::Scan::Right:
+                        _controller.Move(Model::Command::Right);
+                        break;
+                    case sf::Keyboard::Scan::Up:
+                        _controller.Move(Model::Command::RotateRight);
+                        break;
+                    case sf::Keyboard::Scan::Down:
+                        _controller.Move(Model::Command::Down);
+                        break;
+                    default:
+                        break;
+                    }
+                }
+            }
 
+            Model::DescriptionModel descriptionModel = GetDescriptionModel();
+            _map.SetMap(descriptionModel.map, descriptionModel.size.rows, descriptionModel.size.columns);
+            if (descriptionModel.nextBlock)
+                _previwBlock.SetBlock(descriptionModel.nextBlock->typeBlock, descriptionModel.nextBlock->color);
+            if (descriptionModel.score)
+                _score.setString("Score:\n" + std::to_string(*descriptionModel.score));
 
             _window.clear();
             _window.draw(_map);
@@ -37,59 +74,8 @@ namespace Tetris::View
         }
     }
 
-    void SFMLWidget::ProcessingEvents()
-    {
-        while(!_uievents.empty())
-        {
-            sf::Event event = _uievents.top();
-            _uievents.pop();
-
-            if (event.type == sf::Event::Closed)
-            {
-               _window.close();
-               _windowOpen = false;
-               break;
-            }
-            if (event.type == sf::Event::KeyPressed)
-            { 
-                switch (event.key.scancode)
-                {
-                case sf::Keyboard::Scan::Left:
-                    _controller.Move(Model::Command::Left);
-                    break;
-                case sf::Keyboard::Scan::Right:
-                    _controller.Move(Model::Command::Right);
-                    break;
-                case sf::Keyboard::Scan::Up:
-                    _controller.Move(Model::Command::RotateRight);
-                    break;
-                case sf::Keyboard::Scan::Down:
-                    _controller.Move(Model::Command::Down);
-                    break;
-                default:
-                    break;
-                }
-            }
-        }
-    }
-
-    void SFMLWidget::UpdateView(Model::DescriptionModel descriptionModel)
-    {
-        _map.SetMap(descriptionModel.map, descriptionModel.size.rows, descriptionModel.size.columns);
-        if (descriptionModel.nextBlock)
-            _previwBlock.SetBlock(descriptionModel.nextBlock->typeBlock, descriptionModel.nextBlock->color);
-        if (descriptionModel.score)
-            _score.setString("Score:\n" + std::to_string(*descriptionModel.score));
-    }
-
-    void SFMLWidget::CloseEvent()
+    void SFMLWidget::SlotCLoseEvent()
     {
         _windowOpen = false;
     }
-
-    bool SFMLWidget::IsOpen() const
-    {
-        return _windowOpen;
-    }
-
 }

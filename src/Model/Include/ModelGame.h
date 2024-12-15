@@ -25,10 +25,6 @@ namespace Tetris::Model
 
         void UpdateModel(Command command, DescriptionModel& desc) override;
 
-        virtual void EmitSugnals(DescriptionModel& desc) override;
-
-        virtual void SetSignals(AbstractWidgetPtr& view, DescriptionModel& desc) override;
-
     private:
         /// @brief 
         /// @param lines 
@@ -38,23 +34,21 @@ namespace Tetris::Model
         /// @return Новый блок
         AbstractBlockPtr CreateRandomBlock(); 
 
-        boost::signals2::signal<void(Model::DescriptionModel)> SignalUpdateView;
-
-        boost::signals2::signal<void()> SignalCloseViews; 
-
         Map _map;
         Blocks::BlocksFactory _factory;
 
         unsigned int _score{0};
 
-        IdShape _lastTypeBlock{IdShape::None};
-        TypeColor _lasTypeColor{TypeColor::None};
-
         std::random_device _device;
         std::mt19937 _randomEngine;
 
+        //@TODO
+        // Это надо исправить, тут дублирование информации. Исправим когда буду проихводить рефакторинг CreateRandomBlock
         AbstractBlockPtr _currentBlock;
         AbstractBlockPtr _nextBlock;
+
+        IdShape _lastTypeBlock{IdShape::None};
+        TypeColor _lasTypeColor{TypeColor::None};
     };
 
 }
