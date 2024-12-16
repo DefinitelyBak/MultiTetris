@@ -14,7 +14,7 @@ namespace Tetris::Model
 
     std::vector<TypeColor> Map::GetMap()
     {
-        std::vector<TypeColor> data = _data;
+        std::vector<TypeColor> data(_data.begin() + _size.columns, _data.end());
         if (_activeBlock)
             SetBlockOnMap(data);
         return data;
@@ -22,7 +22,7 @@ namespace Tetris::Model
 
     MapSize Map::GetSize() const
     {
-        return _size;
+        return {_size.columns, _size.rows - 1};
     }
 
     bool Map::IsFullMap() const

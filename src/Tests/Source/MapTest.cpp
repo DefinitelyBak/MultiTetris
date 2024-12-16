@@ -4,134 +4,69 @@
 
 #include "Map.h"
 #include "Factory/BlocksFactory.h"
-
+#include "blocks/Iblock.h"
+#include "blocks/Jblock.h"
+#include "blocks/Lblock.h"
+#include "blocks/Oblock.h"
+#include "blocks/Sblock.h"
+#include "blocks/Tblock.h"
+#include "blocks/Zblock.h"
 
 
 namespace Tetris::Test
 {
+    using Model::TypeColor;
     using Model::TypeColor::None;
     using Model::TypeColor::Green;
 
-    bool operator==(const Model::DataMap& lhs, const Model::DataMap& rhs)
+    bool operator==(const std::vector<TypeColor>& lhs, const std::vector<TypeColor>& rhs)
     {
         if(lhs.size() != rhs.size())
             return false;
 
-        for (int i = 0; i < lhs.size(); ++i)
+        for (size_t i = 0; i < lhs.size(); ++i)
             if(lhs[i] != rhs[i])
                 return false;
 
         return true;
-    };
+    }
 
     class MapTest : public ::testing::Test
     {
     protected:
         MapTest()
         {
-            factorGreen.add<Model::Tblock>(Model::IdShape::Tblock);
-        };
+            factorGreen.add<Model::Blocks::Tblock>(Model::TypeBlock::Tblock);
+        }
 
-        Model::BlocksFactory factorGreen;
+        Model::Blocks::BlocksFactory factorGreen;
     };
 
     TEST(MapTests, EmptGreenMap)
     {
-        /// Здесь будет moc карты
-        Model::DataMap mocMap = {None, None, None, None, None, None, None, None, None, None, // 1 строка
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None }; // 25 строка
-
-        Model::Map map(10,24);
+        std::vector<TypeColor> mocMap(240, None); // 10 columns x 24 rows
+        Model::Map map(10, 24);
         ASSERT_EQ(mocMap, map.GetMap());
     }
 
     TEST_F(MapTest, MapWithTBlock)
     {
-        /// Здесь будет moc карты
-        Model::DataMap mocMap = {None, None, None, None, None, None, None, None, None, None, // 1 строка
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, Green, Green, Green, None, None, None, None,
-                                 None, None, None, None, Green, None, None, None, None, None }; // 25 строка
-        Model::Map map(10,24);
-        map.SetBlock(std::shared_ptr<Model::AbstractBlock>(factorGreen.Create(Model::IdShape::Tblock, Green)));
+        std::vector<TypeColor> mocMap(240, None);
+        mocMap[22] = mocMap[23] = mocMap[24] = Green; // T-block position
+
+        Model::Map map(10, 24);
+        map.SetBlock(AbstractBlockPtr(factorGreen.Create(Model::TypeBlock::Tblock, Green)));
 
         ASSERT_EQ(mocMap, map.GetMap());
     }
 
     TEST_F(MapTest, MapWithTBlockOneStepDown)
     {
-        /// Здесь будет moc карты
-        Model::DataMap mocMap = {None, None, None, None, None, None, None, None, None, None, // 1 строка
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, Green, Green, Green, None, None, None, None,
-                                 None, None, None, None, Green, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None }; // 25 строка
-        Model::Map map(10,24);
-        map.SetBlock(std::shared_ptr<Model::AbstractBlock>(factorGreen.Create(Model::IdShape::Tblock, Green)));
+        std::vector<TypeColor> mocMap(240, None);
+        mocMap[32] = mocMap[33] = mocMap[34] = Green; // T-block position after moving down
+
+        Model::Map map(10, 24);
+        map.SetBlock(AbstractBlockPtr(factorGreen.Create(Model::TypeBlock::Tblock, Green)));
         map.MoveBlock(Model::Command::Down);
 
         ASSERT_EQ(mocMap, map.GetMap());
@@ -139,34 +74,11 @@ namespace Tetris::Test
 
     TEST_F(MapTest, MapWithTBlockOneStepLeft)
     {
-        /// Здесь будет moc карты
-        Model::DataMap mocMap = {None, None, None, None, None, None, None, None, None, None, // 1 строка
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, Green, Green, Green, None, None, None, None, None,
-                                 None, None, None, Green, None, None, None, None, None, None }; // 25 строка
-        Model::Map map(10,24);
-        map.SetBlock(std::shared_ptr<Model::AbstractBlock>(factorGreen.Create(Model::IdShape::Tblock, Green)));
+        std::vector<TypeColor> mocMap(240, None);
+        mocMap[21] = mocMap[22] = mocMap[23] = Green; // T-block position after moving left
+
+        Model::Map map(10, 24);
+        map.SetBlock(AbstractBlockPtr(factorGreen.Create(Model::TypeBlock::Tblock, Green)));
         map.MoveBlock(Model::Command::Left);
 
         ASSERT_EQ(mocMap, map.GetMap());
@@ -174,34 +86,11 @@ namespace Tetris::Test
 
     TEST_F(MapTest, MapWithTBlockOneStepRight)
     {
-        /// Здесь будет moc карты
-        Model::DataMap mocMap = {None, None, None, None, None, None, None, None, None, None, // 1 строка
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, Green, Green, Green, None, None, None,
-                                 None, None, None, None, None, Green, None, None, None, None }; // 25 строка
-        Model::Map map(10,24);
-        map.SetBlock(std::shared_ptr<Model::AbstractBlock>(factorGreen.Create(Model::IdShape::Tblock, Green)));
+        std::vector<TypeColor> mocMap(240, None);
+        mocMap[23] = mocMap[24] = mocMap[25] = Green; // T-block position after moving right
+
+        Model::Map map(10, 24);
+        map.SetBlock(AbstractBlockPtr(factorGreen.Create(Model::TypeBlock::Tblock, Green)));
         map.MoveBlock(Model::Command::Right);
 
         ASSERT_EQ(mocMap, map.GetMap());
@@ -209,34 +98,11 @@ namespace Tetris::Test
 
     TEST_F(MapTest, MapWithTBlockFiveStepsRight)
     {
-        /// Здесь будет moc карты
-        Model::DataMap mocMap = {None, None, None, None, None, None, None, None, None, None, // 1 строка
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, Green, Green, Green,
-                                 None, None, None, None, None, None, None, None, Green, None }; // 25 строка
-        Model::Map map(10,24);
-        map.SetBlock(std::shared_ptr<Model::AbstractBlock>(factorGreen.Create(Model::IdShape::Tblock, Green)));
+        std::vector<TypeColor> mocMap(240, None);
+        mocMap[25] = mocMap[26] = mocMap[27] = Green; // T-block position after moving right 5 times
+
+        Model::Map map(10, 24);
+        map.SetBlock(AbstractBlockPtr(factorGreen.Create(Model::TypeBlock::Tblock, Green)));
         for(int i = 0; i < 5; ++i)
             map.MoveBlock(Model::Command::Right);
 
@@ -245,34 +111,11 @@ namespace Tetris::Test
 
     TEST_F(MapTest, MapWithTBlockFiveStepsLeft)
     {
-        /// Здесь будет moc карты
-        Model::DataMap mocMap = {None, None, None, None, None, None, None, None, None, None, // 1 строка
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 Green, Green, Green, None, None, None, None, None, None, None,
-                                 None, Green, None, None, None, None, None, None, None, None }; // 25 строка
-        Model::Map map(10,24);
-        map.SetBlock(std::shared_ptr<Model::AbstractBlock>(factorGreen.Create(Model::IdShape::Tblock, Green)));
+        std::vector<TypeColor> mocMap(240, None);
+        mocMap[21] = mocMap[22] = mocMap[23] = Green; // T-block position after moving left 5 times
+
+        Model::Map map(10, 24);
+        map.SetBlock(AbstractBlockPtr(factorGreen.Create(Model::TypeBlock::Tblock, Green)));
         for(int i = 0; i < 5; ++i)
             map.MoveBlock(Model::Command::Left);
 
@@ -281,38 +124,14 @@ namespace Tetris::Test
 
     TEST_F(MapTest, MapWithTBlock25StepsDown)
     {
-        /// Здесь будет moc карты
-        Model::DataMap mocMap = {None, None, None, Green, Green, Green, None, None, None, None, // 1 строка
-                                 None, None, None, None, Green, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None,
-                                 None, None, None, None, None, None, None, None, None, None }; // 25 строка
-        Model::Map map(10,24);
-        map.SetBlock(std::shared_ptr<Model::AbstractBlock>(factorGreen.Create(Model::IdShape::Tblock, Green)));
+        std::vector<TypeColor> mocMap(240, None);
+        mocMap[200] = mocMap[201] = mocMap[202] = Green; // T-block position after moving down 25 times
+
+        Model::Map map(10, 24);
+        map.SetBlock(AbstractBlockPtr(factorGreen.Create(Model::TypeBlock::Tblock, Green)));
         for(int i = 0; i < 25; ++i)
             map.MoveBlock(Model::Command::Down);
 
         ASSERT_EQ(mocMap, map.GetMap());
     }
-
 }
