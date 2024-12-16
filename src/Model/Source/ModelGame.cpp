@@ -1,96 +1,140 @@
 #include "ModelGame.h"
 
-#include "blocks/AbstractBlock.h"
+#include "blocks/Iblock.h"
+#include "blocks/Jblock.h"
+#include "blocks/Lblock.h"
+#include "blocks/Oblock.h"
+#include "blocks/Sblock.h"
+#include "blocks/Tblock.h"
+#include "blocks/Zblock.h"
 
 
 namespace Tetris::Model
 {
 
-    ModelGame::ModelGame():_map(10, 22), _device(), _randomEngine(_device())
-	{
-		_factory.add<Iblock>(IdShape::Iblock);
-        _factory.add<Jblock>(IdShape::Jblock);
-        _factory.add<Lblock>(IdShape::Lblock);
-        _factory.add<Oblock>(IdShape::Oblock);
-        _factory.add<Sblock>(IdShape::Sblock);
-        _factory.add<Tblock>(IdShape::Tblock);
-        _factory.add<Zblock>(IdShape::Zblock);
+    ModelGame::ModelGame() : _map(10, 22), _device(), _randomEngine(_device())
+    {
+        RegisterBlocks();
+        _nextBlock = CreateRandomBlock();
+    }
 
-		_nextBlock = CreateRandomBlock();
-	}
+    void ModelGame::RegisterBlocks()
+    {
+        _factory.add<Blocks::Iblock>(TypeBlock::Iblock);
+        _factory.add<Blocks::Jblock>(TypeBlock::Jblock);
+        _factory.add<Blocks::Lblock>(TypeBlock::Lblock);
+        _factory.add<Blocks::Oblock>(TypeBlock::Oblock);
+        _factory.add<Blocks::Sblock>(TypeBlock::Sblock);
+        _factory.add<Blocks::Tblock>(TypeBlock::Tblock);
+        _factory.add<Blocks::Zblock>(TypeBlock::Zblock);
+    }
 
     void ModelGame::UpdateModel(Command command, DescriptionModel &desc)
     {
-		if (_map.IsFullMap())
-		{
-			_map.Restart();
-			_score = 0;
-			desc.score = _score;
-		}
+        if (_map.IsFullMap())
+        {
+            ResetGame(desc);
+        }
 
-		if(!_map.HasActiveBlock())
-		{
-			_currentBlock = _nextBlock;
-			_nextBlock = CreateRandomBlock();
-			_map.SetBlock(_currentBlock);
-			desc.nextBlock = DescriptionBlock(_nextBlock->GetType(), _nextBlock->GetColor());
-		}
+        if (!_map.HasActiveBlock())
+        {
+            SpawnNewBlock(desc);
+        }
 
-		_map.MoveBlock(command);
-	
-		if (auto deletedLines = _map.GetCountDeletedLines(); deletedLines)
-		{
-			AddScore(deletedLines);
-			desc.score = _score;
-		}
+        _map.MoveBlock(command);
+        UpdateScore(desc);
+        desc.map = _map.GetMap();
+        desc.size = _map.GetSize(); 
+    }
 
-		desc.map = _map.GetMap();
-		desc.size = _map.GetSize(); 
+    void ModelGame::ResetGame(DescriptionModel &desc)
+    {
+        _map.Restart();
+        _score = 0;
+        desc.score = _score;
+    }
+
+    void ModelGame::SpawnNewBlock(DescriptionModel &desc)
+    {
+        _currentBlock = _nextBlock;
+        _nextBlock = CreateRandomBlock();
+        _map.SetBlock(_currentBlock);
+        desc.nextBlock = DescriptionBlock(_nextBlock->GetType(), _nextBlock->GetColor());
+    }
+
+    void ModelGame::UpdateScore(DescriptionModel &desc)
+    {
+        if (auto deletedLines = _map.GetCountDeletedLines(); deletedLines)
+        {
+            AddScore(deletedLines);
+            desc.score = _score;
+        }
     }
 
     void ModelGame::AddScore(unsigned int lines)
     {
-		switch (lines)
-		{
-		case 0:
-			return;
-		case 1:
-			_score+= 100;
-			break;
-		case 2:
-			_score+= 300;
-			break;
-		case 3:
-			_score+= 700;
-			break;
-		default:
-			_score+= 1500;
-			break;
-		}
+        static const std::array<int, 5> scorePoints = {0, 100, 300, 700, 1500};
+        if (lines > 0 && lines <= 4)
+        {
+            _score += scorePoints[lines + 1];
+        }
+        else if (lines > 4)
+        {
+            _score += scorePoints[4];
+        }
     }
 
-    AbstractBlockPtr ModelGame::CreateRandomBlock()
+    AbstractBlockPtr ModelGame::CreateRandomBlock(AbstractBlockPtr withoutBlock)
     {
-		static const IdShape typesShapes[7] = {IdShape::Iblock, IdShape::Jblock, IdShape::Lblock, IdShape::Oblock, IdShape::Sblock, IdShape::Tblock, IdShape::Zblock}; //  IdShape::Tblock};//
-		static const TypeColor typesColor[4] = {TypeColor::Red, TypeColor::Green, TypeColor::Yellow, TypeColor::Blue};
+        static const std::array<TypeBlock, 7> allTypesBlocks = {
+            TypeBlock::Iblock, TypeBlock::Jblock, TypeBlock::Lblock,
+            TypeBlock::Oblock, TypeBlock::Sblock, TypeBlock::Tblock,
+            TypeBlock::Zblock
+        };
+        static const std::array<TypeColor, 4> allTypesColor = {
+            TypeColor::Red, TypeColor::Green, TypeColor::Yellow, TypeColor::Blue
+        };
 
-		std::uniform_int_distribution<int> randomTypeShape(0,6);
-        std::uniform_int_distribution<int> randomTypeColor(0,3);
+        if (withoutBlock == nullptr)
+        {
+            return CreateBlock(allTypesBlocks, allTypesColor);
+        }
 
-		int randomShape = randomTypeShape(_randomEngine);
-		int randomColor = randomTypeColor(_randomEngine);
+        return CreateBlockExcluding(withoutBlock, allTypesBlocks, allTypesColor);
+    }
 
-		while(typesShapes[randomShape] == _lastTypeBlock)
-			randomShape = randomTypeShape(_randomEngine);
+    AbstractBlockPtr ModelGame::CreateBlock(const std::array<TypeBlock, 7>& blockTypes, const std::array<TypeColor, 4>& colorTypes)
+    {
+        int randomShape = std::uniform_int_distribution<int>(0, 6)(_randomEngine);
+        int randomColor = std::uniform_int_distribution<int>(0, 3)(_randomEngine);
+        return AbstractBlockPtr{_factory.Create(blockTypes[randomShape], colorTypes[randomColor])};
+    }
 
-		while(typesColor[randomColor] == _lasTypeColor)
-			randomColor = randomTypeColor(_randomEngine);
+    AbstractBlockPtr ModelGame::CreateBlockExcluding(AbstractBlockPtr withoutBlock, const std::array<TypeBlock, 7>& blockTypes, const std::array<TypeColor, 4>& colorTypes)
+    {
+        std::array<TypeBlock, 6> typesBlocks;
+        std::array<TypeColor, 3> typesColor;
 
-		_lastTypeBlock = typesShapes[randomShape];
-		_lasTypeColor = typesColor[randomColor];
-		AbstractBlockPtr result(_factory.Create(typesShapes[randomShape],typesColor[randomColor]));
+        FillExcludingArray(blockTypes, withoutBlock->GetType(), typesBlocks);
+        FillExcludingArray(colorTypes, withoutBlock->GetColor(), typesColor);
 
-		return result;
-	}
+        int randomShape = std::uniform_int_distribution<int>(0, 5)(_randomEngine);
+        int randomColor = std::uniform_int_distribution<int>(0, 2)(_randomEngine);
 
-}
+        return AbstractBlockPtr{_factory.Create(typesBlocks[randomShape], typesColor[randomColor])};
+    }
+
+    template<typename T, size_t N>
+    void ModelGame::FillExcludingArray(const std::array<T, N>& source, T excluded, std::array<T, N-1>& dest)
+    {
+        size_t index = 0;
+        for (const auto& item : source)
+        {
+            if (item != excluded)
+            {
+                dest[index++] = item;
+            }
+        }
+    }
+
+} // namespace Tetris::Model

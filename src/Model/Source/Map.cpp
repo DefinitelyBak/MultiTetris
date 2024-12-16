@@ -1,7 +1,6 @@
 #include "Map.h"
-
 #include "Factory/BlocksFactory.h"
-#include <cmath>
+
 
 namespace Tetris::Model
 {
@@ -9,29 +8,26 @@ namespace Tetris::Model
     Map::Map(size_t columns, size_t rows)
     {
         _size.columns = columns;
-        _size.rows = rows + 1;
+        _size.rows = rows + 1; // Увеличиваем на 1 для учета верхней границы
         _data.resize(_size.columns * _size.rows, TypeColor::None);
     }
 
-    DataMap Map::GetMap()
+    std::vector<TypeColor> Map::GetMap()
     {
-        DataMap data = _data;
-        if(_activeBlock)
+        std::vector<TypeColor> data = _data;
+        if (_activeBlock)
             SetBlockOnMap(data);
         return data;
     }
 
     MapSize Map::GetSize() const
     {
-        MapSize size;
-        size.columns = _size.columns;
-        size.rows = _size.rows - 1; 
-        return size;
+        return _size;
     }
 
     bool Map::IsFullMap() const
     {
-        for (int i = 0; i < _size.columns; ++i)
+        for (size_t i = 0; i < _size.columns; ++i)
             if (_data[(_size.rows - 1) * _size.columns + i] != TypeColor::None)
                 return true;
 
@@ -40,70 +36,64 @@ namespace Tetris::Model
 
     void Map::Restart()
     {
-        _data.clear();
-        _data.resize(_size.columns * _size.rows, TypeColor::None);
+        std::fill(_data.begin(), _data.end(), TypeColor::None);
         _activeBlock = nullptr;
         _deletedLine = 0;
     }
 
     void Map::SetBlock(AbstractBlockPtr shape)
     {
-        if(shape->GetType() != IdShape::None)
+        if (shape->GetType() != TypeBlock::None)
         {
             _activeBlock = shape;
-            _positionBlock = Position(std::round(_size.columns/2.0), _size.rows-1);
+            _positionBlock = Position(std::round(_size.columns / 2.0), _size.rows - 1);
         }
     }
 
-    bool Map::HasActiveBlock()
+    bool Map::HasActiveBlock() const
     {
-        return bool(_activeBlock);
+        return _activeBlock != nullptr;
     }
 
-	void Map::MoveBlock(Command cmn)
+    void Map::MoveBlock(Command cmn)
     {
-        if(!HasActiveBlock())
+        if (!HasActiveBlock())
             return;
 
         _deletedLine = 0;
 
-        if (cmn == Command::Down || cmn == Command::Right || cmn == Command::Left)
+        Position newPos = _positionBlock;
+
+        if (cmn == Command::Down)
+            newPos.y -= 1;
+        else if (cmn == Command::Right)
+            newPos.x += 1;
+        else if (cmn == Command::Left)
+            newPos.x -= 1;
+
+        Positions newDescriptionBlock = newPos + _activeBlock->GetCurrentDescription();
+
+        if (IsBlockCanMove(newDescriptionBlock))
         {
-            Position newPos;
-            
-            if ( cmn == Command::Down)
-                newPos = _positionBlock - Position(0, 1);
-            else if ( cmn == Command::Right)
-                newPos = _positionBlock + Position(1, 0);
-            else if ( cmn == Command::Left)
-                newPos = _positionBlock - Position(1, 0);
-
-            Positions newDescriptionBlock = newPos + _activeBlock->GeCurrentDescription();
-            
-            if (IsBlockCanMove(newDescriptionBlock))
-            {
-                _positionBlock = newPos;
-                return;
-            }
-
-            if(cmn == Command::Down)
-            {
-                SetBlockOnMap(_data);
-                _activeBlock = nullptr;
-                DeleteLines();
-            }
-
+            _positionBlock = newPos;
             return;
         }
 
-        if(cmn == Command::RotateRight || cmn == Command::RotateLeft)
+        if (cmn == Command::Down)
         {
-            auto from = _activeBlock->GeCurrentState();
+            SetBlockOnMap(_data);
+            _activeBlock = nullptr;
+            DeleteLines();
+        }
+
+        if (cmn == Command::RotateRight || cmn == Command::RotateLeft)
+        {
+            auto from = _activeBlock->GetCurrentState();
             auto to = _activeBlock->GetNextState(cmn);
             Positions newDescriptionBlock = _activeBlock->GetDescription(to);
 
-            for(const auto& offset : _activeBlock->GetOffsets(from, to))
-                if(IsBlockCanMove(_positionBlock + newDescriptionBlock + offset))
+            for (const auto& offset : _activeBlock->GetOffsets(from, to))
+                if (IsBlockCanMove(_positionBlock + newDescriptionBlock + offset))
                 {
                     _activeBlock->RotateBlock(cmn);
                     return;
@@ -111,61 +101,54 @@ namespace Tetris::Model
         }
     }
 
-    unsigned int Map::GetCountDeletedLines()
+    unsigned int Map::GetCountDeletedLines() const // Исправлено: добавлен const
     {
         return _deletedLine;
     }
 
-    void Map::DeleteLines()
+void Map::DeleteLines()
+{
+    for (int row = 0; row < _size.rows; ++row)
     {
-        // Пройтись по всем строкам
-        for(int row = 0; row < _size.rows; ++row)
+        bool lineFull = std::all_of(_data.begin() + row * _size.columns, 
+                                     _data.begin() + (row + 1) * _size.columns,
+                                     [](TypeColor color) { return color != TypeColor::None; });
+
+        if (lineFull)
         {
-            bool lineFull = true;
-
-            for(int column = 0; column < _size.columns; ++column)
-            {
-                if(_data[row * _size.columns + column] == TypeColor::None)
-                {
-                    lineFull = false;
-                    break;
-                }
-            }
-
-            if(!lineFull)
-                continue;
-
             ++_deletedLine;
 
-            for(int localRow = row; localRow < _size.rows - 1; ++localRow)
+            for (int localRow = row; localRow < _size.rows - 1; ++localRow)
             {
-                for(int column = 0; column < _size.columns; ++column)
-                    _data[localRow * _size.columns + column] = _data[(localRow + 1) * _size.columns + column];
+                std::copy(_data.begin() + (localRow + 1) * _size.columns,
+                          _data.begin() + (localRow + 2) * _size.columns,
+                          _data.begin() + localRow * _size.columns);
             }
             --row;
         }
     }
+}
 
-    bool Map::IsBlockCanMove(Positions cmn)
+
+    bool Map::IsBlockCanMove(Positions cmn) const
     {
-        for(auto fill: cmn)
+        for (const auto& fill : cmn)
         {
-            if(fill.first > _size.columns || fill.first < 1 ||
-               fill.second > _size.rows || fill.second < 1)
+            if (fill.x >= _size.columns || fill.x < 1 ||
+                fill.y >= _size.rows || fill.y < 1)
                 return false;
 
-            if (_data[_size.columns * (fill.second - 1) + fill.first - 1] != TypeColor::None)
+            if (_data[_size.columns * (fill.y - 1) + fill.x - 1] != TypeColor::None)
                 return false;
         }
 
         return true;
     }
 
-    void Map::SetBlockOnMap(DataMap& map)
+    void Map::SetBlockOnMap(std::vector<TypeColor>& map) // Исправлено: передаем по ссылке
     {
-        for(auto fill : _positionBlock + _activeBlock->GeCurrentDescription())
-            map[_size.columns * (fill.second-1) + fill.first - 1] = _activeBlock->GetColor();
-
+        for (const auto& fill : _positionBlock + _activeBlock->GetCurrentDescription())
+            map[_size.columns * (fill.y - 1) + fill.x - 1] = _activeBlock->GetColor();
     }
 
-} // namespace
+} // namespace Tetris::Model

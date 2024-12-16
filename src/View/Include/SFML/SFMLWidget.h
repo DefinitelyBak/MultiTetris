@@ -14,21 +14,18 @@
 namespace Tetris::View
 {
 
-    class SFMLWidget final : public Model::AbstractWidget 
+    class SFMLWidget final : public Model::IWidget 
     {
     public:
-    
         SFMLWidget(AbstractModelPtr model, std::string pathFont);
 
         ~SFMLWidget() override = default;
 
+        void Update() override;
+
         bool IsOpen() const override;
 
-        void SlotCLoseEvent() override;
-
-    protected:
-
-        void UpdateWidget() override;
+        void SlotCLoseWidget() override;
 
     private:
         sf::RenderWindow _window;

@@ -53,10 +53,12 @@ namespace Tetris::Model::Blocks
 			_stateToOffset = IOffset;
 		};
 
-		IdShape GetType() const
+		/// @brief Получение типа блока
+		/// @return Идентификатор формы блока
+		TypeBlock GetType() const
 		{
-			return IdShape::Iblock;
+			return TypeBlock::Iblock;
 		};
 	};
 
-} // namespace
+} // namespace Tetris::Model::Blocks

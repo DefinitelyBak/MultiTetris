@@ -1,73 +1,72 @@
 #pragma once
 
 #include "Precompile.h"
-#include "Forwards.h"
 
+#include "Forwards.h"
 #include "Types.h"
+
 #include "blocks/AbstractBlock.h"
 
 
 namespace Tetris::Model
 {
-	using namespace Blocks;
+    /// @brief Класс реализации карты для игры Тетрис
+    class Map
+    {
+    public:
+        /// @brief Конструктор по умолчанию, инициализирует пустую карту
+        /// @param columns Количество столбцов карты
+        /// @param rows Количество строк карты
+        Map(size_t columns = 10, size_t rows = 25);
 
-	// Начало системы координат в левом нижнем углу.
-	/// @brief Класс реализации карты
-	class Map
-	{
-	public:
-		/// @brief Конструктор по умолчанию, инициализирует пустую карту
-		/// @param columns столбцы
-		/// @param rows строки 
-		Map(size_t columns = 10, size_t rows = 25);
+        /// @brief Получить текущую карту
+        /// @return Текущая карта
+        std::vector<TypeColor> GetMap();
 
-		/// @brief Получить карту
-		/// @return Карта
-		DataMap GetMap();
+        /// @brief Получить размер карты
+        /// @return Размер карты в виде MapSize
+        MapSize GetSize() const;
 
-		/// @brief Получиьт размер карты
-		/// @return Размер карт
-		MapSize GetSize() const;
+        /// @brief Проверить, заполнена ли карта
+        /// @return True, если карта заполнена, иначе false
+        bool IsFullMap() const;
 
-		/// @brief Блоки заполнелы карту
-		/// @return да/нет
-		bool IsFullMap() const;
+        /// @brief Перезапустить карту, очищая её
+        void Restart();
 
-		/// @brief Перезапустить карту
-		void Restart();
+        /// @brief Установить активный блок на карту
+        /// @param block Указатель на блок
+        void SetBlock(AbstractBlockPtr block);
 
-		/// @brief Установить активную фигуру
-		/// @param shape Фигура
-		void SetBlock(AbstractBlockPtr shape);
+        /// @brief Проверить, имеется ли активный блок
+        /// @return True, если активный блок присутствует, иначе false
+        bool HasActiveBlock() const;
 
-		/// @brief Имеется активная фигура
-		/// @return Да/нет
-		bool HasActiveBlock();
+        /// @brief Переместить активный блок на карте
+        /// @param cmn Команда для перемещения
+        void MoveBlock(Command cmn);
 
-		/// @brief Переместить фигуру
-		/// @param cmn Команда
-		void MoveBlock(Command cmn);
+        /// @brief Получить количество удаленных линий
+        /// @return Количество удаленных линий
+        unsigned int GetCountDeletedLines() const;
 
-		/// @brief Сколько линий было удалено
-		unsigned int GetCountDeletedLines();
+    private:
+        /// @brief Удалить заполненные линии из карты
+        void DeleteLines();
 
-	private:
-		/// @brief Удалить линии
-		void DeleteLines();
+        /// @brief Проверить, можно ли установить блок в указанное положение
+        /// @param pos Положение блока
+        /// @return True, если блок может быть установлен, иначе false
+        bool IsBlockCanMove(Positions pos) const;
 
-		/// @brief Возможно ли утсановить блок
-		/// @param pos Положение болка
-		/// @return да/нет
-		bool IsBlockCanMove(Positions pos);
+        /// @brief Установить блок на карту
+        /// @param map Ссылка на карту, на которую будет установлен блок
+        void SetBlockOnMap(std::vector<TypeColor>& map);
 
-		/// @brief Установить блок на карту
-		void SetBlockOnMap(DataMap& map);
-
-		AbstractBlockPtr _activeBlock;
-		Position _positionBlock;
-		DataMap _data;
-		MapSize _size;
-		unsigned int _deletedLine{0};
-	};
-
-} // namespace
+        AbstractBlockPtr _activeBlock; ///< Указатель на активный блок
+        Position _positionBlock; ///< Положение активного блока
+        std::vector<TypeColor> _data; ///< Данные карты
+        MapSize _size; ///< Размер карты
+        unsigned int _deletedLine{0}; ///< Количество удаленных линий
+    };
+} // namespace Tetris::Model

@@ -6,42 +6,40 @@
 
 namespace Tetris::Model::Blocks
 {
+    /// @brief Абстрактный создатель для создания объектов.
+    /// @tparam Base Базовый класс создаваемых объектов.
+    template <class Base>
+    class AbstractCreator
+    {
+    public:
+        /// @brief Конструктор по умолчанию.
+        AbstractCreator() {}
 
-	/// @brief Абстрактный креетер
-	/// @tparam Base Базовый класс создаваемых объектов
-	template <class Base>
-	class AbstractCreator
-	{
-	public:
-		/// @brief Конструктор
-		AbstractCreator() {}
+        /// @brief Виртуальный деструктор.
+        virtual ~AbstractCreator() {}
 
-		/// @brief Виртуальный деструктор
-		virtual ~AbstractCreator() {}
+        /// @brief Создать объект с заданным цветом.
+        /// @param color Цвет создаваемого объекта.
+        /// @return Указатель на созданный объект.
+        virtual Base* Create(TypeColor color) const = 0;
+    };
 
-		/// @brief Создать объект
-		/// @param color Цыет объекта 
-		/// @return Возвращает созданный объект
-		virtual Base* Create(TypeColor color) const = 0;
-	};
+    /// @brief Реализация создателя для конкретного типа объекта.
+    /// @tparam C Тип создаваемого объекта.
+    /// @tparam Base Базовый класс создаваемых объектов.
+    template <class C, class Base>
+    class Creator final : public AbstractCreator<Base>
+    {
+    public:
+        /// @brief Конструктор по умолчанию.
+        Creator() {}
 
-	/// @brief Креетер
-	/// @tparam C Тип создаваемого объекта
-	/// @tparam Base Базовый класс создаваемых объектов
-	template <class C, class Base>
-	class Creator final : public AbstractCreator<Base>
-	{
-	public:
-		/// @brief Конструктор
-		Creator() {}
+        /// @brief Виртуальный деструктор.
+        virtual ~Creator() {}
 
-		/// @brief Виртуальный деструктор
-		virtual ~Creator() {}
-
-		/// @brief Создать блок
-		/// @param color Цвет создаваемого блока
-		/// @return Блок
-		Base* Create(TypeColor color) const override{ return new C(color); }
-	};
-
-} // namespace
+        /// @brief Создать объект с заданным цветом.
+        /// @param color Цвет создаваемого объекта.
+        /// @return Указатель на созданный объект.
+        Base* Create(TypeColor color) const override { return new C(color); }
+    };
+} // namespace Tetris::Model::Blocks

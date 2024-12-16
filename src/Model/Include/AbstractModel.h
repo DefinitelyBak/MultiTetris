@@ -1,74 +1,92 @@
 #pragma once
 
+#include "precompile.h"
+
 #include "Forwards.h"
 #include "Types.h"
 
-#include "AbstractWidget.h"
+#include "IWidget.h"
 
 
 namespace Tetris::Model
 {
+    /// @brief Абстрактный класс модели для управления игровыми данными
     class AbstractModel
     {
     public:
+        /// @brief Сигнал для обновления виджетов с описанием модели
+        using TypeSignalUpdateWidgets = boost::signals2::signal<void(DescriptionModel)>;
+        /// @brief Сигнал для закрытия виджетов
+        using TypeSignalCloseWidgets = boost::signals2::signal<void()>;
 
-        using TypeSignalUpdateView = boost::signals2::signal<void(Model::DescriptionModel)>;
-
-        using TypeSignalCloseViews = boost::signals2::signal<void()>; 
-
-        AbstractModel(): _stack(128)
+        /// @brief Конструктор
+        AbstractModel() : _stack(128), _finish(false)
         {
-            _worker = std::thread(&AbstractModel::run, this);
+            StartModel();
         }
 
+        /// @brief Деструктор
         virtual ~AbstractModel()
         {
-            _done = true;
-            _worker.join();
-            SignalCloseViews();
+            StopModel();
+            SignalCloseWidgets(); // Генерация сигнала для закрытия виджетов
         }
 
+        /// @brief Метод для обновления модели с полученной командой
+        /// @param command Команда для обновления
         void SlotUpdate(Command command)
         {
-            while(!_stack.push(command))
-                ;
+            while (!_stack.push(command));
         }
 
-        void SetView(AbstractWidgetPtr view)
+        /// @brief Установка виджета для обновления и закрытия
+        /// @param view Указатель на виджет
+        void SetWidget(AbstractWidgetPtr view)
         {
-            SignalUpdateView.connect(TypeSignalUpdateView::slot_type(&AbstractWidget::SlotUpdateView, view.get(), boost::placeholders::_1).track_foreign(view));
-            SignalCloseViews.connect(TypeSignalCloseViews::slot_type(boost::bind(&AbstractWidget::SlotCLoseEvent, view.get())).track_foreign(view));
+            SignalUpdateWidgets.connect(TypeSignalUpdateWidgets::slot_type(&IWidget::SlotUpdateWidget, view.get(), boost::placeholders::_1).track_foreign(view));
+            SignalCloseWidgets.connect(TypeSignalCloseWidgets::slot_type(boost::bind(&IWidget::SlotCloseWidget, view.get())).track_foreign(view));
         }
 
     protected:
+        TypeSignalUpdateWidgets SignalUpdateWidgets; ///< Сигнал для обновления виджетов
+        TypeSignalCloseWidgets SignalCloseWidgets;     ///< Сигнал для закрытия виджетов
 
-        TypeSignalUpdateView SignalUpdateView;
-
-        TypeSignalCloseViews SignalCloseViews;
-
+        /// @brief Чисто виртуальный метод для обновления модели
+        /// @param command Команда для обновления
+        /// @param desc Ссылка на описание модели
         virtual void UpdateModel(Command command, DescriptionModel& desc) = 0;
 
     private:
+        /// @brief Запуск рабочего потока модели
+        void StartModel()
+        {
+            _worker = std::thread(&AbstractModel::Run, this); // Создание и запуск потока
+        }
 
-        void run()
+        /// @brief Остановка рабочего потока модели
+        void StopModel()
+        {
+            _finish = true;
+            _worker.join();
+        }
+
+        /// @brief Основной рабочий метод, выполняющий обновления модели
+        void Run()
         {
             Command cmd;
-            while(!_done)
+            while (!_finish)
             {
-                if(_stack.pop(cmd))
+                if (_stack.pop(cmd))
                 {
                     DescriptionModel desc;
                     UpdateModel(cmd, desc);
-                    SignalUpdateView(desc);
+                    SignalUpdateWidgets(desc);
                 }
             }
         }
 
-        std::thread _worker;
-
-        std::atomic<bool> _done{false};
-
-        boost::lockfree::stack<Command> _stack;
+        std::thread _worker; ///< Рабочий поток
+        std::atomic<bool> _finish; ///< Флаг завершения работы модели
+        boost::lockfree::stack<Command> _stack; ///< Неблокирующий стек для команд
     };
-
-} // namespace
+} // namespace Tetris::Model

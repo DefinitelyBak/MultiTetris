@@ -1,6 +1,5 @@
 #pragma once
 
-#include <list>
 #include <memory>
 #include <vector>
 #include <array>
@@ -12,6 +11,7 @@
 #include <stack>
 #include <optional>
 #include <thread>
+#include <cmath>
 
 #include <boost/signals2.hpp>
 #include <boost/lockfree/stack.hpp>
