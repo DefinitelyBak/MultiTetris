@@ -6,11 +6,11 @@ add_library(
     View
   ##SHARED пока не разобрался как правильно работать с shared library
   STATIC
-    ${CMAKE_CURRENT_SOURCE_DIR}/Source/SFML/SFMLWidget.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/Source/SFML/SFMLMap.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/Source/SFML/SFMLPreviewBlock.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/Source/SFML/Widget.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/Source/SFML/Map.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/Source/SFML/WidgetPreviewBlock.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/Source/SFML/SFMLApplication.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/Source/SFML/SFMLText.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/Source/SFML/Text.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/Source/Precompile.cpp
 
     ${CMAKE_CURRENT_SOURCE_DIR}/Source/Qt/Adapter.cpp

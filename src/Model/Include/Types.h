@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Precompile.h"
+#include "Forwards.h"
 
 
 namespace Tetris::Model
@@ -60,20 +61,12 @@ namespace Tetris::Model
     /// @brief Смещения
     using Offsets = std::array<Position, 5>;
 
-    /// @brief Описание блока
-    struct DescriptionBlock
-    {
-        DescriptionBlock(TypeBlock id, TypeColor color) : block(id), color(color) {}
-        TypeBlock block; ///< Тип блока
-        TypeColor color; ///< Цвет блока
-    };
-
     /// @brief Описание модели игры
     struct DescriptionModel
     {
         std::vector<TypeColor> map; ///< Игровая карта
         MapSize size;               ///< Размер карты
-        std::optional<DescriptionBlock> nextBlock; ///< Следующий блок
+        AbstractBlockPtr nextBlock; ///< Следующий блок
         std::optional<unsigned int> score; ///< Текущий счет
     };
 

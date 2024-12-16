@@ -2,30 +2,43 @@
 
 #include "Forwards.h"
 #include "AbstractModel.h"
+#include "IApplication.h"
 
 
-namespace Tetris::View
-{
-    
-    class SFMLApplication
+namespace Tetris::View::SFML{
+    /// @class SFMLApplication
+    /// @brief Класс, реализующий интерфейс IApplication для графического приложения на базе SFML.
+    class SFMLApplication final: public IApplication
     {
     public:
-        SFMLApplication(AbstractModelPtr model, unsigned int countWidgets);
+        /// @brief Конструктор.
+        /// @param model Указатель на модель приложения.
+        /// @param countWidgets Количество виджетов, которые необходимо создать.
+        /// @param fontPath Путь к файлу шрифта.
+        SFMLApplication(AbstractModelPtr model, unsigned int countWidgets, const std::string& fontPath);
+        
+        /// @brief Деструктор.
         ~SFMLApplication();
 
-        void Run();
+        /// @brief Запускает основной цикл приложения.
+        void Run() override;
 
-        bool isExecution() const; 
+        /// @brief Проверяет, выполняется ли приложение.
+        /// @return true, если приложение выполняется; false в противном случае.
+        bool isExecution() const override; 
 
     private:
-        std::string _pathFont;
-        unsigned int _count;
+        /// @brief Создает виджеты приложения.
+        void CreateWidgets();
 
-        std::list<AbstractWidgetPtr> _widgets;
-        AbstractModelPtr _model;
+        /// @brief Обновляет состояние виджетов.
+        void UpdateWidgets();
 
-        std::thread _thread;
-        std::atomic<bool> _execution;
+        std::string _pathFont; ///< Путь к шрифту.
+        unsigned int _count; ///< Количество виджетов.
+        std::list<AbstractWidgetPtr> _widgets; ///< Список виджетов.
+        AbstractModelPtr _model; ///< Указатель на модель приложения.
+        std::thread _thread; ///< Поток для выполнения приложения.
+        std::atomic<bool> _execution; ///< Флаг для управления выполнением приложения.
     };
-
-} // namespace
+} // namespace Tetris::View::SFML

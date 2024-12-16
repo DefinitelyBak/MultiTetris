@@ -10,15 +10,13 @@ FetchContent_MakeAvailable(googletest)
 add_executable(
   Tests
   ## Model
-  #${CMAKE_CURRENT_SOURCE_DIR}/Source/Precompile.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/Source/BlockTest.cpp
-  ${CMAKE_CURRENT_SOURCE_DIR}/../model/Source/Precompile.cpp
-  ${CMAKE_CURRENT_SOURCE_DIR}/../model/Source/ModelGame.cpp
-  ${CMAKE_CURRENT_SOURCE_DIR}/../model/Source/Blocks/AbstractBlock.cpp
-  ${CMAKE_CURRENT_SOURCE_DIR}/../model/Source/Types.cpp
-  ${CMAKE_CURRENT_SOURCE_DIR}/../model/Source/Map.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/Source/MapTest.cpp
-
+  #${CMAKE_CURRENT_SOURCE_DIR}/../model/Source/Precompile.cpp
+  #${CMAKE_CURRENT_SOURCE_DIR}/../model/Source/ModelGame.cpp
+  #${CMAKE_CURRENT_SOURCE_DIR}/../model/Source/Blocks/AbstractBlock.cpp
+  #${CMAKE_CURRENT_SOURCE_DIR}/../model/Source/Types.cpp
+  #${CMAKE_CURRENT_SOURCE_DIR}/../model/Source/Map.cpp
 )
 
 target_include_directories(
@@ -31,7 +29,7 @@ target_include_directories(
 target_link_libraries(
     Tests
   PRIVATE
-    #Model
+    Model
     GTest::gtest_main
 )
 

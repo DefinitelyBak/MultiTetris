@@ -1,54 +1,54 @@
 #include "SFML/SFMLApplication.h"
+#include "SFML/Widget.h"
 
-#include "SFML/SFMLWidget.h"
-
-
-namespace Tetris::View
+namespace Tetris::View::SFML
 {
+    SFMLApplication::SFMLApplication(AbstractModelPtr model, unsigned int countWidgets, const std::string& fontPath)
+        : IApplication(), _model(model), _count(countWidgets), _pathFont(fontPath), _execution(true)
+    {
+        _thread = std::thread(&SFMLApplication::Run, this);
+    }
 
-        SFMLApplication::SFMLApplication(AbstractModelPtr model, unsigned int countWidgets): _model(model), _count(countWidgets)
-        {
-            _pathFont = "C:\\Projects\\ProjectTetris\\Tetris\\src\\view\\Resources\\tuffy.ttf"; // Будет исправлено как разберусь с тем как работать с ресурсами в cmake
-            _execution = true;
-            _thread = std::thread(Tetris::View::SFMLApplication::Run, this);
-        }
-
-        SFMLApplication::~SFMLApplication()
-        {
+    SFMLApplication::~SFMLApplication()
+    {
+        _execution = false;
+        if (_thread.joinable())
             _thread.join();
-        }
+    }
 
-        void SFMLApplication::Run()
+    void SFMLApplication::CreateWidgets()
+    {
+        for (int i = 0; i < _count; ++i)
         {
-            /// проверка на дурака
-            if (!_widgets.empty())
-                return;
-
-            for(int i = 0; i < _count; ++i)
-            {
-                _widgets.push_back(std::make_shared<SFMLWidget>(_model, _pathFont));
-                _model->SetView(_widgets.back());
-            }
-
-            while(!_widgets.empty())
-            {
-                for(auto iter = _widgets.begin(); iter != _widgets.end();)
-                {
-                    if(!(*iter)->IsOpen())
-                        iter = _widgets.erase(iter);
-                    else
-                    {
-                        (*iter)->Update();
-                        ++iter;
-                    }
-                }
-            }
-
-            _execution = false;
+            AbstractWidgetPtr widget = std::make_shared<SFML::Widget>(_model, _pathFont);
+            _widgets.push_back(widget);
+            _model->SetWidget(widget);
         }
+    }
 
-        bool SFMLApplication::isExecution() const
+    void SFMLApplication::UpdateWidgets()
+    {
+        _widgets.erase(std::remove_if(_widgets.begin(), _widgets.end(),
+            [](const AbstractWidgetPtr& widget) { return !widget->IsOpen(); }), _widgets.end());
+
+        for (auto& widget : _widgets)
         {
-            return _execution;
+            widget->Update();
         }
+    }
+
+    void SFMLApplication::Run()
+    {
+        CreateWidgets();
+
+        while (_execution)
+        {
+            UpdateWidgets();
+        }
+    }
+
+    bool SFMLApplication::isExecution() const
+    {
+        return _execution;
+    }
 }

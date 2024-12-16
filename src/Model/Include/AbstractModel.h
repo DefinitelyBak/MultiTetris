@@ -84,7 +84,7 @@ namespace Tetris::Model
                 }
             }
         }
-
+        
         std::thread _worker; ///< Рабочий поток
         std::atomic<bool> _finish; ///< Флаг завершения работы модели
         boost::lockfree::stack<Command> _stack; ///< Неблокирующий стек для команд

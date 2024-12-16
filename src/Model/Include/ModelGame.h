@@ -115,16 +115,16 @@ namespace Tetris::Model
         void SpawnNewBlock(DescriptionModel &desc);
 
     private:
-        Map _map; ///< Карта игры, представляющая игровое поле
+        Map _map; //< Карта игры, представляющая игровое поле
 
-        Blocks::BlocksFactory _factory; ///< Фабрика блоков для создания игровых блоков
+        Blocks::BlocksFactory _factory; //< Фабрика блоков для создания игровых блоков
 
-        unsigned int _score{0}; ///< Текущий счет игрока
+        unsigned int _score{0}; //< Текущий счет игрока
 
-        std::random_device _device; ///< Генератор случайных чисел для выбора блоков
-        std::mt19937 _randomEngine; ///< Двигатель случайных чисел для генерации случайных значений
+        std::random_device _device; //< Генератор случайных чисел для выбора блоков
+        std::mt19937 _randomEngine; //< Двигатель случайных чисел для генерации случайных значений
 
-        AbstractBlockPtr _currentBlock; ///< Текущий активный блок, который управляется игроком
-        AbstractBlockPtr _nextBlock; ///< Следующий блок, который будет использоваться в игре
+        AbstractBlockPtr _currentBlock; //< Текущий активный блок, который управляется игроком
+        AbstractBlockPtr _nextBlock; //< Следующий блок, который будет использоваться в игре
     };
 } // namespace Tetris::Model

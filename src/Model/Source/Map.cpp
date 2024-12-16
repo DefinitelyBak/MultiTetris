@@ -106,29 +106,28 @@ namespace Tetris::Model
         return _deletedLine;
     }
 
-void Map::DeleteLines()
-{
-    for (int row = 0; row < _size.rows; ++row)
+    void Map::DeleteLines()
     {
-        bool lineFull = std::all_of(_data.begin() + row * _size.columns, 
-                                     _data.begin() + (row + 1) * _size.columns,
-                                     [](TypeColor color) { return color != TypeColor::None; });
-
-        if (lineFull)
+        for (int row = 0; row < _size.rows; ++row)
         {
-            ++_deletedLine;
+            bool lineFull = std::all_of(_data.begin() + row * _size.columns, 
+                                        _data.begin() + (row + 1) * _size.columns,
+                                        [](TypeColor color) { return color != TypeColor::None; });
 
-            for (int localRow = row; localRow < _size.rows - 1; ++localRow)
+            if (lineFull)
             {
-                std::copy(_data.begin() + (localRow + 1) * _size.columns,
-                          _data.begin() + (localRow + 2) * _size.columns,
-                          _data.begin() + localRow * _size.columns);
+                ++_deletedLine;
+
+                for (int localRow = row; localRow < _size.rows - 1; ++localRow)
+                {
+                    std::copy(_data.begin() + (localRow + 1) * _size.columns,
+                            _data.begin() + (localRow + 2) * _size.columns,
+                            _data.begin() + localRow * _size.columns);
+                }
+                --row;
             }
-            --row;
         }
     }
-}
-
 
     bool Map::IsBlockCanMove(Positions cmn) const
     {

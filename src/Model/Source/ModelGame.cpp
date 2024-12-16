@@ -59,7 +59,7 @@ namespace Tetris::Model
         _currentBlock = _nextBlock;
         _nextBlock = CreateRandomBlock();
         _map.SetBlock(_currentBlock);
-        desc.nextBlock = DescriptionBlock(_nextBlock->GetType(), _nextBlock->GetColor());
+        desc.nextBlock = _nextBlock;
     }
 
     void ModelGame::UpdateScore(DescriptionModel &desc)

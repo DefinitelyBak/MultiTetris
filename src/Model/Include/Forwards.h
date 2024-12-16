@@ -19,5 +19,4 @@ namespace Tetris
     typedef std::shared_ptr<Model::Blocks::AbstractBlock> AbstractBlockPtr;
     typedef std::shared_ptr<Model::IWidget> AbstractWidgetPtr;
     typedef std::shared_ptr<Model::AbstractModel> AbstractModelPtr;
-
 } // namespace Tetris
