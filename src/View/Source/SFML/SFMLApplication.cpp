@@ -31,6 +31,9 @@ namespace Tetris::View::SFML
         _widgets.erase(std::remove_if(_widgets.begin(), _widgets.end(),
             [](const AbstractWidgetPtr& widget) { return !widget->IsOpen(); }), _widgets.end());
 
+        if(_widgets.empty())
+            _execution = false;
+
         for (auto& widget : _widgets)
         {
             widget->Update();

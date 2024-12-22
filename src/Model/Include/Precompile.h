@@ -12,6 +12,7 @@
 #include <optional>
 #include <thread>
 #include <cmath>
+#include <mutex>
 
 #include <boost/signals2.hpp>
 #include <boost/lockfree/stack.hpp>

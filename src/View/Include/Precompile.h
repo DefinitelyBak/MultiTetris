@@ -13,3 +13,23 @@
 #include "SFML/Graphics/RenderTarget.hpp"
 #include "SFML/Graphics/Text.hpp"
 #include <SFML/Graphics.hpp>
+
+#include <QWidget>
+#include <QObject>
+#include <QLabel>
+#include <Qt>
+#include <QEvent>
+#include <QKeyEvent>
+#include <QWidget>
+#include <QWindow>
+#include <QBackingStore>
+#include <QObject>
+
+#include <Qt>
+#include <QEvent>
+#include <QKeyEvent>
+#include <QWidget>
+#include <iostream>
+
+#include <QVBoxLayout>
+#include <QHBoxLayout>

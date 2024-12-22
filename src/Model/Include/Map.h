@@ -63,6 +63,8 @@ namespace Tetris::Model
         /// @param map Ссылка на карту, на которую будет установлен блок
         void SetBlockOnMap(std::vector<TypeColor>& map);
 
+        void RotateBlock(Command cmd);
+
         AbstractBlockPtr _activeBlock; ///< Указатель на активный блок
         Position _positionBlock; ///< Положение активного блока
         std::vector<TypeColor> _data; ///< Данные карты

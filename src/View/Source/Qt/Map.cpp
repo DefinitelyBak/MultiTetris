@@ -9,51 +9,55 @@ namespace Tetris::View::Qt
     {
         switch (color)
         {
-        case Model::TypeColor::Blue :
+        case Model::TypeColor::Blue:
             return ::Qt::blue;
-        case Model::TypeColor::Green :
+        case Model::TypeColor::Green:
             return ::Qt::green;
-        case Model::TypeColor::Red :
+        case Model::TypeColor::Red:
             return ::Qt::red;
-        case Model::TypeColor::Yellow :
+        case Model::TypeColor::Yellow:
             return ::Qt::yellow;
         default:
-            break;
+            return ::Qt::black;
         }
-        return ::Qt::black;
     }
 
-    Map::Map(QWindow *parent, bool withBorder): QWindow(parent), m_backingStore(new QBackingStore(this))
+    Map::Map(QWindow *parent, bool withBorder)
+        : QWindow(parent), m_backingStore(new QBackingStore(this)), _borderWidth(0), _rows(0), _columns(0)
     {
-        if(withBorder)
+        if (withBorder)
         {
-            // Граница будет 0.01 от ширины или высоты.  
-            float borderY = float(size().height())/100;
-            float borderX = float(size().width())/100;
-
-            _borderWidth = std::max(borderY, borderX);
-
-            /// Вертикальные границы
-            _borders.push_back(QRect(0,0, _borderWidth, size().height()));
-            _borders.push_back(QRect(size().width() - _borderWidth, 0, _borderWidth, size().height()));
-            
-            /// Горизонтальные границы
-            _borders.push_back(QRect(0,0, size().width(), _borderWidth));
-            _borders.push_back(QRect(0,size().height() - _borderWidth, size().width(), _borderWidth));
+            InitializeBorders();
         }
     }
 
-    void Map::SetMap(Model::DataMap map, int rows, int columns)
+    void Map::InitializeBorders()
     {
-        // Проверка на дурака
-        if(map.empty() || rows == 0 || columns == 0 )
+        // Граница будет 0.01 от ширины или высоты.  
+        float borderY = float(size().height()) / 100;
+        float borderX = float(size().width()) / 100;
+
+        _borderWidth = std::max(borderY, borderX);
+
+        // Инициализация вертикальных и горизонтальных границ
+        _borders = {
+            QRect(0, 0, _borderWidth, size().height()), // Левый
+            QRect(size().width() - _borderWidth, 0, _borderWidth, size().height()), // Правый
+            QRect(0, 0, size().width(), _borderWidth), // Верхний
+            QRect(0, size().height() - _borderWidth, size().width(), _borderWidth) // Нижний
+        };
+    }
+
+    void Map::SetMap(const std::vector<Model::TypeColor>& map, Model::MapSize sizeMap)
+    {
+        if (map.empty() || sizeMap.rows <= 0 || sizeMap.columns <= 0)
             return;
 
         _map = map;
-        _rows = rows;
-        _columns = columns;
-        _offsetX = (size().width() - 2*_borderWidth)/_columns;
-        _offsetY = (size().height()- 2*_borderWidth)/_rows;
+        _rows = sizeMap.rows;
+        _columns = sizeMap.columns;
+        _offsetX = (size().width() - 2 * _borderWidth) / _columns;
+        _offsetY = (size().height() - 2 * _borderWidth) / _rows;
 
         renderNow();
     }
@@ -69,7 +73,6 @@ namespace Tetris::View::Qt
 
     void Map::resizeEvent(QResizeEvent *resizeEvent)
     {
-        // Изменяем размер буфера кадра, чтобы он совпадал с размером окна
         m_backingStore->resize(resizeEvent->size());
         if (isExposed())
         {
@@ -100,13 +103,11 @@ namespace Tetris::View::Qt
         QRect rect(0, 0, width(), height());
         m_backingStore->beginPaint(rect);
 
-        QPaintDevice *device = m_backingStore->paintDevice();
-        QPainter painter(device);
-
-        painter.fillRect(0, 0, width(), height(), ::Qt::black);
+        QPainter painter(m_backingStore->paintDevice());
+        painter.fillRect(rect, ::Qt::black);
         render(&painter);
-        painter.end();
 
+        painter.end();
         m_backingStore->endPaint();
         m_backingStore->flush(rect);
     }
@@ -122,30 +123,22 @@ namespace Tetris::View::Qt
             painter->drawRects(_borders);
         }
 
-
-        int i = 0;
-        for(int row = 0; row < _rows; ++row)
+        for (int row = 0; row < _rows; ++row)
         {
-            for(int column = 0; column < _columns; ++column)
+            for (int column = 0; column < _columns; ++column)
             {
                 if (auto color = _map[row * _columns + column]; color != Model::TypeColor::None)
                 {
                     painter->setBrush(QBrush(ColorFromTypeColor(color), ::Qt::BrushStyle::SolidPattern));
-                    painter->drawRect(_borderWidth + column * _offsetX,  size().height() - row * _offsetY - _offsetY - _borderWidth, _offsetX, _offsetY);
-                    ++i;
+                    painter->drawRect(
+                        _borderWidth + column * _offsetX,
+                        size().height() - row * _offsetY - _offsetY - _borderWidth,
+                        _offsetX,
+                        _offsetY
+                    );
                 }
             }
-        } 
-        /*
-        // Устанавливаем режим устранения ступенчатости фигур (anti-aliasing mode)
-        painter->setRenderHint(QPainter::Antialiasing);
-
-        // Устанавливаем кисть жёлтого цвета (цвет задан в RGB)
-        painter->setBrush(QBrush(QColor(0xFA, 0xFE, 0x78)));
-
-        // Рисуем эллипс на всё окно с отступом 5 пикселей
-        painter->drawEllipse(QRect(5, 5, width() - 10, height() - 10));
-        */
+        }
     }
 
 }

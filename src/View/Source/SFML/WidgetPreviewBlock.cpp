@@ -26,7 +26,7 @@ namespace Tetris::View::SFML
         switch (_typeShape)
         {
             case Model::TypeBlock::Iblock:
-                size = Model::MapSize{4, 6};
+                size = Model::MapSize{6, 4};
                 map =  {None, None, None, None, None, None, // 1 строка
                         None, None, None, None, None, None,
                         None, _typeColor, _typeColor, _typeColor, _typeColor, None,
@@ -34,7 +34,7 @@ namespace Tetris::View::SFML
                 break;
 
             case Model::TypeBlock::Jblock:
-                size = Model::MapSize{4, 5};
+                size = Model::MapSize{5, 4};
                 map =  {None, None, None, None, None, // 1 строка
                         None, _typeColor, _typeColor, _typeColor, None,
                         None, _typeColor, None, None, None,
@@ -42,7 +42,7 @@ namespace Tetris::View::SFML
                 break;
 
             case Model::TypeBlock::Lblock:
-                size = Model::MapSize{4, 5};
+                size = Model::MapSize{5, 4};
                 map =  {None, None, None, None, None, // 1 строка
                         None, _typeColor, _typeColor, _typeColor, None,
                         None, None, None, _typeColor, None,
@@ -58,7 +58,7 @@ namespace Tetris::View::SFML
                 break;
 
             case Model::TypeBlock::Sblock:
-                size = Model::MapSize{4, 5};
+                size = Model::MapSize{5, 4};
                 map =  {None, None, None, None, None, // 1 строка
                         None, _typeColor, _typeColor, None, None,
                         None, None, _typeColor, _typeColor, None,
@@ -66,7 +66,7 @@ namespace Tetris::View::SFML
                 break;
 
             case Model::TypeBlock::Tblock:
-                size = Model::MapSize{4, 5};
+                size = Model::MapSize{5, 4};
                 map =  {None, None, None, None, None, // 1 строка
                         None, _typeColor, _typeColor, _typeColor, None,
                         None, None, _typeColor, None, None,
@@ -74,7 +74,7 @@ namespace Tetris::View::SFML
                 break;
 
             case Model::TypeBlock::Zblock:
-                size = Model::MapSize{4, 5};
+                size = Model::MapSize{5, 4};
                 map =  {None, None, None, None, None, // 1 строка
                         None, None, _typeColor, _typeColor, None,
                         None, _typeColor, _typeColor, None, None,

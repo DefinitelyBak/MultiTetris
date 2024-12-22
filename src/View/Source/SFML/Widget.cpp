@@ -5,7 +5,7 @@
 namespace Tetris::View::SFML
 {
     Widget::Widget(AbstractModelPtr model, const std::string& pathFont)
-        : IWidget(),
+        : AbstractWidget(),
           _window({600u, 800u}, "Tetris"),
           _controller(model),
           _map(sf::Vector2f(420, 800), true),
@@ -72,12 +72,6 @@ namespace Tetris::View::SFML
         }
     }
 
-    Model::DescriptionModel Widget::GetDescriptionModel()
-    {
-        std::lock_guard<std::mutex> l(_mutex);
-        return _actualDescription;
-    }
-
     void Widget::Update()
     {
         if (IsOpen())
@@ -91,12 +85,6 @@ namespace Tetris::View::SFML
 
             Render();
         }
-    }
-
-    void Widget::SlotUpdateWidget(Model::DescriptionModel descp)
-    {
-        std::lock_guard<std::mutex> l(_mutex);
-        _actualDescription = descp;
     }
 
     void Widget::UpdateMap(const Model::DescriptionModel &descriptionModel)

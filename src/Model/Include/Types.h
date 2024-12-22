@@ -65,8 +65,8 @@ namespace Tetris::Model
     struct DescriptionModel
     {
         std::vector<TypeColor> map; ///< Игровая карта
-        MapSize size;               ///< Размер карты
-        AbstractBlockPtr nextBlock; ///< Следующий блок
+        MapSize size{0,0};               ///< Размер карты
+        AbstractBlockPtr nextBlock{nullptr}; ///< Следующий блок
         std::optional<unsigned int> score; ///< Текущий счет
     };
 

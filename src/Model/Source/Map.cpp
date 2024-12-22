@@ -14,7 +14,7 @@ namespace Tetris::Model
 
     std::vector<TypeColor> Map::GetMap()
     {
-        std::vector<TypeColor> data(_data.begin() + _size.columns, _data.end());
+        std::vector<TypeColor> data(_data.begin(), _data.end() - _size.columns);
         if (_activeBlock)
             SetBlockOnMap(data);
         return data;
@@ -22,7 +22,7 @@ namespace Tetris::Model
 
     MapSize Map::GetSize() const
     {
-        return {_size.columns, _size.rows - 1};
+        return {_size.columns, _size.rows - 1}; // Без учёта верхней границы
     }
 
     bool Map::IsFullMap() const
@@ -62,6 +62,11 @@ namespace Tetris::Model
 
         _deletedLine = 0;
 
+        if (cmn == Command::RotateRight || cmn == Command::RotateLeft)
+        {
+            RotateBlock(cmn);
+        }
+
         Position newPos = _positionBlock;
 
         if (cmn == Command::Down)
@@ -84,20 +89,6 @@ namespace Tetris::Model
             SetBlockOnMap(_data);
             _activeBlock = nullptr;
             DeleteLines();
-        }
-
-        if (cmn == Command::RotateRight || cmn == Command::RotateLeft)
-        {
-            auto from = _activeBlock->GetCurrentState();
-            auto to = _activeBlock->GetNextState(cmn);
-            Positions newDescriptionBlock = _activeBlock->GetDescription(to);
-
-            for (const auto& offset : _activeBlock->GetOffsets(from, to))
-                if (IsBlockCanMove(_positionBlock + newDescriptionBlock + offset))
-                {
-                    _activeBlock->RotateBlock(cmn);
-                    return;
-                }
         }
     }
 
@@ -133,8 +124,8 @@ namespace Tetris::Model
     {
         for (const auto& fill : cmn)
         {
-            if (fill.x >= _size.columns || fill.x < 1 ||
-                fill.y >= _size.rows || fill.y < 1)
+            if (fill.x > _size.columns || fill.x < 1 ||
+                fill.y > _size.rows || fill.y < 1)
                 return false;
 
             if (_data[_size.columns * (fill.y - 1) + fill.x - 1] != TypeColor::None)
@@ -148,6 +139,20 @@ namespace Tetris::Model
     {
         for (const auto& fill : _positionBlock + _activeBlock->GetCurrentDescription())
             map[_size.columns * (fill.y - 1) + fill.x - 1] = _activeBlock->GetColor();
+    }
+
+    void Map::RotateBlock(Command cmn)
+    {
+        auto from = _activeBlock->GetCurrentState();
+        auto to = _activeBlock->GetNextState(cmn);
+        Positions newDescriptionBlock = _activeBlock->GetDescription(to);
+
+        for (const auto& offset : _activeBlock->GetOffsets(from, to))
+            if (IsBlockCanMove(_positionBlock + newDescriptionBlock + offset))
+            {
+                _activeBlock->RotateBlock(cmn);
+                return;
+            }
     }
 
 } // namespace Tetris::Model

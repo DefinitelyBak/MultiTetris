@@ -76,7 +76,7 @@ namespace Tetris::Model
         static const std::array<int, 5> scorePoints = {0, 100, 300, 700, 1500};
         if (lines > 0 && lines <= 4)
         {
-            _score += scorePoints[lines + 1];
+            _score += scorePoints[lines];
         }
         else if (lines > 4)
         {

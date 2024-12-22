@@ -3,44 +3,46 @@
 #include "Qt/QAdapterWidget.h"
 
 
-namespace Tetris::View
+namespace Tetris::View::Qt
 {
 
-        QtApplicaion::QtApplicaion(AbstractModelPtr model, unsigned int countWidgets): _model(model), _count(countWidgets)
-        {
-            _execution = true;
-            _thread = std::thread(Tetris::View::QtApplicaion::Run, this);
-        }
+    QtApplicaion::QtApplicaion(AbstractModelPtr model, unsigned int countWidgets)
+        : _model(model), _count(countWidgets), _execution(true)
+    {
+        _thread = std::thread(&QtApplicaion::Run, this);
+    }
 
-        QtApplicaion::~QtApplicaion()
-        {
+    QtApplicaion::~QtApplicaion()
+    {
+        if (_thread.joinable())
             _thread.join();
-        }
+    }
 
-        void QtApplicaion::Run()
+    void QtApplicaion::Run()
+    {
+        char* argv[] = {"Tetris"};
+        int args = 1;
+
+        // Регистрация мета-типов для использования в сигнал-слугах.
+        qRegisterMetaType<Model::DescriptionModel>("Model::DescriptionModel");
+        qRegisterMetaType<Model::Command>("Model::Command");
+
+        QApplication app(args, argv);
+        auto adapter = std::make_shared<Qt::QAdapterWidget>(_model);
+
+        for (unsigned int i = 0; i < _count; ++i)
         {
-            char* argv[] = {"Tetris"};
-            int args = 1;
-
-            qRegisterMetaType<Model::DescriptionModel>("Model::DescriptionModel");
-            qRegisterMetaType<Model::Command>("Model::Command");
-
-            QApplication app(args, argv);
-            std::shared_ptr<Qt::QAdapterWidget> adapter = std::make_shared<Qt::QAdapterWidget>(_model);
-            AbstractWidgetPtr ptr = adapter;
-            
-            for(int i = 0; i < _count; ++i)
-            {
-                adapter->SetWidget();
-            }
-            
-            _model->SetView(ptr);
-            app.exec();
-            _execution = false;
+            adapter->CreateWidget();
         }
 
-        bool QtApplicaion::isExecution() const
-        {
-            return _execution;
-        }
+        _model->SetWidget(adapter);
+        app.exec();
+        _execution = false;
+    }
+
+
+    bool QtApplicaion::isExecution() const
+    {
+        return _execution;
+    }
 }

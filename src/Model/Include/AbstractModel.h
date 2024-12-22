@@ -5,7 +5,7 @@
 #include "Forwards.h"
 #include "Types.h"
 
-#include "IWidget.h"
+#include "AbstractWidget.h"
 
 
 namespace Tetris::Model
@@ -29,7 +29,7 @@ namespace Tetris::Model
         virtual ~AbstractModel()
         {
             StopModel();
-            SignalCloseWidgets(); // Генерация сигнала для закрытия виджетов
+            SignalCloseWidgets();
         }
 
         /// @brief Метод для обновления модели с полученной командой
@@ -43,13 +43,13 @@ namespace Tetris::Model
         /// @param view Указатель на виджет
         void SetWidget(AbstractWidgetPtr view)
         {
-            SignalUpdateWidgets.connect(TypeSignalUpdateWidgets::slot_type(&IWidget::SlotUpdateWidget, view.get(), boost::placeholders::_1).track_foreign(view));
-            SignalCloseWidgets.connect(TypeSignalCloseWidgets::slot_type(boost::bind(&IWidget::SlotCloseWidget, view.get())).track_foreign(view));
+            SignalUpdateWidgets.connect(TypeSignalUpdateWidgets::slot_type(&AbstractWidget::SlotUpdateWidget, view.get(), boost::placeholders::_1).track_foreign(view));
+            SignalCloseWidgets.connect(TypeSignalCloseWidgets::slot_type(boost::bind(&AbstractWidget::SlotCloseWidget, view.get())).track_foreign(view));
         }
 
     protected:
         TypeSignalUpdateWidgets SignalUpdateWidgets; ///< Сигнал для обновления виджетов
-        TypeSignalCloseWidgets SignalCloseWidgets;     ///< Сигнал для закрытия виджетов
+        TypeSignalCloseWidgets SignalCloseWidgets; ///< Сигнал для закрытия виджетов
 
         /// @brief Чисто виртуальный метод для обновления модели
         /// @param command Команда для обновления
