@@ -5,6 +5,7 @@
 #include "Forwards.h"
 #include "Types.h"
 
+#include "DescriptionModel.h"
 #include "AbstractWidget.h"
 
 
@@ -15,7 +16,7 @@ namespace Tetris::Model
     {
     public:
         /// @brief Сигнал для обновления виджетов с описанием модели
-        using TypeSignalUpdateWidgets = boost::signals2::signal<void(DescriptionModel)>;
+        using TypeSignalUpdateWidgets = boost::signals2::signal<void(DescriptionModelPtr)>;
         /// @brief Сигнал для закрытия виджетов
         using TypeSignalCloseWidgets = boost::signals2::signal<void()>;
 
@@ -54,7 +55,7 @@ namespace Tetris::Model
         /// @brief Чисто виртуальный метод для обновления модели
         /// @param command Команда для обновления
         /// @param desc Ссылка на описание модели
-        virtual void UpdateModel(Command command, DescriptionModel& desc) = 0;
+        virtual void UpdateModel(Command command, DescriptionModelPtr& desc) = 0;
 
     private:
         /// @brief Запуск рабочего потока модели
@@ -78,7 +79,7 @@ namespace Tetris::Model
             {
                 if (_stack.pop(cmd))
                 {
-                    DescriptionModel desc;
+                    DescriptionModelPtr desc = std::make_shared<Model::DescriptionModel>();
                     UpdateModel(cmd, desc);
                     SignalUpdateWidgets(desc);
                 }

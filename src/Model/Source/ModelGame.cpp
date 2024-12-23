@@ -29,7 +29,7 @@ namespace Tetris::Model
         _factory.add<Blocks::Zblock>(TypeBlock::Zblock);
     }
 
-    void ModelGame::UpdateModel(Command command, DescriptionModel &desc)
+    void ModelGame::UpdateModel(Command command, DescriptionModelPtr &desc)
     {
         if (_map.IsFullMap())
         {
@@ -43,31 +43,31 @@ namespace Tetris::Model
 
         _map.MoveBlock(command);
         UpdateScore(desc);
-        desc.map = _map.GetMap();
-        desc.size = _map.GetSize(); 
+        desc->map = _map.GetMap();
+        desc->size = _map.GetSize(); 
     }
 
-    void ModelGame::ResetGame(DescriptionModel &desc)
+    void ModelGame::ResetGame(DescriptionModelPtr &desc)
     {
         _map.Restart();
         _score = 0;
-        desc.score = _score;
+        desc->score = _score;
     }
 
-    void ModelGame::SpawnNewBlock(DescriptionModel &desc)
+    void ModelGame::SpawnNewBlock(DescriptionModelPtr &desc)
     {
         _currentBlock = _nextBlock;
         _nextBlock = CreateRandomBlock();
         _map.SetBlock(_currentBlock);
-        desc.nextBlock = _nextBlock;
+        desc->nextBlock = _nextBlock;
     }
 
-    void ModelGame::UpdateScore(DescriptionModel &desc)
+    void ModelGame::UpdateScore(DescriptionModelPtr &desc)
     {
         if (auto deletedLines = _map.GetCountDeletedLines(); deletedLines)
         {
             AddScore(deletedLines);
-            desc.score = _score;
+            desc->score = _score;
         }
     }
 

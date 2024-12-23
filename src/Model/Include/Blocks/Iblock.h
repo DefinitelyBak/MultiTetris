@@ -6,7 +6,6 @@
 // I, J, L, O, S, T, Z Блоки и их описания
 namespace Tetris::Model::Blocks
 {
-
     /// @brief класс I блок
     class Iblock final : public AbstractBlock
     {
@@ -21,8 +20,8 @@ namespace Tetris::Model::Blocks
                         Position(-1, 0), // *  *  *  *  *
                         Position( 0, 0), // *  *  *  *  *
                         Position( 1, 0), // *  о  0  о  о
-                        Position( 2, 0)     // *  *  *  *  *
-                    }                     // *  *  *  *  *
+                        Position( 2, 0)  // *  *  *  *  *
+                    }                    // *  *  *  *  *
                 },
                 {State::Right,
                     {
@@ -30,7 +29,7 @@ namespace Tetris::Model::Blocks
                         Position(0, 0), // *  *  о  *  *
                         Position(0,-1), // *  *  0  *  *
                         Position(0,-2)  // *  *  о  *  *
-                    }                    // *  *  о  *  *
+                    }                   // *  *  о  *  *
                 },                       
                 {State::Down,
                     {
@@ -38,7 +37,7 @@ namespace Tetris::Model::Blocks
                         Position( 0, 0), // *  *  *  *  *
                         Position(-1, 0), // о  о  0  о  *
                         Position(-2, 0)  // *  *  *  *  *
-                    }                     // *  *  *  *  *
+                    }                    // *  *  *  *  *
                 },                         
                 {State::Left,
                     {
@@ -46,7 +45,7 @@ namespace Tetris::Model::Blocks
                         Position( 0, 0), // *  *  о  *  *
                         Position( 0, 1), // *  *  0  *  *
                         Position( 0, 2)  // *  *  о  *  *
-                    }                     // *  *  *  *  *
+                    }                    // *  *  *  *  *
                 } 
             };
 
@@ -55,7 +54,7 @@ namespace Tetris::Model::Blocks
 
         /// @brief Получение типа блока
         /// @return Идентификатор формы блока
-        TypeBlock GetType() const
+        TypeBlock GetType() const override
         {
             return TypeBlock::Iblock;
         };

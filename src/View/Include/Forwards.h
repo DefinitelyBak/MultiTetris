@@ -18,6 +18,9 @@ namespace Tetris
     
     namespace View
     {
+        class IApplication;
+
+        typedef std::shared_ptr<IApplication> AbstractApplicationPtr;
         typedef std::shared_ptr<Model::Blocks::AbstractBlock> AbstractBlockPtr;
         typedef std::shared_ptr<Model::AbstractWidget> AbstractWidgetPtr;
         typedef std::shared_ptr<Model::AbstractModel> AbstractModelPtr;

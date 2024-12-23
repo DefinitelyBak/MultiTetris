@@ -57,13 +57,21 @@ namespace Tetris::Model
         /// @brief Проверить, можно ли установить блок в указанное положение
         /// @param pos Положение блока
         /// @return True, если блок может быть установлен, иначе false
-        bool IsBlockCanMove(Positions pos) const;
+        bool IsBlockCanMove(Positions pos);
 
         /// @brief Установить блок на карту
         /// @param map Ссылка на карту, на которую будет установлен блок
         void SetBlockOnMap(std::vector<TypeColor>& map);
 
+        /// @brief Повернуть блок
+        /// @param cmd Команда
         void RotateBlock(Command cmd);
+
+        /// @brief 
+        /// @param map 
+        /// @param pos 
+        /// @return 
+        TypeColor& GetFild(std::vector<TypeColor>& map, const Position& pos);
 
         AbstractBlockPtr _activeBlock; ///< Указатель на активный блок
         Position _positionBlock; ///< Положение активного блока

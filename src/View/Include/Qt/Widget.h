@@ -74,13 +74,13 @@ namespace Tetris::View::Qt
          * @brief Слот для обновления представления на основе модели описания.
          * @param descp Модель описания, используемая для обновления представления.
          */
-        void SlotUpdateView(Model::DescriptionModel descp);
+        void SlotUpdateView(DescriptionModelPtr descp);
 
         /**
          * @brief Получает текущее состояние модели описания.
          * @return Текущая модель описания состояния игры.
          */
-        Model::DescriptionModel GetDescriptionModel();
+        DescriptionModelPtr GetDescriptionModel();
 
     signals:
         /**
@@ -96,7 +96,7 @@ namespace Tetris::View::Qt
         
         PreviewBlock* _preview; ///< Указатель на объект предварительного блока
         std::mutex _mutex; ///< Мьютекс для синхронизации доступа к данным
-        Model::DescriptionModel _descriptionModel; ///< Модель описания состояния игры
+        DescriptionModelPtr _descriptionModel; ///< Модель описания состояния игры
     };
 } // namespace Tetris::View::Qt
 

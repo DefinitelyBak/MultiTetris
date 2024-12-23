@@ -24,7 +24,7 @@ namespace Tetris::View::Qt
         int args = 1;
 
         // Регистрация мета-типов для использования в сигнал-слугах.
-        qRegisterMetaType<Model::DescriptionModel>("Model::DescriptionModel");
+        qRegisterMetaType<DescriptionModelPtr>("DescriptionModelPtr");
         qRegisterMetaType<Model::Command>("Model::Command");
 
         QApplication app(args, argv);

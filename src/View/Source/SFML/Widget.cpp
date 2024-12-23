@@ -78,33 +78,36 @@ namespace Tetris::View::SFML
         {
             HandleEvents();
 
-            Model::DescriptionModel descriptionModel = GetDescriptionModel();
-            UpdateMap(descriptionModel);
-            UpdatePreviewBlock(descriptionModel);
-            UpdateScore(descriptionModel);
+            DescriptionModelPtr descriptionModel = GetDescriptionModel();
+            if(descriptionModel)
+            {
+                UpdateMap(descriptionModel);
+                UpdatePreviewBlock(descriptionModel);
+                UpdateScore(descriptionModel);
 
-            Render();
+                Render();
+            }
         }
     }
 
-    void Widget::UpdateMap(const Model::DescriptionModel &descriptionModel)
+    void Widget::UpdateMap(const DescriptionModelPtr &descriptionModel)
     {
-        _map.SetMap(descriptionModel.map, descriptionModel.size);
+        _map.SetMap(descriptionModel->map, descriptionModel->size);
     }
 
-    void Widget::UpdatePreviewBlock(const Model::DescriptionModel& descriptionModel)
+    void Widget::UpdatePreviewBlock(const DescriptionModelPtr& descriptionModel)
     {
-        if (descriptionModel.nextBlock)
+        if (descriptionModel->nextBlock)
         {
-            _previewBlock.SetBlock(descriptionModel.nextBlock);
+            _previewBlock.SetBlock(descriptionModel->nextBlock);
         }
     }
 
-    void Widget::UpdateScore(const Model::DescriptionModel& descriptionModel)
+    void Widget::UpdateScore(const DescriptionModelPtr& descriptionModel)
     {
-        if (descriptionModel.score)
+        if (descriptionModel->score)
         {
-            _score.setString("Score:\n" + std::to_string(*descriptionModel.score));
+            _score.setString("Score:\n" + std::to_string(*descriptionModel->score));
         }
     }
 

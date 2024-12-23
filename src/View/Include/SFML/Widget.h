@@ -47,13 +47,13 @@ namespace Tetris::View::SFML
         void HandleKeyPress(sf::Keyboard::Scancode scancode);
 
         // Метод для обновления карты на основе состояния модели.
-        void UpdateMap(const Model::DescriptionModel& descriptionModel);
+        void UpdateMap(const DescriptionModelPtr& descriptionModel);
 
         // Метод для обновления блока предварительного просмотра.
-        void UpdatePreviewBlock(const Model::DescriptionModel& descriptionModel);
+        void UpdatePreviewBlock(const DescriptionModelPtr& descriptionModel);
 
         // Метод для обновления отображаемого счета.
-        void UpdateScore(const Model::DescriptionModel& descriptionModel);
+        void UpdateScore(const DescriptionModelPtr& descriptionModel);
 
         // Метод для отрисовки всех компонентов виджета на экране.
         void Render();

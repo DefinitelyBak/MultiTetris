@@ -32,7 +32,7 @@ namespace Tetris::Model
         /// 
         /// @param command Команда для обновления модели
         /// @param desc Описание текущего состояния модели
-        void UpdateModel(Command command, DescriptionModel& desc) override;
+        void UpdateModel(Command command, DescriptionModelPtr& desc) override;
 
     private:
         /// @brief Добавление очков за удаленные линии
@@ -96,7 +96,7 @@ namespace Tetris::Model
         /// обновляет описание модели.
         /// 
         /// @param desc Описание текущего состояния модели
-        void ResetGame(DescriptionModel &desc);
+        void ResetGame(DescriptionModelPtr &desc);
 
         /// @brief Обновление счета
         /// 
@@ -104,7 +104,7 @@ namespace Tetris::Model
         /// и обновляет описание модели.
         /// 
         /// @param desc Описание текущего состояния модели
-        void UpdateScore(DescriptionModel &desc);
+        void UpdateScore(DescriptionModelPtr &desc);
 
         /// @brief Спавн нового блока
         /// 
@@ -112,7 +112,7 @@ namespace Tetris::Model
         /// для отображения следующего блока.
         /// 
         /// @param desc Описание текущего состояния модели
-        void SpawnNewBlock(DescriptionModel &desc);
+        void SpawnNewBlock(DescriptionModelPtr &desc);
 
     private:
         Map _map; //< Карта игры, представляющая игровое поле

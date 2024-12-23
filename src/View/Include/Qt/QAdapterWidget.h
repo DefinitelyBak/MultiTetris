@@ -36,7 +36,7 @@ namespace Tetris::View::Qt
 
         /// @brief Обновление виджетов на основе описания модели
         /// @param desc Описание текущего состояния модели
-        void UpdateWidgets(Model::DescriptionModel desc)
+        void UpdateWidgets(DescriptionModelPtr desc)
         {
             emit signalUpdateWidget(desc); // Генерируем сигнал обновления виджетов
         }
@@ -51,7 +51,7 @@ namespace Tetris::View::Qt
 
     signals:
         /// @brief Сигнал для обновления виджетов
-        void signalUpdateWidget(Model::DescriptionModel desc);
+        void signalUpdateWidget(DescriptionModelPtr desc);
         /// @brief Сигнал для закрытия виджетов
         void signalCloseWidget();
 
@@ -82,7 +82,7 @@ namespace Tetris::View::Qt
 
         /// @brief Обновление виджета на основе описания модели
         /// @param descp Описание текущего состояния модели
-        virtual void SlotUpdateWidget(Model::DescriptionModel descp) override
+        virtual void SlotUpdateWidget(DescriptionModelPtr descp) override
         {
             _adapter->UpdateWidgets(descp); // Передаем обновление адаптеру
         }

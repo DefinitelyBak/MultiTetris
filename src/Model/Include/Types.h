@@ -61,15 +61,6 @@ namespace Tetris::Model
     /// @brief Смещения
     using Offsets = std::array<Position, 5>;
 
-    /// @brief Описание модели игры
-    struct DescriptionModel
-    {
-        std::vector<TypeColor> map; ///< Игровая карта
-        MapSize size{0,0};               ///< Размер карты
-        AbstractBlockPtr nextBlock{nullptr}; ///< Следующий блок
-        std::optional<unsigned int> score; ///< Текущий счет
-    };
-
     // Операции с Offsets
     Offsets operator+(const Offsets& lhs, const Offsets& rhs);
     Offsets operator-(const Offsets& lhs, const Offsets& rhs);

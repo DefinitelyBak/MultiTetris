@@ -120,15 +120,14 @@ namespace Tetris::Model
         }
     }
 
-    bool Map::IsBlockCanMove(Positions cmn) const
+    bool Map::IsBlockCanMove(Positions cmn)
     {
-        for (const auto& fill : cmn)
+        for (const auto& fild : cmn)
         {
-            if (fill.x > _size.columns || fill.x < 1 ||
-                fill.y > _size.rows || fill.y < 1)
+            if (fild.x > _size.columns || fild.x < 1 || fild.y > _size.rows || fild.y < 1)
                 return false;
 
-            if (_data[_size.columns * (fill.y - 1) + fill.x - 1] != TypeColor::None)
+            if (GetFild(_data, fild) != TypeColor::None)
                 return false;
         }
 
@@ -137,8 +136,8 @@ namespace Tetris::Model
 
     void Map::SetBlockOnMap(std::vector<TypeColor>& map) // Исправлено: передаем по ссылке
     {
-        for (const auto& fill : _positionBlock + _activeBlock->GetCurrentDescription())
-            map[_size.columns * (fill.y - 1) + fill.x - 1] = _activeBlock->GetColor();
+        for (const auto& fild : _positionBlock + _activeBlock->GetCurrentDescription())
+            GetFild(map, fild) = _activeBlock->GetColor();
     }
 
     void Map::RotateBlock(Command cmn)
@@ -153,6 +152,11 @@ namespace Tetris::Model
                 _activeBlock->RotateBlock(cmn);
                 return;
             }
+    }
+
+    TypeColor& Map::GetFild(std::vector<TypeColor>& map, const Position& pos)
+    {
+        return map[_size.columns * (pos.y - 1) + pos.x - 1];
     }
 
 } // namespace Tetris::Model

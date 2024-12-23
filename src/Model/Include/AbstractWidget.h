@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Precompile.h"
+#include "Forwards.h"
 #include "Types.h"
 
 
@@ -25,7 +26,7 @@ namespace Tetris::Model
 
         /// @brief Обновление виджета на основе описания модели
         /// @param descp Описание текущего состояния модели
-        virtual void SlotUpdateWidget(Model::DescriptionModel descp)
+        virtual void SlotUpdateWidget(DescriptionModelPtr descp)
         {
             std::scoped_lock<std::mutex> l(_mutex);
             _descriptionModel = descp;
@@ -33,7 +34,7 @@ namespace Tetris::Model
 
         /// @brief Обновление виджета на основе описания модели
         /// @return descp Описание текущего состояния модели
-        Model::DescriptionModel GetDescriptionModel()
+        DescriptionModelPtr GetDescriptionModel()
         {
             std::scoped_lock<std::mutex> l(_mutex);
             return _descriptionModel;
@@ -41,6 +42,6 @@ namespace Tetris::Model
 
     private:
         std::mutex _mutex;
-        Model::DescriptionModel _descriptionModel;
+        DescriptionModelPtr _descriptionModel;
     };
 } // namespace Tetris::Model

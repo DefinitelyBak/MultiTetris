@@ -99,15 +99,18 @@ namespace Tetris::View::Qt
 
     void Widget::paintEvent(QPaintEvent* event)
     {
-        Model::DescriptionModel descriptionModel = GetDescriptionModel();
-        _map->SetMap(descriptionModel.map, descriptionModel.size);
-        if (descriptionModel.nextBlock)
-            _preview->SetBlock(descriptionModel.nextBlock);
-        if (descriptionModel.score)
-            _text->setText(QString("Score:\n") + QString::number(descriptionModel.score.value()));
+        DescriptionModelPtr descriptionModel = GetDescriptionModel();
+        if(descriptionModel)
+        {
+        _map->SetMap(descriptionModel->map, descriptionModel->size);
+        if (descriptionModel->nextBlock)
+            _preview->SetBlock(descriptionModel->nextBlock);
+        if (descriptionModel->score)
+            _text->setText(QString("Score:\n") + QString::number(descriptionModel->score.value()));
+        }
     }
 
-    void Widget::SlotUpdateView(Model::DescriptionModel descp)
+    void Widget::SlotUpdateView(DescriptionModelPtr descp)
     {
         {
             std::lock_guard<std::mutex> l(_mutex);
@@ -116,7 +119,7 @@ namespace Tetris::View::Qt
         update();
     }
 
-    Model::DescriptionModel Widget::GetDescriptionModel()
+    DescriptionModelPtr Widget::GetDescriptionModel()
     {
         std::lock_guard<std::mutex> l(_mutex);
         return _descriptionModel;
