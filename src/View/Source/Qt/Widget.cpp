@@ -34,6 +34,7 @@ namespace Tetris::View::Qt
 
     void Widget::setupPreviewContainer()
     {
+        QWidget* shell = new QWidget(this);
         QWidget* containerPrev = QWidget::createWindowContainer(_preview, this);
         containerPrev->setMinimumSize(180, 150);
         containerPrev->setMaximumSize(180, 150);
@@ -46,8 +47,9 @@ namespace Tetris::View::Qt
         auto temp = new QWidget(this);
         temp->setMaximumWidth(180);
         hLayout->addWidget(temp);
+        shell->setLayout(hLayout);
 
-        qobject_cast<QHBoxLayout*>(layout())->addLayout(hLayout);
+        layout()->addWidget(shell);
     }
 
     QLabel* Widget::createScoreLabel()

@@ -57,7 +57,7 @@ namespace Tetris::Model
     void ModelGame::SpawnNewBlock(DescriptionModelPtr &desc)
     {
         _currentBlock = _nextBlock;
-        _nextBlock = CreateRandomBlock();
+        _nextBlock = CreateRandomBlock(_nextBlock);
         _map.SetBlock(_currentBlock);
         desc->nextBlock = _nextBlock;
     }
