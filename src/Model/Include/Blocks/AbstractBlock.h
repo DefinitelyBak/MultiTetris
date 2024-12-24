@@ -9,7 +9,7 @@ namespace Tetris::Model::Blocks
     /// @brief Состояние фигуры
     enum class State : int
     {
-        Up = 1,
+        Up,
         Right,
         Down,
         Left

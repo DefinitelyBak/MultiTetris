@@ -14,21 +14,22 @@ namespace Tetris::Model
 
     std::vector<TypeColor> Map::GetMap()
     {
-        std::vector<TypeColor> data(_data.begin(), _data.end() - _size.columns);
+        std::vector<TypeColor> data(_data);
         if (_activeBlock)
             SetBlockOnMap(data);
-        return data;
+        return std::vector<TypeColor>(data.begin(), data.end() - _size.columns);
     }
 
     MapSize Map::GetSize() const
     {
-        return {_size.columns, _size.rows - 1}; // Без учёта верхней границы
+        return {_size.columns, _size.rows - 1};
     }
 
-    bool Map::IsFullMap() const
+    bool Map::IsFullMap()
     {
+        Position lastRow{0, _size.rows - 1};
         for (size_t i = 0; i < _size.columns; ++i)
-            if (_data[(_size.rows - 1) * _size.columns + i] != TypeColor::None)
+            if (GetField(_data, lastRow + Position{i, 0}) != TypeColor::None)
                 return true;
 
         return false;
@@ -46,7 +47,7 @@ namespace Tetris::Model
         if (shape->GetType() != TypeBlock::None)
         {
             _activeBlock = shape;
-            _positionBlock = Position(std::round(_size.columns / 2.0), _size.rows - 1);
+            _positionBlock = Position(std::round(_size.columns / 2.0), _size.rows - 2);
         }
     }
 
@@ -65,6 +66,7 @@ namespace Tetris::Model
         if (cmn == Command::RotateRight || cmn == Command::RotateLeft)
         {
             RotateBlock(cmn);
+            return;
         }
 
         Position newPos = _positionBlock;
@@ -92,7 +94,7 @@ namespace Tetris::Model
         }
     }
 
-    unsigned int Map::GetCountDeletedLines() const // Исправлено: добавлен const
+    unsigned int Map::GetCountDeletedLines() const
     {
         return _deletedLine;
     }
@@ -122,22 +124,22 @@ namespace Tetris::Model
 
     bool Map::IsBlockCanMove(Positions cmn)
     {
-        for (const auto& fild : cmn)
+        for (const auto& field : cmn)
         {
-            if (fild.x > _size.columns || fild.x < 1 || fild.y > _size.rows || fild.y < 1)
+            if (field.x >= _size.columns || field.x < 0 || field.y >= _size.rows || field.y < 0)
                 return false;
 
-            if (GetFild(_data, fild) != TypeColor::None)
+            if (GetField(_data, field) != TypeColor::None)
                 return false;
         }
 
         return true;
     }
 
-    void Map::SetBlockOnMap(std::vector<TypeColor>& map) // Исправлено: передаем по ссылке
+    void Map::SetBlockOnMap(std::vector<TypeColor>& map)
     {
         for (const auto& fild : _positionBlock + _activeBlock->GetCurrentDescription())
-            GetFild(map, fild) = _activeBlock->GetColor();
+            GetField(map, fild) = _activeBlock->GetColor();
     }
 
     void Map::RotateBlock(Command cmn)
@@ -146,17 +148,20 @@ namespace Tetris::Model
         auto to = _activeBlock->GetNextState(cmn);
         Positions newDescriptionBlock = _activeBlock->GetDescription(to);
 
-        for (const auto& offset : _activeBlock->GetOffsets(from, to))
+        for (auto& offset : _activeBlock->GetOffsets(from, to))
+        {
             if (IsBlockCanMove(_positionBlock + newDescriptionBlock + offset))
             {
                 _activeBlock->RotateBlock(cmn);
+                _positionBlock = _positionBlock + offset;
                 return;
             }
+        }
     }
 
-    TypeColor& Map::GetFild(std::vector<TypeColor>& map, const Position& pos)
+    TypeColor& Map::GetField(std::vector<TypeColor>& map, const Position& pos)
     {
-        return map[_size.columns * (pos.y - 1) + pos.x - 1];
+        return map.at(_size.columns * pos.y + pos.x);
     }
 
 } // namespace Tetris::Model

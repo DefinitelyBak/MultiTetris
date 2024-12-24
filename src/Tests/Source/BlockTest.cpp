@@ -45,7 +45,8 @@ namespace Tetris::Tests
         AbstractBlockPtr block(_factory.Create(TypeBlock::Iblock, TypeColor::Green));
         ASSERT_EQ(block->GetCurrentState(), State::Up);
 
-        for (int i = 0; i < 4; ++i) {
+        for (int i = 0; i < 4; ++i)
+        {
             ASSERT_EQ(block->GetNextState(Command::RotateRight), static_cast<State>((i + 1) % 4));
             block->RotateBlock(Command::RotateRight);
             ASSERT_EQ(block->GetCurrentState(), static_cast<State>((i + 1) % 4));
@@ -57,7 +58,8 @@ namespace Tetris::Tests
         AbstractBlockPtr block(_factory.Create(TypeBlock::Iblock, TypeColor::Green));
         ASSERT_EQ(block->GetCurrentState(), State::Up);
 
-        for (int i = 0; i < 4; ++i) {
+        for (int i = 1; i < 5; ++i) {
+            State debug = static_cast<State>((4 - i) % 4);
             ASSERT_EQ(block->GetNextState(Command::RotateLeft), static_cast<State>((4 - i) % 4));
             block->RotateBlock(Command::RotateLeft);
             ASSERT_EQ(block->GetCurrentState(), static_cast<State>((4 - i) % 4));
@@ -117,8 +119,12 @@ namespace Tetris::Tests
             {State::Down, State::Left},
             {State::Left, State::Up}
         };
-        Offsets templateOffset = {Position(0,1), Position(0,1), Position(0,1), Position(0,1), Position(0,1)};
-        std::vector<Offsets> expectedOffsets(4, templateOffset);
+        std::vector<Offsets> expectedOffsets = {
+            {Position(0,1), Position(0,1), Position(0,1), Position(0,1), Position(0,1)},
+            {Position(1,0), Position(1,0), Position(1,0), Position(1,0), Position(1,0)},
+            {Position(0,-1), Position(0,-1), Position(0,-1), Position(0,-1), Position(0,-1)},
+            {Position(-1,0), Position(-1,0), Position(-1,0), Position(-1,0), Position(-1,0)}
+        };
         TestOffsets(Oblock, states, expectedOffsets);
     }
 }

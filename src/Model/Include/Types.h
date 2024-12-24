@@ -51,8 +51,8 @@ namespace Tetris::Model
     /// @brief Координаты фигуры относительно центра
     struct Position
 	{
-		int x;
-		int y;
+		size_t x;
+		size_t y;
 	};
 
     /// @brief Контейнер - описание положения фигуры

@@ -29,7 +29,7 @@ namespace Tetris::Model
 
         /// @brief Проверить, заполнена ли карта
         /// @return True, если карта заполнена, иначе false
-        bool IsFullMap() const;
+        bool IsFullMap();
 
         /// @brief Перезапустить карту, очищая её
         void Restart();
@@ -71,7 +71,7 @@ namespace Tetris::Model
         /// @param map 
         /// @param pos 
         /// @return 
-        TypeColor& GetFild(std::vector<TypeColor>& map, const Position& pos);
+        TypeColor& GetField(std::vector<TypeColor>& map, const Position& pos);
 
         AbstractBlockPtr _activeBlock; ///< Указатель на активный блок
         Position _positionBlock; ///< Положение активного блока

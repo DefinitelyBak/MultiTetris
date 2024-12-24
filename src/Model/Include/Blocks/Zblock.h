@@ -33,9 +33,9 @@ namespace Tetris::Model::Blocks
                     Position(-1, 0)   // *  o  o
                 }},
                 {State::Left, {
-                    Position(-1, -1),  // *  *  o
-                    Position(-1, 0),   // *  0  o
-                    Position(0, 0),    // *  o  *
+                    Position(-1,-1),   // *  o  *
+                    Position(-1, 0),   // o  0  *
+                    Position(0, 0),    // o  *  *
                     Position(0, 1)     // *  *  *
                 }}  
             };
