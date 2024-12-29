@@ -1,5 +1,5 @@
-#include "Map.h"
-#include "Factory/BlocksFactory.h"
+#include <Model/Map.h>
+#include <Model/Factory/BlocksFactory.h>
 
 
 namespace Tetris::Model

@@ -1,15 +1,16 @@
 #include <gtest/gtest.h>
 
-#include "Precompile.h"
+#include <array>
+#include <vector>
 
-#include "Factory/BlocksFactory.h"
-#include "blocks/Iblock.h"
-#include "blocks/Jblock.h"
-#include "blocks/Lblock.h"
-#include "blocks/Oblock.h"
-#include "blocks/Sblock.h"
-#include "blocks/Tblock.h"
-#include "blocks/Zblock.h"
+#include <Model/Factory/BlocksFactory.h>
+#include <Model/blocks/Iblock.h>
+#include <Model/blocks/Jblock.h>
+#include <Model/blocks/Lblock.h>
+#include <Model/blocks/Oblock.h>
+#include <Model/blocks/Sblock.h>
+#include <Model/blocks/Tblock.h>
+#include <Model/blocks/Zblock.h>
 
 
 namespace Tetris::Tests

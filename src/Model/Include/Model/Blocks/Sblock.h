@@ -1,12 +1,12 @@
 #pragma once
 
-#include "AbstractBlock.h"
+#include <Model/Blocks/AbstractBlock.h>
 
 
 namespace Tetris::Model::Blocks
 {
     /// @brief класс S блок
-    class Sblock final : public AbstractBlock
+    class MODEL_EXPORT Sblock final : public AbstractBlock
     {
     public:
         /// @brief Конструктор

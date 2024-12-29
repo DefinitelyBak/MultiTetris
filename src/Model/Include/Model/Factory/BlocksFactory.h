@@ -1,13 +1,15 @@
 #pragma once
 
-#include "Forwards.h"
-#include "ObjectFactory.h"
+#include <Model/Export.h>
+
+#include <Model/Forwards.h>
+#include <Model/Factory/ObjectFactory.h>
 
 
 namespace Tetris::Model::Blocks
 {
     /// @brief Фабрика для создания блоков в игре Тетрис.
-    class BlocksFactory final : public ObjectFactory<AbstractBlock, TypeBlock>
+    class MODEL_EXPORT BlocksFactory final : public ObjectFactory<AbstractBlock, TypeBlock>
     {
     public:
         /// @brief Создать блок с заданным идентификатором и цветом.

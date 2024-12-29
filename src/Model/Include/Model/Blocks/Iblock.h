@@ -1,13 +1,13 @@
 #pragma once
 
-#include "AbstractBlock.h"
+#include <Model/Blocks/AbstractBlock.h>
 
 
 // I, J, L, O, S, T, Z Блоки и их описания
 namespace Tetris::Model::Blocks
 {
     /// @brief класс I блок
-    class Iblock final : public AbstractBlock
+    class MODEL_EXPORT Iblock final : public AbstractBlock
     {
     public:
         /// @brief Конструктор

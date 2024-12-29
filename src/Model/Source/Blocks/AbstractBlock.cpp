@@ -1,4 +1,4 @@
-#include "blocks/AbstractBlock.h"
+#include <Model/Blocks/AbstractBlock.h>
 
 
 namespace Tetris::Model::Blocks

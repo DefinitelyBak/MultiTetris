@@ -1,13 +1,14 @@
 #pragma once
 
-#include "Precompile.h"
+#include <Model/Export.h>
 
-#include "Forwards.h"
-#include "Types.h"
+#include <Model/Precompile.h>
+#include <Model/Forwards.h>
 
-#include "AbstractModel.h"
-#include "Map.h"
-#include "Factory/BlocksFactory.h"
+#include <Model/Types.h>
+#include <Model/AbstractModel.h>
+#include <Model/Map.h>
+#include <Model/Factory/BlocksFactory.h>
 
 
 namespace Tetris::Model
@@ -16,7 +17,7 @@ namespace Tetris::Model
     /// 
     /// Этот класс отвечает за управление состоянием игры Тетрис, включая
     /// создание блоков, обновление счета и обработку команд игрока.
-    class ModelGame final : public AbstractModel
+    class MODEL_EXPORT ModelGame final : public AbstractModel
     {
     public:
         /// @brief Конструктор по умолчанию

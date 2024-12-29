@@ -1,12 +1,12 @@
-#include "ModelGame.h"
+#include <Model/ModelGame.h>
 
-#include "blocks/Iblock.h"
-#include "blocks/Jblock.h"
-#include "blocks/Lblock.h"
-#include "blocks/Oblock.h"
-#include "blocks/Sblock.h"
-#include "blocks/Tblock.h"
-#include "blocks/Zblock.h"
+#include <Model/Blocks/Iblock.h>
+#include <Model/Blocks/Jblock.h>
+#include <Model/Blocks/Lblock.h>
+#include <Model/Blocks/Oblock.h>
+#include <Model/Blocks/Sblock.h>
+#include <Model/Blocks/Tblock.h>
+#include <Model/Blocks/Zblock.h>
 
 
 namespace Tetris::Model

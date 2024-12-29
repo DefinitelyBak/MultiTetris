@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Precompile.h"
-#include "Types.h"
+#include <Model/Precompile.h>
+#include <Model/Types.h>
 
 
 namespace Tetris::Model::Blocks
@@ -9,7 +9,7 @@ namespace Tetris::Model::Blocks
     /// @brief Абстрактный создатель для создания объектов.
     /// @tparam Base Базовый класс создаваемых объектов.
     template <class Base>
-    class AbstractCreator
+    class MODEL_EXPORT AbstractCreator
     {
     public:
         /// @brief Конструктор по умолчанию.

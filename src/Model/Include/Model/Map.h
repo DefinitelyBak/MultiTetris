@@ -1,17 +1,19 @@
 #pragma once
 
-#include "Precompile.h"
+#include <Model/Export.h>
 
-#include "Forwards.h"
-#include "Types.h"
+#include <Model/Precompile.h>
+#include <Model/Forwards.h>
 
-#include "blocks/AbstractBlock.h"
+#include <Model/Types.h>
+
+#include <Model/Blocks/AbstractBlock.h>
 
 
 namespace Tetris::Model
 {
     /// @brief Класс реализации карты для игры Тетрис
-    class Map
+    class MODEL_EXPORT Map
     {
     public:
         /// @brief Конструктор по умолчанию, инициализирует пустую карту

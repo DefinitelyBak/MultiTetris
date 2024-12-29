@@ -1,6 +1,8 @@
 #pragma once
 
-#include "AbstractCreator.h"
+#include <Model/Export.h>
+
+#include <Model/Factory/AbstractCreator.h>
 
 
 namespace Tetris::Model::Blocks
@@ -9,7 +11,7 @@ namespace Tetris::Model::Blocks
     /// @tparam Base Базовый класс создаваемых объектов.
     /// @tparam IdType Тип идентификатора создаваемого объекта.
     template <class Base, class IdType>
-    class ObjectFactory
+    class MODEL_EXPORT ObjectFactory
     {
     protected:
         /// @brief Базовый тип абстрактной фабрики для создания объектов.

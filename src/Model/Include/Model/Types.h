@@ -3,6 +3,8 @@
 #include "Precompile.h"
 #include "Forwards.h"
 
+#include <Model/Export.h>
+
 
 namespace Tetris::Model
 {
@@ -62,24 +64,24 @@ namespace Tetris::Model
     using Offsets = std::array<Position, 5>;
 
     // Операции с Offsets
-    Offsets operator+(const Offsets& lhs, const Offsets& rhs);
-    Offsets operator-(const Offsets& lhs, const Offsets& rhs);
-    bool operator==(const Offsets& lhs, const Offsets& rhs);
-    bool operator!=(const Offsets& lhs, const Offsets& rhs);
+    MODEL_EXPORT Offsets operator+(const Offsets& lhs, const Offsets& rhs);
+    MODEL_EXPORT Offsets operator-(const Offsets& lhs, const Offsets& rhs);
+    MODEL_EXPORT bool operator==(const Offsets& lhs, const Offsets& rhs);
+    MODEL_EXPORT bool operator!=(const Offsets& lhs, const Offsets& rhs);
 
     // Операции с Position
-    Position operator+(const Position& lhs, const Position& rhs);
-    Position operator-(const Position& lhs, const Position& rhs);
-    bool operator==(const Position& lhs, const Position& rhs);
-    bool operator!=(const Position& lhs, const Position& rhs);
+    MODEL_EXPORT Position operator+(const Position& lhs, const Position& rhs);
+    MODEL_EXPORT Position operator-(const Position& lhs, const Position& rhs);
+    MODEL_EXPORT bool operator==(const Position& lhs, const Position& rhs);
+    MODEL_EXPORT bool operator!=(const Position& lhs, const Position& rhs);
 
     // Операции с Offsets и Position
-    Offsets operator+(const Offsets& lhs, const Position& rhs);
-    Offsets operator+(const Position& lhs, const Offsets& rhs);
-    Offsets operator-(const Offsets& lhs, const Position& rhs);
+    MODEL_EXPORT Offsets operator+(const Offsets& lhs, const Position& rhs);
+    MODEL_EXPORT Offsets operator+(const Position& lhs, const Offsets& rhs);
+    MODEL_EXPORT Offsets operator-(const Offsets& lhs, const Position& rhs);
 
     // Операции с Positions
-    Positions operator+(const Positions& lhs, const Position& rhs);
-    Positions operator+(const Position& lhs, const Positions& rhs);
-    Positions operator-(const Positions& lhs, const Position& rhs);
+    MODEL_EXPORT Positions operator+(const Positions& lhs, const Position& rhs);
+    MODEL_EXPORT Positions operator+(const Position& lhs, const Positions& rhs);
+    MODEL_EXPORT Positions operator-(const Positions& lhs, const Position& rhs);
 } // namespace Tetris::Model

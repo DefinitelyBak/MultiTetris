@@ -1,16 +1,18 @@
 #pragma once
 
 #include "Precompile.h"
-
 #include "Forwards.h"
-#include "Types.h"
+
+#include <Model/Export.h>
+
+#include <Model/Types.h>
 
 
 namespace Tetris::Model
 {
 
     /// @brief Описание модели игры
-    struct DescriptionModel
+    struct MODEL_EXPORT DescriptionModel
     {
         DescriptionModel(): map(), size({0,0}), nextBlock(nullptr){}
         ~DescriptionModel(){}

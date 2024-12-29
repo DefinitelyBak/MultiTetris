@@ -1,14 +1,17 @@
 #pragma once
 
-#include "Precompile.h"
-#include "Forwards.h"
-#include "Types.h"
+#include <Model/Export.h>
+
+#include <Model/Precompile.h>
+#include <Model/Forwards.h>
+
+#include <Model/Types.h>
 
 
 namespace Tetris::Model
 {
     /// @brief Интерфейс для виджетов в игре Тетрис
-    class AbstractWidget
+    class MODEL_EXPORT AbstractWidget
     {
     public:
         /// @brief Деструктор по умолчанию

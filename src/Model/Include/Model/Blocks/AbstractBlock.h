@@ -1,7 +1,9 @@
 #pragma once
 
-#include "Precompile.h"
-#include "Types.h"
+#include <Model/Export.h>
+
+#include <Model/Precompile.h>
+#include <Model/Types.h>
 
 
 namespace Tetris::Model::Blocks
@@ -16,7 +18,7 @@ namespace Tetris::Model::Blocks
     };
 
     /// @brief Базовый класс блока 
-    class AbstractBlock
+    class MODEL_EXPORT AbstractBlock
     {
     public:
         /// @brief Тип состояния - описание блока
