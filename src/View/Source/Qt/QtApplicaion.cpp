@@ -1,6 +1,6 @@
-#include "Qt/QtApplication.h"
+#include <View/Qt/QtApplication.h>
 #include <QApplication>
-#include "Qt/QAdapterWidget.h"
+#include <View/Qt/QAdapterWidget.h>
 
 
 namespace Tetris::View::Qt
@@ -20,7 +20,9 @@ namespace Tetris::View::Qt
 
     void QtApplicaion::Run()
     {
-        char* argv[] = {"Tetris"};
+        std::string nameApllication = "Tetris";
+        char* argv[1];
+        argv[0] = nameApllication.data();
         int args = 1;
 
         // Регистрация мета-типов для использования в сигнал-слугах.

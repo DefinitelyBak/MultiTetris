@@ -1,6 +1,5 @@
-#include "Qt/Map.h"
-#include <QPainter>
-#include <QResizeEvent>
+#include <View/Qt/Map.h>
+
 
 namespace Tetris::View::Qt
 {

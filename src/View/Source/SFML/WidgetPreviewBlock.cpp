@@ -1,5 +1,5 @@
-#include "SFML/WidgetPreviewBlock.h"
-#include "Blocks/AbstractBlock.h"
+#include <View/SFML/WidgetPreviewBlock.h>
+#include <Model/Blocks/AbstractBlock.h>
 
 namespace Tetris::View::SFML
 {

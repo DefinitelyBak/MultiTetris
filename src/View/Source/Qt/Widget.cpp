@@ -1,7 +1,7 @@
-#include "Qt/Widget.h"
+#include <View/Qt/Widget.h>
 
-#include "Qt/KeyPressFilter.h"
-#include "Qt/PreviewBlock.h"
+#include <View/Qt/KeyPressFilter.h>
+#include <View/Qt/PreviewBlock.h>
 
 
 namespace Tetris::View::Qt

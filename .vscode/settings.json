@@ -121,6 +121,9 @@
         "qvboxlayout": "cpp",
         "qhboxlayout": "cpp",
         "qtextedit": "cpp",
-        "resumable": "cpp"
+        "resumable": "cpp",
+        "qwindow": "cpp",
+        "qresizeevent": "cpp",
+        "qdebug": "cpp"
     }
 }

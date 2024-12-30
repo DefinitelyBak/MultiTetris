@@ -1,16 +1,17 @@
 #pragma once
 
-#include "Precompile.h"
-#include "Forwards.h"
+#include <View/Export.h>
+#include <View/Precompile.h>
+#include <View/Forwards.h>
 
-#include "Map.h"
-#include "Types.h"
+#include <View/SFML/Map.h>
+#include <Model/Types.h>
 
 
 namespace Tetris::View::SFML
 {
     /// @brief Класс WidgetPreviewBlock отвечает за отображение предварительного просмотра блока в игре Тетрис.
-    class WidgetPreviewBlock final: public sf::Drawable, public sf::Transformable
+    class VIEW_EXPORT WidgetPreviewBlock final: public sf::Drawable, public sf::Transformable
     {
     public:
         ///@brief Конструктор класса.

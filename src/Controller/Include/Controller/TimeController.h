@@ -1,9 +1,9 @@
 #pragma once
 
-#include "Precompile.h"
-#include "Types.h"
+#include <Controller/Precompile.h>
+#include <Model/Types.h>
 
-#include "AbstractModel.h"
+#include <Model/AbstractModel.h>
 
 
 namespace Tetris::Controller

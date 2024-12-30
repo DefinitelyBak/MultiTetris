@@ -1,14 +1,17 @@
-#include "Precompile.h"
+#pragma once
 
-#include "Forwards.h"
-#include "AbstractModel.h"
-#include "IApplication.h"
+#include <View/Export.h>
+#include <View/Precompile.h>
+
+#include <View/Forwards.h>
+#include <Model/AbstractModel.h>
+#include <View/IApplication.h>
 
 
 namespace Tetris::View::SFML{
     /// @class SFMLApplication
     /// @brief Класс, реализующий интерфейс IApplication для графического приложения на базе SFML.
-    class SFMLApplication final: public IApplication
+    class VIEW_EXPORT SFMLApplication final: public IApplication
     {
     public:
         /// @brief Конструктор.

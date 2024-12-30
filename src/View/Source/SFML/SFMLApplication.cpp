@@ -1,5 +1,5 @@
-#include "SFML/SFMLApplication.h"
-#include "SFML/Widget.h"
+#include <View/SFML/SFMLApplication.h>
+#include <View/SFML/Widget.h>
 
 namespace Tetris::View::SFML
 {

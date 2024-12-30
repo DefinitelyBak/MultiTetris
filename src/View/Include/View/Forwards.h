@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Precompile.h"
+#include <memory>
 
 
 namespace Tetris

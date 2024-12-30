@@ -1,21 +1,22 @@
 #pragma once
 
-#include "Precompile.h"
-#include "Forwards.h"
+#include <View/Export.h>
+#include <View/Precompile.h>
+#include <View/Forwards.h>
 
-#include "AbstractWidget.h"
-#include "AbstractModel.h"
-#include "MoveController.h"
-#include "Map.h"
-#include "Text.h"
-#include "WidgetPreviewBlock.h"
+#include <Model/AbstractWidget.h>
+#include <Model/AbstractModel.h>
+#include <Controller/MoveController.h>
+#include <View/SFML/Map.h>
+#include <View/SFML/Text.h>
+#include <View/SFML/WidgetPreviewBlock.h>
 
 
 namespace Tetris::View::SFML
 {
     // Класс Widget представляет собой графический интерфейс для игры Tetris,
     // реализующий методы для отображения и обновления состояния игры.
-    class Widget final : public Model::AbstractWidget 
+    class VIEW_EXPORT Widget final : public Model::AbstractWidget
     {
     public:
         // Конструктор класса, инициализирующий виджет с моделью и путем к шрифту.

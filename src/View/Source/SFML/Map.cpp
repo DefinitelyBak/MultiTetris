@@ -1,4 +1,4 @@
-#include "SFML/Map.h"
+#include <View/SFML/Map.h>
 
 
 namespace Tetris::View::SFML
@@ -108,7 +108,8 @@ namespace Tetris::View::SFML
             {
                 auto color = _map[row * _columns + column];
                 _fields[index].setFillColor(ColorFromTypeColor(color));
-                _fields[index].setPosition(_borderWidth + column * _offsetX, _windowSize.y - (row + 1) * _offsetY - _borderWidth);
+                sf::Vector2f position{ _borderWidth + column * _offsetX, _windowSize.y - (row + 1) * _offsetY - _borderWidth };
+                _fields[index].setPosition(position);
                 ++index;
             }
         }

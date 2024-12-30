@@ -1,7 +1,8 @@
 #pragma once
 
-#include "Precompile.h"
-#include "Types.h"
+#include <View/Export.h>
+#include <View/Precompile.h>
+#include <Model/Types.h>
 
 
 namespace Tetris::View::SFML
@@ -11,7 +12,7 @@ namespace Tetris::View::SFML
     /// @return Цвет в формате sf::Color
     sf::Color ColorFromTypeColor(Model::TypeColor color);
 
-    class Map final: public sf::Drawable, public sf::Transformable
+    class VIEW_EXPORT Map final: public sf::Drawable, public sf::Transformable
     {
     public:
         /// @brief Конструктор класса Map

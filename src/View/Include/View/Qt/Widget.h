@@ -1,12 +1,13 @@
 #pragma once
 
-#include "Precompile.h"
-#include "Forwards.h"
+#include <View/Export.h>
+#include <View/Precompile.h>
+#include <View/Forwards.h>
 
-#include "AbstractModel.h"
-#include "MoveController.h"
-#include "Qt/Map.h"
-#include "Qt/PreviewBlock.h"
+#include <Model/AbstractModel.h>
+#include <Controller/MoveController.h>
+#include <View/Qt/Map.h>
+#include <View/Qt/PreviewBlock.h>
 
 
 namespace Tetris::View::Qt
@@ -17,7 +18,7 @@ namespace Tetris::View::Qt
      * Состояние карты меняется только из методов UpdateView, 
      * просто надо какие события создают перерисовку содержимого.
      */
-    class Widget : public QWidget
+    class VIEW_EXPORT Widget : public QWidget
     {
         Q_OBJECT 
 

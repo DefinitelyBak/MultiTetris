@@ -1,17 +1,18 @@
 #pragma once
 
-#include "Precompile.h"
-#include "Forwards.h"
-#include "Types.h"
+#include <View/Export.h>
+#include <View/Precompile.h>
+#include <View/Forwards.h>
+#include <Model/Types.h>
 
-#include "Qt/Map.h"
+#include <View/Qt/Map.h>
 
 
 namespace Tetris::View::Qt
 {
 
     // Класс PreviewBlock представляет собой блок предварительного просмотра в игре Тетрис.
-    class PreviewBlock final : public Map
+    class VIEW_EXPORT PreviewBlock final : public Map
     {
         Q_OBJECT  // Макрос Qt для включения мета-объектной системы.
     public:

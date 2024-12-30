@@ -1,12 +1,12 @@
-#include "SFML/Widget.h"
-#include "AbstractModel.h"
+#include <View/SFML/Widget.h>
+#include <Model/AbstractModel.h>
 
 
 namespace Tetris::View::SFML
 {
     Widget::Widget(AbstractModelPtr model, const std::string& pathFont)
         : AbstractWidget(),
-          _window({600u, 800u}, "Tetris"),
+          _window(sf::VideoMode({600, 800}), "Tetris"),
           _controller(model),
           _map(sf::Vector2f(420, 800), true),
           _previewBlock(sf::Vector2f(180, 150), true),
@@ -36,17 +36,16 @@ namespace Tetris::View::SFML
 
     void Widget::HandleEvents()
     {
-        sf::Event event;
-        while (_window.pollEvent(event))
+        while (const std::optional event = _window.pollEvent())
         {
-            if (event.type == sf::Event::Closed)
+            if (event->is<sf::Event::Closed>())
             {
                 _window.close();
                 _windowOpen = false;
             }
-            else if (event.type == sf::Event::KeyPressed)
+            else if (const auto* keyPressed = event->getIf<sf::Event::KeyPressed>())
             {
-                HandleKeyPress(event.key.scancode);
+                HandleKeyPress(keyPressed->scancode);
             }
         }
     }

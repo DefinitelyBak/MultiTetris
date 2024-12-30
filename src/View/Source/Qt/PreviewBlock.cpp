@@ -1,5 +1,5 @@
-#include "Qt/PreviewBlock.h"
-#include "Blocks/AbstractBlock.h"
+#include <View/Qt/PreviewBlock.h>
+#include <Model/Blocks/AbstractBlock.h>
 
 
 namespace Tetris::View::Qt

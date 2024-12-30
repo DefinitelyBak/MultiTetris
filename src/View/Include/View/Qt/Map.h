@@ -1,11 +1,11 @@
 #pragma once
 
-#include "Precompile.h"
-#include "Types.h"
-#include "Forwards.h"
+#include <View/Export.h>
+#include <View/Precompile.h>
+#include <Model/Types.h>
+#include <View/Forwards.h>
 
-#include "AbstractModel.h"
-#include "MoveController.h"
+#include <Model/AbstractModel.h>
 
 
 namespace Tetris::View::Qt
@@ -15,7 +15,7 @@ namespace Tetris::View::Qt
     /// @return Цвет в формате QColor
     QColor ColorFromTypeColor(Model::TypeColor color);
 
-    class Map: public QWindow
+    class VIEW_EXPORT Map: public QWindow
     {
         Q_OBJECT
     public:
