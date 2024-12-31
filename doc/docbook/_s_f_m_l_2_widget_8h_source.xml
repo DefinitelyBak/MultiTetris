@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__s_f_m_l_2_widget_8h_source" xml:lang="ru">
+<title>Widget.h</title>
+<indexterm><primary>View/Include/View/SFML/Widget.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#pragma&#32;once</emphasis>
+2 
+3 <emphasis role="preprocessor">#include&#32;&lt;View/Export.h&gt;</emphasis>
+4 <emphasis role="preprocessor">#include&#32;&lt;View/Precompile.h&gt;</emphasis>
+5 <emphasis role="preprocessor">#include&#32;&lt;View/Forwards.h&gt;</emphasis>
+6 
+7 <emphasis role="preprocessor">#include&#32;&lt;Model/AbstractWidget.h&gt;</emphasis>
+8 <emphasis role="preprocessor">#include&#32;&lt;Model/AbstractModel.h&gt;</emphasis>
+9 <emphasis role="preprocessor">#include&#32;&lt;Controller/MoveController.h&gt;</emphasis>
+10 <emphasis role="preprocessor">#include&#32;&lt;View/SFML/Map.h&gt;</emphasis>
+11 <emphasis role="preprocessor">#include&#32;&lt;View/SFML/Text.h&gt;</emphasis>
+12 <emphasis role="preprocessor">#include&#32;&lt;View/SFML/WidgetPreviewBlock.h&gt;</emphasis>
+13 
+14 
+15 <emphasis role="keyword">namespace&#32;</emphasis>Tetris::View::SFML
+16 {
+17 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Класс&#32;Widget&#32;представляет&#32;собой&#32;графический&#32;интерфейс&#32;для&#32;игры&#32;Tetris,</emphasis>
+18 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;реализующий&#32;методы&#32;для&#32;отображения&#32;и&#32;обновления&#32;состояния&#32;игры.</emphasis>
+19 &#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis>VIEW_EXPORT&#32;<link linkend="_class_tetris_1_1_view_1_1_s_f_m_l_1_1_widget">Widget</link>&#32;final&#32;:&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_tetris_1_1_model_1_1_abstract_widget">Model::AbstractWidget</link>
+20 &#32;&#32;&#32;&#32;{
+21 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>:
+22 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Конструктор&#32;класса,&#32;инициализирующий&#32;виджет&#32;с&#32;моделью&#32;и&#32;путем&#32;к&#32;шрифту.</emphasis>
+23 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_tetris_1_1_view_1_1_s_f_m_l_1_1_widget">Widget</link>(AbstractModelPtr&#32;model,&#32;<emphasis role="keyword">const</emphasis>&#32;std::string&amp;&#32;pathFont);
+24 
+25 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Деструктор&#32;класса,&#32;по&#32;умолчанию.</emphasis>
+26 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_tetris_1_1_view_1_1_s_f_m_l_1_1_widget">~Widget</link>()&#32;<emphasis role="keyword">override</emphasis>&#32;=&#32;<emphasis role="keywordflow">default</emphasis>;
+27 
+28 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Метод&#32;для&#32;обновления&#32;состояния&#32;виджета,&#32;вызывается&#32;в&#32;каждом&#32;кадре.</emphasis>
+29 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;Update()&#32;<emphasis role="keyword">override</emphasis>;
+30 
+31 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Метод&#32;для&#32;проверки,&#32;открыт&#32;ли&#32;виджет.</emphasis>
+32 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;IsOpen()&#32;<emphasis role="keyword">const&#32;override</emphasis>;
+33 
+34 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Метод&#32;для&#32;закрытия&#32;виджета.</emphasis>
+35 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;SlotCloseWidget()&#32;<emphasis role="keyword">override</emphasis>;
+36 
+37 &#32;&#32;&#32;&#32;<emphasis role="keyword">private</emphasis>:
+38 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Метод&#32;для&#32;инициализации&#32;отображения&#32;счета.</emphasis>
+39 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;InitializeScore();
+40 
+41 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Метод&#32;для&#32;инициализации&#32;блока&#32;предварительного&#32;просмотра.</emphasis>
+42 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;InitializePreviewBlock();
+43 
+44 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Метод&#32;для&#32;обработки&#32;событий&#32;ввода&#32;от&#32;пользователя.</emphasis>
+45 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;HandleEvents();
+46 
+47 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Метод&#32;для&#32;обработки&#32;нажатий&#32;клавиш.</emphasis>
+48 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;HandleKeyPress(sf::Keyboard::Scancode&#32;scancode);
+49 
+50 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Метод&#32;для&#32;обновления&#32;карты&#32;на&#32;основе&#32;состояния&#32;модели.</emphasis>
+51 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;UpdateMap(<emphasis role="keyword">const</emphasis>&#32;DescriptionModelPtr&amp;&#32;descriptionModel);
+52 
+53 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Метод&#32;для&#32;обновления&#32;блока&#32;предварительного&#32;просмотра.</emphasis>
+54 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;UpdatePreviewBlock(<emphasis role="keyword">const</emphasis>&#32;DescriptionModelPtr&amp;&#32;descriptionModel);
+55 
+56 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Метод&#32;для&#32;обновления&#32;отображаемого&#32;счета.</emphasis>
+57 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;UpdateScore(<emphasis role="keyword">const</emphasis>&#32;DescriptionModelPtr&amp;&#32;descriptionModel);
+58 
+59 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Метод&#32;для&#32;отрисовки&#32;всех&#32;компонентов&#32;виджета&#32;на&#32;экране.</emphasis>
+60 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;Render();
+61 
+62 &#32;&#32;&#32;&#32;<emphasis role="keyword">private</emphasis>:
+63 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;sf::RenderWindow&#32;_window;&#32;<emphasis role="comment">//&lt;&#32;Окно&#32;для&#32;рендеринга&#32;графики.</emphasis>
+64 
+65 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_tetris_1_1_controller_1_1_move_controller">Controller::MoveController</link>&#32;_controller;&#32;<emphasis role="comment">//&lt;&#32;Контроллер&#32;для&#32;управления&#32;движением&#32;объектов&#32;в&#32;игре.</emphasis>
+66 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_tetris_1_1_view_1_1_s_f_m_l_1_1_map">Map</link>&#32;_map;&#32;<emphasis role="comment">//&lt;&#32;Объект&#32;карты,&#32;отображающий&#32;игровое&#32;поле.</emphasis>
+67 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_tetris_1_1_view_1_1_s_f_m_l_1_1_widget_preview_block">WidgetPreviewBlock</link>&#32;_previewBlock;&#32;<emphasis role="comment">//&lt;&#32;Виджет&#32;отобраения&#32;следующего&#32;блока.</emphasis>
+68 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_tetris_1_1_view_1_1_s_f_m_l_1_1_text">Text</link>&#32;_score;&#32;<emphasis role="comment">//&lt;&#32;Объект&#32;для&#32;отображения&#32;текущего&#32;счета&#32;игрока.</emphasis>
+69 
+70 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::atomic&lt;bool&gt;&#32;_windowOpen{<emphasis role="keyword">true</emphasis>};&#32;<emphasis role="comment">//&lt;&#32;Флаг,&#32;указывающий,&#32;открыто&#32;ли&#32;окно.</emphasis>
+71 &#32;&#32;&#32;&#32;};
+72 }<emphasis role="comment">//&#32;namespace&#32;Tetris::View::SFML</emphasis>
+</programlisting></section>

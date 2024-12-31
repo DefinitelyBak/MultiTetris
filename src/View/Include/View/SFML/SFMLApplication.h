@@ -1,9 +1,9 @@
 #pragma once
 
-#include <View/Export.h>
 #include <View/Precompile.h>
-
+#include <View/Export.h>
 #include <View/Forwards.h>
+
 #include <Model/AbstractModel.h>
 #include <View/IApplication.h>
 

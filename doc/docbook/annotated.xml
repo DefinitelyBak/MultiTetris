@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_annotated" xml:lang="ru">
+<title>Классы</title>
+Классы с их кратким описанием.<link linkend="_class_tetris_1_1_model_1_1_blocks_1_1_abstract_block">Tetris::Model::Blocks::AbstractBlock</link>
+<para>Базовый класс блока </para>
+<link linkend="_class_tetris_1_1_model_1_1_blocks_1_1_abstract_creator">Tetris::Model::Blocks::AbstractCreator&lt; Base &gt;</link>
+<para>Абстрактный создатель для создания объектов </para>
+<link linkend="_class_tetris_1_1_model_1_1_abstract_model">Tetris::Model::AbstractModel</link>
+<para>Абстрактный класс модели для управления игровыми данными </para>
+<link linkend="_class_tetris_1_1_model_1_1_abstract_widget">Tetris::Model::AbstractWidget</link>
+<para>Интерфейс для виджетов в игре Тетрис </para>
+<link linkend="_class_tetris_1_1_view_1_1_qt_1_1_adapter">Tetris::View::Qt::Adapter</link>
+<para>Класс <link linkend="_class_tetris_1_1_view_1_1_qt_1_1_adapter">Adapter</link>, который управляет виджетами и их обновлениями </para>
+<link linkend="_class_tetris_1_1_model_1_1_blocks_1_1_blocks_factory">Tetris::Model::Blocks::BlocksFactory</link>
+<para>Фабрика для создания блоков в игре Тетрис </para>
+<link linkend="_class_tetris_1_1_tests_1_1_block_test">Tetris::Tests::BlockTest</link><link linkend="_class_tetris_1_1_model_1_1_blocks_1_1_creator">Tetris::Model::Blocks::Creator&lt; C, Base &gt;</link>
+<para>Реализация создателя для конкретного типа объекта </para>
+<link linkend="_struct_tetris_1_1_model_1_1_description_model">Tetris::Model::DescriptionModel</link>
+<para>Описание модели игры </para>
+<link linkend="_class_tetris_1_1_view_1_1_i_application">Tetris::View::IApplication</link><link linkend="_class_tetris_1_1_model_1_1_blocks_1_1_iblock">Tetris::Model::Blocks::Iblock</link>
+<para>класс I блок </para>
+<link linkend="_class_tetris_1_1_model_1_1_blocks_1_1_jblock">Tetris::Model::Blocks::Jblock</link>
+<para>класс J блок </para>
+<link linkend="_class_tetris_1_1_view_1_1_qt_1_1_key_press_filter">Tetris::View::Qt::KeyPressFilter</link>
+<para>Класс для фильтрации событий нажатия клавиш. Наследуется от QObject и переопределяет метод eventFilter для обработки событий клавиатуры </para>
+<link linkend="_class_tetris_1_1_model_1_1_blocks_1_1_lblock">Tetris::Model::Blocks::Lblock</link>
+<para>класс L блок </para>
+<link linkend="_class_tetris_1_1_model_1_1_map">Tetris::Model::Map</link>
+<para>Класс реализации карты для игры Тетрис </para>
+<link linkend="_class_tetris_1_1_view_1_1_qt_1_1_map">Tetris::View::Qt::Map</link><link linkend="_class_tetris_1_1_view_1_1_s_f_m_l_1_1_map">Tetris::View::SFML::Map</link><link linkend="_struct_tetris_1_1_model_1_1_map_size">Tetris::Model::MapSize</link>
+<para>Размер карты </para>
+<link linkend="_class_tetris_1_1_model_1_1_model_game">Tetris::Model::ModelGame</link>
+<para>Модель игры Тетрис </para>
+<link linkend="_class_tetris_1_1_controller_1_1_move_controller">Tetris::Controller::MoveController</link><link linkend="_class_tetris_1_1_model_1_1_blocks_1_1_object_factory">Tetris::Model::Blocks::ObjectFactory&lt; Base, IdType &gt;</link>
+<para>Шаблонный класс для создания объектов различных типов </para>
+<link linkend="_class_tetris_1_1_model_1_1_blocks_1_1_oblock">Tetris::Model::Blocks::Oblock</link>
+<para>класс O блок </para>
+<link linkend="_struct_tetris_1_1_model_1_1_position">Tetris::Model::Position</link>
+<para>Координаты фигуры относительно центра </para>
+<link linkend="_class_tetris_1_1_view_1_1_qt_1_1_preview_block">Tetris::View::Qt::PreviewBlock</link><link linkend="_class_tetris_1_1_view_1_1_qt_1_1_q_adapter_widget">Tetris::View::Qt::QAdapterWidget</link>
+<para>Класс <link linkend="_class_tetris_1_1_view_1_1_qt_1_1_q_adapter_widget">QAdapterWidget</link>, который является абстрактным виджетом и использует адаптер </para>
+<link linkend="_class_tetris_1_1_view_1_1_qt_1_1_qt_applicaion">Tetris::View::Qt::QtApplicaion</link>
+<para>Класс, реализующий интерфейс <link linkend="_class_tetris_1_1_view_1_1_i_application">IApplication</link> для создания приложения Tetris </para>
+<link linkend="_class_tetris_1_1_model_1_1_blocks_1_1_sblock">Tetris::Model::Blocks::Sblock</link>
+<para>класс S блок </para>
+<link linkend="_class_tetris_1_1_view_1_1_s_f_m_l_1_1_s_f_m_l_application">Tetris::View::SFML::SFMLApplication</link>
+<para>Класс, реализующий интерфейс <link linkend="_class_tetris_1_1_view_1_1_i_application">IApplication</link> для графического приложения на базе SFML </para>
+<link linkend="_class_tetris_1_1_model_1_1_blocks_1_1_tblock">Tetris::Model::Blocks::Tblock</link>
+<para>класс T блок </para>
+<link linkend="_class_tetris_1_1_view_1_1_s_f_m_l_1_1_text">Tetris::View::SFML::Text</link>
+<para>Класс <link linkend="_class_tetris_1_1_view_1_1_s_f_m_l_1_1_text">Text</link> представляет собой текстовое поле в игре Тетрис </para>
+<link linkend="_class_tetris_1_1_controller_1_1_time_controller">Tetris::Controller::TimeController</link><link linkend="_class_tetris_1_1_view_1_1_qt_1_1_widget">Tetris::View::Qt::Widget</link>
+<para>Класс, представляющий виджет для отображения игры Tetris. Состояние карты меняется только из методов UpdateView, просто надо какие события создают перерисовку содержимого </para>
+<link linkend="_class_tetris_1_1_view_1_1_s_f_m_l_1_1_widget">Tetris::View::SFML::Widget</link><link linkend="_class_tetris_1_1_view_1_1_s_f_m_l_1_1_widget_preview_block">Tetris::View::SFML::WidgetPreviewBlock</link>
+<para>Класс <link linkend="_class_tetris_1_1_view_1_1_s_f_m_l_1_1_widget_preview_block">WidgetPreviewBlock</link> отвечает за отображение предварительного просмотра блока в игре Тетрис </para>
+<link linkend="_class_tetris_1_1_model_1_1_blocks_1_1_zblock">Tetris::Model::Blocks::Zblock</link>
+<para>класс Z блок </para>
+</section>

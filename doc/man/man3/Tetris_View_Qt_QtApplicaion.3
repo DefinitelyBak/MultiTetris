@@ -1,0 +1,76 @@
+.TH "Tetris::View::Qt::QtApplicaion" 3 "project(MultiTetris LANGUAGES CXX)" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Tetris::View::Qt::QtApplicaion \- Класс, реализующий интерфейс \fBIApplication\fP для создания приложения Tetris\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <QtApplication\&.h>\fP
+.PP
+Базовые классы:\fBTetris::View::IApplication\fP\&.
+.SS "Открытые члены"
+
+.in +1c
+.ti -1c
+.RI "\fBQtApplicaion\fP (AbstractModelPtr model, unsigned int countWidgets)"
+.br
+.RI "Конструктор класса\&. "
+.ti -1c
+.RI "\fB~QtApplicaion\fP ()"
+.br
+.RI "Деструктор класса\&. Освобождает ресурсы, связанные с приложением\&. "
+.ti -1c
+.RI "void \fBRun\fP () override"
+.br
+.RI "Метод, выполняющий основную логику приложения в отдельном потоке\&. Реализует основной цикл приложения\&. "
+.ti -1c
+.RI "bool \fBisExecution\fP () const override"
+.br
+.RI "Метод для проверки состояния выполнения приложения\&. "
+.in -1c
+.SH "Подробное описание"
+.PP 
+Класс, реализующий интерфейс \fBIApplication\fP для создания приложения Tetris\&. 
+.SH "Конструктор(ы)"
+.PP 
+.SS "Tetris::View::Qt::QtApplicaion::QtApplicaion (AbstractModelPtr model, unsigned int countWidgets)"
+
+.PP
+Конструктор класса\&. 
+.PP
+\fBАргументы\fP
+.RS 4
+\fImodel\fP Указатель на модель, используемую приложением\&. 
+.br
+\fIcountWidgets\fP Количество виджетов, создаваемых приложением\&. 
+.RE
+.PP
+
+.SH "Методы"
+.PP 
+.SS "bool Tetris::View::Qt::QtApplicaion::isExecution () const\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Метод для проверки состояния выполнения приложения\&. 
+.PP
+\fBВозвращает\fP
+.RS 4
+true, если приложение выполняется; false в противном случае\&. 
+.RE
+.PP
+
+.PP
+Замещает \fBTetris::View::IApplication\fP\&.
+.SS "void Tetris::View::Qt::QtApplicaion::Run ()\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Метод, выполняющий основную логику приложения в отдельном потоке\&. Реализует основной цикл приложения\&. 
+.PP
+Замещает \fBTetris::View::IApplication\fP\&.
+
+.SH "Автор"
+.PP 
+Автоматически создано Doxygen для project(MultiTetris LANGUAGES CXX) из исходного текста\&.

@@ -1,0 +1,53 @@
+\doxysection{Map.\+h}
+\hypertarget{_view_2_include_2_view_2_s_f_m_l_2_map_8h_source}{}\label{_view_2_include_2_view_2_s_f_m_l_2_map_8h_source}\index{View/Include/View/SFML/Map.h@{View/Include/View/SFML/Map.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <View/Export.h>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <View/Precompile.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <Model/Types.h>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{namespace\ }Tetris::View::SFML}
+\DoxyCodeLine{00009\ \{}
+\DoxyCodeLine{00013\ \ \ \ \ sf::Color\ ColorFromTypeColor(Model::TypeColor\ color);}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keyword}{class\ }VIEW\_EXPORT\ \mbox{\hyperlink{class_tetris_1_1_view_1_1_s_f_m_l_1_1_map}{Map}}\ final:\ \textcolor{keyword}{public}\ sf::Drawable,\ \textcolor{keyword}{public}\ sf::Transformable}
+\DoxyCodeLine{00016\ \ \ \ \ \{}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_tetris_1_1_view_1_1_s_f_m_l_1_1_map}{Map}}(sf::Vector2f\ windowSize,\ \textcolor{keywordtype}{bool}\ withBorder\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ SetMap(\textcolor{keyword}{const}\ std::vector<Model::TypeColor>\&\ map,\ \mbox{\hyperlink{struct_tetris_1_1_model_1_1_map_size}{Model::MapSize}}\ size);}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ draw(sf::RenderTarget\&\ target,\ sf::RenderStates\ states)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ UpdateView();}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ InitializeBorders();}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ sf::RectangleShape\ CreateBorder(\textcolor{keyword}{const}\ sf::Vector2f\&\ size,\ \textcolor{keyword}{const}\ sf::Vector2f\&\ position);}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ UpdateFieldSizes();}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ std::vector<Model::TypeColor>\ \_map;\ \textcolor{comment}{//<\ Вектор\ с\ цветами\ блоков\ карты}}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ std::vector<sf::RectangleShape>\ \_fields;\ \textcolor{comment}{//<\ Вектор\ с\ прямоугольниками\ для\ отображения\ блоков\ }}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ sf::Vector2f\ \_windowSize;\ \textcolor{comment}{//<\ Размер\ окна\ отображения}}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \_rows;\ }
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \_columns;\ }
+\DoxyCodeLine{00058\ \ }
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \_offsetX;}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \_offsetY;}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \_borderWidth\{0\};}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ std::list<sf::RectangleShape>\ \_borders;}
+\DoxyCodeLine{00065\ \ \ \ \ \};}
+\DoxyCodeLine{00066\ \}\ \textcolor{comment}{//\ namespace\ Tetris::View::SFML}}
+
+\end{DoxyCode}

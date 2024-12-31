@@ -1,0 +1,43 @@
+\doxysection{Класс Tetris\+::View\+::Qt\+::Preview\+Block}
+\hypertarget{class_tetris_1_1_view_1_1_qt_1_1_preview_block}{}\label{class_tetris_1_1_view_1_1_qt_1_1_preview_block}\index{Tetris::View::Qt::PreviewBlock@{Tetris::View::Qt::PreviewBlock}}
+Граф наследования\+:Tetris\+::View\+::Qt\+::Preview\+Block\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_tetris_1_1_view_1_1_qt_1_1_preview_block}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_tetris_1_1_view_1_1_qt_1_1_preview_block_a678be8aade6205a386707bfc5a097386}\label{class_tetris_1_1_view_1_1_qt_1_1_preview_block_a678be8aade6205a386707bfc5a097386} 
+{\bfseries Preview\+Block} (QWindow \texorpdfstring{$\ast$}{*}parent=nullptr, bool with\+Border=false)
+\item 
+\Hypertarget{class_tetris_1_1_view_1_1_qt_1_1_preview_block_aba53fe52b1c515caf9254fc5dcbec955}\label{class_tetris_1_1_view_1_1_qt_1_1_preview_block_aba53fe52b1c515caf9254fc5dcbec955} 
+void {\bfseries Set\+Block} (const Abstract\+Block\+Ptr block)
+\item 
+\Hypertarget{class_tetris_1_1_view_1_1_qt_1_1_preview_block_a606eeb8edd33b11928ee32ff41b10829}\label{class_tetris_1_1_view_1_1_qt_1_1_preview_block_a606eeb8edd33b11928ee32ff41b10829} 
+Model\+::\+Type\+Block {\bfseries Get\+Type} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Открытые члены унаследованные от \mbox{\hyperlink{class_tetris_1_1_view_1_1_qt_1_1_map}{Tetris\+::\+View\+::\+Qt\+::\+Map}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_tetris_1_1_view_1_1_qt_1_1_map_a0beca6030e98b4c0de82655ea7026944}{Map}} (QWindow \texorpdfstring{$\ast$}{*}parent, bool with\+Border=false)
+\begin{DoxyCompactList}\small\item\em Конструктор класса \doxylink{class_tetris_1_1_view_1_1_qt_1_1_map}{Map}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_tetris_1_1_view_1_1_qt_1_1_map_a8723b5d0128566e5d59b507894a1eed7}{Set\+Map}} (const std\+::vector$<$ Model\+::\+Type\+Color $>$ \&map, \mbox{\hyperlink{struct_tetris_1_1_model_1_1_map_size}{Model\+::\+Map\+Size}} size)
+\begin{DoxyCompactList}\small\item\em Установить карту \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Дополнительные унаследованные члены}
+\doxysubsection*{Защищенные члены унаследованные от \mbox{\hyperlink{class_tetris_1_1_view_1_1_qt_1_1_map}{Tetris\+::\+View\+::\+Qt\+::\+Map}}}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_tetris_1_1_view_1_1_qt_1_1_map_a98885f31d403039e99b9eecc7cf4d38b}{event}} (QEvent \texorpdfstring{$\ast$}{*}event) override
+\begin{DoxyCompactList}\small\item\em Обработка событий \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_tetris_1_1_view_1_1_qt_1_1_map_afb7015568f7d590db6769dcc60db9b52}{resize\+Event}} (QResize\+Event \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_tetris_1_1_view_1_1_qt_1_1_map_a98885f31d403039e99b9eecc7cf4d38b}{event}}) override
+\begin{DoxyCompactList}\small\item\em Обработка изменения размера окна \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_tetris_1_1_view_1_1_qt_1_1_map_a6d5b97d1fceb9706156a5120131f5897}{expose\+Event}} (QExpose\+Event \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_tetris_1_1_view_1_1_qt_1_1_map_a98885f31d403039e99b9eecc7cf4d38b}{event}}) override
+\begin{DoxyCompactList}\small\item\em Обработка события отображения окна \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+Объявления и описания членов классов находятся в файлах\+:\begin{DoxyCompactItemize}
+\item 
+View/\+Include/\+View/\+Qt/Preview\+Block.\+h\item 
+View/\+Source/\+Qt/Preview\+Block.\+cpp\end{DoxyCompactItemize}

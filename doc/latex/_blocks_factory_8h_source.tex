@@ -1,0 +1,30 @@
+\doxysection{Blocks\+Factory.\+h}
+\hypertarget{_blocks_factory_8h_source}{}\label{_blocks_factory_8h_source}\index{Model/Include/Model/Factory/BlocksFactory.h@{Model/Include/Model/Factory/BlocksFactory.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <Model/Export.h>}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <Model/Forwards.h>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <Model/Factory/ObjectFactory.h>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{namespace\ }Tetris::Model::Blocks}
+\DoxyCodeLine{00010\ \{}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keyword}{class\ }MODEL\_EXPORT\ \mbox{\hyperlink{class_tetris_1_1_model_1_1_blocks_1_1_blocks_factory}{BlocksFactory}}\ final\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_tetris_1_1_model_1_1_blocks_1_1_object_factory}{ObjectFactory}}<AbstractBlock,\ TypeBlock>}
+\DoxyCodeLine{00013\ \ \ \ \ \{}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_tetris_1_1_model_1_1_blocks_1_1_abstract_block}{AbstractBlock}}*\ \mbox{\hyperlink{class_tetris_1_1_model_1_1_blocks_1_1_blocks_factory_a8e06891944f458b972ae558fb598a144}{Create}}(TypeBlock\ \textcolor{keywordtype}{id},\ TypeColor\ color)\ }
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_factory[id]-\/>Create(color);}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_tetris_1_1_model_1_1_blocks_1_1_blocks_factory_ad5039cdfe717663d8bb1bc4a07738bc0}{Size}}()\textcolor{keyword}{\ const\ }}
+\DoxyCodeLine{00027\ \textcolor{keyword}{\ \ \ \ \ \ \ \ }\{}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_factory.size();}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00030\ \ \ \ \ \};}
+\DoxyCodeLine{00031\ \}\ \textcolor{comment}{//\ namespace\ Tetris::Model::Blocks}}
+
+\end{DoxyCode}

@@ -1,0 +1,348 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.10.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>project(MultiTetris LANGUAGES CXX): Класс Tetris::Model::Blocks::AbstractBlock</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">project(MultiTetris LANGUAGES CXX)
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.10.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><b>Tetris</b></li><li class="navelem"><b>Model</b></li><li class="navelem"><b>Blocks</b></li><li class="navelem"><a class="el" href="class_tetris_1_1_model_1_1_blocks_1_1_abstract_block.html">AbstractBlock</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Открытые типы</a> &#124;
+<a href="#pub-methods">Открытые члены</a> &#124;
+<a href="#pro-attribs">Защищенные данные</a> &#124;
+<a href="class_tetris_1_1_model_1_1_blocks_1_1_abstract_block-members.html">Полный список членов класса</a>  </div>
+  <div class="headertitle"><div class="title">Класс Tetris::Model::Blocks::AbstractBlock</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Базовый класс блока  
+ <a href="#details">Подробнее...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_abstract_block_8h_source.html">AbstractBlock.h</a>&gt;</code></p>
+<div class="dynheader">
+Граф наследования:Tetris::Model::Blocks::AbstractBlock:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="class_tetris_1_1_model_1_1_blocks_1_1_abstract_block.png" usemap="#Tetris::Model::Blocks::AbstractBlock_map" alt=""/>
+  <map id="Tetris::Model::Blocks::AbstractBlock_map" name="Tetris::Model::Blocks::AbstractBlock_map">
+<area href="class_tetris_1_1_model_1_1_blocks_1_1_iblock.html" title="класс I блок" alt="Tetris::Model::Blocks::Iblock" shape="rect" coords="0,56,211,80"/>
+<area href="class_tetris_1_1_model_1_1_blocks_1_1_jblock.html" title="класс J блок" alt="Tetris::Model::Blocks::Jblock" shape="rect" coords="221,56,432,80"/>
+<area href="class_tetris_1_1_model_1_1_blocks_1_1_lblock.html" title="класс L блок" alt="Tetris::Model::Blocks::Lblock" shape="rect" coords="442,56,653,80"/>
+<area href="class_tetris_1_1_model_1_1_blocks_1_1_oblock.html" title="класс O блок" alt="Tetris::Model::Blocks::Oblock" shape="rect" coords="663,56,874,80"/>
+<area href="class_tetris_1_1_model_1_1_blocks_1_1_sblock.html" title="класс S блок" alt="Tetris::Model::Blocks::Sblock" shape="rect" coords="884,56,1095,80"/>
+<area href="class_tetris_1_1_model_1_1_blocks_1_1_tblock.html" title="класс T блок" alt="Tetris::Model::Blocks::Tblock" shape="rect" coords="1105,56,1316,80"/>
+<area href="class_tetris_1_1_model_1_1_blocks_1_1_zblock.html" title="класс Z блок" alt="Tetris::Model::Blocks::Zblock" shape="rect" coords="1326,56,1537,80"/>
+  </map>
+</div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Открытые типы</h2></td></tr>
+<tr class="memitem:a970d5678017c88ca7cafbfecadda4f6a" id="r_a970d5678017c88ca7cafbfecadda4f6a"><td class="memItemLeft" align="right" valign="top"><a id="a970d5678017c88ca7cafbfecadda4f6a" name="a970d5678017c88ca7cafbfecadda4f6a"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>StateToPositions</b> = std::unordered_map&lt;State, Positions&gt;</td></tr>
+<tr class="memdesc:a970d5678017c88ca7cafbfecadda4f6a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Тип состояния - описание блока <br /></td></tr>
+<tr class="separator:a970d5678017c88ca7cafbfecadda4f6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab64f905f983bab129eade6225b7b7bb6" id="r_ab64f905f983bab129eade6225b7b7bb6"><td class="memItemLeft" align="right" valign="top"><a id="ab64f905f983bab129eade6225b7b7bb6" name="ab64f905f983bab129eade6225b7b7bb6"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>StateToOffsets</b> = std::unordered_map&lt;State, Offsets&gt;</td></tr>
+<tr class="memdesc:ab64f905f983bab129eade6225b7b7bb6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Тип состояния - смещения <br /></td></tr>
+<tr class="separator:ab64f905f983bab129eade6225b7b7bb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Открытые члены</h2></td></tr>
+<tr class="memitem:afc0a00fa5407d45a8af392627f1683b9" id="r_afc0a00fa5407d45a8af392627f1683b9"><td class="memItemLeft" align="right" valign="top"><a id="afc0a00fa5407d45a8af392627f1683b9" name="afc0a00fa5407d45a8af392627f1683b9"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>AbstractBlock</b> (TypeColor color)</td></tr>
+<tr class="memdesc:afc0a00fa5407d45a8af392627f1683b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Дефолдный конструктор <br /></td></tr>
+<tr class="separator:afc0a00fa5407d45a8af392627f1683b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a66765e78c2f75fd00b02bbab2c8b00f1" id="r_a66765e78c2f75fd00b02bbab2c8b00f1"><td class="memItemLeft" align="right" valign="top"><a id="a66765e78c2f75fd00b02bbab2c8b00f1" name="a66765e78c2f75fd00b02bbab2c8b00f1"></a>
+virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~AbstractBlock</b> ()=default</td></tr>
+<tr class="memdesc:a66765e78c2f75fd00b02bbab2c8b00f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Виртуальный деструктор <br /></td></tr>
+<tr class="separator:a66765e78c2f75fd00b02bbab2c8b00f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad71a7ef3d76cb35c47772b7eac991706" id="r_ad71a7ef3d76cb35c47772b7eac991706"><td class="memItemLeft" align="right" valign="top">TypeColor&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad71a7ef3d76cb35c47772b7eac991706">GetColor</a> () const</td></tr>
+<tr class="memdesc:ad71a7ef3d76cb35c47772b7eac991706"><td class="mdescLeft">&#160;</td><td class="mdescRight">Вернуть цвет блока  <br /></td></tr>
+<tr class="separator:ad71a7ef3d76cb35c47772b7eac991706"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a587970b2db019fe937451329645b9b3f" id="r_a587970b2db019fe937451329645b9b3f"><td class="memItemLeft" align="right" valign="top">virtual TypeBlock&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a587970b2db019fe937451329645b9b3f">GetType</a> () const</td></tr>
+<tr class="separator:a587970b2db019fe937451329645b9b3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a66112d16526371ee5266d754c9305074" id="r_a66112d16526371ee5266d754c9305074"><td class="memItemLeft" align="right" valign="top">Positions&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a66112d16526371ee5266d754c9305074">GetCurrentDescription</a> ()</td></tr>
+<tr class="memdesc:a66112d16526371ee5266d754c9305074"><td class="mdescLeft">&#160;</td><td class="mdescRight">Получить текущее положение блока  <br /></td></tr>
+<tr class="separator:a66112d16526371ee5266d754c9305074"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9c33365b3ec8c96438dc095efb328b1" id="r_ac9c33365b3ec8c96438dc095efb328b1"><td class="memItemLeft" align="right" valign="top">Positions&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac9c33365b3ec8c96438dc095efb328b1">GetDescription</a> (State state)</td></tr>
+<tr class="memdesc:ac9c33365b3ec8c96438dc095efb328b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Получить положение блока по состоянию блока  <br /></td></tr>
+<tr class="separator:ac9c33365b3ec8c96438dc095efb328b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a682cf047f8e7a006c86de768106329d1" id="r_a682cf047f8e7a006c86de768106329d1"><td class="memItemLeft" align="right" valign="top">State&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a682cf047f8e7a006c86de768106329d1">GetCurrentState</a> () const</td></tr>
+<tr class="memdesc:a682cf047f8e7a006c86de768106329d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Получить текущее состояние блока  <br /></td></tr>
+<tr class="separator:a682cf047f8e7a006c86de768106329d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4cdb2688d4070a2140541a867a90e111" id="r_a4cdb2688d4070a2140541a867a90e111"><td class="memItemLeft" align="right" valign="top">State&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4cdb2688d4070a2140541a867a90e111">GetNextState</a> (Command cmd) const</td></tr>
+<tr class="memdesc:a4cdb2688d4070a2140541a867a90e111"><td class="mdescLeft">&#160;</td><td class="mdescRight">Получить следующее состояние блока по переданной команде  <br /></td></tr>
+<tr class="separator:a4cdb2688d4070a2140541a867a90e111"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c243bf2e1ff56a3c37aa2890373ed48" id="r_a9c243bf2e1ff56a3c37aa2890373ed48"><td class="memItemLeft" align="right" valign="top">Offsets&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9c243bf2e1ff56a3c37aa2890373ed48">GetOffsets</a> (State from, State to)</td></tr>
+<tr class="memdesc:a9c243bf2e1ff56a3c37aa2890373ed48"><td class="mdescLeft">&#160;</td><td class="mdescRight">Получить смещение для блока  <br /></td></tr>
+<tr class="separator:a9c243bf2e1ff56a3c37aa2890373ed48"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a004a10328409a653f83efd803459e87f" id="r_a004a10328409a653f83efd803459e87f"><td class="memItemLeft" align="right" valign="top"><a id="a004a10328409a653f83efd803459e87f" name="a004a10328409a653f83efd803459e87f"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>RotateBlock</b> (Command cmd)</td></tr>
+<tr class="memdesc:a004a10328409a653f83efd803459e87f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Повернуть блок <br /></td></tr>
+<tr class="separator:a004a10328409a653f83efd803459e87f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
+Защищенные данные</h2></td></tr>
+<tr class="memitem:a2dac93d56fe9724da993a34a0ea0f7f4" id="r_a2dac93d56fe9724da993a34a0ea0f7f4"><td class="memItemLeft" align="right" valign="top"><a id="a2dac93d56fe9724da993a34a0ea0f7f4" name="a2dac93d56fe9724da993a34a0ea0f7f4"></a>
+<a class="el" href="#a970d5678017c88ca7cafbfecadda4f6a">StateToPositions</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_stateToPositions</b></td></tr>
+<tr class="memdesc:a2dac93d56fe9724da993a34a0ea0f7f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Контейнер состояние - положение <br /></td></tr>
+<tr class="separator:a2dac93d56fe9724da993a34a0ea0f7f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a630ba03acfe70260c4f509e6391219da" id="r_a630ba03acfe70260c4f509e6391219da"><td class="memItemLeft" align="right" valign="top"><a id="a630ba03acfe70260c4f509e6391219da" name="a630ba03acfe70260c4f509e6391219da"></a>
+<a class="el" href="#ab64f905f983bab129eade6225b7b7bb6">StateToOffsets</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_stateToOffset</b></td></tr>
+<tr class="memdesc:a630ba03acfe70260c4f509e6391219da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Контейнер состояние - смещение <br /></td></tr>
+<tr class="separator:a630ba03acfe70260c4f509e6391219da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Базовый класс блока </p>
+</div><h2 class="groupheader">Методы</h2>
+<a id="ad71a7ef3d76cb35c47772b7eac991706" name="ad71a7ef3d76cb35c47772b7eac991706"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad71a7ef3d76cb35c47772b7eac991706">&#9670;&#160;</a></span>GetColor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TypeColor Tetris::Model::Blocks::AbstractBlock::GetColor </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Вернуть цвет блока </p>
+<dl class="section return"><dt>Возвращает</dt><dd>Цвет блока <br  />
+ </dd></dl>
+
+</div>
+</div>
+<a id="a66112d16526371ee5266d754c9305074" name="a66112d16526371ee5266d754c9305074"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a66112d16526371ee5266d754c9305074">&#9670;&#160;</a></span>GetCurrentDescription()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Positions Tetris::Model::Blocks::AbstractBlock::GetCurrentDescription </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Получить текущее положение блока </p>
+<dl class="section return"><dt>Возвращает</dt><dd>Описание блока </dd></dl>
+
+</div>
+</div>
+<a id="a682cf047f8e7a006c86de768106329d1" name="a682cf047f8e7a006c86de768106329d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a682cf047f8e7a006c86de768106329d1">&#9670;&#160;</a></span>GetCurrentState()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">State Tetris::Model::Blocks::AbstractBlock::GetCurrentState </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Получить текущее состояние блока </p>
+<dl class="section return"><dt>Возвращает</dt><dd>состояние блока </dd></dl>
+
+</div>
+</div>
+<a id="ac9c33365b3ec8c96438dc095efb328b1" name="ac9c33365b3ec8c96438dc095efb328b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac9c33365b3ec8c96438dc095efb328b1">&#9670;&#160;</a></span>GetDescription()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Positions Tetris::Model::Blocks::AbstractBlock::GetDescription </td>
+          <td>(</td>
+          <td class="paramtype">State</td>          <td class="paramname"><span class="paramname"><em>state</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Получить положение блока по состоянию блока </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">state</td><td>Состояние блока </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Положение блока </dd></dl>
+
+</div>
+</div>
+<a id="a4cdb2688d4070a2140541a867a90e111" name="a4cdb2688d4070a2140541a867a90e111"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4cdb2688d4070a2140541a867a90e111">&#9670;&#160;</a></span>GetNextState()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">State Tetris::Model::Blocks::AbstractBlock::GetNextState </td>
+          <td>(</td>
+          <td class="paramtype">Command</td>          <td class="paramname"><span class="paramname"><em>cmd</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Получить следующее состояние блока по переданной команде </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cmd</td><td>Команда </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Состояние </dd></dl>
+
+</div>
+</div>
+<a id="a9c243bf2e1ff56a3c37aa2890373ed48" name="a9c243bf2e1ff56a3c37aa2890373ed48"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c243bf2e1ff56a3c37aa2890373ed48">&#9670;&#160;</a></span>GetOffsets()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Offsets Tetris::Model::Blocks::AbstractBlock::GetOffsets </td>
+          <td>(</td>
+          <td class="paramtype">State</td>          <td class="paramname"><span class="paramname"><em>from</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">State</td>          <td class="paramname"><span class="paramname"><em>to</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Получить смещение для блока </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">from</td><td>Начальное состояние </td></tr>
+    <tr><td class="paramname">to</td><td>К которому необходимо прийти </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Смещения </dd></dl>
+
+</div>
+</div>
+<a id="a587970b2db019fe937451329645b9b3f" name="a587970b2db019fe937451329645b9b3f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a587970b2db019fe937451329645b9b3f">&#9670;&#160;</a></span>GetType()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual TypeBlock Tetris::Model::Blocks::AbstractBlock::GetType </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Переопределяется в <a class="el" href="class_tetris_1_1_model_1_1_blocks_1_1_iblock.html#a3c125497c6d27222b61f113444330a56">Tetris::Model::Blocks::Iblock</a>, <a class="el" href="class_tetris_1_1_model_1_1_blocks_1_1_jblock.html#a2b714cb44efd13239ff7e53cf8c37889">Tetris::Model::Blocks::Jblock</a>, <a class="el" href="class_tetris_1_1_model_1_1_blocks_1_1_lblock.html#a372bf1128e6e6e57dd4d3bcdfdcc762f">Tetris::Model::Blocks::Lblock</a>, <a class="el" href="class_tetris_1_1_model_1_1_blocks_1_1_oblock.html#aab042bdfa3361dfe3aaf765a33cdd816">Tetris::Model::Blocks::Oblock</a>, <a class="el" href="class_tetris_1_1_model_1_1_blocks_1_1_sblock.html#ae483d88aea3d38c55293a4ae3ed4f5bb">Tetris::Model::Blocks::Sblock</a>, <a class="el" href="class_tetris_1_1_model_1_1_blocks_1_1_tblock.html#a830fbf23846dcbacb304965c483a495e">Tetris::Model::Blocks::Tblock</a> и <a class="el" href="class_tetris_1_1_model_1_1_blocks_1_1_zblock.html#ab85ebe68a2b65be5829669ec46b8578f">Tetris::Model::Blocks::Zblock</a>.</p>
+
+</div>
+</div>
+<hr/>Объявления и описания членов классов находятся в файлах:<ul>
+<li>Model/Include/Model/Blocks/<a class="el" href="_abstract_block_8h_source.html">AbstractBlock.h</a></li>
+<li>Model/Source/Blocks/<b>AbstractBlock.cpp</b></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0
+</small></address>
+</body>
+</html>

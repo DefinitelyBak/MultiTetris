@@ -18,7 +18,7 @@ namespace Tetris::View::Qt
      * Состояние карты меняется только из методов UpdateView, 
      * просто надо какие события создают перерисовку содержимого.
      */
-    class VIEW_EXPORT Widget : public QWidget
+    class VIEW_EXPORT Widget final: public QWidget
     {
         Q_OBJECT 
 

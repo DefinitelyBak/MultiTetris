@@ -1,0 +1,57 @@
+.TH "Tetris::View::Qt::PreviewBlock" 3 "project(MultiTetris LANGUAGES CXX)" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Tetris::View::Qt::PreviewBlock
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Базовые классы:\fBTetris::View::Qt::Map\fP\&.
+.SS "Открытые члены"
+
+.in +1c
+.ti -1c
+.RI "\fBPreviewBlock\fP (QWindow *parent=nullptr, bool withBorder=false)"
+.br
+.ti -1c
+.RI "void \fBSetBlock\fP (const AbstractBlockPtr block)"
+.br
+.ti -1c
+.RI "Model::TypeBlock \fBGetType\fP () const"
+.br
+.in -1c
+
+Открытые члены унаследованные от \fBTetris::View::Qt::Map\fP
+.in +1c
+.ti -1c
+.RI "\fBMap\fP (QWindow *parent, bool withBorder=false)"
+.br
+.RI "Конструктор класса \fBMap\fP\&. "
+.ti -1c
+.RI "void \fBSetMap\fP (const std::vector< Model::TypeColor > &map, \fBModel::MapSize\fP size)"
+.br
+.RI "Установить карту "
+.in -1c
+.SS "Дополнительные унаследованные члены"
+
+
+Защищенные члены унаследованные от \fBTetris::View::Qt::Map\fP
+.in +1c
+.ti -1c
+.RI "bool \fBevent\fP (QEvent *event) override"
+.br
+.RI "Обработка событий "
+.ti -1c
+.RI "void \fBresizeEvent\fP (QResizeEvent *\fBevent\fP) override"
+.br
+.RI "Обработка изменения размера окна "
+.ti -1c
+.RI "void \fBexposeEvent\fP (QExposeEvent *\fBevent\fP) override"
+.br
+.RI "Обработка события отображения окна "
+.in -1c
+
+.SH "Автор"
+.PP 
+Автоматически создано Doxygen для project(MultiTetris LANGUAGES CXX) из исходного текста\&.

@@ -1,7 +1,7 @@
 #pragma once
 
-#include <View/Export.h>
 #include <View/Precompile.h>
+#include <View/Export.h>
 
 
 namespace Tetris::View::SFML

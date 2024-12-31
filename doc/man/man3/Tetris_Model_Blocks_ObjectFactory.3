@@ -1,0 +1,107 @@
+.TH "Tetris::Model::Blocks::ObjectFactory< Base, IdType >" 3 "project(MultiTetris LANGUAGES CXX)" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Tetris::Model::Blocks::ObjectFactory< Base, IdType > \- Шаблонный класс для создания объектов различных типов\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <ObjectFactory\&.h>\fP
+.SS "Открытые члены"
+
+.in +1c
+.ti -1c
+.RI "\fBObjectFactory\fP ()"
+.br
+.RI "Конструктор "
+.ti -1c
+.RI "virtual \fB~ObjectFactory\fP ()"
+.br
+.RI "Виртуальный деструктор "
+.ti -1c
+.RI "template<class C > void \fBadd\fP (const IdType &id)"
+.br
+.RI "Добавить новый тип объекта в фабрику\&. "
+.in -1c
+.SS "Защищенные типы"
+
+.in +1c
+.ti -1c
+.RI "using \fBAbstractFactory\fP = \fBAbstractCreator\fP<Base>"
+.br
+.RI "Базовый тип абстрактной фабрики для создания объектов\&. "
+.ti -1c
+.RI "using \fBFactoryMap\fP = std::map<IdType, \fBAbstractFactory\fP*>"
+.br
+.RI "Тип мапы, связывающей идентификаторы объектов с соответствующими фабриками\&. "
+.in -1c
+.SS "Защищенные члены"
+
+.in +1c
+.ti -1c
+.RI "void \fBregisterClass\fP (const IdType &id, \fBAbstractFactory\fP *p)"
+.br
+.RI "Зарегистрировать фабрику для создания объекта с заданным идентификатором\&. "
+.in -1c
+.SS "Защищенные данные"
+
+.in +1c
+.ti -1c
+.RI "\fBFactoryMap\fP \fB_factory\fP"
+.br
+.RI "Мапа зарегистрированных объектов и их фабрик\&. "
+.in -1c
+.SH "Подробное описание"
+.PP 
+
+.SS "template<class Base, class IdType>
+.br
+class Tetris::Model::Blocks::ObjectFactory< Base, IdType >"Шаблонный класс для создания объектов различных типов\&. 
+
+
+.PP
+\fBПараметры шаблона\fP
+.RS 4
+\fIBase\fP Базовый класс создаваемых объектов\&. 
+.br
+\fIIdType\fP Тип идентификатора создаваемого объекта\&. 
+.RE
+.PP
+
+.SH "Методы"
+.PP 
+.SS "template<class Base , class IdType > template<class C > void \fBTetris::Model::Blocks::ObjectFactory\fP< Base, IdType >::add (const IdType & id)\fR [inline]\fP"
+
+.PP
+Добавить новый тип объекта в фабрику\&. 
+.PP
+\fBПараметры шаблона\fP
+.RS 4
+\fIC\fP Тип создаваемого объекта\&. 
+.RE
+.PP
+\fBАргументы\fP
+.RS 4
+\fIid\fP Идентификатор объекта\&. 
+.RE
+.PP
+
+.SS "template<class Base , class IdType > void \fBTetris::Model::Blocks::ObjectFactory\fP< Base, IdType >::registerClass (const IdType & id, \fBAbstractFactory\fP * p)\fR [inline]\fP, \fR [protected]\fP"
+
+.PP
+Зарегистрировать фабрику для создания объекта с заданным идентификатором\&. 
+.PP
+\fBАргументы\fP
+.RS 4
+\fIid\fP Идентификатор объекта\&. 
+.br
+\fIp\fP Указатель на фабрику объекта\&. 
+.RE
+.PP
+
+
+.SH "Автор"
+.PP 
+Автоматически создано Doxygen для project(MultiTetris LANGUAGES CXX) из исходного текста\&.

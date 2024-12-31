@@ -1,0 +1,144 @@
+\doxysection{Класс Tetris\+::View\+::Qt\+::Widget}
+\hypertarget{class_tetris_1_1_view_1_1_qt_1_1_widget}{}\label{class_tetris_1_1_view_1_1_qt_1_1_widget}\index{Tetris::View::Qt::Widget@{Tetris::View::Qt::Widget}}
+
+
+Класс, представляющий виджет для отображения игры Tetris. Состояние карты меняется только из методов Update\+View, просто надо какие события создают перерисовку содержимого.  
+
+
+
+
+{\ttfamily \#include $<$Widget.\+h$>$}
+
+Граф наследования\+:Tetris\+::View\+::Qt\+::Widget\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_tetris_1_1_view_1_1_qt_1_1_widget}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Открытые слоты}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_tetris_1_1_view_1_1_qt_1_1_widget_a9389513b2bb0ab2f1a8f7ca5f11733a7}{Slot\+Update\+View}} (Description\+Model\+Ptr descp)
+\begin{DoxyCompactList}\small\item\em Слот для обновления представления на основе модели описания. \end{DoxyCompactList}\item 
+Description\+Model\+Ptr \mbox{\hyperlink{class_tetris_1_1_view_1_1_qt_1_1_widget_a5311eaf38f6380e158d373eba8c154b6}{Get\+Description\+Model}} ()
+\begin{DoxyCompactList}\small\item\em Получает текущее состояние модели описания. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Сигналы}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_tetris_1_1_view_1_1_qt_1_1_widget_aec4e05e511e45a84480446426c79a4e3}{Signal\+Update\+Model}} (Model\+::\+Command command)
+\begin{DoxyCompactList}\small\item\em Сигнал для обновления модели с командой. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_tetris_1_1_view_1_1_qt_1_1_widget_a0c1bf2c7741b2e114992a6ca08e48166}{Widget}} (QWidget \texorpdfstring{$\ast$}{*}parent=nullptr)
+\begin{DoxyCompactList}\small\item\em Конструктор класса \doxylink{class_tetris_1_1_view_1_1_qt_1_1_widget}{Widget}. Инициализирует родительский виджет. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Защищенные члены}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_tetris_1_1_view_1_1_qt_1_1_widget_a772074a93deac981714e5b83e15a6e3f}{key\+Press\+Event}} (QKey\+Event \texorpdfstring{$\ast$}{*}event) override
+\begin{DoxyCompactList}\small\item\em Обрабатывает события нажатия клавиш. Переопределяет метод key\+Press\+Event для обработки нажатий клавиш. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_tetris_1_1_view_1_1_qt_1_1_widget_a664e4e974f748691f53647704fe3a71f}{paint\+Event}} (QPaint\+Event \texorpdfstring{$\ast$}{*}event) override
+\begin{DoxyCompactList}\small\item\em Обрабатывает события перерисовки виджета. Переопределяет метод paint\+Event для обновления содержимого виджета. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Класс, представляющий виджет для отображения игры Tetris. Состояние карты меняется только из методов Update\+View, просто надо какие события создают перерисовку содержимого. 
+
+\doxysubsection{Конструктор(ы)}
+\Hypertarget{class_tetris_1_1_view_1_1_qt_1_1_widget_a0c1bf2c7741b2e114992a6ca08e48166}\label{class_tetris_1_1_view_1_1_qt_1_1_widget_a0c1bf2c7741b2e114992a6ca08e48166} 
+\index{Tetris::View::Qt::Widget@{Tetris::View::Qt::Widget}!Widget@{Widget}}
+\index{Widget@{Widget}!Tetris::View::Qt::Widget@{Tetris::View::Qt::Widget}}
+\doxysubsubsection{\texorpdfstring{Widget()}{Widget()}}
+{\footnotesize\ttfamily Tetris\+::\+View\+::\+Qt\+::\+Widget\+::\+Widget (\begin{DoxyParamCaption}\item[{QWidget \texorpdfstring{$\ast$}{*}}]{parent = {\ttfamily nullptr} }\end{DoxyParamCaption})}
+
+
+
+Конструктор класса \doxylink{class_tetris_1_1_view_1_1_qt_1_1_widget}{Widget}. Инициализирует родительский виджет. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em parent} & Указатель на родительский виджет, по умолчанию nullptr. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Методы}
+\Hypertarget{class_tetris_1_1_view_1_1_qt_1_1_widget_a5311eaf38f6380e158d373eba8c154b6}\label{class_tetris_1_1_view_1_1_qt_1_1_widget_a5311eaf38f6380e158d373eba8c154b6} 
+\index{Tetris::View::Qt::Widget@{Tetris::View::Qt::Widget}!GetDescriptionModel@{GetDescriptionModel}}
+\index{GetDescriptionModel@{GetDescriptionModel}!Tetris::View::Qt::Widget@{Tetris::View::Qt::Widget}}
+\doxysubsubsection{\texorpdfstring{GetDescriptionModel}{GetDescriptionModel}}
+{\footnotesize\ttfamily Description\+Model\+Ptr Tetris\+::\+View\+::\+Qt\+::\+Widget\+::\+Get\+Description\+Model (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+Получает текущее состояние модели описания. 
+
+\begin{DoxyReturn}{Возвращает}
+Текущая модель описания состояния игры. 
+\end{DoxyReturn}
+\Hypertarget{class_tetris_1_1_view_1_1_qt_1_1_widget_a772074a93deac981714e5b83e15a6e3f}\label{class_tetris_1_1_view_1_1_qt_1_1_widget_a772074a93deac981714e5b83e15a6e3f} 
+\index{Tetris::View::Qt::Widget@{Tetris::View::Qt::Widget}!keyPressEvent@{keyPressEvent}}
+\index{keyPressEvent@{keyPressEvent}!Tetris::View::Qt::Widget@{Tetris::View::Qt::Widget}}
+\doxysubsubsection{\texorpdfstring{keyPressEvent()}{keyPressEvent()}}
+{\footnotesize\ttfamily void Tetris\+::\+View\+::\+Qt\+::\+Widget\+::key\+Press\+Event (\begin{DoxyParamCaption}\item[{QKey\+Event \texorpdfstring{$\ast$}{*}}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}
+
+
+
+Обрабатывает события нажатия клавиш. Переопределяет метод key\+Press\+Event для обработки нажатий клавиш. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em event} & Указатель на событие нажатия клавиши. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_tetris_1_1_view_1_1_qt_1_1_widget_a664e4e974f748691f53647704fe3a71f}\label{class_tetris_1_1_view_1_1_qt_1_1_widget_a664e4e974f748691f53647704fe3a71f} 
+\index{Tetris::View::Qt::Widget@{Tetris::View::Qt::Widget}!paintEvent@{paintEvent}}
+\index{paintEvent@{paintEvent}!Tetris::View::Qt::Widget@{Tetris::View::Qt::Widget}}
+\doxysubsubsection{\texorpdfstring{paintEvent()}{paintEvent()}}
+{\footnotesize\ttfamily void Tetris\+::\+View\+::\+Qt\+::\+Widget\+::paint\+Event (\begin{DoxyParamCaption}\item[{QPaint\+Event \texorpdfstring{$\ast$}{*}}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}
+
+
+
+Обрабатывает события перерисовки виджета. Переопределяет метод paint\+Event для обновления содержимого виджета. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em event} & Указатель на событие перерисовки. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_tetris_1_1_view_1_1_qt_1_1_widget_aec4e05e511e45a84480446426c79a4e3}\label{class_tetris_1_1_view_1_1_qt_1_1_widget_aec4e05e511e45a84480446426c79a4e3} 
+\index{Tetris::View::Qt::Widget@{Tetris::View::Qt::Widget}!SignalUpdateModel@{SignalUpdateModel}}
+\index{SignalUpdateModel@{SignalUpdateModel}!Tetris::View::Qt::Widget@{Tetris::View::Qt::Widget}}
+\doxysubsubsection{\texorpdfstring{SignalUpdateModel}{SignalUpdateModel}}
+{\footnotesize\ttfamily void Tetris\+::\+View\+::\+Qt\+::\+Widget\+::\+Signal\+Update\+Model (\begin{DoxyParamCaption}\item[{Model\+::\+Command}]{command }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+
+
+Сигнал для обновления модели с командой. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em command} & Команда для обновления модели. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_tetris_1_1_view_1_1_qt_1_1_widget_a9389513b2bb0ab2f1a8f7ca5f11733a7}\label{class_tetris_1_1_view_1_1_qt_1_1_widget_a9389513b2bb0ab2f1a8f7ca5f11733a7} 
+\index{Tetris::View::Qt::Widget@{Tetris::View::Qt::Widget}!SlotUpdateView@{SlotUpdateView}}
+\index{SlotUpdateView@{SlotUpdateView}!Tetris::View::Qt::Widget@{Tetris::View::Qt::Widget}}
+\doxysubsubsection{\texorpdfstring{SlotUpdateView}{SlotUpdateView}}
+{\footnotesize\ttfamily void Tetris\+::\+View\+::\+Qt\+::\+Widget\+::\+Slot\+Update\+View (\begin{DoxyParamCaption}\item[{Description\+Model\+Ptr}]{descp }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+Слот для обновления представления на основе модели описания. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em descp} & Модель описания, используемая для обновления представления. \\
+\hline
+\end{DoxyParams}
+
+
+Объявления и описания членов классов находятся в файлах\+:\begin{DoxyCompactItemize}
+\item 
+View/\+Include/\+View/\+Qt/Widget.\+h\item 
+View/\+Source/\+Qt/Widget.\+cpp\end{DoxyCompactItemize}

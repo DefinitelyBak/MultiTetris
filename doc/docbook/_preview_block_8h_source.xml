@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__preview_block_8h_source" xml:lang="ru">
+<title>PreviewBlock.h</title>
+<indexterm><primary>View/Include/View/Qt/PreviewBlock.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#pragma&#32;once</emphasis>
+2 
+3 <emphasis role="preprocessor">#include&#32;&lt;View/Export.h&gt;</emphasis>
+4 <emphasis role="preprocessor">#include&#32;&lt;View/Precompile.h&gt;</emphasis>
+5 <emphasis role="preprocessor">#include&#32;&lt;View/Forwards.h&gt;</emphasis>
+6 <emphasis role="preprocessor">#include&#32;&lt;Model/Types.h&gt;</emphasis>
+7 
+8 <emphasis role="preprocessor">#include&#32;&lt;View/Qt/Map.h&gt;</emphasis>
+9 
+10 
+11 <emphasis role="keyword">namespace&#32;</emphasis>Tetris::View::Qt
+12 {
+13 
+14 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Класс&#32;PreviewBlock&#32;представляет&#32;собой&#32;блок&#32;предварительного&#32;просмотра&#32;в&#32;игре&#32;Тетрис.</emphasis>
+15 &#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis>VIEW_EXPORT&#32;<link linkend="_class_tetris_1_1_view_1_1_qt_1_1_preview_block">PreviewBlock</link>&#32;final&#32;:&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_tetris_1_1_view_1_1_qt_1_1_map">Map</link>
+16 &#32;&#32;&#32;&#32;{
+17 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Q_OBJECT&#32;&#32;<emphasis role="comment">//&#32;Макрос&#32;Qt&#32;для&#32;включения&#32;мета-объектной&#32;системы.</emphasis>
+18 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>:
+19 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Конструктор&#32;класса&#32;PreviewBlock.</emphasis>
+20 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;parent&#32;-&#32;родительское&#32;окно,&#32;по&#32;умолчанию&#32;nullptr.</emphasis>
+21 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;withBorder&#32;-&#32;флаг,&#32;указывающий,&#32;нужно&#32;ли&#32;отображать&#32;границу&#32;блока.</emphasis>
+22 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_tetris_1_1_view_1_1_qt_1_1_preview_block">PreviewBlock</link>(QWindow*&#32;parent&#32;=&#32;<emphasis role="keyword">nullptr</emphasis>,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;withBorder&#32;=&#32;<emphasis role="keyword">false</emphasis>);
+23 
+24 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Устанавливает&#32;блок&#32;для&#32;предварительного&#32;просмотра.</emphasis>
+25 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;block&#32;-&#32;указатель&#32;на&#32;блок,&#32;который&#32;нужно&#32;установить.</emphasis>
+26 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;SetBlock(<emphasis role="keyword">const</emphasis>&#32;AbstractBlockPtr&#32;block);
+27 
+28 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Возвращает&#32;тип&#32;блока.</emphasis>
+29 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Model::TypeBlock&#32;GetType()&#32;<emphasis role="keyword">const</emphasis>;
+30 
+31 &#32;&#32;&#32;&#32;<emphasis role="keyword">private</emphasis>:
+32 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Переменная&#32;для&#32;хранения&#32;типа&#32;формы&#32;блока.</emphasis>
+33 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Model::TypeBlock&#32;_typeShape{Model::TypeBlock::None};&#32;<emphasis role="comment">//&lt;&#32;Тип&#32;блока.</emphasis>
+34 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+35 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Переменная&#32;для&#32;хранения&#32;цвета&#32;блока.</emphasis>
+36 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Model::TypeColor&#32;_typeColor{Model::TypeColor::None};&#32;<emphasis role="comment">//&lt;&#32;Цвет&#32;блока.</emphasis>
+37 &#32;&#32;&#32;&#32;};
+38 }
+</programlisting></section>

@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_struct_tetris_1_1_model_1_1_map_size" xml:lang="ru">
+<title>Структура Tetris::Model::MapSize</title>
+<indexterm><primary>Tetris::Model::MapSize</primary></indexterm>
+<para>
+
+<para>Размер карты </para>
+ 
+</para>
+<para>
+<computeroutput>#include &lt;Types.h&gt;</computeroutput>
+</para>
+<simplesect>
+    <title>Открытые атрибуты    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_struct_tetris_1_1_model_1_1_map_size_1ab3c8dfc707ce661885f2746678b0d173"/>size_t <emphasis role="strong">columns</emphasis></para>
+
+<para>Количество колонок </para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_tetris_1_1_model_1_1_map_size_1a724cefa99c006c6d24e80454be39db96"/>size_t <emphasis role="strong">rows</emphasis></para>
+
+<para>Количество строк </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Подробное описание</title>
+
+<para>Размер карты </para>
+<para>
+Объявления и описания членов структуры находятся в файле:</para>
+Model/Include/Model/Types.h</section>
+</section>

@@ -1,16 +1,18 @@
 #pragma once
 
+#include <View/Precompile.h>
 #include <View/Export.h>
+#include <View/Forwards.h>
+
 #include <View/Qt/Widget.h>
 #include <View/Qt/KeyPressFilter.h>
-
 #include <Controller/MoveController.h>
 
 
 namespace Tetris::View::Qt
 {
     /// @brief Класс Adapter, который управляет виджетами и их обновлениями.
-    class VIEW_EXPORT Adapter: public QObject
+    class VIEW_EXPORT Adapter final: public QObject
     {
         Q_OBJECT
     public:

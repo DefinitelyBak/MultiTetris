@@ -67,6 +67,7 @@ set(sources
     Include/Controller/MoveController.h
     Include/Controller/Precompile.h
     Include/Controller/TimeController.h
+    Include/Controller/Export.h
     Source/MoveController.cpp
     Source/Precompile.cpp
     Source/TimeController.cpp

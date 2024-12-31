@@ -124,6 +124,7 @@
         "resumable": "cpp",
         "qwindow": "cpp",
         "qresizeevent": "cpp",
-        "qdebug": "cpp"
+        "qdebug": "cpp",
+        "qobject": "cpp"
     }
 }

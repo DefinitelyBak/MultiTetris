@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_tetris_1_1_view_1_1_s_f_m_l_1_1_widget" xml:lang="ru">
+<title>Класс Tetris::View::SFML::Widget</title>
+<indexterm><primary>Tetris::View::SFML::Widget</primary></indexterm>
+<para>Граф наследования:Tetris::View::SFML::Widget:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_tetris_1_1_view_1_1_s_f_m_l_1_1_widget.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Открытые члены    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_class_tetris_1_1_view_1_1_s_f_m_l_1_1_widget_1ae88caeecc788d3423bce969611bfc76e"/><emphasis role="strong">Widget</emphasis> (AbstractModelPtr model, const std::string &amp;pathFont)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_tetris_1_1_view_1_1_s_f_m_l_1_1_widget_1a418f3391e61836150a4fc783a0fbf868">Update</link> () override</para>
+
+<para>Обновление состояния виджета </para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_tetris_1_1_view_1_1_s_f_m_l_1_1_widget_1a8a59ff12378ab8c0a9d6f60863c38818">IsOpen</link> () const override</para>
+
+<para>Проверка, открыт ли виджет </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_tetris_1_1_view_1_1_s_f_m_l_1_1_widget_1abdd9ef3a425332aee66f82f834fd1b2a">SlotCloseWidget</link> () override</para>
+
+<para>Закрытие виджета </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+Открытые члены унаследованные от <link linkend="_class_tetris_1_1_model_1_1_abstract_widget">Tetris::Model::AbstractWidget</link>        <itemizedlist>
+            <listitem><para>virtual <emphasis role="strong">~AbstractWidget</emphasis> ()=default</para>
+
+<para>Деструктор по умолчанию </para>
+</listitem>
+            <listitem><para>virtual void <link linkend="_class_tetris_1_1_model_1_1_abstract_widget_1aa6db18ab4ca29340a5de6a45e4c01dd9">SlotUpdateWidget</link> (DescriptionModelPtr descp)</para>
+
+<para>Обновление виджета на основе описания модели </para>
+</listitem>
+            <listitem><para>DescriptionModelPtr <link linkend="_class_tetris_1_1_model_1_1_abstract_widget_1a6ab0ec04029b68ab93b3eebbbb1d9513">GetDescriptionModel</link> ()</para>
+
+<para>Обновление виджета на основе описания модели </para>
+</listitem>
+        </itemizedlist>
+<section>
+<title>Методы</title>
+<anchor xml:id="_class_tetris_1_1_view_1_1_s_f_m_l_1_1_widget_1a8a59ff12378ab8c0a9d6f60863c38818"/><section>
+    <title>IsOpen()</title>
+<indexterm><primary>IsOpen</primary><secondary>Tetris::View::SFML::Widget</secondary></indexterm>
+<indexterm><primary>Tetris::View::SFML::Widget</primary><secondary>IsOpen</secondary></indexterm>
+<para><computeroutput>bool Tetris::View::SFML::Widget::IsOpen ( ) const<computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+
+<para>Проверка, открыт ли виджет </para>
+</para>
+
+<para><formalpara><title>Возвращает</title>
+
+<para>true, если виджет открыт; иначе false </para>
+</formalpara>
+</para>
+<para>
+Замещает <link linkend="_class_tetris_1_1_model_1_1_abstract_widget_1a01d98c4b4561143a9ea6118de297f443">Tetris::Model::AbstractWidget</link>.</para>
+</section>
+<anchor xml:id="_class_tetris_1_1_view_1_1_s_f_m_l_1_1_widget_1abdd9ef3a425332aee66f82f834fd1b2a"/><section>
+    <title>SlotCloseWidget()</title>
+<indexterm><primary>SlotCloseWidget</primary><secondary>Tetris::View::SFML::Widget</secondary></indexterm>
+<indexterm><primary>Tetris::View::SFML::Widget</primary><secondary>SlotCloseWidget</secondary></indexterm>
+<para><computeroutput>void Tetris::View::SFML::Widget::SlotCloseWidget ( )<computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+
+<para>Закрытие виджета </para>
+</para>
+<para>
+Замещает <link linkend="_class_tetris_1_1_model_1_1_abstract_widget_1a683946a3fb3e248e67f04c0cb76cf4a3">Tetris::Model::AbstractWidget</link>.</para>
+</section>
+<anchor xml:id="_class_tetris_1_1_view_1_1_s_f_m_l_1_1_widget_1a418f3391e61836150a4fc783a0fbf868"/><section>
+    <title>Update()</title>
+<indexterm><primary>Update</primary><secondary>Tetris::View::SFML::Widget</secondary></indexterm>
+<indexterm><primary>Tetris::View::SFML::Widget</primary><secondary>Update</secondary></indexterm>
+<para><computeroutput>void Tetris::View::SFML::Widget::Update ( )<computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+
+<para>Обновление состояния виджета </para>
+</para>
+<para>
+Замещает <link linkend="_class_tetris_1_1_model_1_1_abstract_widget_1aff6a15abb04bcd549d37eef80a8cf8da">Tetris::Model::AbstractWidget</link>.</para>
+</section>
+<para>
+Объявления и описания членов классов находятся в файлах:</para>
+View/Include/View/SFML/Widget.hView/Source/SFML/Widget.cpp</section>
+</section>

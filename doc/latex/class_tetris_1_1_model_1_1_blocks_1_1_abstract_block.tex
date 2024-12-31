@@ -1,0 +1,179 @@
+\doxysection{Класс Tetris\+::Model\+::Blocks\+::Abstract\+Block}
+\hypertarget{class_tetris_1_1_model_1_1_blocks_1_1_abstract_block}{}\label{class_tetris_1_1_model_1_1_blocks_1_1_abstract_block}\index{Tetris::Model::Blocks::AbstractBlock@{Tetris::Model::Blocks::AbstractBlock}}
+
+
+Базовый класс блока  
+
+
+
+
+{\ttfamily \#include $<$Abstract\+Block.\+h$>$}
+
+Граф наследования\+:Tetris\+::Model\+::Blocks\+::Abstract\+Block\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=0.730594cm]{class_tetris_1_1_model_1_1_blocks_1_1_abstract_block}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Открытые типы}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_tetris_1_1_model_1_1_blocks_1_1_abstract_block_a970d5678017c88ca7cafbfecadda4f6a}\label{class_tetris_1_1_model_1_1_blocks_1_1_abstract_block_a970d5678017c88ca7cafbfecadda4f6a} 
+using {\bfseries State\+To\+Positions} = std\+::unordered\+\_\+map$<$State, Positions$>$
+\begin{DoxyCompactList}\small\item\em Тип состояния -\/ описание блока \end{DoxyCompactList}\item 
+\Hypertarget{class_tetris_1_1_model_1_1_blocks_1_1_abstract_block_ab64f905f983bab129eade6225b7b7bb6}\label{class_tetris_1_1_model_1_1_blocks_1_1_abstract_block_ab64f905f983bab129eade6225b7b7bb6} 
+using {\bfseries State\+To\+Offsets} = std\+::unordered\+\_\+map$<$State, Offsets$>$
+\begin{DoxyCompactList}\small\item\em Тип состояния -\/ смещения \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_tetris_1_1_model_1_1_blocks_1_1_abstract_block_afc0a00fa5407d45a8af392627f1683b9}\label{class_tetris_1_1_model_1_1_blocks_1_1_abstract_block_afc0a00fa5407d45a8af392627f1683b9} 
+{\bfseries Abstract\+Block} (Type\+Color color)
+\begin{DoxyCompactList}\small\item\em Дефолдный конструктор \end{DoxyCompactList}\item 
+\Hypertarget{class_tetris_1_1_model_1_1_blocks_1_1_abstract_block_a66765e78c2f75fd00b02bbab2c8b00f1}\label{class_tetris_1_1_model_1_1_blocks_1_1_abstract_block_a66765e78c2f75fd00b02bbab2c8b00f1} 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Abstract\+Block} ()=default
+\begin{DoxyCompactList}\small\item\em Виртуальный деструктор \end{DoxyCompactList}\item 
+Type\+Color \mbox{\hyperlink{class_tetris_1_1_model_1_1_blocks_1_1_abstract_block_ad71a7ef3d76cb35c47772b7eac991706}{Get\+Color}} () const
+\begin{DoxyCompactList}\small\item\em Вернуть цвет блока \end{DoxyCompactList}\item 
+virtual Type\+Block \mbox{\hyperlink{class_tetris_1_1_model_1_1_blocks_1_1_abstract_block_a587970b2db019fe937451329645b9b3f}{Get\+Type}} () const
+\item 
+Positions \mbox{\hyperlink{class_tetris_1_1_model_1_1_blocks_1_1_abstract_block_a66112d16526371ee5266d754c9305074}{Get\+Current\+Description}} ()
+\begin{DoxyCompactList}\small\item\em Получить текущее положение блока \end{DoxyCompactList}\item 
+Positions \mbox{\hyperlink{class_tetris_1_1_model_1_1_blocks_1_1_abstract_block_ac9c33365b3ec8c96438dc095efb328b1}{Get\+Description}} (State state)
+\begin{DoxyCompactList}\small\item\em Получить положение блока по состоянию блока \end{DoxyCompactList}\item 
+State \mbox{\hyperlink{class_tetris_1_1_model_1_1_blocks_1_1_abstract_block_a682cf047f8e7a006c86de768106329d1}{Get\+Current\+State}} () const
+\begin{DoxyCompactList}\small\item\em Получить текущее состояние блока \end{DoxyCompactList}\item 
+State \mbox{\hyperlink{class_tetris_1_1_model_1_1_blocks_1_1_abstract_block_a4cdb2688d4070a2140541a867a90e111}{Get\+Next\+State}} (Command cmd) const
+\begin{DoxyCompactList}\small\item\em Получить следующее состояние блока по переданной команде \end{DoxyCompactList}\item 
+Offsets \mbox{\hyperlink{class_tetris_1_1_model_1_1_blocks_1_1_abstract_block_a9c243bf2e1ff56a3c37aa2890373ed48}{Get\+Offsets}} (State from, State to)
+\begin{DoxyCompactList}\small\item\em Получить смещение для блока \end{DoxyCompactList}\item 
+\Hypertarget{class_tetris_1_1_model_1_1_blocks_1_1_abstract_block_a004a10328409a653f83efd803459e87f}\label{class_tetris_1_1_model_1_1_blocks_1_1_abstract_block_a004a10328409a653f83efd803459e87f} 
+void {\bfseries Rotate\+Block} (Command cmd)
+\begin{DoxyCompactList}\small\item\em Повернуть блок \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Защищенные данные}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_tetris_1_1_model_1_1_blocks_1_1_abstract_block_a2dac93d56fe9724da993a34a0ea0f7f4}\label{class_tetris_1_1_model_1_1_blocks_1_1_abstract_block_a2dac93d56fe9724da993a34a0ea0f7f4} 
+\mbox{\hyperlink{class_tetris_1_1_model_1_1_blocks_1_1_abstract_block_a970d5678017c88ca7cafbfecadda4f6a}{State\+To\+Positions}} {\bfseries \+\_\+state\+To\+Positions}
+\begin{DoxyCompactList}\small\item\em Контейнер состояние -\/ положение \end{DoxyCompactList}\item 
+\Hypertarget{class_tetris_1_1_model_1_1_blocks_1_1_abstract_block_a630ba03acfe70260c4f509e6391219da}\label{class_tetris_1_1_model_1_1_blocks_1_1_abstract_block_a630ba03acfe70260c4f509e6391219da} 
+\mbox{\hyperlink{class_tetris_1_1_model_1_1_blocks_1_1_abstract_block_ab64f905f983bab129eade6225b7b7bb6}{State\+To\+Offsets}} {\bfseries \+\_\+state\+To\+Offset}
+\begin{DoxyCompactList}\small\item\em Контейнер состояние -\/ смещение \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Базовый класс блока 
+
+\doxysubsection{Методы}
+\Hypertarget{class_tetris_1_1_model_1_1_blocks_1_1_abstract_block_ad71a7ef3d76cb35c47772b7eac991706}\label{class_tetris_1_1_model_1_1_blocks_1_1_abstract_block_ad71a7ef3d76cb35c47772b7eac991706} 
+\index{Tetris::Model::Blocks::AbstractBlock@{Tetris::Model::Blocks::AbstractBlock}!GetColor@{GetColor}}
+\index{GetColor@{GetColor}!Tetris::Model::Blocks::AbstractBlock@{Tetris::Model::Blocks::AbstractBlock}}
+\doxysubsubsection{\texorpdfstring{GetColor()}{GetColor()}}
+{\footnotesize\ttfamily Type\+Color Tetris\+::\+Model\+::\+Blocks\+::\+Abstract\+Block\+::\+Get\+Color (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Вернуть цвет блока 
+
+\begin{DoxyReturn}{Возвращает}
+Цвет блока ~\newline
+ 
+\end{DoxyReturn}
+\Hypertarget{class_tetris_1_1_model_1_1_blocks_1_1_abstract_block_a66112d16526371ee5266d754c9305074}\label{class_tetris_1_1_model_1_1_blocks_1_1_abstract_block_a66112d16526371ee5266d754c9305074} 
+\index{Tetris::Model::Blocks::AbstractBlock@{Tetris::Model::Blocks::AbstractBlock}!GetCurrentDescription@{GetCurrentDescription}}
+\index{GetCurrentDescription@{GetCurrentDescription}!Tetris::Model::Blocks::AbstractBlock@{Tetris::Model::Blocks::AbstractBlock}}
+\doxysubsubsection{\texorpdfstring{GetCurrentDescription()}{GetCurrentDescription()}}
+{\footnotesize\ttfamily Positions Tetris\+::\+Model\+::\+Blocks\+::\+Abstract\+Block\+::\+Get\+Current\+Description (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Получить текущее положение блока 
+
+\begin{DoxyReturn}{Возвращает}
+Описание блока 
+\end{DoxyReturn}
+\Hypertarget{class_tetris_1_1_model_1_1_blocks_1_1_abstract_block_a682cf047f8e7a006c86de768106329d1}\label{class_tetris_1_1_model_1_1_blocks_1_1_abstract_block_a682cf047f8e7a006c86de768106329d1} 
+\index{Tetris::Model::Blocks::AbstractBlock@{Tetris::Model::Blocks::AbstractBlock}!GetCurrentState@{GetCurrentState}}
+\index{GetCurrentState@{GetCurrentState}!Tetris::Model::Blocks::AbstractBlock@{Tetris::Model::Blocks::AbstractBlock}}
+\doxysubsubsection{\texorpdfstring{GetCurrentState()}{GetCurrentState()}}
+{\footnotesize\ttfamily State Tetris\+::\+Model\+::\+Blocks\+::\+Abstract\+Block\+::\+Get\+Current\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Получить текущее состояние блока 
+
+\begin{DoxyReturn}{Возвращает}
+состояние блока 
+\end{DoxyReturn}
+\Hypertarget{class_tetris_1_1_model_1_1_blocks_1_1_abstract_block_ac9c33365b3ec8c96438dc095efb328b1}\label{class_tetris_1_1_model_1_1_blocks_1_1_abstract_block_ac9c33365b3ec8c96438dc095efb328b1} 
+\index{Tetris::Model::Blocks::AbstractBlock@{Tetris::Model::Blocks::AbstractBlock}!GetDescription@{GetDescription}}
+\index{GetDescription@{GetDescription}!Tetris::Model::Blocks::AbstractBlock@{Tetris::Model::Blocks::AbstractBlock}}
+\doxysubsubsection{\texorpdfstring{GetDescription()}{GetDescription()}}
+{\footnotesize\ttfamily Positions Tetris\+::\+Model\+::\+Blocks\+::\+Abstract\+Block\+::\+Get\+Description (\begin{DoxyParamCaption}\item[{State}]{state }\end{DoxyParamCaption})}
+
+
+
+Получить положение блока по состоянию блока 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em state} & Состояние блока \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Положение блока 
+\end{DoxyReturn}
+\Hypertarget{class_tetris_1_1_model_1_1_blocks_1_1_abstract_block_a4cdb2688d4070a2140541a867a90e111}\label{class_tetris_1_1_model_1_1_blocks_1_1_abstract_block_a4cdb2688d4070a2140541a867a90e111} 
+\index{Tetris::Model::Blocks::AbstractBlock@{Tetris::Model::Blocks::AbstractBlock}!GetNextState@{GetNextState}}
+\index{GetNextState@{GetNextState}!Tetris::Model::Blocks::AbstractBlock@{Tetris::Model::Blocks::AbstractBlock}}
+\doxysubsubsection{\texorpdfstring{GetNextState()}{GetNextState()}}
+{\footnotesize\ttfamily State Tetris\+::\+Model\+::\+Blocks\+::\+Abstract\+Block\+::\+Get\+Next\+State (\begin{DoxyParamCaption}\item[{Command}]{cmd }\end{DoxyParamCaption}) const}
+
+
+
+Получить следующее состояние блока по переданной команде 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em cmd} & Команда \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Состояние 
+\end{DoxyReturn}
+\Hypertarget{class_tetris_1_1_model_1_1_blocks_1_1_abstract_block_a9c243bf2e1ff56a3c37aa2890373ed48}\label{class_tetris_1_1_model_1_1_blocks_1_1_abstract_block_a9c243bf2e1ff56a3c37aa2890373ed48} 
+\index{Tetris::Model::Blocks::AbstractBlock@{Tetris::Model::Blocks::AbstractBlock}!GetOffsets@{GetOffsets}}
+\index{GetOffsets@{GetOffsets}!Tetris::Model::Blocks::AbstractBlock@{Tetris::Model::Blocks::AbstractBlock}}
+\doxysubsubsection{\texorpdfstring{GetOffsets()}{GetOffsets()}}
+{\footnotesize\ttfamily Offsets Tetris\+::\+Model\+::\+Blocks\+::\+Abstract\+Block\+::\+Get\+Offsets (\begin{DoxyParamCaption}\item[{State}]{from,  }\item[{State}]{to }\end{DoxyParamCaption})}
+
+
+
+Получить смещение для блока 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em from} & Начальное состояние \\
+\hline
+{\em to} & К которому необходимо прийти \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Смещения 
+\end{DoxyReturn}
+\Hypertarget{class_tetris_1_1_model_1_1_blocks_1_1_abstract_block_a587970b2db019fe937451329645b9b3f}\label{class_tetris_1_1_model_1_1_blocks_1_1_abstract_block_a587970b2db019fe937451329645b9b3f} 
+\index{Tetris::Model::Blocks::AbstractBlock@{Tetris::Model::Blocks::AbstractBlock}!GetType@{GetType}}
+\index{GetType@{GetType}!Tetris::Model::Blocks::AbstractBlock@{Tetris::Model::Blocks::AbstractBlock}}
+\doxysubsubsection{\texorpdfstring{GetType()}{GetType()}}
+{\footnotesize\ttfamily virtual Type\+Block Tetris\+::\+Model\+::\+Blocks\+::\+Abstract\+Block\+::\+Get\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Переопределяется в \mbox{\hyperlink{class_tetris_1_1_model_1_1_blocks_1_1_iblock_a3c125497c6d27222b61f113444330a56}{Tetris\+::\+Model\+::\+Blocks\+::\+Iblock}}, \mbox{\hyperlink{class_tetris_1_1_model_1_1_blocks_1_1_jblock_a2b714cb44efd13239ff7e53cf8c37889}{Tetris\+::\+Model\+::\+Blocks\+::\+Jblock}}, \mbox{\hyperlink{class_tetris_1_1_model_1_1_blocks_1_1_lblock_a372bf1128e6e6e57dd4d3bcdfdcc762f}{Tetris\+::\+Model\+::\+Blocks\+::\+Lblock}}, \mbox{\hyperlink{class_tetris_1_1_model_1_1_blocks_1_1_oblock_aab042bdfa3361dfe3aaf765a33cdd816}{Tetris\+::\+Model\+::\+Blocks\+::\+Oblock}}, \mbox{\hyperlink{class_tetris_1_1_model_1_1_blocks_1_1_sblock_ae483d88aea3d38c55293a4ae3ed4f5bb}{Tetris\+::\+Model\+::\+Blocks\+::\+Sblock}}, \mbox{\hyperlink{class_tetris_1_1_model_1_1_blocks_1_1_tblock_a830fbf23846dcbacb304965c483a495e}{Tetris\+::\+Model\+::\+Blocks\+::\+Tblock}} и \mbox{\hyperlink{class_tetris_1_1_model_1_1_blocks_1_1_zblock_ab85ebe68a2b65be5829669ec46b8578f}{Tetris\+::\+Model\+::\+Blocks\+::\+Zblock}}.
+
+
+
+Объявления и описания членов классов находятся в файлах\+:\begin{DoxyCompactItemize}
+\item 
+Model/\+Include/\+Model/\+Blocks/Abstract\+Block.\+h\item 
+Model/\+Source/\+Blocks/Abstract\+Block.\+cpp\end{DoxyCompactItemize}

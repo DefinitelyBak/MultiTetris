@@ -1,0 +1,113 @@
+.TH "Tetris::View::Qt::QAdapterWidget" 3 "project(MultiTetris LANGUAGES CXX)" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Tetris::View::Qt::QAdapterWidget \- Класс \fBQAdapterWidget\fP, который является абстрактным виджетом и использует адаптер  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <QAdapterWidget\&.h>\fP
+.PP
+Базовые классы:\fBTetris::Model::AbstractWidget\fP\&.
+.SS "Открытые члены"
+
+.in +1c
+.ti -1c
+.RI "\fBQAdapterWidget\fP (AbstractModelPtr model)"
+.br
+.RI "Конструктор класса \fBQAdapterWidget\fP\&. "
+.ti -1c
+.RI "void \fBUpdate\fP () override"
+.br
+.RI "Обновление виджета (переопределение) "
+.ti -1c
+.RI "virtual void \fBSlotUpdateWidget\fP (DescriptionModelPtr descp) override"
+.br
+.RI "Обновление виджета на основе описания модели "
+.ti -1c
+.RI "bool \fBIsOpen\fP () const override"
+.br
+.RI "Проверка, открыт ли виджет "
+.ti -1c
+.RI "virtual void \fBSlotCloseWidget\fP () override"
+.br
+.RI "Закрытие виджета (переопределение) "
+.ti -1c
+.RI "void \fBCreateWidget\fP ()"
+.br
+.RI "Создание нового виджета "
+.in -1c
+
+Открытые члены унаследованные от \fBTetris::Model::AbstractWidget\fP
+.in +1c
+.ti -1c
+.RI "virtual \fB~AbstractWidget\fP ()=default"
+.br
+.RI "Деструктор по умолчанию "
+.ti -1c
+.RI "DescriptionModelPtr \fBGetDescriptionModel\fP ()"
+.br
+.RI "Обновление виджета на основе описания модели "
+.in -1c
+.SH "Подробное описание"
+.PP 
+Класс \fBQAdapterWidget\fP, который является абстрактным виджетом и использует адаптер 
+.SH "Конструктор(ы)"
+.PP 
+.SS "Tetris::View::Qt::QAdapterWidget::QAdapterWidget (AbstractModelPtr model)\fR [inline]\fP"
+
+.PP
+Конструктор класса \fBQAdapterWidget\fP\&. 
+.PP
+\fBАргументы\fP
+.RS 4
+\fImodel\fP Указатель на модель, с которой будет работать виджет 
+.RE
+.PP
+
+.SH "Методы"
+.PP 
+.SS "bool Tetris::View::Qt::QAdapterWidget::IsOpen () const\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Проверка, открыт ли виджет 
+.PP
+\fBВозвращает\fP
+.RS 4
+true, если виджет открыт 
+.RE
+.PP
+
+.PP
+Замещает \fBTetris::Model::AbstractWidget\fP\&.
+.SS "virtual void Tetris::View::Qt::QAdapterWidget::SlotCloseWidget ()\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Закрытие виджета (переопределение) 
+.PP
+Замещает \fBTetris::Model::AbstractWidget\fP\&.
+.SS "virtual void Tetris::View::Qt::QAdapterWidget::SlotUpdateWidget (DescriptionModelPtr descp)\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Обновление виджета на основе описания модели 
+.PP
+\fBАргументы\fP
+.RS 4
+\fIdescp\fP Описание текущего состояния модели 
+.RE
+.PP
+
+.PP
+Переопределяет метод предка \fBTetris::Model::AbstractWidget\fP\&.
+.SS "void Tetris::View::Qt::QAdapterWidget::Update ()\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Обновление виджета (переопределение) 
+.PP
+Замещает \fBTetris::Model::AbstractWidget\fP\&.
+
+.SH "Автор"
+.PP 
+Автоматически создано Doxygen для project(MultiTetris LANGUAGES CXX) из исходного текста\&.

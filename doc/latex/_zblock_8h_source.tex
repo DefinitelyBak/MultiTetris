@@ -1,0 +1,55 @@
+\doxysection{Zblock.\+h}
+\hypertarget{_zblock_8h_source}{}\label{_zblock_8h_source}\index{Model/Include/Model/Blocks/Zblock.h@{Model/Include/Model/Blocks/Zblock.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <Model/Blocks/AbstractBlock.h>}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{namespace\ }Tetris::Model::Blocks}
+\DoxyCodeLine{00007\ \{}
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keyword}{class\ }MODEL\_EXPORT\ \mbox{\hyperlink{class_tetris_1_1_model_1_1_blocks_1_1_zblock}{Zblock}}\ final\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_tetris_1_1_model_1_1_blocks_1_1_abstract_block}{AbstractBlock}}}
+\DoxyCodeLine{00010\ \ \ \ \ \{}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_tetris_1_1_model_1_1_blocks_1_1_zblock_a93f397c74c864e6a1fc69e09ade0dd57}{Zblock}}(TypeColor\ color)\ :\ \mbox{\hyperlink{class_tetris_1_1_model_1_1_blocks_1_1_abstract_block}{AbstractBlock}}(color)\ }
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \ \ \ \ \_stateToPositions\ =\ \{}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{State::Up,\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_tetris_1_1_model_1_1_position}{Position}}(-\/1,\ 1),\ \ \textcolor{comment}{//\ *\ \ *\ \ *}}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_tetris_1_1_model_1_1_position}{Position}}(0,\ 1),\ \ \ \textcolor{comment}{//\ o\ \ o\ \ *}}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_tetris_1_1_model_1_1_position}{Position}}(0,\ 0),\ \ \ \textcolor{comment}{//\ *\ \ 0\ \ o}}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_tetris_1_1_model_1_1_position}{Position}}(1,\ 0)\ \ \ \ \textcolor{comment}{//\ *\ \ *\ \ *}}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\},}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{State::Right,\ \{}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_tetris_1_1_model_1_1_position}{Position}}(1,\ 1),\ \ \ \textcolor{comment}{//\ *\ \ *\ \ *}}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_tetris_1_1_model_1_1_position}{Position}}(1,\ 0),\ \ \ \textcolor{comment}{//\ *\ \ *\ \ o}}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_tetris_1_1_model_1_1_position}{Position}}(0,\ 0),\ \ \ \textcolor{comment}{//\ *\ \ 0\ \ o}}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_tetris_1_1_model_1_1_position}{Position}}(0,\ -\/1)\ \ \ \textcolor{comment}{//\ *\ \ o\ \ *}}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\},}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{State::Down,\ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_tetris_1_1_model_1_1_position}{Position}}(1,\ -\/1),\ \ \textcolor{comment}{//\ *\ \ *\ \ *}}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_tetris_1_1_model_1_1_position}{Position}}(0,\ -\/1),\ \ \textcolor{comment}{//\ *\ \ *\ \ *}}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_tetris_1_1_model_1_1_position}{Position}}(0,\ 0),\ \ \ \textcolor{comment}{//\ o\ \ 0\ \ *}}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_tetris_1_1_model_1_1_position}{Position}}(-\/1,\ 0)\ \ \ \textcolor{comment}{//\ *\ \ o\ \ o}}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\},}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{State::Left,\ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_tetris_1_1_model_1_1_position}{Position}}(-\/1,-\/1),\ \ \ \textcolor{comment}{//\ *\ \ o\ \ *}}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_tetris_1_1_model_1_1_position}{Position}}(-\/1,\ 0),\ \ \ \textcolor{comment}{//\ o\ \ 0\ \ *}}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_tetris_1_1_model_1_1_position}{Position}}(0,\ 0),\ \ \ \ \textcolor{comment}{//\ o\ \ *\ \ *}}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_tetris_1_1_model_1_1_position}{Position}}(0,\ 1)\ \ \ \ \ \textcolor{comment}{//\ *\ \ *\ \ *}}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\}\ \ }
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \_stateToOffset\ =\ JLSTZOffset;}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ TypeBlock\ \mbox{\hyperlink{class_tetris_1_1_model_1_1_blocks_1_1_zblock_ab85ebe68a2b65be5829669ec46b8578f}{GetType}}()\textcolor{keyword}{\ const\ override}}
+\DoxyCodeLine{00049\ \textcolor{keyword}{\ \ \ \ \ \ \ \ }\{}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ TypeBlock::Zblock;}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00052\ \ \ \ \ \};}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \}\ \textcolor{comment}{//\ namespace\ Tetris::Model::Blocks}}
+
+\end{DoxyCode}

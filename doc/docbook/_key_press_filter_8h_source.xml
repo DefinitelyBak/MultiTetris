@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__key_press_filter_8h_source" xml:lang="ru">
+<title>KeyPressFilter.h</title>
+<indexterm><primary>View/Include/View/Qt/KeyPressFilter.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#pragma&#32;once</emphasis>
+2 
+3 <emphasis role="preprocessor">#include&#32;&lt;View/Export.h&gt;</emphasis>
+4 <emphasis role="preprocessor">#include&#32;&lt;View/Precompile.h&gt;</emphasis>
+5 
+6 
+7 <emphasis role="keyword">namespace&#32;</emphasis>Tetris::View::Qt
+8 {
+14 &#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis>VIEW_EXPORT&#32;<link linkend="_class_tetris_1_1_view_1_1_qt_1_1_key_press_filter">KeyPressFilter</link>&#32;:&#32;<emphasis role="keyword">public</emphasis>&#32;QObject
+15 &#32;&#32;&#32;&#32;{
+16 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Q_OBJECT&#32;<emphasis role="comment">//&#32;Макрос,&#32;необходимый&#32;для&#32;использования&#32;сигналов&#32;и&#32;слотов&#32;в&#32;Qt</emphasis>
+17 
+18 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>:
+24 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">explicit</emphasis>&#32;<link linkend="_class_tetris_1_1_view_1_1_qt_1_1_key_press_filter_1a033cf3ecb456928f2214d4a7a4d9f4e9">KeyPressFilter</link>(QObject&#32;*parent&#32;=&#32;<emphasis role="keyword">nullptr</emphasis>)&#32;:&#32;QObject(parent)&#32;{}
+25 
+26 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;slots:
+34 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_tetris_1_1_view_1_1_qt_1_1_key_press_filter_1a6ac475268de3dd384b915ccdadcae107">eventFilter</link>(QObject&#32;*obj,&#32;QEvent&#32;*event)<emphasis role="keyword">&#32;override</emphasis>
+35 <emphasis role="keyword">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;</emphasis>{
+36 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Проверяем,&#32;является&#32;ли&#32;событие&#32;нажатием&#32;клавиши</emphasis>
+37 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(event-&gt;type()&#32;==&#32;QEvent::KeyPress)&#32;{
+38 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;QKeyEvent&#32;*keyEvent&#32;=&#32;<emphasis role="keyword">static_cast&lt;</emphasis>QKeyEvent*<emphasis role="keyword">&gt;</emphasis>(event);
+39 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Перенаправляем&#32;событие&#32;родителю</emphasis>
+40 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;qApp-&gt;sendEvent(parent(),&#32;keyEvent);&#32;
+41 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;&#32;<emphasis role="comment">//&#32;Событие&#32;обработано</emphasis>
+42 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+43 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Передаем&#32;событие&#32;дальше,&#32;если&#32;оно&#32;не&#32;было&#32;обработано</emphasis>
+44 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;QObject::eventFilter(obj,&#32;event);
+45 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+46 &#32;&#32;&#32;&#32;};
+47 
+48 }&#32;<emphasis role="comment">//&#32;namespace&#32;Tetris::View::Qt</emphasis>
+</programlisting></section>

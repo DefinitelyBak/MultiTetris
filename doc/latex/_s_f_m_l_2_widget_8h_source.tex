@@ -1,0 +1,78 @@
+\doxysection{Widget.\+h}
+\hypertarget{_s_f_m_l_2_widget_8h_source}{}\label{_s_f_m_l_2_widget_8h_source}\index{View/Include/View/SFML/Widget.h@{View/Include/View/SFML/Widget.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <View/Export.h>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <View/Precompile.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <View/Forwards.h>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <Model/AbstractWidget.h>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <Model/AbstractModel.h>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <Controller/MoveController.h>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <View/SFML/Map.h>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <View/SFML/Text.h>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <View/SFML/WidgetPreviewBlock.h>}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{namespace\ }Tetris::View::SFML}
+\DoxyCodeLine{00016\ \{}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{comment}{//\ Класс\ Widget\ представляет\ собой\ графический\ интерфейс\ для\ игры\ Tetris,}}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{comment}{//\ реализующий\ методы\ для\ отображения\ и\ обновления\ состояния\ игры.}}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{class\ }VIEW\_EXPORT\ \mbox{\hyperlink{class_tetris_1_1_view_1_1_s_f_m_l_1_1_widget}{Widget}}\ final\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_tetris_1_1_model_1_1_abstract_widget}{Model::AbstractWidget}}}
+\DoxyCodeLine{00020\ \ \ \ \ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Конструктор\ класса,\ инициализирующий\ виджет\ с\ моделью\ и\ путем\ к\ шрифту.}}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_tetris_1_1_view_1_1_s_f_m_l_1_1_widget}{Widget}}(AbstractModelPtr\ model,\ \textcolor{keyword}{const}\ std::string\&\ pathFont);}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Деструктор\ класса,\ по\ умолчанию.}}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_tetris_1_1_view_1_1_s_f_m_l_1_1_widget}{\string~Widget}}()\ \textcolor{keyword}{override}\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Метод\ для\ обновления\ состояния\ виджета,\ вызывается\ в\ каждом\ кадре.}}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ Update()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Метод\ для\ проверки,\ открыт\ ли\ виджет.}}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ IsOpen()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Метод\ для\ закрытия\ виджета.}}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ SlotCloseWidget()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Метод\ для\ инициализации\ отображения\ счета.}}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ InitializeScore();}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Метод\ для\ инициализации\ блока\ предварительного\ просмотра.}}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ InitializePreviewBlock();}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Метод\ для\ обработки\ событий\ ввода\ от\ пользователя.}}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ HandleEvents();}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Метод\ для\ обработки\ нажатий\ клавиш.}}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ HandleKeyPress(sf::Keyboard::Scancode\ scancode);}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Метод\ для\ обновления\ карты\ на\ основе\ состояния\ модели.}}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ UpdateMap(\textcolor{keyword}{const}\ DescriptionModelPtr\&\ descriptionModel);}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Метод\ для\ обновления\ блока\ предварительного\ просмотра.}}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ UpdatePreviewBlock(\textcolor{keyword}{const}\ DescriptionModelPtr\&\ descriptionModel);}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Метод\ для\ обновления\ отображаемого\ счета.}}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ UpdateScore(\textcolor{keyword}{const}\ DescriptionModelPtr\&\ descriptionModel);}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Метод\ для\ отрисовки\ всех\ компонентов\ виджета\ на\ экране.}}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ Render();}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ sf::RenderWindow\ \_window;\ \textcolor{comment}{//<\ Окно\ для\ рендеринга\ графики.}}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_tetris_1_1_controller_1_1_move_controller}{Controller::MoveController}}\ \_controller;\ \textcolor{comment}{//<\ Контроллер\ для\ управления\ движением\ объектов\ в\ игре.}}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_tetris_1_1_view_1_1_s_f_m_l_1_1_map}{Map}}\ \_map;\ \textcolor{comment}{//<\ Объект\ карты,\ отображающий\ игровое\ поле.}}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_tetris_1_1_view_1_1_s_f_m_l_1_1_widget_preview_block}{WidgetPreviewBlock}}\ \_previewBlock;\ \textcolor{comment}{//<\ Виджет\ отобраения\ следующего\ блока.}}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_tetris_1_1_view_1_1_s_f_m_l_1_1_text}{Text}}\ \_score;\ \textcolor{comment}{//<\ Объект\ для\ отображения\ текущего\ счета\ игрока.}}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ std::atomic<bool>\ \_windowOpen\{\textcolor{keyword}{true}\};\ \textcolor{comment}{//<\ Флаг,\ указывающий,\ открыто\ ли\ окно.}}
+\DoxyCodeLine{00071\ \ \ \ \ \};}
+\DoxyCodeLine{00072\ \}\textcolor{comment}{//\ namespace\ Tetris::View::SFML}}
+
+\end{DoxyCode}

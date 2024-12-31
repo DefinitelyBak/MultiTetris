@@ -1,0 +1,134 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_tetris_1_1_view_1_1_s_f_m_l_1_1_widget_preview_block" xml:lang="ru">
+<title>Класс Tetris::View::SFML::WidgetPreviewBlock</title>
+<indexterm><primary>Tetris::View::SFML::WidgetPreviewBlock</primary></indexterm>
+<para>
+
+<para>Класс <link linkend="_class_tetris_1_1_view_1_1_s_f_m_l_1_1_widget_preview_block">WidgetPreviewBlock</link> отвечает за отображение предварительного просмотра блока в игре Тетрис. </para>
+ 
+</para>
+<para>
+<computeroutput>#include &lt;WidgetPreviewBlock.h&gt;</computeroutput>
+</para>
+<para>Граф наследования:Tetris::View::SFML::WidgetPreviewBlock:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_tetris_1_1_view_1_1_s_f_m_l_1_1_widget_preview_block.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Открытые члены    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_class_tetris_1_1_view_1_1_s_f_m_l_1_1_widget_preview_block_1a80daf7f7b943492349f31b6182f42f47">WidgetPreviewBlock</link> (const sf::Vector2f &amp;windowSize, bool withBorder=false)</para>
+
+<para>Конструктор класса. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_tetris_1_1_view_1_1_s_f_m_l_1_1_widget_preview_block_1a8f4e5c425feae0d362a2c32889b71a7e">SetBlock</link> (const AbstractBlockPtr block)</para>
+
+<para>Устанавливает блок для предварительного просмотра. </para>
+</listitem>
+            <listitem><para>Model::TypeBlock <link linkend="_class_tetris_1_1_view_1_1_s_f_m_l_1_1_widget_preview_block_1ab4ba495743025751a3bd086d6ac7ee48">GetType</link> () const</para>
+
+<para>Возвращает тип текущего блока. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Подробное описание</title>
+
+<para>Класс <link linkend="_class_tetris_1_1_view_1_1_s_f_m_l_1_1_widget_preview_block">WidgetPreviewBlock</link> отвечает за отображение предварительного просмотра блока в игре Тетрис. </para>
+</section>
+<section>
+<title>Конструктор(ы)</title>
+<anchor xml:id="_class_tetris_1_1_view_1_1_s_f_m_l_1_1_widget_preview_block_1a80daf7f7b943492349f31b6182f42f47"/><section>
+    <title>WidgetPreviewBlock()</title>
+<indexterm><primary>WidgetPreviewBlock</primary><secondary>Tetris::View::SFML::WidgetPreviewBlock</secondary></indexterm>
+<indexterm><primary>Tetris::View::SFML::WidgetPreviewBlock</primary><secondary>WidgetPreviewBlock</secondary></indexterm>
+<para><computeroutput>Tetris::View::SFML::WidgetPreviewBlock::WidgetPreviewBlock (const sf::Vector2f &amp; windowSize, bool withBorder = <computeroutput>false</computeroutput>
+)</computeroutput></para><para>
+
+<para>Конструктор класса. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Аргументы</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>windowSize</entry><entry>
+<para>Размер окна для отображения блока. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>withBorder</entry><entry>
+<para>Флаг, указывающий, нужно ли отображать границу. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+</section>
+<section>
+<title>Методы</title>
+<anchor xml:id="_class_tetris_1_1_view_1_1_s_f_m_l_1_1_widget_preview_block_1ab4ba495743025751a3bd086d6ac7ee48"/><section>
+    <title>GetType()</title>
+<indexterm><primary>GetType</primary><secondary>Tetris::View::SFML::WidgetPreviewBlock</secondary></indexterm>
+<indexterm><primary>Tetris::View::SFML::WidgetPreviewBlock</primary><secondary>GetType</secondary></indexterm>
+<para><computeroutput>Model::TypeBlock Tetris::View::SFML::WidgetPreviewBlock::GetType ( ) const</computeroutput></para><para>
+
+<para>Возвращает тип текущего блока. </para>
+</para>
+
+<para><formalpara><title>Возвращает</title>
+
+<para>Тип блока. </para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_class_tetris_1_1_view_1_1_s_f_m_l_1_1_widget_preview_block_1a8f4e5c425feae0d362a2c32889b71a7e"/><section>
+    <title>SetBlock()</title>
+<indexterm><primary>SetBlock</primary><secondary>Tetris::View::SFML::WidgetPreviewBlock</secondary></indexterm>
+<indexterm><primary>Tetris::View::SFML::WidgetPreviewBlock</primary><secondary>SetBlock</secondary></indexterm>
+<para><computeroutput>void Tetris::View::SFML::WidgetPreviewBlock::SetBlock (const AbstractBlockPtr block)</computeroutput></para><para>
+
+<para>Устанавливает блок для предварительного просмотра. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Аргументы</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>block</entry><entry>
+<para>Указатель на блок, который нужно отобразить. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+<para>
+Объявления и описания членов классов находятся в файлах:</para>
+View/Include/View/SFML/WidgetPreviewBlock.hView/Source/SFML/WidgetPreviewBlock.cpp</section>
+</section>

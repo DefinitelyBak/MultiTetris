@@ -1,0 +1,126 @@
+.TH "Tetris::Model::Blocks::Jblock" 3 "project(MultiTetris LANGUAGES CXX)" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Tetris::Model::Blocks::Jblock \- класс J блок  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <Jblock\&.h>\fP
+.PP
+Базовые классы:\fBTetris::Model::Blocks::AbstractBlock\fP\&.
+.SS "Открытые члены"
+
+.in +1c
+.ti -1c
+.RI "\fBJblock\fP (TypeColor color)"
+.br
+.RI "Конструктор "
+.ti -1c
+.RI "TypeBlock \fBGetType\fP () const override"
+.br
+.RI "Получение типа блока "
+.in -1c
+
+Открытые члены унаследованные от \fBTetris::Model::Blocks::AbstractBlock\fP
+.in +1c
+.ti -1c
+.RI "\fBAbstractBlock\fP (TypeColor color)"
+.br
+.RI "Дефолдный конструктор "
+.ti -1c
+.RI "virtual \fB~AbstractBlock\fP ()=default"
+.br
+.RI "Виртуальный деструктор "
+.ti -1c
+.RI "TypeColor \fBGetColor\fP () const"
+.br
+.RI "Вернуть цвет блока "
+.ti -1c
+.RI "Positions \fBGetCurrentDescription\fP ()"
+.br
+.RI "Получить текущее положение блока "
+.ti -1c
+.RI "Positions \fBGetDescription\fP (State state)"
+.br
+.RI "Получить положение блока по состоянию блока "
+.ti -1c
+.RI "State \fBGetCurrentState\fP () const"
+.br
+.RI "Получить текущее состояние блока "
+.ti -1c
+.RI "State \fBGetNextState\fP (Command cmd) const"
+.br
+.RI "Получить следующее состояние блока по переданной команде "
+.ti -1c
+.RI "Offsets \fBGetOffsets\fP (State from, State to)"
+.br
+.RI "Получить смещение для блока "
+.ti -1c
+.RI "void \fBRotateBlock\fP (Command cmd)"
+.br
+.RI "Повернуть блок "
+.in -1c
+.SS "Дополнительные унаследованные члены"
+
+
+Открытые типы унаследованные от \fBTetris::Model::Blocks::AbstractBlock\fP
+.in +1c
+.ti -1c
+.RI "using \fBStateToPositions\fP = std::unordered_map<State, Positions>"
+.br
+.RI "Тип состояния - описание блока "
+.ti -1c
+.RI "using \fBStateToOffsets\fP = std::unordered_map<State, Offsets>"
+.br
+.RI "Тип состояния - смещения "
+.in -1c
+
+Защищенные данные унаследованные от \fBTetris::Model::Blocks::AbstractBlock\fP
+.in +1c
+.ti -1c
+.RI "\fBStateToPositions\fP \fB_stateToPositions\fP"
+.br
+.RI "Контейнер состояние - положение "
+.ti -1c
+.RI "\fBStateToOffsets\fP \fB_stateToOffset\fP"
+.br
+.RI "Контейнер состояние - смещение "
+.in -1c
+.SH "Подробное описание"
+.PP 
+класс J блок 
+.SH "Конструктор(ы)"
+.PP 
+.SS "Tetris::Model::Blocks::Jblock::Jblock (TypeColor color)\fR [inline]\fP"
+
+.PP
+Конструктор 
+.PP
+\fBАргументы\fP
+.RS 4
+\fIcolor\fP цвет блока 
+.RE
+.PP
+
+.SH "Методы"
+.PP 
+.SS "TypeBlock Tetris::Model::Blocks::Jblock::GetType () const\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Получение типа блока 
+.PP
+\fBВозвращает\fP
+.RS 4
+Идентификатор формы блока 
+.RE
+.PP
+
+.PP
+Переопределяет метод предка \fBTetris::Model::Blocks::AbstractBlock\fP\&.
+
+.SH "Автор"
+.PP 
+Автоматически создано Doxygen для project(MultiTetris LANGUAGES CXX) из исходного текста\&.

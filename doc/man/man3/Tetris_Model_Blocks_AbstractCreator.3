@@ -1,0 +1,68 @@
+.TH "Tetris::Model::Blocks::AbstractCreator< Base >" 3 "project(MultiTetris LANGUAGES CXX)" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Tetris::Model::Blocks::AbstractCreator< Base > \- Абстрактный создатель для создания объектов\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <AbstractCreator\&.h>\fP
+.PP
+Производные классы:\fBTetris::Model::Blocks::Creator< C, Base >\fP\&.
+.SS "Открытые члены"
+
+.in +1c
+.ti -1c
+.RI "\fBAbstractCreator\fP ()"
+.br
+.RI "Конструктор по умолчанию\&. "
+.ti -1c
+.RI "virtual \fB~AbstractCreator\fP ()"
+.br
+.RI "Виртуальный деструктор\&. "
+.ti -1c
+.RI "virtual Base * \fBCreate\fP (TypeColor color) const =0"
+.br
+.RI "Создать объект с заданным цветом\&. "
+.in -1c
+.SH "Подробное описание"
+.PP 
+
+.SS "template<class Base>
+.br
+class Tetris::Model::Blocks::AbstractCreator< Base >"Абстрактный создатель для создания объектов\&. 
+
+
+.PP
+\fBПараметры шаблона\fP
+.RS 4
+\fIBase\fP Базовый класс создаваемых объектов\&. 
+.RE
+.PP
+
+.SH "Методы"
+.PP 
+.SS "template<class Base > virtual Base * \fBTetris::Model::Blocks::AbstractCreator\fP< Base >::Create (TypeColor color) const\fR [pure virtual]\fP"
+
+.PP
+Создать объект с заданным цветом\&. 
+.PP
+\fBАргументы\fP
+.RS 4
+\fIcolor\fP Цвет создаваемого объекта\&. 
+.RE
+.PP
+\fBВозвращает\fP
+.RS 4
+Указатель на созданный объект\&. 
+.RE
+.PP
+
+.PP
+Замещается в \fBTetris::Model::Blocks::Creator< C, Base >\fP\&.
+
+.SH "Автор"
+.PP 
+Автоматически создано Doxygen для project(MultiTetris LANGUAGES CXX) из исходного текста\&.

@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__abstract_block_8h_source" xml:lang="ru">
+<title>AbstractBlock.h</title>
+<indexterm><primary>Model/Include/Model/Blocks/AbstractBlock.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#pragma&#32;once</emphasis>
+2 
+3 <emphasis role="preprocessor">#include&#32;&lt;Model/Export.h&gt;</emphasis>
+4 
+5 <emphasis role="preprocessor">#include&#32;&lt;Model/Precompile.h&gt;</emphasis>
+6 <emphasis role="preprocessor">#include&#32;&lt;Model/Types.h&gt;</emphasis>
+7 
+8 
+9 <emphasis role="keyword">namespace&#32;</emphasis>Tetris::Model::Blocks
+10 {
+12 &#32;&#32;&#32;&#32;<emphasis role="keyword">enum&#32;class</emphasis>&#32;State&#32;:&#32;<emphasis role="keywordtype">int</emphasis>
+13 &#32;&#32;&#32;&#32;{
+14 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Up,
+15 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Right,
+16 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Down,
+17 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Left
+18 &#32;&#32;&#32;&#32;};
+19 
+21 &#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis>MODEL_EXPORT&#32;<link linkend="_class_tetris_1_1_model_1_1_blocks_1_1_abstract_block">AbstractBlock</link>
+22 &#32;&#32;&#32;&#32;{
+23 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>:
+25 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">using&#32;</emphasis><link linkend="_class_tetris_1_1_model_1_1_blocks_1_1_abstract_block_1a970d5678017c88ca7cafbfecadda4f6a">StateToPositions</link>&#32;=&#32;std::unordered_map&lt;State,&#32;Positions&gt;;
+26 
+28 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">using&#32;</emphasis><link linkend="_class_tetris_1_1_model_1_1_blocks_1_1_abstract_block_1ab64f905f983bab129eade6225b7b7bb6">StateToOffsets</link>&#32;=&#32;std::unordered_map&lt;State,&#32;Offsets&gt;;
+29 
+31 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_tetris_1_1_model_1_1_blocks_1_1_abstract_block">AbstractBlock</link>(TypeColor&#32;color);
+32 
+34 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<link linkend="_class_tetris_1_1_model_1_1_blocks_1_1_abstract_block_1a66765e78c2f75fd00b02bbab2c8b00f1">~AbstractBlock</link>()&#32;=&#32;<emphasis role="keywordflow">default</emphasis>;
+35 
+38 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;TypeColor&#32;GetColor()&#32;<emphasis role="keyword">const</emphasis>;
+39 
+40 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;TypeBlock&#32;GetType()<emphasis role="keyword">&#32;const</emphasis>
+41 <emphasis role="keyword">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;</emphasis>{
+42 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;TypeBlock::None;
+43 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+44 
+47 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Positions&#32;GetCurrentDescription();
+48 
+52 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Positions&#32;GetDescription(State&#32;state);
+53 
+56 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;State&#32;GetCurrentState()&#32;<emphasis role="keyword">const</emphasis>;
+57 
+61 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;State&#32;GetNextState(Command&#32;cmd)&#32;<emphasis role="keyword">const</emphasis>;
+62 
+67 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Offsets&#32;GetOffsets(State&#32;from,&#32;State&#32;to);
+68 
+70 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;RotateBlock(Command&#32;cmd);
+71 
+72 &#32;&#32;&#32;&#32;<emphasis role="keyword">protected</emphasis>:
+74 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_tetris_1_1_model_1_1_blocks_1_1_abstract_block_1a970d5678017c88ca7cafbfecadda4f6a">StateToPositions</link>&#32;<link linkend="_class_tetris_1_1_model_1_1_blocks_1_1_abstract_block_1a2dac93d56fe9724da993a34a0ea0f7f4">_stateToPositions</link>;
+75 
+77 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_tetris_1_1_model_1_1_blocks_1_1_abstract_block_1ab64f905f983bab129eade6225b7b7bb6">StateToOffsets</link>&#32;<link linkend="_class_tetris_1_1_model_1_1_blocks_1_1_abstract_block_1a630ba03acfe70260c4f509e6391219da">_stateToOffset</link>;
+78 
+79 &#32;&#32;&#32;&#32;<emphasis role="keyword">private</emphasis>:
+81 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;State&#32;_state&#32;{&#32;State::Up&#32;};
+82 
+84 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;TypeColor&#32;_color;&#32;
+85 &#32;&#32;&#32;&#32;};
+86 
+87 &#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_class_tetris_1_1_model_1_1_blocks_1_1_abstract_block_1ab64f905f983bab129eade6225b7b7bb6">AbstractBlock::StateToOffsets</link>&#32;JLSTZOffset
+88 &#32;&#32;&#32;&#32;{
+89 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;State::Up,&#32;{&#32;<link linkend="_struct_tetris_1_1_model_1_1_position">Position</link>(0,&#32;0),&#32;<link linkend="_struct_tetris_1_1_model_1_1_position">Position</link>(0,&#32;0),&#32;<link linkend="_struct_tetris_1_1_model_1_1_position">Position</link>(0,&#32;0),&#32;<link linkend="_struct_tetris_1_1_model_1_1_position">Position</link>(0,&#32;0),&#32;<link linkend="_struct_tetris_1_1_model_1_1_position">Position</link>(0,&#32;0)&#32;}&#32;},
+90 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;State::Right,&#32;{&#32;Position(0,&#32;0),&#32;Position(1,&#32;0),&#32;Position(1,&#32;-1),&#32;Position(0,&#32;2),&#32;Position(1,&#32;2)&#32;}&#32;},
+91 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;State::Down,&#32;{&#32;Position(0,&#32;0),&#32;Position(0,&#32;0),&#32;Position(0,&#32;0),&#32;Position(0,&#32;0),&#32;Position(0,&#32;0)&#32;}&#32;},
+92 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;State::Left,&#32;{&#32;Position(0,&#32;0),&#32;Position(-1,&#32;0),&#32;Position(-1,&#32;-1),&#32;Position(0,&#32;2),&#32;Position(-1,&#32;2)&#32;}&#32;}
+93 &#32;&#32;&#32;&#32;};
+94 
+95 &#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_class_tetris_1_1_model_1_1_blocks_1_1_abstract_block_1ab64f905f983bab129eade6225b7b7bb6">AbstractBlock::StateToOffsets</link>&#32;IOffset
+96 &#32;&#32;&#32;&#32;{
+97 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;State::Up,&#32;{&#32;Position(0,&#32;0),&#32;Position(-1,&#32;0),&#32;Position(2,&#32;0),&#32;Position(-1,&#32;0),&#32;Position(2,&#32;0)&#32;}&#32;},
+98 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;State::Right,&#32;{&#32;Position(-1,&#32;0),&#32;Position(0,&#32;0),&#32;Position(0,&#32;0),&#32;Position(0,&#32;1),&#32;Position(0,&#32;-2)&#32;}&#32;},
+99 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;State::Down,&#32;{&#32;Position(-1,&#32;1),&#32;Position(1,&#32;1),&#32;Position(-2,&#32;1),&#32;Position(1,&#32;0),&#32;Position(-2,&#32;0)&#32;}&#32;},
+100 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;State::Left,&#32;{&#32;Position(0,&#32;1),&#32;Position(0,&#32;1),&#32;Position(0,&#32;1),&#32;Position(0,&#32;-1),&#32;Position(0,&#32;2)&#32;}&#32;}
+101 &#32;&#32;&#32;&#32;};
+102 
+103 &#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_class_tetris_1_1_model_1_1_blocks_1_1_abstract_block_1ab64f905f983bab129eade6225b7b7bb6">AbstractBlock::StateToOffsets</link>&#32;OOffset
+104 &#32;&#32;&#32;&#32;{
+105 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;State::Up,&#32;{&#32;Position(0,&#32;0),&#32;Position(0,&#32;0),&#32;Position(0,&#32;0),&#32;Position(0,&#32;0),&#32;Position(0,&#32;0)&#32;}&#32;},
+106 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;State::Right,&#32;{&#32;Position(0,&#32;-1),&#32;Position(0,&#32;-1),&#32;Position(0,&#32;-1),&#32;Position(0,&#32;-1),&#32;Position(0,&#32;-1)&#32;}&#32;},
+107 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;State::Down,&#32;{&#32;Position(-1,&#32;-1),&#32;Position(-1,&#32;-1),&#32;Position(-1,&#32;-1),&#32;Position(-1,&#32;-1),&#32;Position(-1,&#32;-1)&#32;}&#32;},
+108 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;State::Left,&#32;{&#32;Position(-1,&#32;0),&#32;Position(-1,&#32;0),&#32;Position(-1,&#32;0),&#32;Position(-1,&#32;0),&#32;Position(-1,&#32;0)&#32;}&#32;}
+109 &#32;&#32;&#32;&#32;};
+110 }&#32;<emphasis role="comment">//&#32;namespace&#32;Tetris::Model::Blocks</emphasis>
+</programlisting></section>

@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_tetris_1_1_view_1_1_s_f_m_l_1_1_map" xml:lang="ru">
+<title>Класс Tetris::View::SFML::Map</title>
+<indexterm><primary>Tetris::View::SFML::Map</primary></indexterm>
+<para>Граф наследования:Tetris::View::SFML::Map:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_tetris_1_1_view_1_1_s_f_m_l_1_1_map.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Открытые члены    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_class_tetris_1_1_view_1_1_s_f_m_l_1_1_map_1acc45f9296222a6ba768a62188c4187c8">Map</link> (sf::Vector2f windowSize, bool withBorder=false)</para>
+
+<para>Конструктор класса <link linkend="_class_tetris_1_1_view_1_1_s_f_m_l_1_1_map">Map</link>. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_tetris_1_1_view_1_1_s_f_m_l_1_1_map_1a2924a767f8c72bd11c574afde4d1454b">SetMap</link> (const std::vector&lt; Model::TypeColor &gt; &amp;map, <link linkend="_struct_tetris_1_1_model_1_1_map_size">Model::MapSize</link> size)</para>
+
+<para>Установить карту </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Конструктор(ы)</title>
+<anchor xml:id="_class_tetris_1_1_view_1_1_s_f_m_l_1_1_map_1acc45f9296222a6ba768a62188c4187c8"/><section>
+    <title>Map()</title>
+<indexterm><primary>Map</primary><secondary>Tetris::View::SFML::Map</secondary></indexterm>
+<indexterm><primary>Tetris::View::SFML::Map</primary><secondary>Map</secondary></indexterm>
+<para><computeroutput>Tetris::View::SFML::Map::Map (sf::Vector2f windowSize, bool withBorder = <computeroutput>false</computeroutput>
+)</computeroutput></para><para>
+
+<para>Конструктор класса <link linkend="_class_tetris_1_1_view_1_1_s_f_m_l_1_1_map">Map</link>. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Аргументы</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>windowSize</entry><entry>
+<para>Размер окна отображения </para>
+</entry>
+                            </row>
+                            <row>
+<entry>withBorder</entry><entry>
+<para>Указывает, нужно ли отображать границы </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+</section>
+<section>
+<title>Методы</title>
+<anchor xml:id="_class_tetris_1_1_view_1_1_s_f_m_l_1_1_map_1a2924a767f8c72bd11c574afde4d1454b"/><section>
+    <title>SetMap()</title>
+<indexterm><primary>SetMap</primary><secondary>Tetris::View::SFML::Map</secondary></indexterm>
+<indexterm><primary>Tetris::View::SFML::Map</primary><secondary>SetMap</secondary></indexterm>
+<para><computeroutput>void Tetris::View::SFML::Map::SetMap (const std::vector&lt; Model::TypeColor &gt; &amp; map, <link linkend="_struct_tetris_1_1_model_1_1_map_size">Model::MapSize</link> size)</computeroutput></para><para>
+
+<para>Установить карту </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Аргументы</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>map</entry><entry>
+<para>Вектор с цветами блоков </para>
+</entry>
+                            </row>
+                            <row>
+<entry>size</entry><entry>
+<para>Размер карты (строки и столбцы) </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+<para>
+Объявления и описания членов классов находятся в файлах:</para>
+View/Include/View/SFML/Map.hView/Source/SFML/Map.cpp</section>
+</section>

@@ -1,0 +1,160 @@
+\doxysection{Класс Tetris\+::Model\+::Map}
+\hypertarget{class_tetris_1_1_model_1_1_map}{}\label{class_tetris_1_1_model_1_1_map}\index{Tetris::Model::Map@{Tetris::Model::Map}}
+
+
+Класс реализации карты для игры Тетрис  
+
+
+
+
+{\ttfamily \#include $<$Map.\+h$>$}
+
+\doxysubsubsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_tetris_1_1_model_1_1_map_a1f6b3787af7f9ff218b96a8d90a5ffa5}{Map}} (size\+\_\+t columns=10, size\+\_\+t rows=25)
+\begin{DoxyCompactList}\small\item\em Конструктор по умолчанию, инициализирует пустую карту \end{DoxyCompactList}\item 
+std\+::vector$<$ Type\+Color $>$ \mbox{\hyperlink{class_tetris_1_1_model_1_1_map_a5ef0320d1f7f1486286416494caa9acd}{Get\+Map}} ()
+\begin{DoxyCompactList}\small\item\em Получить текущую карту \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_tetris_1_1_model_1_1_map_size}{Map\+Size}} \mbox{\hyperlink{class_tetris_1_1_model_1_1_map_aaf74883a06eebc5eb51e23017889d25f}{Get\+Size}} () const
+\begin{DoxyCompactList}\small\item\em Получить размер карты \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_tetris_1_1_model_1_1_map_a69d0feeeb9383cd42fc926adbf7a3d2b}{Is\+Full\+Map}} ()
+\begin{DoxyCompactList}\small\item\em Проверить, заполнена ли карта \end{DoxyCompactList}\item 
+\Hypertarget{class_tetris_1_1_model_1_1_map_a0a44cf5a8da52c9c3fe48c64b550c261}\label{class_tetris_1_1_model_1_1_map_a0a44cf5a8da52c9c3fe48c64b550c261} 
+void {\bfseries Restart} ()
+\begin{DoxyCompactList}\small\item\em Перезапустить карту, очищая её \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_tetris_1_1_model_1_1_map_abd835b8a396399623327c51b418b7453}{Set\+Block}} (Abstract\+Block\+Ptr block)
+\begin{DoxyCompactList}\small\item\em Установить активный блок на карту \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_tetris_1_1_model_1_1_map_a4be3d29e458392186fdabc87215d031d}{Has\+Active\+Block}} () const
+\begin{DoxyCompactList}\small\item\em Проверить, имеется ли активный блок \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_tetris_1_1_model_1_1_map_ad23f8305cedcd9f0ffe54dd8b0ec3f0c}{Move\+Block}} (Command cmn)
+\begin{DoxyCompactList}\small\item\em Переместить активный блок на карте \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{class_tetris_1_1_model_1_1_map_aed9aa86a85540eb57a93ebb8f6a9b9e2}{Get\+Count\+Deleted\+Lines}} () const
+\begin{DoxyCompactList}\small\item\em Получить количество удаленных линий \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Класс реализации карты для игры Тетрис 
+
+\doxysubsection{Конструктор(ы)}
+\Hypertarget{class_tetris_1_1_model_1_1_map_a1f6b3787af7f9ff218b96a8d90a5ffa5}\label{class_tetris_1_1_model_1_1_map_a1f6b3787af7f9ff218b96a8d90a5ffa5} 
+\index{Tetris::Model::Map@{Tetris::Model::Map}!Map@{Map}}
+\index{Map@{Map}!Tetris::Model::Map@{Tetris::Model::Map}}
+\doxysubsubsection{\texorpdfstring{Map()}{Map()}}
+{\footnotesize\ttfamily Tetris\+::\+Model\+::\+Map\+::\+Map (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{columns = {\ttfamily 10},  }\item[{size\+\_\+t}]{rows = {\ttfamily 25} }\end{DoxyParamCaption})}
+
+
+
+Конструктор по умолчанию, инициализирует пустую карту 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em columns} & Количество столбцов карты \\
+\hline
+{\em rows} & Количество строк карты \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Методы}
+\Hypertarget{class_tetris_1_1_model_1_1_map_aed9aa86a85540eb57a93ebb8f6a9b9e2}\label{class_tetris_1_1_model_1_1_map_aed9aa86a85540eb57a93ebb8f6a9b9e2} 
+\index{Tetris::Model::Map@{Tetris::Model::Map}!GetCountDeletedLines@{GetCountDeletedLines}}
+\index{GetCountDeletedLines@{GetCountDeletedLines}!Tetris::Model::Map@{Tetris::Model::Map}}
+\doxysubsubsection{\texorpdfstring{GetCountDeletedLines()}{GetCountDeletedLines()}}
+{\footnotesize\ttfamily unsigned int Tetris\+::\+Model\+::\+Map\+::\+Get\+Count\+Deleted\+Lines (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Получить количество удаленных линий 
+
+\begin{DoxyReturn}{Возвращает}
+Количество удаленных линий 
+\end{DoxyReturn}
+\Hypertarget{class_tetris_1_1_model_1_1_map_a5ef0320d1f7f1486286416494caa9acd}\label{class_tetris_1_1_model_1_1_map_a5ef0320d1f7f1486286416494caa9acd} 
+\index{Tetris::Model::Map@{Tetris::Model::Map}!GetMap@{GetMap}}
+\index{GetMap@{GetMap}!Tetris::Model::Map@{Tetris::Model::Map}}
+\doxysubsubsection{\texorpdfstring{GetMap()}{GetMap()}}
+{\footnotesize\ttfamily std\+::vector$<$ Type\+Color $>$ Tetris\+::\+Model\+::\+Map\+::\+Get\+Map (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Получить текущую карту 
+
+\begin{DoxyReturn}{Возвращает}
+Текущая карта 
+\end{DoxyReturn}
+\Hypertarget{class_tetris_1_1_model_1_1_map_aaf74883a06eebc5eb51e23017889d25f}\label{class_tetris_1_1_model_1_1_map_aaf74883a06eebc5eb51e23017889d25f} 
+\index{Tetris::Model::Map@{Tetris::Model::Map}!GetSize@{GetSize}}
+\index{GetSize@{GetSize}!Tetris::Model::Map@{Tetris::Model::Map}}
+\doxysubsubsection{\texorpdfstring{GetSize()}{GetSize()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_tetris_1_1_model_1_1_map_size}{Map\+Size}} Tetris\+::\+Model\+::\+Map\+::\+Get\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Получить размер карты 
+
+\begin{DoxyReturn}{Возвращает}
+Размер карты в виде \doxylink{struct_tetris_1_1_model_1_1_map_size}{Map\+Size} 
+\end{DoxyReturn}
+\Hypertarget{class_tetris_1_1_model_1_1_map_a4be3d29e458392186fdabc87215d031d}\label{class_tetris_1_1_model_1_1_map_a4be3d29e458392186fdabc87215d031d} 
+\index{Tetris::Model::Map@{Tetris::Model::Map}!HasActiveBlock@{HasActiveBlock}}
+\index{HasActiveBlock@{HasActiveBlock}!Tetris::Model::Map@{Tetris::Model::Map}}
+\doxysubsubsection{\texorpdfstring{HasActiveBlock()}{HasActiveBlock()}}
+{\footnotesize\ttfamily bool Tetris\+::\+Model\+::\+Map\+::\+Has\+Active\+Block (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Проверить, имеется ли активный блок 
+
+\begin{DoxyReturn}{Возвращает}
+True, если активный блок присутствует, иначе false 
+\end{DoxyReturn}
+\Hypertarget{class_tetris_1_1_model_1_1_map_a69d0feeeb9383cd42fc926adbf7a3d2b}\label{class_tetris_1_1_model_1_1_map_a69d0feeeb9383cd42fc926adbf7a3d2b} 
+\index{Tetris::Model::Map@{Tetris::Model::Map}!IsFullMap@{IsFullMap}}
+\index{IsFullMap@{IsFullMap}!Tetris::Model::Map@{Tetris::Model::Map}}
+\doxysubsubsection{\texorpdfstring{IsFullMap()}{IsFullMap()}}
+{\footnotesize\ttfamily bool Tetris\+::\+Model\+::\+Map\+::\+Is\+Full\+Map (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Проверить, заполнена ли карта 
+
+\begin{DoxyReturn}{Возвращает}
+True, если карта заполнена, иначе false 
+\end{DoxyReturn}
+\Hypertarget{class_tetris_1_1_model_1_1_map_ad23f8305cedcd9f0ffe54dd8b0ec3f0c}\label{class_tetris_1_1_model_1_1_map_ad23f8305cedcd9f0ffe54dd8b0ec3f0c} 
+\index{Tetris::Model::Map@{Tetris::Model::Map}!MoveBlock@{MoveBlock}}
+\index{MoveBlock@{MoveBlock}!Tetris::Model::Map@{Tetris::Model::Map}}
+\doxysubsubsection{\texorpdfstring{MoveBlock()}{MoveBlock()}}
+{\footnotesize\ttfamily void Tetris\+::\+Model\+::\+Map\+::\+Move\+Block (\begin{DoxyParamCaption}\item[{Command}]{cmn }\end{DoxyParamCaption})}
+
+
+
+Переместить активный блок на карте 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em cmn} & Команда для перемещения \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_tetris_1_1_model_1_1_map_abd835b8a396399623327c51b418b7453}\label{class_tetris_1_1_model_1_1_map_abd835b8a396399623327c51b418b7453} 
+\index{Tetris::Model::Map@{Tetris::Model::Map}!SetBlock@{SetBlock}}
+\index{SetBlock@{SetBlock}!Tetris::Model::Map@{Tetris::Model::Map}}
+\doxysubsubsection{\texorpdfstring{SetBlock()}{SetBlock()}}
+{\footnotesize\ttfamily void Tetris\+::\+Model\+::\+Map\+::\+Set\+Block (\begin{DoxyParamCaption}\item[{Abstract\+Block\+Ptr}]{block }\end{DoxyParamCaption})}
+
+
+
+Установить активный блок на карту 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em block} & Указатель на блок \\
+\hline
+\end{DoxyParams}
+
+
+Объявления и описания членов классов находятся в файлах\+:\begin{DoxyCompactItemize}
+\item 
+Model/\+Include/\+Model/Map.\+h\item 
+Model/\+Source/Map.\+cpp\end{DoxyCompactItemize}

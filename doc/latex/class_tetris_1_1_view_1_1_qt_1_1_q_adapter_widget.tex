@@ -1,0 +1,133 @@
+\doxysection{Класс Tetris\+::View\+::Qt\+::QAdapter\+Widget}
+\hypertarget{class_tetris_1_1_view_1_1_qt_1_1_q_adapter_widget}{}\label{class_tetris_1_1_view_1_1_qt_1_1_q_adapter_widget}\index{Tetris::View::Qt::QAdapterWidget@{Tetris::View::Qt::QAdapterWidget}}
+
+
+Класс \doxylink{class_tetris_1_1_view_1_1_qt_1_1_q_adapter_widget}{QAdapter\+Widget}, который является абстрактным виджетом и использует адаптер  
+
+
+
+
+{\ttfamily \#include $<$QAdapter\+Widget.\+h$>$}
+
+Граф наследования\+:Tetris\+::View\+::Qt\+::QAdapter\+Widget\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_tetris_1_1_view_1_1_qt_1_1_q_adapter_widget}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_tetris_1_1_view_1_1_qt_1_1_q_adapter_widget_a03961780240b1c253046bd8fdbccd2da}{QAdapter\+Widget}} (Abstract\+Model\+Ptr model)
+\begin{DoxyCompactList}\small\item\em Конструктор класса \doxylink{class_tetris_1_1_view_1_1_qt_1_1_q_adapter_widget}{QAdapter\+Widget}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_tetris_1_1_view_1_1_qt_1_1_q_adapter_widget_add2bb9efe338a1de33aaf6a011d7aecb}{Update}} () override
+\begin{DoxyCompactList}\small\item\em Обновление виджета (переопределение) \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_tetris_1_1_view_1_1_qt_1_1_q_adapter_widget_ad38d9aab92ce4a798b361c0c82436b1e}{Slot\+Update\+Widget}} (Description\+Model\+Ptr descp) override
+\begin{DoxyCompactList}\small\item\em Обновление виджета на основе описания модели \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_tetris_1_1_view_1_1_qt_1_1_q_adapter_widget_a58022da2d43f608c5a0014254292ac30}{Is\+Open}} () const override
+\begin{DoxyCompactList}\small\item\em Проверка, открыт ли виджет \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_tetris_1_1_view_1_1_qt_1_1_q_adapter_widget_a5aef349f3da2634748db811f234c4172}{Slot\+Close\+Widget}} () override
+\begin{DoxyCompactList}\small\item\em Закрытие виджета (переопределение) \end{DoxyCompactList}\item 
+\Hypertarget{class_tetris_1_1_view_1_1_qt_1_1_q_adapter_widget_aca71932f4ca1d7a646e227b7348575dc}\label{class_tetris_1_1_view_1_1_qt_1_1_q_adapter_widget_aca71932f4ca1d7a646e227b7348575dc} 
+void {\bfseries Create\+Widget} ()
+\begin{DoxyCompactList}\small\item\em Создание нового виджета \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Открытые члены унаследованные от \mbox{\hyperlink{class_tetris_1_1_model_1_1_abstract_widget}{Tetris\+::\+Model\+::\+Abstract\+Widget}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Abstract\+Widget} ()=default
+\begin{DoxyCompactList}\small\item\em Деструктор по умолчанию \end{DoxyCompactList}\item 
+Description\+Model\+Ptr \mbox{\hyperlink{class_tetris_1_1_model_1_1_abstract_widget_a6ab0ec04029b68ab93b3eebbbb1d9513}{Get\+Description\+Model}} ()
+\begin{DoxyCompactList}\small\item\em Обновление виджета на основе описания модели \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Класс \doxylink{class_tetris_1_1_view_1_1_qt_1_1_q_adapter_widget}{QAdapter\+Widget}, который является абстрактным виджетом и использует адаптер 
+
+\doxysubsection{Конструктор(ы)}
+\Hypertarget{class_tetris_1_1_view_1_1_qt_1_1_q_adapter_widget_a03961780240b1c253046bd8fdbccd2da}\label{class_tetris_1_1_view_1_1_qt_1_1_q_adapter_widget_a03961780240b1c253046bd8fdbccd2da} 
+\index{Tetris::View::Qt::QAdapterWidget@{Tetris::View::Qt::QAdapterWidget}!QAdapterWidget@{QAdapterWidget}}
+\index{QAdapterWidget@{QAdapterWidget}!Tetris::View::Qt::QAdapterWidget@{Tetris::View::Qt::QAdapterWidget}}
+\doxysubsubsection{\texorpdfstring{QAdapterWidget()}{QAdapterWidget()}}
+{\footnotesize\ttfamily Tetris\+::\+View\+::\+Qt\+::\+QAdapter\+Widget\+::\+QAdapter\+Widget (\begin{DoxyParamCaption}\item[{Abstract\+Model\+Ptr}]{model }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Конструктор класса \doxylink{class_tetris_1_1_view_1_1_qt_1_1_q_adapter_widget}{QAdapter\+Widget}. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em model} & Указатель на модель, с которой будет работать виджет \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Методы}
+\Hypertarget{class_tetris_1_1_view_1_1_qt_1_1_q_adapter_widget_a58022da2d43f608c5a0014254292ac30}\label{class_tetris_1_1_view_1_1_qt_1_1_q_adapter_widget_a58022da2d43f608c5a0014254292ac30} 
+\index{Tetris::View::Qt::QAdapterWidget@{Tetris::View::Qt::QAdapterWidget}!IsOpen@{IsOpen}}
+\index{IsOpen@{IsOpen}!Tetris::View::Qt::QAdapterWidget@{Tetris::View::Qt::QAdapterWidget}}
+\doxysubsubsection{\texorpdfstring{IsOpen()}{IsOpen()}}
+{\footnotesize\ttfamily bool Tetris\+::\+View\+::\+Qt\+::\+QAdapter\+Widget\+::\+Is\+Open (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Проверка, открыт ли виджет 
+
+\begin{DoxyReturn}{Возвращает}
+true, если виджет открыт 
+\end{DoxyReturn}
+
+
+Замещает \mbox{\hyperlink{class_tetris_1_1_model_1_1_abstract_widget_a01d98c4b4561143a9ea6118de297f443}{Tetris\+::\+Model\+::\+Abstract\+Widget}}.
+
+\Hypertarget{class_tetris_1_1_view_1_1_qt_1_1_q_adapter_widget_a5aef349f3da2634748db811f234c4172}\label{class_tetris_1_1_view_1_1_qt_1_1_q_adapter_widget_a5aef349f3da2634748db811f234c4172} 
+\index{Tetris::View::Qt::QAdapterWidget@{Tetris::View::Qt::QAdapterWidget}!SlotCloseWidget@{SlotCloseWidget}}
+\index{SlotCloseWidget@{SlotCloseWidget}!Tetris::View::Qt::QAdapterWidget@{Tetris::View::Qt::QAdapterWidget}}
+\doxysubsubsection{\texorpdfstring{SlotCloseWidget()}{SlotCloseWidget()}}
+{\footnotesize\ttfamily virtual void Tetris\+::\+View\+::\+Qt\+::\+QAdapter\+Widget\+::\+Slot\+Close\+Widget (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Закрытие виджета (переопределение) 
+
+
+
+Замещает \mbox{\hyperlink{class_tetris_1_1_model_1_1_abstract_widget_a683946a3fb3e248e67f04c0cb76cf4a3}{Tetris\+::\+Model\+::\+Abstract\+Widget}}.
+
+\Hypertarget{class_tetris_1_1_view_1_1_qt_1_1_q_adapter_widget_ad38d9aab92ce4a798b361c0c82436b1e}\label{class_tetris_1_1_view_1_1_qt_1_1_q_adapter_widget_ad38d9aab92ce4a798b361c0c82436b1e} 
+\index{Tetris::View::Qt::QAdapterWidget@{Tetris::View::Qt::QAdapterWidget}!SlotUpdateWidget@{SlotUpdateWidget}}
+\index{SlotUpdateWidget@{SlotUpdateWidget}!Tetris::View::Qt::QAdapterWidget@{Tetris::View::Qt::QAdapterWidget}}
+\doxysubsubsection{\texorpdfstring{SlotUpdateWidget()}{SlotUpdateWidget()}}
+{\footnotesize\ttfamily virtual void Tetris\+::\+View\+::\+Qt\+::\+QAdapter\+Widget\+::\+Slot\+Update\+Widget (\begin{DoxyParamCaption}\item[{Description\+Model\+Ptr}]{descp }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Обновление виджета на основе описания модели 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em descp} & Описание текущего состояния модели \\
+\hline
+\end{DoxyParams}
+
+
+Переопределяет метод предка \mbox{\hyperlink{class_tetris_1_1_model_1_1_abstract_widget_aa6db18ab4ca29340a5de6a45e4c01dd9}{Tetris\+::\+Model\+::\+Abstract\+Widget}}.
+
+\Hypertarget{class_tetris_1_1_view_1_1_qt_1_1_q_adapter_widget_add2bb9efe338a1de33aaf6a011d7aecb}\label{class_tetris_1_1_view_1_1_qt_1_1_q_adapter_widget_add2bb9efe338a1de33aaf6a011d7aecb} 
+\index{Tetris::View::Qt::QAdapterWidget@{Tetris::View::Qt::QAdapterWidget}!Update@{Update}}
+\index{Update@{Update}!Tetris::View::Qt::QAdapterWidget@{Tetris::View::Qt::QAdapterWidget}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void Tetris\+::\+View\+::\+Qt\+::\+QAdapter\+Widget\+::\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Обновление виджета (переопределение) 
+
+
+
+Замещает \mbox{\hyperlink{class_tetris_1_1_model_1_1_abstract_widget_aff6a15abb04bcd549d37eef80a8cf8da}{Tetris\+::\+Model\+::\+Abstract\+Widget}}.
+
+
+
+Объявления и описания членов класса находятся в файле\+:\begin{DoxyCompactItemize}
+\item 
+View/\+Include/\+View/\+Qt/QAdapter\+Widget.\+h\end{DoxyCompactItemize}

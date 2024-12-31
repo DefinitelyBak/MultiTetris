@@ -1,0 +1,188 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_tetris_1_1_model_1_1_blocks_1_1_object_factory" xml:lang="ru">
+<title>Шаблон класса Tetris::Model::Blocks::ObjectFactory&lt; Base, IdType &gt;</title>
+<indexterm><primary>Tetris::Model::Blocks::ObjectFactory&lt; Base, IdType &gt;</primary></indexterm>
+<para>
+
+<para>Шаблонный класс для создания объектов различных типов. </para>
+ 
+</para>
+<para>
+<computeroutput>#include &lt;ObjectFactory.h&gt;</computeroutput>
+</para>
+<simplesect>
+    <title>Открытые члены    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_class_tetris_1_1_model_1_1_blocks_1_1_object_factory_1a89b66ffc8f9914ebecfd12f1523fcb01"/><emphasis role="strong">ObjectFactory</emphasis> ()</para>
+
+<para>Конструктор </para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_tetris_1_1_model_1_1_blocks_1_1_object_factory_1ad8fd77097bd76a268bef6366b8278000"/>virtual <emphasis role="strong">~ObjectFactory</emphasis> ()</para>
+
+<para>Виртуальный деструктор </para>
+</listitem>
+            <listitem><para>template&lt;class C &gt; </para><para>void <link linkend="_class_tetris_1_1_model_1_1_blocks_1_1_object_factory_1ad5819264d6a5187a94041a5a57aeb937">add</link> (const IdType &amp;id)</para>
+
+<para>Добавить новый тип объекта в фабрику. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Защищенные типы    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_class_tetris_1_1_model_1_1_blocks_1_1_object_factory_1aed1d46d4a3dd44e2951afa4efe76e45c"/>using <emphasis role="strong">AbstractFactory</emphasis> = <link linkend="_class_tetris_1_1_model_1_1_blocks_1_1_abstract_creator">AbstractCreator</link>&lt;Base&gt;</para>
+
+<para>Базовый тип абстрактной фабрики для создания объектов. </para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_tetris_1_1_model_1_1_blocks_1_1_object_factory_1abf8f5e49373221dcd507b8bb41d97700"/>using <emphasis role="strong">FactoryMap</emphasis> = std::map&lt;IdType, <link linkend="_class_tetris_1_1_model_1_1_blocks_1_1_object_factory_1aed1d46d4a3dd44e2951afa4efe76e45c">AbstractFactory</link>*&gt;</para>
+
+<para>Тип мапы, связывающей идентификаторы объектов с соответствующими фабриками. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Защищенные члены    </title>
+        <itemizedlist>
+            <listitem><para>void <link linkend="_class_tetris_1_1_model_1_1_blocks_1_1_object_factory_1ac4916c7abdc27197364301a62f4d7d43">registerClass</link> (const IdType &amp;id, <link linkend="_class_tetris_1_1_model_1_1_blocks_1_1_object_factory_1aed1d46d4a3dd44e2951afa4efe76e45c">AbstractFactory</link> *p)</para>
+
+<para>Зарегистрировать фабрику для создания объекта с заданным идентификатором. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Защищенные данные    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_class_tetris_1_1_model_1_1_blocks_1_1_object_factory_1a8bbf76296d3aa4d85b205fb8adc03525"/><link linkend="_class_tetris_1_1_model_1_1_blocks_1_1_object_factory_1abf8f5e49373221dcd507b8bb41d97700">FactoryMap</link> <emphasis role="strong">_factory</emphasis></para>
+
+<para>Мапа зарегистрированных объектов и их фабрик. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Подробное описание</title>
+<simplesect><title>template&lt;class Base, class IdType&gt;<?linebreak?>class Tetris::Model::Blocks::ObjectFactory&lt; Base, IdType &gt;</title></simplesect>
+
+<para>Шаблонный класс для создания объектов различных типов. </para>
+
+
+
+<para>
+                <formalpara>
+                    <title>
+Параметры шаблона</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>Base</entry><entry>
+<para>Базовый класс создаваемых объектов. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>IdType</entry><entry>
+<para>Тип идентификатора создаваемого объекта. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+<section>
+<title>Методы</title>
+<anchor xml:id="_class_tetris_1_1_model_1_1_blocks_1_1_object_factory_1ad5819264d6a5187a94041a5a57aeb937"/><section>
+    <title>add()</title>
+<indexterm><primary>add</primary><secondary>Tetris::Model::Blocks::ObjectFactory&lt; Base, IdType &gt;</secondary></indexterm>
+<indexterm><primary>Tetris::Model::Blocks::ObjectFactory&lt; Base, IdType &gt;</primary><secondary>add</secondary></indexterm>
+<computeroutput>template&lt;class Base , class IdType &gt; </computeroutput><computeroutput>template&lt;class C &gt; </computeroutput><para><computeroutput>void <link linkend="_class_tetris_1_1_model_1_1_blocks_1_1_object_factory">Tetris::Model::Blocks::ObjectFactory</link>&lt; Base, IdType &gt;::add (const IdType &amp; id)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>Добавить новый тип объекта в фабрику. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Параметры шаблона</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>C</entry><entry>
+<para>Тип создаваемого объекта. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                
+                <formalpara>
+                    <title>
+Аргументы</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>id</entry><entry>
+<para>Идентификатор объекта. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+<anchor xml:id="_class_tetris_1_1_model_1_1_blocks_1_1_object_factory_1ac4916c7abdc27197364301a62f4d7d43"/><section>
+    <title>registerClass()</title>
+<indexterm><primary>registerClass</primary><secondary>Tetris::Model::Blocks::ObjectFactory&lt; Base, IdType &gt;</secondary></indexterm>
+<indexterm><primary>Tetris::Model::Blocks::ObjectFactory&lt; Base, IdType &gt;</primary><secondary>registerClass</secondary></indexterm>
+<computeroutput>template&lt;class Base , class IdType &gt; </computeroutput><para><computeroutput>void <link linkend="_class_tetris_1_1_model_1_1_blocks_1_1_object_factory">Tetris::Model::Blocks::ObjectFactory</link>&lt; Base, IdType &gt;::registerClass (const IdType &amp; id, <link linkend="_class_tetris_1_1_model_1_1_blocks_1_1_object_factory_1aed1d46d4a3dd44e2951afa4efe76e45c">AbstractFactory</link> * p)<computeroutput>[inline]</computeroutput>, <computeroutput>[protected]</computeroutput></computeroutput></para><para>
+
+<para>Зарегистрировать фабрику для создания объекта с заданным идентификатором. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Аргументы</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>id</entry><entry>
+<para>Идентификатор объекта. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>p</entry><entry>
+<para>Указатель на фабрику объекта. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+<para>
+Объявления и описания членов класса находятся в файле:</para>
+Model/Include/Model/Factory/ObjectFactory.h</section>
+</section>

@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__types_8h_source" xml:lang="ru">
+<title>Types.h</title>
+<indexterm><primary>Model/Include/Model/Types.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#pragma&#32;once</emphasis>
+2 
+3 <emphasis role="preprocessor">#include&#32;&quot;Precompile.h&quot;</emphasis>
+4 <emphasis role="preprocessor">#include&#32;&quot;Forwards.h&quot;</emphasis>
+5 
+6 <emphasis role="preprocessor">#include&#32;&lt;Model/Export.h&gt;</emphasis>
+7 
+8 
+9 <emphasis role="keyword">namespace&#32;</emphasis>Tetris::Model
+10 {
+12 
+14 &#32;&#32;&#32;&#32;<emphasis role="keyword">enum&#32;class</emphasis>&#32;TypeBlock&#32;:&#32;<emphasis role="keywordtype">int</emphasis>&#32;
+15 &#32;&#32;&#32;&#32;{
+16 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;None,
+17 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Iblock,
+18 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Jblock,
+19 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Lblock,
+20 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Oblock,
+21 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Sblock,
+22 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Tblock,
+23 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Zblock
+24 &#32;&#32;&#32;&#32;};
+25 
+27 &#32;&#32;&#32;&#32;<emphasis role="keyword">enum&#32;class</emphasis>&#32;Command&#32;:&#32;<emphasis role="keywordtype">int</emphasis>
+28 &#32;&#32;&#32;&#32;{
+29 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Right,
+30 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Left,
+31 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Down,
+32 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;RotateRight,
+33 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;RotateLeft
+34 &#32;&#32;&#32;&#32;};
+35 
+37 &#32;&#32;&#32;&#32;<emphasis role="keyword">enum&#32;class</emphasis>&#32;TypeColor&#32;:&#32;<emphasis role="keywordtype">int</emphasis>
+38 &#32;&#32;&#32;&#32;{
+39 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;None,
+40 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Red,
+41 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Green,
+42 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Yellow,
+43 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Blue
+44 &#32;&#32;&#32;&#32;};
+45 
+47 &#32;&#32;&#32;&#32;<emphasis role="keyword">struct&#32;</emphasis><link linkend="_struct_tetris_1_1_model_1_1_map_size">MapSize</link>
+48 &#32;&#32;&#32;&#32;{
+49 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;<link linkend="_struct_tetris_1_1_model_1_1_map_size_1ab3c8dfc707ce661885f2746678b0d173">columns</link>;&#32;
+50 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;<link linkend="_struct_tetris_1_1_model_1_1_map_size_1a724cefa99c006c6d24e80454be39db96">rows</link>;&#32;&#32;&#32;&#32;
+51 &#32;&#32;&#32;&#32;};
+52 
+54 &#32;&#32;&#32;&#32;<emphasis role="keyword">struct&#32;</emphasis><link linkend="_struct_tetris_1_1_model_1_1_position">Position</link>
+55 &#32;&#32;&#32;&#32;{
+56 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;x;
+57 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;y;
+58 &#32;&#32;&#32;&#32;};
+59 
+61 &#32;&#32;&#32;&#32;<emphasis role="keyword">using&#32;</emphasis>Positions&#32;=&#32;std::array&lt;Position,&#32;4&gt;;
+62 
+64 &#32;&#32;&#32;&#32;<emphasis role="keyword">using&#32;</emphasis>Offsets&#32;=&#32;std::array&lt;Position,&#32;5&gt;;
+65 
+66 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Операции&#32;с&#32;Offsets</emphasis>
+67 &#32;&#32;&#32;&#32;MODEL_EXPORT&#32;Offsets&#32;operator+(<emphasis role="keyword">const</emphasis>&#32;Offsets&amp;&#32;lhs,&#32;<emphasis role="keyword">const</emphasis>&#32;Offsets&amp;&#32;rhs);
+68 &#32;&#32;&#32;&#32;MODEL_EXPORT&#32;Offsets&#32;operator-(<emphasis role="keyword">const</emphasis>&#32;Offsets&amp;&#32;lhs,&#32;<emphasis role="keyword">const</emphasis>&#32;Offsets&amp;&#32;rhs);
+69 &#32;&#32;&#32;&#32;MODEL_EXPORT&#32;<emphasis role="keywordtype">bool</emphasis>&#32;operator==(<emphasis role="keyword">const</emphasis>&#32;Offsets&amp;&#32;lhs,&#32;<emphasis role="keyword">const</emphasis>&#32;Offsets&amp;&#32;rhs);
+70 &#32;&#32;&#32;&#32;MODEL_EXPORT&#32;<emphasis role="keywordtype">bool</emphasis>&#32;operator!=(<emphasis role="keyword">const</emphasis>&#32;Offsets&amp;&#32;lhs,&#32;<emphasis role="keyword">const</emphasis>&#32;Offsets&amp;&#32;rhs);
+71 
+72 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Операции&#32;с&#32;Position</emphasis>
+73 &#32;&#32;&#32;&#32;MODEL_EXPORT&#32;<link linkend="_struct_tetris_1_1_model_1_1_position">Position</link>&#32;operator+(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_tetris_1_1_model_1_1_position">Position</link>&amp;&#32;lhs,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_tetris_1_1_model_1_1_position">Position</link>&amp;&#32;rhs);
+74 &#32;&#32;&#32;&#32;MODEL_EXPORT&#32;<link linkend="_struct_tetris_1_1_model_1_1_position">Position</link>&#32;operator-(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_tetris_1_1_model_1_1_position">Position</link>&amp;&#32;lhs,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_tetris_1_1_model_1_1_position">Position</link>&amp;&#32;rhs);
+75 &#32;&#32;&#32;&#32;MODEL_EXPORT&#32;<emphasis role="keywordtype">bool</emphasis>&#32;operator==(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_tetris_1_1_model_1_1_position">Position</link>&amp;&#32;lhs,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_tetris_1_1_model_1_1_position">Position</link>&amp;&#32;rhs);
+76 &#32;&#32;&#32;&#32;MODEL_EXPORT&#32;<emphasis role="keywordtype">bool</emphasis>&#32;operator!=(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_tetris_1_1_model_1_1_position">Position</link>&amp;&#32;lhs,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_tetris_1_1_model_1_1_position">Position</link>&amp;&#32;rhs);
+77 
+78 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Операции&#32;с&#32;Offsets&#32;и&#32;Position</emphasis>
+79 &#32;&#32;&#32;&#32;MODEL_EXPORT&#32;Offsets&#32;operator+(<emphasis role="keyword">const</emphasis>&#32;Offsets&amp;&#32;lhs,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_tetris_1_1_model_1_1_position">Position</link>&amp;&#32;rhs);
+80 &#32;&#32;&#32;&#32;MODEL_EXPORT&#32;Offsets&#32;operator+(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_tetris_1_1_model_1_1_position">Position</link>&amp;&#32;lhs,&#32;<emphasis role="keyword">const</emphasis>&#32;Offsets&amp;&#32;rhs);
+81 &#32;&#32;&#32;&#32;MODEL_EXPORT&#32;Offsets&#32;operator-(<emphasis role="keyword">const</emphasis>&#32;Offsets&amp;&#32;lhs,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_tetris_1_1_model_1_1_position">Position</link>&amp;&#32;rhs);
+82 
+83 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Операции&#32;с&#32;Positions</emphasis>
+84 &#32;&#32;&#32;&#32;MODEL_EXPORT&#32;Positions&#32;operator+(<emphasis role="keyword">const</emphasis>&#32;Positions&amp;&#32;lhs,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_tetris_1_1_model_1_1_position">Position</link>&amp;&#32;rhs);
+85 &#32;&#32;&#32;&#32;MODEL_EXPORT&#32;Positions&#32;operator+(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_tetris_1_1_model_1_1_position">Position</link>&amp;&#32;lhs,&#32;<emphasis role="keyword">const</emphasis>&#32;Positions&amp;&#32;rhs);
+86 &#32;&#32;&#32;&#32;MODEL_EXPORT&#32;Positions&#32;operator-(<emphasis role="keyword">const</emphasis>&#32;Positions&amp;&#32;lhs,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_tetris_1_1_model_1_1_position">Position</link>&amp;&#32;rhs);
+87 }&#32;<emphasis role="comment">//&#32;namespace&#32;Tetris::Model</emphasis>
+</programlisting></section>

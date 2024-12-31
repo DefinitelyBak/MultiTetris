@@ -1,0 +1,119 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_tetris_1_1_view_1_1_qt_1_1_qt_applicaion" xml:lang="ru">
+<title>Класс Tetris::View::Qt::QtApplicaion</title>
+<indexterm><primary>Tetris::View::Qt::QtApplicaion</primary></indexterm>
+<para>
+
+<para>Класс, реализующий интерфейс <link linkend="_class_tetris_1_1_view_1_1_i_application">IApplication</link> для создания приложения Tetris. </para>
+ 
+</para>
+<para>
+<computeroutput>#include &lt;QtApplication.h&gt;</computeroutput>
+</para>
+<para>Граф наследования:Tetris::View::Qt::QtApplicaion:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_tetris_1_1_view_1_1_qt_1_1_qt_applicaion.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Открытые члены    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_class_tetris_1_1_view_1_1_qt_1_1_qt_applicaion_1a10909e413eb1fe7a1fa23173ab3f4e36">QtApplicaion</link> (AbstractModelPtr model, unsigned int countWidgets)</para>
+
+<para>Конструктор класса. </para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_tetris_1_1_view_1_1_qt_1_1_qt_applicaion_1a93ff0f12879b1546df57f2991845d4d2"/><emphasis role="strong">~QtApplicaion</emphasis> ()</para>
+
+<para>Деструктор класса. Освобождает ресурсы, связанные с приложением. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_tetris_1_1_view_1_1_qt_1_1_qt_applicaion_1a5eb7cca3ac72a03091a05a335ba637e4">Run</link> () override</para>
+
+<para>Метод, выполняющий основную логику приложения в отдельном потоке. Реализует основной цикл приложения. </para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_tetris_1_1_view_1_1_qt_1_1_qt_applicaion_1a135f2c36ee2af5441771497a4f2c078f">isExecution</link> () const override</para>
+
+<para>Метод для проверки состояния выполнения приложения. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Подробное описание</title>
+
+<para>Класс, реализующий интерфейс <link linkend="_class_tetris_1_1_view_1_1_i_application">IApplication</link> для создания приложения Tetris. </para>
+</section>
+<section>
+<title>Конструктор(ы)</title>
+<anchor xml:id="_class_tetris_1_1_view_1_1_qt_1_1_qt_applicaion_1a10909e413eb1fe7a1fa23173ab3f4e36"/><section>
+    <title>QtApplicaion()</title>
+<indexterm><primary>QtApplicaion</primary><secondary>Tetris::View::Qt::QtApplicaion</secondary></indexterm>
+<indexterm><primary>Tetris::View::Qt::QtApplicaion</primary><secondary>QtApplicaion</secondary></indexterm>
+<para><computeroutput>Tetris::View::Qt::QtApplicaion::QtApplicaion (AbstractModelPtr model, unsigned int countWidgets)</computeroutput></para><para>
+
+<para>Конструктор класса. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Аргументы</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>model</entry><entry>
+<para>Указатель на модель, используемую приложением. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>countWidgets</entry><entry>
+<para>Количество виджетов, создаваемых приложением. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+</section>
+<section>
+<title>Методы</title>
+<anchor xml:id="_class_tetris_1_1_view_1_1_qt_1_1_qt_applicaion_1a135f2c36ee2af5441771497a4f2c078f"/><section>
+    <title>isExecution()</title>
+<indexterm><primary>isExecution</primary><secondary>Tetris::View::Qt::QtApplicaion</secondary></indexterm>
+<indexterm><primary>Tetris::View::Qt::QtApplicaion</primary><secondary>isExecution</secondary></indexterm>
+<para><computeroutput>bool Tetris::View::Qt::QtApplicaion::isExecution ( ) const<computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+
+<para>Метод для проверки состояния выполнения приложения. </para>
+</para>
+
+<para><formalpara><title>Возвращает</title>
+
+<para>true, если приложение выполняется; false в противном случае. </para>
+</formalpara>
+</para>
+<para>
+Замещает <link linkend="_class_tetris_1_1_view_1_1_i_application">Tetris::View::IApplication</link>.</para>
+</section>
+<anchor xml:id="_class_tetris_1_1_view_1_1_qt_1_1_qt_applicaion_1a5eb7cca3ac72a03091a05a335ba637e4"/><section>
+    <title>Run()</title>
+<indexterm><primary>Run</primary><secondary>Tetris::View::Qt::QtApplicaion</secondary></indexterm>
+<indexterm><primary>Tetris::View::Qt::QtApplicaion</primary><secondary>Run</secondary></indexterm>
+<para><computeroutput>void Tetris::View::Qt::QtApplicaion::Run ( )<computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+
+<para>Метод, выполняющий основную логику приложения в отдельном потоке. Реализует основной цикл приложения. </para>
+</para>
+<para>
+Замещает <link linkend="_class_tetris_1_1_view_1_1_i_application">Tetris::View::IApplication</link>.</para>
+</section>
+<para>
+Объявления и описания членов классов находятся в файлах:</para>
+View/Include/View/Qt/QtApplication.hView/Source/Qt/QtApplicaion.cpp</section>
+</section>

@@ -1,9 +1,9 @@
 #pragma once
 
-#include <View/Export.h>
 #include <View/Precompile.h>
-
+#include <View/Export.h>
 #include <View/Forwards.h>
+
 #include <Model/AbstractModel.h>
 #include <View/IApplication.h>
 #include <View/Qt/Widget.h>
@@ -15,7 +15,7 @@ namespace Tetris::View::Qt
      * @class QtApplicaion
      * @brief Класс, реализующий интерфейс IApplication для создания приложения Tetris.
      */
-    class VIEW_EXPORT QtApplicaion: public IApplication
+    class VIEW_EXPORT QtApplicaion final: public IApplication
     {
     public:
         /**

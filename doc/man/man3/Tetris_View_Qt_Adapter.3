@@ -1,0 +1,97 @@
+.TH "Tetris::View::Qt::Adapter" 3 "project(MultiTetris LANGUAGES CXX)" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Tetris::View::Qt::Adapter \- Класс \fBAdapter\fP, который управляет виджетами и их обновлениями\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <QAdapterWidget\&.h>\fP
+.PP
+Базовые классы:QObject\&.
+.SS "Открытые слоты"
+
+.in +1c
+.ti -1c
+.RI "void \fBSlotUpdateModel\fP (Model::Command cmd)"
+.br
+.RI "Слот для обновления модели на основе команды "
+.in -1c
+.SS "Сигналы"
+
+.in +1c
+.ti -1c
+.RI "void \fBsignalUpdateWidget\fP (DescriptionModelPtr desc)"
+.br
+.RI "Сигнал для обновления виджетов "
+.ti -1c
+.RI "void \fBsignalCloseWidget\fP ()"
+.br
+.RI "Сигнал для закрытия виджетов "
+.in -1c
+.SS "Открытые члены"
+
+.in +1c
+.ti -1c
+.RI "\fBAdapter\fP (AbstractModelPtr model)"
+.br
+.RI "Конструктор класса \fBAdapter\fP\&. "
+.ti -1c
+.RI "void \fBCreateWidget\fP ()"
+.br
+.RI "Создание нового виджета "
+.ti -1c
+.RI "void \fBCloseWidgets\fP ()"
+.br
+.RI "Закрытие всех виджетов "
+.ti -1c
+.RI "void \fBUpdateWidgets\fP (DescriptionModelPtr desc)"
+.br
+.RI "Обновление виджетов на основе описания модели "
+.in -1c
+.SH "Подробное описание"
+.PP 
+Класс \fBAdapter\fP, который управляет виджетами и их обновлениями\&. 
+.SH "Конструктор(ы)"
+.PP 
+.SS "Tetris::View::Qt::Adapter::Adapter (AbstractModelPtr model)\fR [inline]\fP"
+
+.PP
+Конструктор класса \fBAdapter\fP\&. 
+.PP
+\fBАргументы\fP
+.RS 4
+\fImodel\fP Указатель на модель, с которой будет работать адаптер 
+.RE
+.PP
+
+.SH "Методы"
+.PP 
+.SS "void Tetris::View::Qt::Adapter::SlotUpdateModel (Model::Command cmd)\fR [inline]\fP, \fR [slot]\fP"
+
+.PP
+Слот для обновления модели на основе команды 
+.PP
+\fBАргументы\fP
+.RS 4
+\fIcmd\fP Команда для обновления модели 
+.RE
+.PP
+
+.SS "void Tetris::View::Qt::Adapter::UpdateWidgets (DescriptionModelPtr desc)\fR [inline]\fP"
+
+.PP
+Обновление виджетов на основе описания модели 
+.PP
+\fBАргументы\fP
+.RS 4
+\fIdesc\fP Описание текущего состояния модели 
+.RE
+.PP
+
+
+.SH "Автор"
+.PP 
+Автоматически создано Doxygen для project(MultiTetris LANGUAGES CXX) из исходного текста\&.

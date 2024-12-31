@@ -1,0 +1,124 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_tetris_1_1_view_1_1_qt_1_1_key_press_filter" xml:lang="ru">
+<title>Класс Tetris::View::Qt::KeyPressFilter</title>
+<indexterm><primary>Tetris::View::Qt::KeyPressFilter</primary></indexterm>
+<para>
+
+<para>Класс для фильтрации событий нажатия клавиш. Наследуется от QObject и переопределяет метод eventFilter для обработки событий клавиатуры. </para>
+ 
+</para>
+<para>
+<computeroutput>#include &lt;KeyPressFilter.h&gt;</computeroutput>
+</para>
+<para>Граф наследования:Tetris::View::Qt::KeyPressFilter:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_tetris_1_1_view_1_1_qt_1_1_key_press_filter.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Открытые слоты    </title>
+        <itemizedlist>
+            <listitem><para>bool <link linkend="_class_tetris_1_1_view_1_1_qt_1_1_key_press_filter_1a6ac475268de3dd384b915ccdadcae107">eventFilter</link> (QObject *obj, QEvent *event) override</para>
+
+<para>Метод для фильтрации событий. Обрабатывает события нажатия клавиш и перенаправляет их родительскому объекту. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Открытые члены    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_class_tetris_1_1_view_1_1_qt_1_1_key_press_filter_1a033cf3ecb456928f2214d4a7a4d9f4e9">KeyPressFilter</link> (QObject *parent=nullptr)</para>
+
+<para>Конструктор класса. Инициализирует объект фильтра клавиш. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Подробное описание</title>
+
+<para>Класс для фильтрации событий нажатия клавиш. Наследуется от QObject и переопределяет метод eventFilter для обработки событий клавиатуры. </para>
+</section>
+<section>
+<title>Конструктор(ы)</title>
+<anchor xml:id="_class_tetris_1_1_view_1_1_qt_1_1_key_press_filter_1a033cf3ecb456928f2214d4a7a4d9f4e9"/><section>
+    <title>KeyPressFilter()</title>
+<indexterm><primary>KeyPressFilter</primary><secondary>Tetris::View::Qt::KeyPressFilter</secondary></indexterm>
+<indexterm><primary>Tetris::View::Qt::KeyPressFilter</primary><secondary>KeyPressFilter</secondary></indexterm>
+<para><computeroutput>Tetris::View::Qt::KeyPressFilter::KeyPressFilter (QObject * parent = <computeroutput>nullptr</computeroutput>
+)<computeroutput>[inline]</computeroutput>, <computeroutput>[explicit]</computeroutput></computeroutput></para><para>
+
+<para>Конструктор класса. Инициализирует объект фильтра клавиш. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Аргументы</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>parent</entry><entry>
+<para>Указатель на родительский объект, по умолчанию nullptr. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+</section>
+<section>
+<title>Методы</title>
+<anchor xml:id="_class_tetris_1_1_view_1_1_qt_1_1_key_press_filter_1a6ac475268de3dd384b915ccdadcae107"/><section>
+    <title>eventFilter</title>
+<indexterm><primary>eventFilter</primary><secondary>Tetris::View::Qt::KeyPressFilter</secondary></indexterm>
+<indexterm><primary>Tetris::View::Qt::KeyPressFilter</primary><secondary>eventFilter</secondary></indexterm>
+<para><computeroutput>bool Tetris::View::Qt::KeyPressFilter::eventFilter (QObject * obj, QEvent * event)<computeroutput>[inline]</computeroutput>, <computeroutput>[override]</computeroutput>, <computeroutput>[slot]</computeroutput></computeroutput></para><para>
+
+<para>Метод для фильтрации событий. Обрабатывает события нажатия клавиш и перенаправляет их родительскому объекту. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Аргументы</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>obj</entry><entry>
+<para>Указатель на объект, которому принадлежит событие. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>event</entry><entry>
+<para>Указатель на событие, которое нужно обработать. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Возвращает</title>
+
+<para>true, если событие обработано; false в противном случае. </para>
+</formalpara>
+</para>
+</section>
+<para>
+Объявления и описания членов класса находятся в файле:</para>
+View/Include/View/Qt/KeyPressFilter.h</section>
+</section>

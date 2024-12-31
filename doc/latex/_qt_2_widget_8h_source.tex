@@ -1,0 +1,60 @@
+\doxysection{Widget.\+h}
+\hypertarget{_qt_2_widget_8h_source}{}\label{_qt_2_widget_8h_source}\index{View/Include/View/Qt/Widget.h@{View/Include/View/Qt/Widget.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <View/Export.h>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <View/Precompile.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <View/Forwards.h>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <Model/AbstractModel.h>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <Controller/MoveController.h>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <View/Qt/Map.h>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <View/Qt/PreviewBlock.h>}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{namespace\ }Tetris::View::Qt}
+\DoxyCodeLine{00014\ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{class\ }VIEW\_EXPORT\ \mbox{\hyperlink{class_tetris_1_1_view_1_1_qt_1_1_widget}{Widget}}\ :\ \textcolor{keyword}{public}\ QWidget}
+\DoxyCodeLine{00022\ \ \ \ \ \{}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ Q\_OBJECT\ }
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_tetris_1_1_view_1_1_qt_1_1_widget}{Widget}}(QWidget*\ parent\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ keyPressEvent(QKeyEvent\ *event)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ paintEvent(QPaintEvent\ *event)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ setupMapContainer();}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ setupPreviewContainer();}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ QFont\ createScoreFont();}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ QLabel*\ createScoreLabel();}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keyword}{public}\ slots:}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ SlotUpdateView(DescriptionModelPtr\ descp);}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ DescriptionModelPtr\ GetDescriptionModel();}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \ \ \ \ signals:}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tetris_1_1_view_1_1_qt_1_1_widget_aec4e05e511e45a84480446426c79a4e3}{SignalUpdateModel}}(Model::Command\ command);}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_tetris_1_1_view_1_1_qt_1_1_map}{Map}}*\ \_map;\ }
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ QLabel*\ \_text;\ }
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_tetris_1_1_view_1_1_qt_1_1_preview_block}{PreviewBlock}}*\ \_preview;\ }
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ std::mutex\ \_mutex;\ }
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ DescriptionModelPtr\ \_descriptionModel;\ }
+\DoxyCodeLine{00101\ \ \ \ \ \};}
+\DoxyCodeLine{00102\ \}\ \textcolor{comment}{//\ namespace\ Tetris::View::Qt}}
+\DoxyCodeLine{00103\ }
+
+\end{DoxyCode}

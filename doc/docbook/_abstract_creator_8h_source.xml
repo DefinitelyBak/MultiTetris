@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__abstract_creator_8h_source" xml:lang="ru">
+<title>AbstractCreator.h</title>
+<indexterm><primary>Model/Include/Model/Factory/AbstractCreator.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#pragma&#32;once</emphasis>
+2 
+3 <emphasis role="preprocessor">#include&#32;&lt;Model/Precompile.h&gt;</emphasis>
+4 <emphasis role="preprocessor">#include&#32;&lt;Model/Types.h&gt;</emphasis>
+5 
+6 
+7 <emphasis role="keyword">namespace&#32;</emphasis>Tetris::Model::Blocks
+8 {
+11 &#32;&#32;&#32;&#32;<emphasis role="keyword">template</emphasis>&#32;&lt;<emphasis role="keyword">class</emphasis>&#32;Base&gt;
+12 &#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis>MODEL_EXPORT&#32;<link linkend="_class_tetris_1_1_model_1_1_blocks_1_1_abstract_creator">AbstractCreator</link>
+13 &#32;&#32;&#32;&#32;{
+14 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>:
+16 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_tetris_1_1_model_1_1_blocks_1_1_abstract_creator_1ac864bdbdd13040aa27ff1b201abef0d5">AbstractCreator</link>()&#32;{}
+17 
+19 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<link linkend="_class_tetris_1_1_model_1_1_blocks_1_1_abstract_creator_1a506b7e8859929bd9db571e39f6e93dce">~AbstractCreator</link>()&#32;{}
+20 
+24 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;Base*&#32;<link linkend="_class_tetris_1_1_model_1_1_blocks_1_1_abstract_creator_1af4c19aa283f27298c35292e1372347fb">Create</link>(TypeColor&#32;color)&#32;<emphasis role="keyword">const</emphasis>&#32;=&#32;0;
+25 &#32;&#32;&#32;&#32;};
+26 
+30 &#32;&#32;&#32;&#32;<emphasis role="keyword">template</emphasis>&#32;&lt;<emphasis role="keyword">class</emphasis>&#32;C,&#32;<emphasis role="keyword">class</emphasis>&#32;Base&gt;
+31 &#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_tetris_1_1_model_1_1_blocks_1_1_creator">Creator</link>&#32;final&#32;:&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_tetris_1_1_model_1_1_blocks_1_1_abstract_creator">AbstractCreator</link>&lt;Base&gt;
+32 &#32;&#32;&#32;&#32;{
+33 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>:
+35 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_tetris_1_1_model_1_1_blocks_1_1_creator_1a60a13bfa169ac0592503b3cbf868dc7f">Creator</link>()&#32;{}
+36 
+38 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<link linkend="_class_tetris_1_1_model_1_1_blocks_1_1_creator_1ab47c6ef1c4a0934db47fce04889ea0bb">~Creator</link>()&#32;{}
+39 
+43 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Base*&#32;<link linkend="_class_tetris_1_1_model_1_1_blocks_1_1_creator_1a79fd362d42da826c0402508c9ed74421">Create</link>(TypeColor&#32;color)<emphasis role="keyword">&#32;const&#32;override&#32;</emphasis>{&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">new</emphasis>&#32;C(color);&#32;}
+44 &#32;&#32;&#32;&#32;};
+45 }&#32;<emphasis role="comment">//&#32;namespace&#32;Tetris::Model::Blocks</emphasis>
+</programlisting></section>

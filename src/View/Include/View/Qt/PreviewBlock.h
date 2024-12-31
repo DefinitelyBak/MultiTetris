@@ -1,10 +1,10 @@
 #pragma once
 
-#include <View/Export.h>
 #include <View/Precompile.h>
+#include <View/Export.h>
 #include <View/Forwards.h>
-#include <Model/Types.h>
 
+#include <Model/Types.h>
 #include <View/Qt/Map.h>
 
 

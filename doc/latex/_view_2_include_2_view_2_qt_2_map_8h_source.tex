@@ -1,0 +1,68 @@
+\doxysection{Map.\+h}
+\hypertarget{_view_2_include_2_view_2_qt_2_map_8h_source}{}\label{_view_2_include_2_view_2_qt_2_map_8h_source}\index{View/Include/View/Qt/Map.h@{View/Include/View/Qt/Map.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <View/Export.h>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <View/Precompile.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <Model/Types.h>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <View/Forwards.h>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <Model/AbstractModel.h>}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{namespace\ }Tetris::View::Qt}
+\DoxyCodeLine{00012\ \{}
+\DoxyCodeLine{00016\ \ \ \ \ QColor\ ColorFromTypeColor(Model::TypeColor\ color);}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{class\ }VIEW\_EXPORT\ \mbox{\hyperlink{class_tetris_1_1_view_1_1_qt_1_1_map}{Map}}:\ \textcolor{keyword}{public}\ QWindow}
+\DoxyCodeLine{00019\ \ \ \ \ \{}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ Q\_OBJECT}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_tetris_1_1_view_1_1_qt_1_1_map}{Map}}(QWindow\ *parent,\ \textcolor{keywordtype}{bool}\ withBorder\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ SetMap(\textcolor{keyword}{const}\ std::vector<Model::TypeColor>\&\ map,\ \mbox{\hyperlink{struct_tetris_1_1_model_1_1_map_size}{Model::MapSize}}\ size);}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ event(QEvent\ *event)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ resizeEvent(QResizeEvent\ *event)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ exposeEvent(QExposeEvent\ *event)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ renderLater();}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ renderNow();}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ render(QPainter\ *painter);}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ UpdateView();}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ InitializeBorders();}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ sf::RectangleShape\ CreateBorder(\textcolor{keyword}{const}\ sf::Vector2f\&\ size,\ \textcolor{keyword}{const}\ sf::Vector2f\&\ position);}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ UpdateFieldSizes();}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ QBackingStore\ *m\_backingStore\ =\ \textcolor{keyword}{nullptr};\ }
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ std::vector<Model::TypeColor>\ \_map;}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ sf::Vector2f\ \_windowSize;}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \_rows;\ }
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \_columns;\ }
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \_offsetX;\ }
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \_offsetY;\ }
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \_borderWidth\{0\};\ }
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ QVector<QRect>\ \_borders;\ }
+\DoxyCodeLine{00090\ \ \ \ \ \};}
+\DoxyCodeLine{00091\ \}}
+
+\end{DoxyCode}

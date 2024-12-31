@@ -1,8 +1,7 @@
 #pragma once
 
-#include <Model/Export.h>
-
 #include <Model/Precompile.h>
+#include <Model/Export.h>
 #include <Model/Forwards.h>
 
 #include <Model/Types.h>

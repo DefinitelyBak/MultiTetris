@@ -1,0 +1,138 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_tetris_1_1_model_1_1_blocks_1_1_blocks_factory" xml:lang="ru">
+<title>Класс Tetris::Model::Blocks::BlocksFactory</title>
+<indexterm><primary>Tetris::Model::Blocks::BlocksFactory</primary></indexterm>
+<para>
+
+<para>Фабрика для создания блоков в игре Тетрис. </para>
+ 
+</para>
+<para>
+<computeroutput>#include &lt;BlocksFactory.h&gt;</computeroutput>
+</para>
+<para>Граф наследования:Tetris::Model::Blocks::BlocksFactory:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_tetris_1_1_model_1_1_blocks_1_1_blocks_factory.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Открытые члены    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_class_tetris_1_1_model_1_1_blocks_1_1_abstract_block">AbstractBlock</link> * <link linkend="_class_tetris_1_1_model_1_1_blocks_1_1_blocks_factory_1a8e06891944f458b972ae558fb598a144">Create</link> (TypeBlock id, TypeColor color)</para>
+
+<para>Создать блок с заданным идентификатором и цветом. </para>
+</listitem>
+            <listitem><para>int <link linkend="_class_tetris_1_1_model_1_1_blocks_1_1_blocks_factory_1ad5039cdfe717663d8bb1bc4a07738bc0">Size</link> () const</para>
+
+<para>Получить количество инициализированных блоков. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+Открытые члены унаследованные от <link linkend="_class_tetris_1_1_model_1_1_blocks_1_1_object_factory">Tetris::Model::Blocks::ObjectFactory&lt; AbstractBlock, TypeBlock &gt;</link>        <itemizedlist>
+            <listitem><para><emphasis role="strong">ObjectFactory</emphasis> ()</para>
+
+<para>Конструктор </para>
+</listitem>
+            <listitem><para>virtual <emphasis role="strong">~ObjectFactory</emphasis> ()</para>
+
+<para>Виртуальный деструктор </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_tetris_1_1_model_1_1_blocks_1_1_object_factory_1ad5819264d6a5187a94041a5a57aeb937">add</link> (const TypeBlock &amp;id)</para>
+
+<para>Добавить новый тип объекта в фабрику. </para>
+</listitem>
+        </itemizedlist>
+<simplesect>
+    <title>Дополнительные унаследованные члены    </title>
+Защищенные типы унаследованные от <link linkend="_class_tetris_1_1_model_1_1_blocks_1_1_object_factory">Tetris::Model::Blocks::ObjectFactory&lt; AbstractBlock, TypeBlock &gt;</link>        <itemizedlist>
+            <listitem><para>using <emphasis role="strong">AbstractFactory</emphasis></para>
+
+<para>Базовый тип абстрактной фабрики для создания объектов. </para>
+</listitem>
+            <listitem><para>using <emphasis role="strong">FactoryMap</emphasis></para>
+
+<para>Тип мапы, связывающей идентификаторы объектов с соответствующими фабриками. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+Защищенные члены унаследованные от <link linkend="_class_tetris_1_1_model_1_1_blocks_1_1_object_factory">Tetris::Model::Blocks::ObjectFactory&lt; AbstractBlock, TypeBlock &gt;</link>        <itemizedlist>
+            <listitem><para>void <link linkend="_class_tetris_1_1_model_1_1_blocks_1_1_object_factory_1ac4916c7abdc27197364301a62f4d7d43">registerClass</link> (const TypeBlock &amp;id, <link linkend="_class_tetris_1_1_model_1_1_blocks_1_1_object_factory_1aed1d46d4a3dd44e2951afa4efe76e45c">AbstractFactory</link> *p)</para>
+
+<para>Зарегистрировать фабрику для создания объекта с заданным идентификатором. </para>
+</listitem>
+        </itemizedlist>
+Защищенные данные унаследованные от <link linkend="_class_tetris_1_1_model_1_1_blocks_1_1_object_factory">Tetris::Model::Blocks::ObjectFactory&lt; AbstractBlock, TypeBlock &gt;</link>        <itemizedlist>
+            <listitem><para><link linkend="_class_tetris_1_1_model_1_1_blocks_1_1_object_factory_1abf8f5e49373221dcd507b8bb41d97700">FactoryMap</link> <emphasis role="strong">_factory</emphasis></para>
+
+<para>Мапа зарегистрированных объектов и их фабрик. </para>
+</listitem>
+        </itemizedlist>
+<section>
+<title>Подробное описание</title>
+
+<para>Фабрика для создания блоков в игре Тетрис. </para>
+</section>
+<section>
+<title>Методы</title>
+<anchor xml:id="_class_tetris_1_1_model_1_1_blocks_1_1_blocks_factory_1a8e06891944f458b972ae558fb598a144"/><section>
+    <title>Create()</title>
+<indexterm><primary>Create</primary><secondary>Tetris::Model::Blocks::BlocksFactory</secondary></indexterm>
+<indexterm><primary>Tetris::Model::Blocks::BlocksFactory</primary><secondary>Create</secondary></indexterm>
+<para><computeroutput><link linkend="_class_tetris_1_1_model_1_1_blocks_1_1_abstract_block">AbstractBlock</link> * Tetris::Model::Blocks::BlocksFactory::Create (TypeBlock id, TypeColor color)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>Создать блок с заданным идентификатором и цветом. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Аргументы</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>id</entry><entry>
+<para>Идентификатор блока. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>color</entry><entry>
+<para>Цвет блока. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Возвращает</title>
+
+<para>Указатель на созданный блок. </para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_class_tetris_1_1_model_1_1_blocks_1_1_blocks_factory_1ad5039cdfe717663d8bb1bc4a07738bc0"/><section>
+    <title>Size()</title>
+<indexterm><primary>Size</primary><secondary>Tetris::Model::Blocks::BlocksFactory</secondary></indexterm>
+<indexterm><primary>Tetris::Model::Blocks::BlocksFactory</primary><secondary>Size</secondary></indexterm>
+<para><computeroutput>int Tetris::Model::Blocks::BlocksFactory::Size ( ) const<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>Получить количество инициализированных блоков. </para>
+</para>
+
+<para><formalpara><title>Возвращает</title>
+
+<para>Количество зарегистрированных блоков. </para>
+</formalpara>
+</para>
+</section>
+<para>
+Объявления и описания членов класса находятся в файле:</para>
+Model/Include/Model/Factory/BlocksFactory.h</section>
+</section>

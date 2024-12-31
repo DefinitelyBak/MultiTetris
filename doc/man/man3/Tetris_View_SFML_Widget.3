@@ -1,0 +1,76 @@
+.TH "Tetris::View::SFML::Widget" 3 "project(MultiTetris LANGUAGES CXX)" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Tetris::View::SFML::Widget
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Базовые классы:\fBTetris::Model::AbstractWidget\fP\&.
+.SS "Открытые члены"
+
+.in +1c
+.ti -1c
+.RI "\fBWidget\fP (AbstractModelPtr model, const std::string &pathFont)"
+.br
+.ti -1c
+.RI "void \fBUpdate\fP () override"
+.br
+.RI "Обновление состояния виджета "
+.ti -1c
+.RI "bool \fBIsOpen\fP () const override"
+.br
+.RI "Проверка, открыт ли виджет "
+.ti -1c
+.RI "void \fBSlotCloseWidget\fP () override"
+.br
+.RI "Закрытие виджета "
+.in -1c
+
+Открытые члены унаследованные от \fBTetris::Model::AbstractWidget\fP
+.in +1c
+.ti -1c
+.RI "virtual \fB~AbstractWidget\fP ()=default"
+.br
+.RI "Деструктор по умолчанию "
+.ti -1c
+.RI "virtual void \fBSlotUpdateWidget\fP (DescriptionModelPtr descp)"
+.br
+.RI "Обновление виджета на основе описания модели "
+.ti -1c
+.RI "DescriptionModelPtr \fBGetDescriptionModel\fP ()"
+.br
+.RI "Обновление виджета на основе описания модели "
+.in -1c
+.SH "Методы"
+.PP 
+.SS "bool Tetris::View::SFML::Widget::IsOpen () const\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Проверка, открыт ли виджет 
+.PP
+\fBВозвращает\fP
+.RS 4
+true, если виджет открыт; иначе false 
+.RE
+.PP
+
+.PP
+Замещает \fBTetris::Model::AbstractWidget\fP\&.
+.SS "void Tetris::View::SFML::Widget::SlotCloseWidget ()\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Закрытие виджета 
+.PP
+Замещает \fBTetris::Model::AbstractWidget\fP\&.
+.SS "void Tetris::View::SFML::Widget::Update ()\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Обновление состояния виджета 
+.PP
+Замещает \fBTetris::Model::AbstractWidget\fP\&.
+
+.SH "Автор"
+.PP 
+Автоматически создано Doxygen для project(MultiTetris LANGUAGES CXX) из исходного текста\&.

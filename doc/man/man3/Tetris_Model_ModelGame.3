@@ -1,0 +1,107 @@
+.TH "Tetris::Model::ModelGame" 3 "project(MultiTetris LANGUAGES CXX)" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Tetris::Model::ModelGame \- Модель игры Тетрис  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <ModelGame\&.h>\fP
+.PP
+Базовые классы:\fBTetris::Model::AbstractModel\fP\&.
+.SS "Открытые члены"
+
+.in +1c
+.ti -1c
+.RI "\fBModelGame\fP ()"
+.br
+.RI "Конструктор по умолчанию "
+.in -1c
+
+Открытые члены унаследованные от \fBTetris::Model::AbstractModel\fP
+.in +1c
+.ti -1c
+.RI "\fBAbstractModel\fP ()"
+.br
+.RI "Конструктор "
+.ti -1c
+.RI "virtual \fB~AbstractModel\fP ()"
+.br
+.RI "Деструктор "
+.ti -1c
+.RI "void \fBSlotUpdate\fP (Command command)"
+.br
+.RI "Метод для обновления модели с полученной командой "
+.ti -1c
+.RI "void \fBSetWidget\fP (AbstractWidgetPtr view)"
+.br
+.RI "Установка виджета для обновления и закрытия "
+.in -1c
+.SS "Защищенные члены"
+
+.in +1c
+.ti -1c
+.RI "void \fBUpdateModel\fP (Command command, DescriptionModelPtr &desc) override"
+.br
+.RI "Обновление модели в ответ на команду "
+.in -1c
+.SS "Дополнительные унаследованные члены"
+
+
+Открытые типы унаследованные от \fBTetris::Model::AbstractModel\fP
+.in +1c
+.ti -1c
+.RI "using \fBTypeSignalUpdateWidgets\fP = boost::signals2::signal<void(DescriptionModelPtr)>"
+.br
+.RI "Сигнал для обновления виджетов с описанием модели "
+.ti -1c
+.RI "using \fBTypeSignalCloseWidgets\fP = boost::signals2::signal<void()>"
+.br
+.RI "Сигнал для закрытия виджетов "
+.in -1c
+
+Защищенные данные унаследованные от \fBTetris::Model::AbstractModel\fP
+.in +1c
+.ti -1c
+.RI "\fBTypeSignalUpdateWidgets\fP \fBSignalUpdateWidgets\fP"
+.br
+.RI "Сигнал для обновления виджетов "
+.ti -1c
+.RI "\fBTypeSignalCloseWidgets\fP \fBSignalCloseWidgets\fP"
+.br
+.RI "Сигнал для закрытия виджетов "
+.in -1c
+.SH "Подробное описание"
+.PP 
+Модель игры Тетрис 
+
+Этот класс отвечает за управление состоянием игры Тетрис, включая создание блоков, обновление счета и обработку команд игрока\&. 
+.SH "Конструктор(ы)"
+.PP 
+.SS "Tetris::Model::ModelGame::ModelGame ()"
+
+.PP
+Конструктор по умолчанию Инициализирует игровую модель, создавая карту и регистрируя доступные блоки\&. 
+.SH "Методы"
+.PP 
+.SS "void Tetris::Model::ModelGame::UpdateModel (Command command, DescriptionModelPtr & desc)\fR [override]\fP, \fR [protected]\fP, \fR [virtual]\fP"
+
+.PP
+Обновление модели в ответ на команду Обрабатывает входящие команды, обновляет состояние игры и передает текущее состояние модели в описание\&.
+.PP
+\fBАргументы\fP
+.RS 4
+\fIcommand\fP Команда для обновления модели 
+.br
+\fIdesc\fP Описание текущего состояния модели 
+.RE
+.PP
+
+.PP
+Замещает \fBTetris::Model::AbstractModel\fP\&.
+
+.SH "Автор"
+.PP 
+Автоматически создано Doxygen для project(MultiTetris LANGUAGES CXX) из исходного текста\&.

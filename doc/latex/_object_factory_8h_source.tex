@@ -1,0 +1,53 @@
+\doxysection{Object\+Factory.\+h}
+\hypertarget{_object_factory_8h_source}{}\label{_object_factory_8h_source}\index{Model/Include/Model/Factory/ObjectFactory.h@{Model/Include/Model/Factory/ObjectFactory.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <Model/Export.h>}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <Model/Factory/AbstractCreator.h>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{namespace\ }Tetris::Model::Blocks}
+\DoxyCodeLine{00009\ \{}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ Base,\ \textcolor{keyword}{class}\ IdType>}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keyword}{class\ }MODEL\_EXPORT\ \mbox{\hyperlink{class_tetris_1_1_model_1_1_blocks_1_1_object_factory}{ObjectFactory}}}
+\DoxyCodeLine{00015\ \ \ \ \ \{}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{class_tetris_1_1_model_1_1_blocks_1_1_abstract_creator}{AbstractFactory}}\ =\ \mbox{\hyperlink{class_tetris_1_1_model_1_1_blocks_1_1_abstract_creator}{AbstractCreator<Base>}};}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{class_tetris_1_1_model_1_1_blocks_1_1_object_factory_abf8f5e49373221dcd507b8bb41d97700}{FactoryMap}}\ =\ std::map<IdType,\ AbstractFactory*>;}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_tetris_1_1_model_1_1_blocks_1_1_object_factory_abf8f5e49373221dcd507b8bb41d97700}{FactoryMap}}\ \mbox{\hyperlink{class_tetris_1_1_model_1_1_blocks_1_1_object_factory_a8bbf76296d3aa4d85b205fb8adc03525}{\_factory}};}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_tetris_1_1_model_1_1_blocks_1_1_object_factory_a89b66ffc8f9914ebecfd12f1523fcb01}{ObjectFactory}}()\ \{\}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_tetris_1_1_model_1_1_blocks_1_1_object_factory_ad8fd77097bd76a268bef6366b8278000}{\string~ObjectFactory}}()\ }
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ pair\ :\ \_factory)}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ pair.second;}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ C>}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tetris_1_1_model_1_1_blocks_1_1_object_factory_ad5819264d6a5187a94041a5a57aeb937}{add}}(\textcolor{keyword}{const}\ IdType\&\ \textcolor{keywordtype}{id})}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ registerClass(\textcolor{keywordtype}{id},\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_tetris_1_1_model_1_1_blocks_1_1_creator}{Creator<C,\ Base>}}());}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tetris_1_1_model_1_1_blocks_1_1_object_factory_ac4916c7abdc27197364301a62f4d7d43}{registerClass}}(\textcolor{keyword}{const}\ IdType\&\ \textcolor{keywordtype}{id},\ \mbox{\hyperlink{class_tetris_1_1_model_1_1_blocks_1_1_abstract_creator}{AbstractFactory}}*\ p)}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{typename}\ FactoryMap::iterator\ it\ =\ \_factory.find(\textcolor{keywordtype}{id});}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (it\ ==\ \_factory.end())}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_factory[id]\ =\ p;}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ p;}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00060\ \ \ \ \ \};}
+\DoxyCodeLine{00061\ \}\ \textcolor{comment}{//\ namespace\ Tetris::Model::Blocks}}
+
+\end{DoxyCode}

@@ -1,11 +1,11 @@
 #pragma once
 
-#include <View/Export.h>
 #include <View/Precompile.h>
-#include <Model/Types.h>
-#include <View/Forwards.h>
+#include <View/Export.h>
 
+#include <Model/Types.h>
 #include <Model/AbstractModel.h>
+#include <View/Forwards.h>
 
 
 namespace Tetris::View::Qt

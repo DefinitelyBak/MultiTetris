@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__abstract_model_8h_source" xml:lang="ru">
+<title>AbstractModel.h</title>
+<indexterm><primary>Model/Include/Model/AbstractModel.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#pragma&#32;once</emphasis>
+2 
+3 <emphasis role="preprocessor">#include&#32;&lt;Model/Export.h&gt;</emphasis>
+4 
+5 <emphasis role="preprocessor">#include&#32;&lt;Model/Precompile.h&gt;</emphasis>
+6 <emphasis role="preprocessor">#include&#32;&lt;Model/Forwards.h&gt;</emphasis>
+7 
+8 <emphasis role="preprocessor">#include&#32;&lt;Model/Types.h&gt;</emphasis>
+9 <emphasis role="preprocessor">#include&#32;&lt;Model/DescriptionModel.h&gt;</emphasis>
+10 <emphasis role="preprocessor">#include&#32;&lt;Model/AbstractWidget.h&gt;</emphasis>
+11 
+12 
+13 <emphasis role="keyword">namespace&#32;</emphasis>Tetris::Model
+14 {
+16 &#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis>MODEL_EXPORT&#32;<link linkend="_class_tetris_1_1_model_1_1_abstract_model">AbstractModel</link>
+17 &#32;&#32;&#32;&#32;{
+18 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>:
+20 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">using&#32;</emphasis><link linkend="_class_tetris_1_1_model_1_1_abstract_model_1ad88bbc26b03d165dba9dbb419d2bfb27">TypeSignalUpdateWidgets</link>&#32;=&#32;boost::signals2::signal&lt;void(DescriptionModelPtr)&gt;;
+22 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">using&#32;</emphasis><link linkend="_class_tetris_1_1_model_1_1_abstract_model_1a16dc3b80df253db410f6f486394d9dd2">TypeSignalCloseWidgets</link>&#32;=&#32;boost::signals2::signal&lt;void()&gt;;
+23 
+25 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_tetris_1_1_model_1_1_abstract_model_1a3a073d229f9d91e061bd80e3ee2af03c">AbstractModel</link>()&#32;:&#32;_stack(128),&#32;_finish(false)
+26 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+27 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;StartModel();
+28 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+29 
+31 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<link linkend="_class_tetris_1_1_model_1_1_abstract_model_1ae51d20b1b535f720b04ed0a14dd31ec1">~AbstractModel</link>()
+32 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+33 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;StopModel();
+34 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SignalCloseWidgets();
+35 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+36 
+39 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_tetris_1_1_model_1_1_abstract_model_1a1f9f17e2b0f0564ad2f68f4bd2a1c0a9">SlotUpdate</link>(Command&#32;command)
+40 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+41 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">while</emphasis>&#32;(!_stack.push(command));
+42 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+43 
+46 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_tetris_1_1_model_1_1_abstract_model_1a6bc3dcb28ac320b76ee6f782df31f9b5">SetWidget</link>(AbstractWidgetPtr&#32;view)
+47 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+48 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SignalUpdateWidgets.connect(TypeSignalUpdateWidgets::slot_type(&amp;AbstractWidget::SlotUpdateWidget,&#32;view.get(),&#32;boost::placeholders::_1).track_foreign(view));
+49 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SignalCloseWidgets.connect(TypeSignalCloseWidgets::slot_type(boost::bind(&amp;AbstractWidget::SlotCloseWidget,&#32;view.get())).track_foreign(view));
+50 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+51 
+52 &#32;&#32;&#32;&#32;<emphasis role="keyword">protected</emphasis>:
+53 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_tetris_1_1_model_1_1_abstract_model_1ad88bbc26b03d165dba9dbb419d2bfb27">TypeSignalUpdateWidgets</link>&#32;<link linkend="_class_tetris_1_1_model_1_1_abstract_model_1ab593a78c3295939a9989a753d2215b19">SignalUpdateWidgets</link>;&#32;
+54 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_tetris_1_1_model_1_1_abstract_model_1a16dc3b80df253db410f6f486394d9dd2">TypeSignalCloseWidgets</link>&#32;<link linkend="_class_tetris_1_1_model_1_1_abstract_model_1a0f47ea1e539b0d8a4801bd18553bf1da">SignalCloseWidgets</link>;&#32;
+55 
+59 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_tetris_1_1_model_1_1_abstract_model_1a610ccddf2c16bac1721f2135b265b977">UpdateModel</link>(Command&#32;command,&#32;DescriptionModelPtr&amp;&#32;desc)&#32;=&#32;0;
+60 
+61 &#32;&#32;&#32;&#32;<emphasis role="keyword">private</emphasis>:
+63 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;StartModel()
+64 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+65 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_worker&#32;=&#32;std::thread(&amp;AbstractModel::Run,&#32;<emphasis role="keyword">this</emphasis>);&#32;<emphasis role="comment">//&#32;Создание&#32;и&#32;запуск&#32;потока</emphasis>
+66 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+67 
+69 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;StopModel()
+70 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+71 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_finish&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+72 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_worker.join();
+73 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+74 
+76 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;Run()
+77 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+78 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Command&#32;cmd;
+79 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">while</emphasis>&#32;(!_finish)
+80 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+81 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(_stack.pop(cmd))
+82 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+83 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;DescriptionModelPtr&#32;desc&#32;=&#32;std::make_shared&lt;Model::DescriptionModel&gt;();
+84 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;UpdateModel(cmd,&#32;desc);
+85 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SignalUpdateWidgets(desc);
+86 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+87 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+88 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+89 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+90 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::thread&#32;_worker;&#32;
+91 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::atomic&lt;bool&gt;&#32;_finish;&#32;
+92 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;boost::lockfree::stack&lt;Command&gt;&#32;_stack;&#32;
+93 &#32;&#32;&#32;&#32;};
+94 }&#32;<emphasis role="comment">//&#32;namespace&#32;Tetris::Model</emphasis>
+</programlisting></section>

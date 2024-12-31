@@ -1,0 +1,38 @@
+\doxysection{Widget\+Preview\+Block.\+h}
+\hypertarget{_widget_preview_block_8h_source}{}\label{_widget_preview_block_8h_source}\index{View/Include/View/SFML/WidgetPreviewBlock.h@{View/Include/View/SFML/WidgetPreviewBlock.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <View/Export.h>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <View/Precompile.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <View/Forwards.h>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <View/SFML/Map.h>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <Model/Types.h>}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{namespace\ }Tetris::View::SFML}
+\DoxyCodeLine{00012\ \{}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keyword}{class\ }VIEW\_EXPORT\ \mbox{\hyperlink{class_tetris_1_1_view_1_1_s_f_m_l_1_1_widget_preview_block}{WidgetPreviewBlock}}\ final:\ \textcolor{keyword}{public}\ sf::Drawable,\ \textcolor{keyword}{public}\ sf::Transformable}
+\DoxyCodeLine{00015\ \ \ \ \ \{}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_tetris_1_1_view_1_1_s_f_m_l_1_1_widget_preview_block}{WidgetPreviewBlock}}(\textcolor{keyword}{const}\ sf::Vector2f\&\ windowSize,\ \textcolor{keywordtype}{bool}\ withBorder\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ SetBlock(\textcolor{keyword}{const}\ AbstractBlockPtr\ block);}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ Model::TypeBlock\ GetType()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ draw(sf::RenderTarget\&\ target,\ sf::RenderStates\ states)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_tetris_1_1_view_1_1_s_f_m_l_1_1_map}{Map}}\ \_map;\ \textcolor{comment}{//<\ Карта,\ представляющая\ блок.}}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ sf::Vector2f\ \_windowSize;\ \textcolor{comment}{//<\ Размер\ окна\ для\ отображения\ блока.}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ Model::TypeBlock\ \_typeShape\{Model::TypeBlock::None\};\ \textcolor{comment}{//<\ Тип\ блока.}}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ Model::TypeColor\ \_typeColor\{Model::TypeColor::None\};\ \textcolor{comment}{//<\ Цвет\ блока.}}
+\DoxyCodeLine{00046\ \ \ \ \ \};}
+\DoxyCodeLine{00047\ \}\ \textcolor{comment}{//\ namespace\ Tetris::View::SFML}}
+
+\end{DoxyCode}

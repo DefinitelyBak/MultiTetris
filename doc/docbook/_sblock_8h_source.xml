@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__sblock_8h_source" xml:lang="ru">
+<title>Sblock.h</title>
+<indexterm><primary>Model/Include/Model/Blocks/Sblock.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#pragma&#32;once</emphasis>
+2 
+3 <emphasis role="preprocessor">#include&#32;&lt;Model/Blocks/AbstractBlock.h&gt;</emphasis>
+4 
+5 
+6 <emphasis role="keyword">namespace&#32;</emphasis>Tetris::Model::Blocks
+7 {
+9 &#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis>MODEL_EXPORT&#32;<link linkend="_class_tetris_1_1_model_1_1_blocks_1_1_sblock">Sblock</link>&#32;final&#32;:&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_tetris_1_1_model_1_1_blocks_1_1_abstract_block">AbstractBlock</link>
+10 &#32;&#32;&#32;&#32;{
+11 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>:
+14 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_tetris_1_1_model_1_1_blocks_1_1_sblock_1ae384195a891e3ec2a3098e77ee25c6ad">Sblock</link>(TypeColor&#32;color)&#32;:&#32;<link linkend="_class_tetris_1_1_model_1_1_blocks_1_1_abstract_block">AbstractBlock</link>(color)&#32;
+15 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+16 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_stateToPositions&#32;=&#32;{
+17 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{State::Up,&#32;{
+18 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_tetris_1_1_model_1_1_position">Position</link>(-1,&#32;-1),&#32;<emphasis role="comment">//&#32;*&#32;&#32;*&#32;&#32;*&#32;&#32;*</emphasis>
+19 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_tetris_1_1_model_1_1_position">Position</link>(0,&#32;-1),&#32;&#32;<emphasis role="comment">//&#32;*&#32;&#32;0&#32;&#32;o&#32;&#32;*</emphasis>
+20 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_tetris_1_1_model_1_1_position">Position</link>(0,&#32;0),&#32;&#32;<emphasis role="comment">//&#32;o&#32;&#32;o&#32;&#32;*&#32;&#32;*</emphasis>
+21 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_tetris_1_1_model_1_1_position">Position</link>(1,&#32;0)&#32;&#32;&#32;<emphasis role="comment">//&#32;*&#32;&#32;*&#32;&#32;*&#32;&#32;*</emphasis>
+22 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}},
+23 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{State::Right,&#32;{
+24 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_tetris_1_1_model_1_1_position">Position</link>(-1,&#32;1),&#32;&#32;<emphasis role="comment">//&#32;o&#32;&#32;*&#32;&#32;*&#32;&#32;*</emphasis>
+25 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_tetris_1_1_model_1_1_position">Position</link>(-1,&#32;0),&#32;&#32;<emphasis role="comment">//&#32;o&#32;&#32;0&#32;&#32;*&#32;&#32;*</emphasis>
+26 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_tetris_1_1_model_1_1_position">Position</link>(0,&#32;0),&#32;&#32;<emphasis role="comment">//&#32;*&#32;&#32;o&#32;&#32;*&#32;&#32;*</emphasis>
+27 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_tetris_1_1_model_1_1_position">Position</link>(0,&#32;-1)&#32;&#32;<emphasis role="comment">//&#32;*&#32;&#32;*&#32;&#32;*&#32;&#32;*</emphasis>
+28 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}},
+29 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{State::Down,&#32;{
+30 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_tetris_1_1_model_1_1_position">Position</link>(1,&#32;1),&#32;<emphasis role="comment">//&#32;*&#32;&#32;o&#32;&#32;o&#32;&#32;*</emphasis>
+31 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_tetris_1_1_model_1_1_position">Position</link>(0,&#32;1),&#32;&#32;<emphasis role="comment">//&#32;o&#32;&#32;0&#32;&#32;*&#32;&#32;*</emphasis>
+32 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_tetris_1_1_model_1_1_position">Position</link>(0,&#32;0),&#32;<emphasis role="comment">//&#32;*&#32;&#32;*&#32;&#32;*&#32;&#32;*</emphasis>
+33 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_tetris_1_1_model_1_1_position">Position</link>(-1,0)&#32;<emphasis role="comment">//&#32;*&#32;&#32;*&#32;&#32;*&#32;&#32;*</emphasis>
+34 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}},
+35 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{State::Left,&#32;{
+36 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_tetris_1_1_model_1_1_position">Position</link>(1,&#32;-1),&#32;<emphasis role="comment">//&#32;*&#32;&#32;o&#32;&#32;*&#32;&#32;*</emphasis>
+37 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_tetris_1_1_model_1_1_position">Position</link>(1,&#32;0),&#32;&#32;<emphasis role="comment">//&#32;*&#32;&#32;0&#32;&#32;o&#32;&#32;*</emphasis>
+38 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_tetris_1_1_model_1_1_position">Position</link>(0,&#32;0),&#32;<emphasis role="comment">//&#32;*&#32;&#32;*&#32;&#32;o&#32;&#32;*</emphasis>
+39 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_tetris_1_1_model_1_1_position">Position</link>(0,&#32;1)&#32;&#32;<emphasis role="comment">//&#32;*&#32;&#32;*&#32;&#32;*&#32;&#32;*</emphasis>
+40 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}}
+41 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
+42 
+43 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_stateToOffset&#32;=&#32;JLSTZOffset;
+44 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+45 
+48 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;TypeBlock&#32;<link linkend="_class_tetris_1_1_model_1_1_blocks_1_1_sblock_1ae483d88aea3d38c55293a4ae3ed4f5bb">GetType</link>()<emphasis role="keyword">&#32;const&#32;override</emphasis>
+49 <emphasis role="keyword">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;</emphasis>{
+50 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;TypeBlock::Sblock;
+51 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+52 &#32;&#32;&#32;&#32;};
+53 
+54 }&#32;<emphasis role="comment">//&#32;namespace&#32;Tetris::Model::Blocks</emphasis>
+</programlisting></section>

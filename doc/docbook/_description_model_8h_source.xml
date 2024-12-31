@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__description_model_8h_source" xml:lang="ru">
+<title>DescriptionModel.h</title>
+<indexterm><primary>Model/Include/Model/DescriptionModel.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#pragma&#32;once</emphasis>
+2 
+3 <emphasis role="preprocessor">#include&#32;&quot;Precompile.h&quot;</emphasis>
+4 <emphasis role="preprocessor">#include&#32;&quot;Forwards.h&quot;</emphasis>
+5 
+6 <emphasis role="preprocessor">#include&#32;&lt;Model/Export.h&gt;</emphasis>
+7 
+8 <emphasis role="preprocessor">#include&#32;&lt;Model/Types.h&gt;</emphasis>
+9 
+10 
+11 <emphasis role="keyword">namespace&#32;</emphasis>Tetris::Model
+12 {
+13 
+15 &#32;&#32;&#32;&#32;<emphasis role="keyword">struct&#32;</emphasis>MODEL_EXPORT&#32;<link linkend="_struct_tetris_1_1_model_1_1_description_model">DescriptionModel</link>
+16 &#32;&#32;&#32;&#32;{
+17 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_tetris_1_1_model_1_1_description_model">DescriptionModel</link>():&#32;map(),&#32;size({0,0}),&#32;nextBlock(<emphasis role="keyword">nullptr</emphasis>){}
+18 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_tetris_1_1_model_1_1_description_model">~DescriptionModel</link>(){}
+19 
+20 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::vector&lt;TypeColor&gt;&#32;<link linkend="_struct_tetris_1_1_model_1_1_description_model_1ad22cf1d36316e52813b48395e5fcb4cc">map</link>;&#32;
+21 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_tetris_1_1_model_1_1_map_size">MapSize</link>&#32;<link linkend="_struct_tetris_1_1_model_1_1_description_model_1afb0d9d99f0bed26799df026a63237c9d">size</link>;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+22 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;AbstractBlockPtr&#32;nextBlock{<emphasis role="keyword">nullptr</emphasis>};&#32;
+23 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::optional&lt;unsigned&#32;int&gt;&#32;<link linkend="_struct_tetris_1_1_model_1_1_description_model_1afe69032e1e39ebcf3a414103ad3cf7c8">score</link>;&#32;
+24 &#32;&#32;&#32;&#32;};
+25 
+26 }
+</programlisting></section>

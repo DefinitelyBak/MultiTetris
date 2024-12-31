@@ -1,0 +1,41 @@
+\doxysection{SFMLApplication.\+h}
+\hypertarget{_s_f_m_l_application_8h_source}{}\label{_s_f_m_l_application_8h_source}\index{View/Include/View/SFML/SFMLApplication.h@{View/Include/View/SFML/SFMLApplication.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <View/Export.h>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <View/Precompile.h>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <View/Forwards.h>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <Model/AbstractModel.h>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <View/IApplication.h>}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{namespace\ }Tetris::View::SFML\{}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keyword}{class\ }VIEW\_EXPORT\ \mbox{\hyperlink{class_tetris_1_1_view_1_1_s_f_m_l_1_1_s_f_m_l_application}{SFMLApplication}}\ final:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_tetris_1_1_view_1_1_i_application}{IApplication}}}
+\DoxyCodeLine{00015\ \ \ \ \ \{}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_tetris_1_1_view_1_1_s_f_m_l_1_1_s_f_m_l_application}{SFMLApplication}}(AbstractModelPtr\ model,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ countWidgets,\ \textcolor{keyword}{const}\ std::string\&\ fontPath);}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_tetris_1_1_view_1_1_s_f_m_l_1_1_s_f_m_l_application}{\string~SFMLApplication}}();}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ Run()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ isExecution()\ \textcolor{keyword}{const\ override};\ }
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ CreateWidgets();}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ UpdateWidgets();}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ std::string\ \_pathFont;\ }
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \_count;\ }
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ std::list<AbstractWidgetPtr>\ \_widgets;\ }
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ AbstractModelPtr\ \_model;\ }
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ std::thread\ \_thread;\ }
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ std::atomic<bool>\ \_execution;\ }
+\DoxyCodeLine{00046\ \ \ \ \ \};}
+\DoxyCodeLine{00047\ \}\ \textcolor{comment}{//\ namespace\ Tetris::View::SFML}}
+
+\end{DoxyCode}

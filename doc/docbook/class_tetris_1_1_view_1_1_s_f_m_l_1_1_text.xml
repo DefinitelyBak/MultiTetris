@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_tetris_1_1_view_1_1_s_f_m_l_1_1_text" xml:lang="ru">
+<title>Класс Tetris::View::SFML::Text</title>
+<indexterm><primary>Tetris::View::SFML::Text</primary></indexterm>
+<para>
+
+<para>Класс <link linkend="_class_tetris_1_1_view_1_1_s_f_m_l_1_1_text">Text</link> представляет собой текстовое поле в игре Тетрис. </para>
+ 
+</para>
+<para>
+<computeroutput>#include &lt;Text.h&gt;</computeroutput>
+</para>
+<para>Граф наследования:Tetris::View::SFML::Text:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_tetris_1_1_view_1_1_s_f_m_l_1_1_text.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Открытые члены    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_class_tetris_1_1_view_1_1_s_f_m_l_1_1_text_1a953c679cc98a114a10332cceb26639be">Text</link> (const std::string &amp;fontPath, sf::Color colorText, std::uint32_t style)</para>
+
+<para>Конструктор класса <link linkend="_class_tetris_1_1_view_1_1_s_f_m_l_1_1_text">Text</link>. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Подробное описание</title>
+
+<para>Класс <link linkend="_class_tetris_1_1_view_1_1_s_f_m_l_1_1_text">Text</link> представляет собой текстовое поле в игре Тетрис. </para>
+
+
+
+<para>Этот класс наследуется от sf::Text и добавляет дополнительные возможности для работы с текстом. </para>
+</section>
+<section>
+<title>Конструктор(ы)</title>
+<anchor xml:id="_class_tetris_1_1_view_1_1_s_f_m_l_1_1_text_1a953c679cc98a114a10332cceb26639be"/><section>
+    <title>Text()</title>
+<indexterm><primary>Text</primary><secondary>Tetris::View::SFML::Text</secondary></indexterm>
+<indexterm><primary>Tetris::View::SFML::Text</primary><secondary>Text</secondary></indexterm>
+<para><computeroutput>Tetris::View::SFML::Text::Text (const std::string &amp; fontPath, sf::Color colorText, std::uint32_t style)</computeroutput></para><para>
+
+<para>Конструктор класса <link linkend="_class_tetris_1_1_view_1_1_s_f_m_l_1_1_text">Text</link>. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Аргументы</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>fontPath</entry><entry>
+<para>Путь к файлу шрифта. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>colorText</entry><entry>
+<para>Цвет текста. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>style</entry><entry>
+<para>Стиль текста. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+<para>
+Объявления и описания членов классов находятся в файлах:</para>
+View/Include/View/SFML/Text.hView/Source/SFML/Text.cpp</section>
+</section>

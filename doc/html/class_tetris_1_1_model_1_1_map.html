@@ -1,0 +1,315 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.10.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>project(MultiTetris LANGUAGES CXX): Класс Tetris::Model::Map</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">project(MultiTetris LANGUAGES CXX)
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.10.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><b>Tetris</b></li><li class="navelem"><b>Model</b></li><li class="navelem"><a class="el" href="class_tetris_1_1_model_1_1_map.html">Map</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Открытые члены</a> &#124;
+<a href="class_tetris_1_1_model_1_1_map-members.html">Полный список членов класса</a>  </div>
+  <div class="headertitle"><div class="title">Класс Tetris::Model::Map</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Класс реализации карты для игры Тетрис  
+ <a href="#details">Подробнее...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_model_2_include_2_model_2_map_8h_source.html">Map.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Открытые члены</h2></td></tr>
+<tr class="memitem:a1f6b3787af7f9ff218b96a8d90a5ffa5" id="r_a1f6b3787af7f9ff218b96a8d90a5ffa5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1f6b3787af7f9ff218b96a8d90a5ffa5">Map</a> (size_t columns=10, size_t rows=25)</td></tr>
+<tr class="memdesc:a1f6b3787af7f9ff218b96a8d90a5ffa5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Конструктор по умолчанию, инициализирует пустую карту  <br /></td></tr>
+<tr class="separator:a1f6b3787af7f9ff218b96a8d90a5ffa5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ef0320d1f7f1486286416494caa9acd" id="r_a5ef0320d1f7f1486286416494caa9acd"><td class="memItemLeft" align="right" valign="top">std::vector&lt; TypeColor &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5ef0320d1f7f1486286416494caa9acd">GetMap</a> ()</td></tr>
+<tr class="memdesc:a5ef0320d1f7f1486286416494caa9acd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Получить текущую карту  <br /></td></tr>
+<tr class="separator:a5ef0320d1f7f1486286416494caa9acd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf74883a06eebc5eb51e23017889d25f" id="r_aaf74883a06eebc5eb51e23017889d25f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_tetris_1_1_model_1_1_map_size.html">MapSize</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaf74883a06eebc5eb51e23017889d25f">GetSize</a> () const</td></tr>
+<tr class="memdesc:aaf74883a06eebc5eb51e23017889d25f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Получить размер карты  <br /></td></tr>
+<tr class="separator:aaf74883a06eebc5eb51e23017889d25f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a69d0feeeb9383cd42fc926adbf7a3d2b" id="r_a69d0feeeb9383cd42fc926adbf7a3d2b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a69d0feeeb9383cd42fc926adbf7a3d2b">IsFullMap</a> ()</td></tr>
+<tr class="memdesc:a69d0feeeb9383cd42fc926adbf7a3d2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Проверить, заполнена ли карта  <br /></td></tr>
+<tr class="separator:a69d0feeeb9383cd42fc926adbf7a3d2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a44cf5a8da52c9c3fe48c64b550c261" id="r_a0a44cf5a8da52c9c3fe48c64b550c261"><td class="memItemLeft" align="right" valign="top"><a id="a0a44cf5a8da52c9c3fe48c64b550c261" name="a0a44cf5a8da52c9c3fe48c64b550c261"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Restart</b> ()</td></tr>
+<tr class="memdesc:a0a44cf5a8da52c9c3fe48c64b550c261"><td class="mdescLeft">&#160;</td><td class="mdescRight">Перезапустить карту, очищая её <br /></td></tr>
+<tr class="separator:a0a44cf5a8da52c9c3fe48c64b550c261"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd835b8a396399623327c51b418b7453" id="r_abd835b8a396399623327c51b418b7453"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abd835b8a396399623327c51b418b7453">SetBlock</a> (AbstractBlockPtr block)</td></tr>
+<tr class="memdesc:abd835b8a396399623327c51b418b7453"><td class="mdescLeft">&#160;</td><td class="mdescRight">Установить активный блок на карту  <br /></td></tr>
+<tr class="separator:abd835b8a396399623327c51b418b7453"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4be3d29e458392186fdabc87215d031d" id="r_a4be3d29e458392186fdabc87215d031d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4be3d29e458392186fdabc87215d031d">HasActiveBlock</a> () const</td></tr>
+<tr class="memdesc:a4be3d29e458392186fdabc87215d031d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Проверить, имеется ли активный блок  <br /></td></tr>
+<tr class="separator:a4be3d29e458392186fdabc87215d031d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad23f8305cedcd9f0ffe54dd8b0ec3f0c" id="r_ad23f8305cedcd9f0ffe54dd8b0ec3f0c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad23f8305cedcd9f0ffe54dd8b0ec3f0c">MoveBlock</a> (Command cmn)</td></tr>
+<tr class="memdesc:ad23f8305cedcd9f0ffe54dd8b0ec3f0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Переместить активный блок на карте  <br /></td></tr>
+<tr class="separator:ad23f8305cedcd9f0ffe54dd8b0ec3f0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed9aa86a85540eb57a93ebb8f6a9b9e2" id="r_aed9aa86a85540eb57a93ebb8f6a9b9e2"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aed9aa86a85540eb57a93ebb8f6a9b9e2">GetCountDeletedLines</a> () const</td></tr>
+<tr class="memdesc:aed9aa86a85540eb57a93ebb8f6a9b9e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Получить количество удаленных линий  <br /></td></tr>
+<tr class="separator:aed9aa86a85540eb57a93ebb8f6a9b9e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Класс реализации карты для игры Тетрис </p>
+</div><h2 class="groupheader">Конструктор(ы)</h2>
+<a id="a1f6b3787af7f9ff218b96a8d90a5ffa5" name="a1f6b3787af7f9ff218b96a8d90a5ffa5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1f6b3787af7f9ff218b96a8d90a5ffa5">&#9670;&#160;</a></span>Map()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Tetris::Model::Map::Map </td>
+          <td>(</td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>columns</em><span class="paramdefsep"> = </span><span class="paramdefval">10</span>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>rows</em><span class="paramdefsep"> = </span><span class="paramdefval">25</span></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Конструктор по умолчанию, инициализирует пустую карту </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">columns</td><td>Количество столбцов карты </td></tr>
+    <tr><td class="paramname">rows</td><td>Количество строк карты </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Методы</h2>
+<a id="aed9aa86a85540eb57a93ebb8f6a9b9e2" name="aed9aa86a85540eb57a93ebb8f6a9b9e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed9aa86a85540eb57a93ebb8f6a9b9e2">&#9670;&#160;</a></span>GetCountDeletedLines()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int Tetris::Model::Map::GetCountDeletedLines </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Получить количество удаленных линий </p>
+<dl class="section return"><dt>Возвращает</dt><dd>Количество удаленных линий </dd></dl>
+
+</div>
+</div>
+<a id="a5ef0320d1f7f1486286416494caa9acd" name="a5ef0320d1f7f1486286416494caa9acd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ef0320d1f7f1486286416494caa9acd">&#9670;&#160;</a></span>GetMap()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; TypeColor &gt; Tetris::Model::Map::GetMap </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Получить текущую карту </p>
+<dl class="section return"><dt>Возвращает</dt><dd>Текущая карта </dd></dl>
+
+</div>
+</div>
+<a id="aaf74883a06eebc5eb51e23017889d25f" name="aaf74883a06eebc5eb51e23017889d25f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaf74883a06eebc5eb51e23017889d25f">&#9670;&#160;</a></span>GetSize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_tetris_1_1_model_1_1_map_size.html">MapSize</a> Tetris::Model::Map::GetSize </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Получить размер карты </p>
+<dl class="section return"><dt>Возвращает</dt><dd>Размер карты в виде <a class="el" href="struct_tetris_1_1_model_1_1_map_size.html" title="Размер карты">MapSize</a> </dd></dl>
+
+</div>
+</div>
+<a id="a4be3d29e458392186fdabc87215d031d" name="a4be3d29e458392186fdabc87215d031d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4be3d29e458392186fdabc87215d031d">&#9670;&#160;</a></span>HasActiveBlock()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Tetris::Model::Map::HasActiveBlock </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Проверить, имеется ли активный блок </p>
+<dl class="section return"><dt>Возвращает</dt><dd>True, если активный блок присутствует, иначе false </dd></dl>
+
+</div>
+</div>
+<a id="a69d0feeeb9383cd42fc926adbf7a3d2b" name="a69d0feeeb9383cd42fc926adbf7a3d2b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a69d0feeeb9383cd42fc926adbf7a3d2b">&#9670;&#160;</a></span>IsFullMap()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Tetris::Model::Map::IsFullMap </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Проверить, заполнена ли карта </p>
+<dl class="section return"><dt>Возвращает</dt><dd>True, если карта заполнена, иначе false </dd></dl>
+
+</div>
+</div>
+<a id="ad23f8305cedcd9f0ffe54dd8b0ec3f0c" name="ad23f8305cedcd9f0ffe54dd8b0ec3f0c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad23f8305cedcd9f0ffe54dd8b0ec3f0c">&#9670;&#160;</a></span>MoveBlock()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Tetris::Model::Map::MoveBlock </td>
+          <td>(</td>
+          <td class="paramtype">Command</td>          <td class="paramname"><span class="paramname"><em>cmn</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Переместить активный блок на карте </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cmn</td><td>Команда для перемещения </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="abd835b8a396399623327c51b418b7453" name="abd835b8a396399623327c51b418b7453"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd835b8a396399623327c51b418b7453">&#9670;&#160;</a></span>SetBlock()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Tetris::Model::Map::SetBlock </td>
+          <td>(</td>
+          <td class="paramtype">AbstractBlockPtr</td>          <td class="paramname"><span class="paramname"><em>block</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Установить активный блок на карту </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">block</td><td>Указатель на блок </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<hr/>Объявления и описания членов классов находятся в файлах:<ul>
+<li>Model/Include/Model/<a class="el" href="_model_2_include_2_model_2_map_8h_source.html">Map.h</a></li>
+<li>Model/Source/<b>Map.cpp</b></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0
+</small></address>
+</body>
+</html>

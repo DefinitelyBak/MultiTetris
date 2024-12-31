@@ -46,6 +46,11 @@ add_library(View::View ALIAS View)
 #----------------------------------------------------------------------------------------------------------------------
 
 include(FetchContent)
+
+find_package(SFML)
+find_package(Qt5 REQUIRED COMPONENTS Core Widgets Gui)
+
+find_package(Boost REQUIRED)
 FetchContent_Declare(SFML
     GIT_REPOSITORY https://github.com/SFML/SFML.git
     GIT_TAG 3.0.0
@@ -54,24 +59,19 @@ FetchContent_Declare(SFML
     SYSTEM)
 FetchContent_MakeAvailable(SFML)
 
-find_package(SFML)
-find_package(Qt5 REQUIRED COMPONENTS Core Widgets Gui)
-
-find_package(Boost REQUIRED)
-
 target_link_libraries(
-    View
-  PUBLIC
-    Model
-    Controller
-    Qt5::Widgets
-    Qt5::Core
-    Qt5::Gui
-  PUBLIC
-    SFML::System
-    SFML::Graphics
-    SFML::Window
-    SFML::Main
+        View
+    PRIVATE
+        Model
+        Controller
+    PUBLIC
+        Qt5::Core
+        Qt5::Widgets
+        Qt5::Gui
+        SFML::System
+        SFML::Graphics
+        SFML::Window
+        SFML::Main
   )
 
 #----------------------------------------------------------------------------------------------------------------------
@@ -138,6 +138,8 @@ target_include_directories(View
 set_target_properties(View PROPERTIES
     SOVERSION ${PROJECT_VERSION_MAJOR}
     VERSION ${PROJECT_VERSION})
+
+message(${CMAKE_CURRENT_SOURCE_DIR})
 
 if(VIEW_INSTALL AND NOT CMAKE_SKIP_INSTALL_RULES)
     configure_package_config_file(cmake/View-config.cmake.in View-config.cmake

@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_struct_tetris_1_1_model_1_1_description_model" xml:lang="ru">
+<title>Структура Tetris::Model::DescriptionModel</title>
+<indexterm><primary>Tetris::Model::DescriptionModel</primary></indexterm>
+<para>
+
+<para>Описание модели игры </para>
+ 
+</para>
+<para>
+<computeroutput>#include &lt;DescriptionModel.h&gt;</computeroutput>
+</para>
+<simplesect>
+    <title>Открытые атрибуты    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_struct_tetris_1_1_model_1_1_description_model_1ad22cf1d36316e52813b48395e5fcb4cc"/>std::vector&lt; TypeColor &gt; <emphasis role="strong">map</emphasis></para>
+
+<para>Игровая карта </para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_tetris_1_1_model_1_1_description_model_1afb0d9d99f0bed26799df026a63237c9d"/><link linkend="_struct_tetris_1_1_model_1_1_map_size">MapSize</link> <emphasis role="strong">size</emphasis></para>
+
+<para>Размер карты </para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_tetris_1_1_model_1_1_description_model_1a9fd3b1760de2a2101bc3a53c0620c1b7"/>AbstractBlockPtr <emphasis role="strong">nextBlock</emphasis> {<link linkend="_struct_tetris_1_1_model_1_1_description_model_1ad22cf1d36316e52813b48395e5fcb4cc">nullptr</link>}</para>
+
+<para>Следующий блок </para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_tetris_1_1_model_1_1_description_model_1afe69032e1e39ebcf3a414103ad3cf7c8"/>std::optional&lt; <link linkend="_struct_tetris_1_1_model_1_1_description_model_1ad22cf1d36316e52813b48395e5fcb4cc">unsigned</link> <link linkend="_struct_tetris_1_1_model_1_1_description_model_1ad22cf1d36316e52813b48395e5fcb4cc">int</link> &gt; <emphasis role="strong">score</emphasis></para>
+
+<para>Текущий счет </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Подробное описание</title>
+
+<para>Описание модели игры </para>
+<para>
+Объявления и описания членов структуры находятся в файле:</para>
+Model/Include/Model/DescriptionModel.h</section>
+</section>

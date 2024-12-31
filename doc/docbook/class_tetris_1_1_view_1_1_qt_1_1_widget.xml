@@ -1,0 +1,249 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_tetris_1_1_view_1_1_qt_1_1_widget" xml:lang="ru">
+<title>Класс Tetris::View::Qt::Widget</title>
+<indexterm><primary>Tetris::View::Qt::Widget</primary></indexterm>
+<para>
+
+<para>Класс, представляющий виджет для отображения игры Tetris. Состояние карты меняется только из методов UpdateView, просто надо какие события создают перерисовку содержимого. </para>
+ 
+</para>
+<para>
+<computeroutput>#include &lt;Widget.h&gt;</computeroutput>
+</para>
+<para>Граф наследования:Tetris::View::Qt::Widget:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_tetris_1_1_view_1_1_qt_1_1_widget.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Открытые слоты    </title>
+        <itemizedlist>
+            <listitem><para>void <link linkend="_class_tetris_1_1_view_1_1_qt_1_1_widget_1a9389513b2bb0ab2f1a8f7ca5f11733a7">SlotUpdateView</link> (DescriptionModelPtr descp)</para>
+
+<para>Слот для обновления представления на основе модели описания. </para>
+</listitem>
+            <listitem><para>DescriptionModelPtr <link linkend="_class_tetris_1_1_view_1_1_qt_1_1_widget_1a5311eaf38f6380e158d373eba8c154b6">GetDescriptionModel</link> ()</para>
+
+<para>Получает текущее состояние модели описания. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Сигналы    </title>
+        <itemizedlist>
+            <listitem><para>void <link linkend="_class_tetris_1_1_view_1_1_qt_1_1_widget_1aec4e05e511e45a84480446426c79a4e3">SignalUpdateModel</link> (Model::Command command)</para>
+
+<para>Сигнал для обновления модели с командой. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Открытые члены    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_class_tetris_1_1_view_1_1_qt_1_1_widget_1a0c1bf2c7741b2e114992a6ca08e48166">Widget</link> (QWidget *parent=nullptr)</para>
+
+<para>Конструктор класса <link linkend="_class_tetris_1_1_view_1_1_qt_1_1_widget">Widget</link>. Инициализирует родительский виджет. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Защищенные члены    </title>
+        <itemizedlist>
+            <listitem><para>void <link linkend="_class_tetris_1_1_view_1_1_qt_1_1_widget_1a772074a93deac981714e5b83e15a6e3f">keyPressEvent</link> (QKeyEvent *event) override</para>
+
+<para>Обрабатывает события нажатия клавиш. Переопределяет метод keyPressEvent для обработки нажатий клавиш. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_tetris_1_1_view_1_1_qt_1_1_widget_1a664e4e974f748691f53647704fe3a71f">paintEvent</link> (QPaintEvent *event) override</para>
+
+<para>Обрабатывает события перерисовки виджета. Переопределяет метод paintEvent для обновления содержимого виджета. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Подробное описание</title>
+
+<para>Класс, представляющий виджет для отображения игры Tetris. Состояние карты меняется только из методов UpdateView, просто надо какие события создают перерисовку содержимого. </para>
+</section>
+<section>
+<title>Конструктор(ы)</title>
+<anchor xml:id="_class_tetris_1_1_view_1_1_qt_1_1_widget_1a0c1bf2c7741b2e114992a6ca08e48166"/><section>
+    <title>Widget()</title>
+<indexterm><primary>Widget</primary><secondary>Tetris::View::Qt::Widget</secondary></indexterm>
+<indexterm><primary>Tetris::View::Qt::Widget</primary><secondary>Widget</secondary></indexterm>
+<para><computeroutput>Tetris::View::Qt::Widget::Widget (QWidget * parent = <computeroutput>nullptr</computeroutput>
+)</computeroutput></para><para>
+
+<para>Конструктор класса <link linkend="_class_tetris_1_1_view_1_1_qt_1_1_widget">Widget</link>. Инициализирует родительский виджет. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Аргументы</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>parent</entry><entry>
+<para>Указатель на родительский виджет, по умолчанию nullptr. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+</section>
+<section>
+<title>Методы</title>
+<anchor xml:id="_class_tetris_1_1_view_1_1_qt_1_1_widget_1a5311eaf38f6380e158d373eba8c154b6"/><section>
+    <title>GetDescriptionModel</title>
+<indexterm><primary>GetDescriptionModel</primary><secondary>Tetris::View::Qt::Widget</secondary></indexterm>
+<indexterm><primary>Tetris::View::Qt::Widget</primary><secondary>GetDescriptionModel</secondary></indexterm>
+<para><computeroutput>DescriptionModelPtr Tetris::View::Qt::Widget::GetDescriptionModel ( )<computeroutput>[slot]</computeroutput></computeroutput></para><para>
+
+<para>Получает текущее состояние модели описания. </para>
+</para>
+
+<para><formalpara><title>Возвращает</title>
+
+<para>Текущая модель описания состояния игры. </para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_class_tetris_1_1_view_1_1_qt_1_1_widget_1a772074a93deac981714e5b83e15a6e3f"/><section>
+    <title>keyPressEvent()</title>
+<indexterm><primary>keyPressEvent</primary><secondary>Tetris::View::Qt::Widget</secondary></indexterm>
+<indexterm><primary>Tetris::View::Qt::Widget</primary><secondary>keyPressEvent</secondary></indexterm>
+<para><computeroutput>void Tetris::View::Qt::Widget::keyPressEvent (QKeyEvent * event)<computeroutput>[override]</computeroutput>, <computeroutput>[protected]</computeroutput></computeroutput></para><para>
+
+<para>Обрабатывает события нажатия клавиш. Переопределяет метод keyPressEvent для обработки нажатий клавиш. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Аргументы</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>event</entry><entry>
+<para>Указатель на событие нажатия клавиши. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+<anchor xml:id="_class_tetris_1_1_view_1_1_qt_1_1_widget_1a664e4e974f748691f53647704fe3a71f"/><section>
+    <title>paintEvent()</title>
+<indexterm><primary>paintEvent</primary><secondary>Tetris::View::Qt::Widget</secondary></indexterm>
+<indexterm><primary>Tetris::View::Qt::Widget</primary><secondary>paintEvent</secondary></indexterm>
+<para><computeroutput>void Tetris::View::Qt::Widget::paintEvent (QPaintEvent * event)<computeroutput>[override]</computeroutput>, <computeroutput>[protected]</computeroutput></computeroutput></para><para>
+
+<para>Обрабатывает события перерисовки виджета. Переопределяет метод paintEvent для обновления содержимого виджета. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Аргументы</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>event</entry><entry>
+<para>Указатель на событие перерисовки. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+<anchor xml:id="_class_tetris_1_1_view_1_1_qt_1_1_widget_1aec4e05e511e45a84480446426c79a4e3"/><section>
+    <title>SignalUpdateModel</title>
+<indexterm><primary>SignalUpdateModel</primary><secondary>Tetris::View::Qt::Widget</secondary></indexterm>
+<indexterm><primary>Tetris::View::Qt::Widget</primary><secondary>SignalUpdateModel</secondary></indexterm>
+<para><computeroutput>void Tetris::View::Qt::Widget::SignalUpdateModel (Model::Command command)<computeroutput>[signal]</computeroutput></computeroutput></para><para>
+
+<para>Сигнал для обновления модели с командой. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Аргументы</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>command</entry><entry>
+<para>Команда для обновления модели. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+<anchor xml:id="_class_tetris_1_1_view_1_1_qt_1_1_widget_1a9389513b2bb0ab2f1a8f7ca5f11733a7"/><section>
+    <title>SlotUpdateView</title>
+<indexterm><primary>SlotUpdateView</primary><secondary>Tetris::View::Qt::Widget</secondary></indexterm>
+<indexterm><primary>Tetris::View::Qt::Widget</primary><secondary>SlotUpdateView</secondary></indexterm>
+<para><computeroutput>void Tetris::View::Qt::Widget::SlotUpdateView (DescriptionModelPtr descp)<computeroutput>[slot]</computeroutput></computeroutput></para><para>
+
+<para>Слот для обновления представления на основе модели описания. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Аргументы</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>descp</entry><entry>
+<para>Модель описания, используемая для обновления представления. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+<para>
+Объявления и описания членов классов находятся в файлах:</para>
+View/Include/View/Qt/Widget.hView/Source/Qt/Widget.cpp</section>
+</section>

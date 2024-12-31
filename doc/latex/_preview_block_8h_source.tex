@@ -1,0 +1,44 @@
+\doxysection{Preview\+Block.\+h}
+\hypertarget{_preview_block_8h_source}{}\label{_preview_block_8h_source}\index{View/Include/View/Qt/PreviewBlock.h@{View/Include/View/Qt/PreviewBlock.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <View/Export.h>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <View/Precompile.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <View/Forwards.h>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <Model/Types.h>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <View/Qt/Map.h>}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{namespace\ }Tetris::View::Qt}
+\DoxyCodeLine{00012\ \{}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{comment}{//\ Класс\ PreviewBlock\ представляет\ собой\ блок\ предварительного\ просмотра\ в\ игре\ Тетрис.}}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keyword}{class\ }VIEW\_EXPORT\ \mbox{\hyperlink{class_tetris_1_1_view_1_1_qt_1_1_preview_block}{PreviewBlock}}\ final\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_tetris_1_1_view_1_1_qt_1_1_map}{Map}}}
+\DoxyCodeLine{00016\ \ \ \ \ \{}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ Q\_OBJECT\ \ \textcolor{comment}{//\ Макрос\ Qt\ для\ включения\ мета-\/объектной\ системы.}}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Конструктор\ класса\ PreviewBlock.}}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ parent\ -\/\ родительское\ окно,\ по\ умолчанию\ nullptr.}}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ withBorder\ -\/\ флаг,\ указывающий,\ нужно\ ли\ отображать\ границу\ блока.}}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_tetris_1_1_view_1_1_qt_1_1_preview_block}{PreviewBlock}}(QWindow*\ parent\ =\ \textcolor{keyword}{nullptr},\ \textcolor{keywordtype}{bool}\ withBorder\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Устанавливает\ блок\ для\ предварительного\ просмотра.}}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ block\ -\/\ указатель\ на\ блок,\ который\ нужно\ установить.}}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ SetBlock(\textcolor{keyword}{const}\ AbstractBlockPtr\ block);}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Возвращает\ тип\ блока.}}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ Model::TypeBlock\ GetType()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Переменная\ для\ хранения\ типа\ формы\ блока.}}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ Model::TypeBlock\ \_typeShape\{Model::TypeBlock::None\};\ \textcolor{comment}{//<\ Тип\ блока.}}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Переменная\ для\ хранения\ цвета\ блока.}}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ Model::TypeColor\ \_typeColor\{Model::TypeColor::None\};\ \textcolor{comment}{//<\ Цвет\ блока.}}
+\DoxyCodeLine{00037\ \ \ \ \ \};}
+\DoxyCodeLine{00038\ \}}
+
+\end{DoxyCode}

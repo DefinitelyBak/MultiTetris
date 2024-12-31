@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_tetris_1_1_view_1_1_qt_1_1_preview_block" xml:lang="ru">
+<title>Класс Tetris::View::Qt::PreviewBlock</title>
+<indexterm><primary>Tetris::View::Qt::PreviewBlock</primary></indexterm>
+<para>Граф наследования:Tetris::View::Qt::PreviewBlock:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_tetris_1_1_view_1_1_qt_1_1_preview_block.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Открытые члены    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_class_tetris_1_1_view_1_1_qt_1_1_preview_block_1a678be8aade6205a386707bfc5a097386"/><emphasis role="strong">PreviewBlock</emphasis> (QWindow *parent=nullptr, bool withBorder=false)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_tetris_1_1_view_1_1_qt_1_1_preview_block_1aba53fe52b1c515caf9254fc5dcbec955"/>void <emphasis role="strong">SetBlock</emphasis> (const AbstractBlockPtr block)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_tetris_1_1_view_1_1_qt_1_1_preview_block_1a606eeb8edd33b11928ee32ff41b10829"/>Model::TypeBlock <emphasis role="strong">GetType</emphasis> () const</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+Открытые члены унаследованные от <link linkend="_class_tetris_1_1_view_1_1_qt_1_1_map">Tetris::View::Qt::Map</link>        <itemizedlist>
+            <listitem><para><link linkend="_class_tetris_1_1_view_1_1_qt_1_1_map_1a0beca6030e98b4c0de82655ea7026944">Map</link> (QWindow *parent, bool withBorder=false)</para>
+
+<para>Конструктор класса <link linkend="_class_tetris_1_1_view_1_1_qt_1_1_map">Map</link>. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_tetris_1_1_view_1_1_qt_1_1_map_1a8723b5d0128566e5d59b507894a1eed7">SetMap</link> (const std::vector&lt; Model::TypeColor &gt; &amp;map, <link linkend="_struct_tetris_1_1_model_1_1_map_size">Model::MapSize</link> size)</para>
+
+<para>Установить карту </para>
+</listitem>
+        </itemizedlist>
+<simplesect>
+    <title>Дополнительные унаследованные члены    </title>
+Защищенные члены унаследованные от <link linkend="_class_tetris_1_1_view_1_1_qt_1_1_map">Tetris::View::Qt::Map</link>        <itemizedlist>
+            <listitem><para>bool <link linkend="_class_tetris_1_1_view_1_1_qt_1_1_map_1a98885f31d403039e99b9eecc7cf4d38b">event</link> (QEvent *event) override</para>
+
+<para>Обработка событий </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_tetris_1_1_view_1_1_qt_1_1_map_1afb7015568f7d590db6769dcc60db9b52">resizeEvent</link> (QResizeEvent *<link linkend="_class_tetris_1_1_view_1_1_qt_1_1_map_1a98885f31d403039e99b9eecc7cf4d38b">event</link>) override</para>
+
+<para>Обработка изменения размера окна </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_tetris_1_1_view_1_1_qt_1_1_map_1a6d5b97d1fceb9706156a5120131f5897">exposeEvent</link> (QExposeEvent *<link linkend="_class_tetris_1_1_view_1_1_qt_1_1_map_1a98885f31d403039e99b9eecc7cf4d38b">event</link>) override</para>
+
+<para>Обработка события отображения окна </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<para>
+Объявления и описания членов классов находятся в файлах:</para>
+View/Include/View/Qt/PreviewBlock.hView/Source/Qt/PreviewBlock.cpp</section>

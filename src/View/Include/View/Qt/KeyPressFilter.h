@@ -1,7 +1,7 @@
 #pragma once
 
-#include <View/Export.h>
 #include <View/Precompile.h>
+#include <View/Export.h>
 
 
 namespace Tetris::View::Qt
@@ -11,7 +11,7 @@ namespace Tetris::View::Qt
      * @brief Класс для фильтрации событий нажатия клавиш.
      * Наследуется от QObject и переопределяет метод eventFilter для обработки событий клавиатуры.
      */
-    class VIEW_EXPORT KeyPressFilter : public QObject
+    class VIEW_EXPORT KeyPressFilter final: public QObject
     {
         Q_OBJECT // Макрос, необходимый для использования сигналов и слотов в Qt
 
