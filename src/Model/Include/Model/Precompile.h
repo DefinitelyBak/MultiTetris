@@ -8,8 +8,6 @@
 #include <map>
 #include <unordered_map>
 #include <random>
-#include <stack>
-#include <optional>
 #include <thread>
 #include <cmath>
 #include <mutex>

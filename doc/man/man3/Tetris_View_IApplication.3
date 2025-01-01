@@ -1,34 +1,40 @@
-.TH "Tetris::View::IApplication" 3 "project(MultiTetris LANGUAGES CXX)" \" -*- nroff -*-
+.TH "Tetris::View::IApplication" 3 "MultiTetris" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-Tetris::View::IApplication
+Tetris::View::IApplication \- Интерфейсный класс приложения  
+
 .SH SYNOPSIS
 .br
 .PP
+.PP
+\fR#include <IApplication\&.h>\fP
 .PP
 Производные классы:\fBTetris::View::Qt::QtApplicaion\fP и \fBTetris::View::SFML::SFMLApplication\fP\&.
 .SS "Открытые члены"
 
 .in +1c
 .ti -1c
-.RI "virtual void \fBRun\fP ()=0"
+.RI "virtual \fB~IApplication\fP ()=default"
 .br
+.RI "Дефолтный деструктор "
 .ti -1c
 .RI "virtual bool \fBisExecution\fP () const =0"
 .br
+.RI "Приложение выполняется "
 .in -1c
+.SH "Подробное описание"
+.PP 
+Интерфейсный класс приложения 
 .SH "Методы"
 .PP 
 .SS "virtual bool Tetris::View::IApplication::isExecution () const\fR [pure virtual]\fP"
 
 .PP
-Замещается в \fBTetris::View::Qt::QtApplicaion\fP и \fBTetris::View::SFML::SFMLApplication\fP\&.
-.SS "virtual void Tetris::View::IApplication::Run ()\fR [pure virtual]\fP"
-
+Приложение выполняется 
 .PP
 Замещается в \fBTetris::View::Qt::QtApplicaion\fP и \fBTetris::View::SFML::SFMLApplication\fP\&.
 
 .SH "Автор"
 .PP 
-Автоматически создано Doxygen для project(MultiTetris LANGUAGES CXX) из исходного текста\&.
+Автоматически создано Doxygen для MultiTetris из исходного текста\&.

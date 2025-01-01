@@ -24,21 +24,21 @@ namespace Tetris::View::Qt
         void CreateWidget()
         {
             Widget* widget = new Widget();
-            SetConnection(widget); // Устанавливаем соединения сигналов и слотов
-            widget->show(); // Показываем виджет
+            SetConnection(widget);
+            widget->show();
         }
 
         /// @brief Закрытие всех виджетов
         void CloseWidgets()
         {
-            emit signalCloseWidget(); // Генерируем сигнал закрытия виджетов
+            emit signalCloseWidget();
         }
 
         /// @brief Обновление виджетов на основе описания модели
         /// @param desc Описание текущего состояния модели
         void UpdateWidgets(DescriptionModelPtr desc)
         {
-            emit signalUpdateWidget(desc); // Генерируем сигнал обновления виджетов
+            emit signalUpdateWidget(desc);
         }
 
     public slots:
@@ -46,7 +46,7 @@ namespace Tetris::View::Qt
         /// @param cmd Команда для обновления модели
         void SlotUpdateModel(Model::Command cmd)
         {
-            _controller.Move(cmd); // Передаем команду контроллеру
+            _controller.Move(cmd);
         }
 
     signals:
@@ -84,7 +84,7 @@ namespace Tetris::View::Qt
         /// @param descp Описание текущего состояния модели
         virtual void SlotUpdateWidget(DescriptionModelPtr descp) override
         {
-            _adapter->UpdateWidgets(descp); // Передаем обновление адаптеру
+            _adapter->UpdateWidgets(descp);
         }
 
         /// @brief Проверка, открыт ли виджет
@@ -94,16 +94,16 @@ namespace Tetris::View::Qt
             return true; // Здесь можно добавить логику для проверки состояния
         }
 
-        /// @brief Закрытие виджета (переопределение)
+        /// @brief Закрытие виджета
         virtual void SlotCloseWidget() override
         {
-            _adapter->CloseWidgets(); // Передаем запрос на закрытие адаптеру
+            _adapter->CloseWidgets();
         }
 
         /// @brief Создание нового виджета
         void CreateWidget()
         {
-            _adapter->CreateWidget(); // Передаем запрос на создание виджета адаптеру
+            _adapter->CreateWidget();
         }
 
     private:

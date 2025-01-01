@@ -5,9 +5,9 @@
 #include <Model/Export.h>
 
 
+/// @file Типы используемые в Tetris
 namespace Tetris::Model
 {
-    /// @brief Типы используемые в Tetris
 
     /// @brief Типы блоков
     enum class TypeBlock : int 

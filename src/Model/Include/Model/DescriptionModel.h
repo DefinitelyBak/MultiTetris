@@ -13,8 +13,11 @@ namespace Tetris::Model
     /// @brief Описание модели игры
     struct MODEL_EXPORT DescriptionModel
     {
+        /// @brief Конструктор по умолчанию
         DescriptionModel(): map(), size({0,0}), nextBlock(nullptr){}
-        ~DescriptionModel(){}
+        
+        /// @brief Деструктор по умолчанию
+        ~DescriptionModel() = default;
 
         std::vector<TypeColor> map; ///< Игровая карта
         MapSize size;               ///< Размер карты

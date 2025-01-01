@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.10.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>project(MultiTetris LANGUAGES CXX): Класс Tetris::Controller::TimeController</title>
+<title>MultiTetris: Класс Tetris::Controller::TimeController</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -23,8 +23,9 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">project(MultiTetris LANGUAGES CXX)
+   <div id="projectname">MultiTetris
    </div>
+   <div id="projectbrief">multi-window tetris using various graphics libraries and frameworks</div>
   </td>
  </tr>
  </tbody>
@@ -81,19 +82,58 @@ $(function() {
   <div class="headertitle"><div class="title">Класс Tetris::Controller::TimeController</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Контроллер движения фигур  
+ <a href="#details">Подробнее...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_time_controller_8h_source.html">TimeController.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Открытые члены</h2></td></tr>
-<tr class="memitem:a2523fbabf0b7e535a4fdc8b0dc459c61" id="r_a2523fbabf0b7e535a4fdc8b0dc459c61"><td class="memItemLeft" align="right" valign="top"><a id="a2523fbabf0b7e535a4fdc8b0dc459c61" name="a2523fbabf0b7e535a4fdc8b0dc459c61"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>TimeController</b> (AbstractModelPtr model, std::chrono::seconds interval)</td></tr>
+<tr class="memitem:a2523fbabf0b7e535a4fdc8b0dc459c61" id="r_a2523fbabf0b7e535a4fdc8b0dc459c61"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2523fbabf0b7e535a4fdc8b0dc459c61">TimeController</a> (AbstractModelPtr model, std::chrono::seconds interval)</td></tr>
+<tr class="memdesc:a2523fbabf0b7e535a4fdc8b0dc459c61"><td class="mdescLeft">&#160;</td><td class="mdescRight">Конструктор  <br /></td></tr>
 <tr class="separator:a2523fbabf0b7e535a4fdc8b0dc459c61"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa08b79b51732e6550c8e73609ff291cf" id="r_aa08b79b51732e6550c8e73609ff291cf"><td class="memItemLeft" align="right" valign="top"><a id="aa08b79b51732e6550c8e73609ff291cf" name="aa08b79b51732e6550c8e73609ff291cf"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>CheckTimer</b> ()</td></tr>
+<tr class="memdesc:aa08b79b51732e6550c8e73609ff291cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Проверка проверка промежутка времени между испускания прошлого сигнала и interval. <br /></td></tr>
 <tr class="separator:aa08b79b51732e6550c8e73609ff291cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Контроллер движения фигур </p>
+</div><h2 class="groupheader">Конструктор(ы)</h2>
+<a id="a2523fbabf0b7e535a4fdc8b0dc459c61" name="a2523fbabf0b7e535a4fdc8b0dc459c61"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2523fbabf0b7e535a4fdc8b0dc459c61">&#9670;&#160;</a></span>TimeController()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Tetris::Controller::TimeController::TimeController </td>
+          <td>(</td>
+          <td class="paramtype">AbstractModelPtr</td>          <td class="paramname"><span class="paramname"><em>model</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::chrono::seconds</td>          <td class="paramname"><span class="paramname"><em>interval</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Конструктор </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">model</td><td>Модель игры на которую воздействует контроллер </td></tr>
+    <tr><td class="paramname">interval</td><td>Интервал времени перемещения блока </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>Объявления и описания членов классов находятся в файлах:<ul>
-<li>Controller/Include/Controller/<a class="el" href="_time_controller_8h_source.html">TimeController.h</a></li>
-<li>Controller/Source/<b>TimeController.cpp</b></li>
+<li>src/Controller/Include/Controller/<a class="el" href="_time_controller_8h_source.html">TimeController.h</a></li>
+<li>src/Controller/Source/<b>TimeController.cpp</b></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

@@ -12,6 +12,7 @@ namespace Tetris::View::SFML
     /// @return Цвет в формате sf::Color
     sf::Color ColorFromTypeColor(Model::TypeColor color);
 
+    /// @brief Класс карты игры на основе SFML
     class VIEW_EXPORT Map final: public sf::Drawable, public sf::Transformable
     {
     public:
@@ -48,14 +49,11 @@ namespace Tetris::View::SFML
 
     private:
         std::vector<Model::TypeColor> _map; //< Вектор с цветами блоков карты
-
         std::vector<sf::RectangleShape> _fields; //< Вектор с прямоугольниками для отображения блоков 
 
         sf::Vector2f _windowSize; //< Размер окна отображения
-
         int _rows; 
         int _columns; 
- 
         float _offsetX;
         float _offsetY;
 

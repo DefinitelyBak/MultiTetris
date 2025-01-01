@@ -4,9 +4,13 @@
 namespace Tetris::View::SFML
 {
     SFMLApplication::SFMLApplication(AbstractModelPtr model, unsigned int countWidgets, const std::string& fontPath)
-        : IApplication(), _model(model), _count(countWidgets), _pathFont(fontPath), _execution(true)
+        : _model(model), _count(countWidgets), _pathFont(fontPath), _execution(false)
     {
-        _thread = std::thread(&SFMLApplication::Run, this);
+        if(_count > 0)
+        {
+            _execution = true;
+            _thread = std::thread(&SFMLApplication::Run, this);
+        }
     }
 
     SFMLApplication::~SFMLApplication()

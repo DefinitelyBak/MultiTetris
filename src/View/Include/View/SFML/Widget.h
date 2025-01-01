@@ -14,59 +14,65 @@
 
 namespace Tetris::View::SFML
 {
-    // Класс Widget представляет собой графический интерфейс для игры Tetris,
-    // реализующий методы для отображения и обновления состояния игры.
+    /// @brief Класс Widget представляет собой графический интерфейс для игры Tetris,
+    /// реализующий методы для отображения и обновления состояния игры
     class VIEW_EXPORT Widget final : public Model::AbstractWidget
     {
     public:
-        // Конструктор класса, инициализирующий виджет с моделью и путем к шрифту.
+        /// @brief Конструктор класса, инициализирующий виджет с моделью и путем к шрифту
+        /// @param model Модель игры
+        /// @param pathFont Путь до шрифта
         Widget(AbstractModelPtr model, const std::string& pathFont);
 
-        // Деструктор класса, по умолчанию.
+        /// @brief Деструктор класса, по умолчанию
         ~Widget() override = default;
 
-        // Метод для обновления состояния виджета, вызывается в каждом кадре.
+        /// @brief Метод для обновления состояния виджета, вызывается в каждом кадре
         void Update() override;
 
-        // Метод для проверки, открыт ли виджет.
+        /// @brief Метод для проверки, открыт ли виджет 
         bool IsOpen() const override;
 
-        // Метод для закрытия виджета.
+        /// @brief Метод для закрытия виджета 
         void SlotCloseWidget() override;
 
     private:
-        // Метод для инициализации отображения счета.
+        /// @brief Метод для инициализации отображения счета 
         void InitializeScore();
 
-        // Метод для инициализации блока предварительного просмотра.
+        /// @brief Метод для инициализации блока предварительного просмотра 
         void InitializePreviewBlock();
 
-        // Метод для обработки событий ввода от пользователя.
+        /// @brief Метод для обработки событий ввода от пользователя 
         void HandleEvents();
 
-        // Метод для обработки нажатий клавиш.
+        /// @brief Метод для обработки нажатий клавиш 
+        /// @param scancode Код клавиши
         void HandleKeyPress(sf::Keyboard::Scancode scancode);
 
-        // Метод для обновления карты на основе состояния модели.
+        /// @brief Метод для обновления карты на основе состояния модели 
+        /// @param descriptionModel Описание модели
         void UpdateMap(const DescriptionModelPtr& descriptionModel);
 
-        // Метод для обновления блока предварительного просмотра.
+        /// @brief Метод для обновления блока предварительного просмотра
+        /// @param descriptionModel Описание модели 
         void UpdatePreviewBlock(const DescriptionModelPtr& descriptionModel);
 
-        // Метод для обновления отображаемого счета.
+        /// @brief Метод для обновления отображаемого счета
+        /// @param descriptionModel Описание модели 
         void UpdateScore(const DescriptionModelPtr& descriptionModel);
 
-        // Метод для отрисовки всех компонентов виджета на экране.
+        /// @brief Метод для отрисовки всех компонентов виджета на экране 
         void Render();
 
     private:
-        sf::RenderWindow _window; //< Окно для рендеринга графики.
+        sf::RenderWindow _window; //< Окно для рендеринга графики 
 
-        Controller::MoveController _controller; //< Контроллер для управления движением объектов в игре.
-        Map _map; //< Объект карты, отображающий игровое поле.
-        WidgetPreviewBlock _previewBlock; //< Виджет отобраения следующего блока.
-        Text _score; //< Объект для отображения текущего счета игрока.
+        Controller::MoveController _controller; //< Контроллер для управления движением объектов в игре 
+        Map _map; //< Объект карты, отображающий игровое поле 
+        WidgetPreviewBlock _previewBlock; //< Виджет отобраения следующего блока 
+        Text _score; //< Объект для отображения текущего счета игрока 
 
-        std::atomic<bool> _windowOpen{true}; //< Флаг, указывающий, открыто ли окно.
+        std::atomic<bool> _windowOpen{true}; //< Флаг, указывающий, открыто ли окно 
     };
 }// namespace Tetris::View::SFML

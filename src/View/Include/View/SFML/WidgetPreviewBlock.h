@@ -15,24 +15,20 @@ namespace Tetris::View::SFML
     {
     public:
         ///@brief Конструктор класса.
-        ///
         /// @param windowSize Размер окна для отображения блока.
         /// @param withBorder Флаг, указывающий, нужно ли отображать границу.
         WidgetPreviewBlock(const sf::Vector2f& windowSize, bool withBorder = false);
 
         /// @brief Устанавливает блок для предварительного просмотра.
-        /// 
         /// @param block Указатель на блок, который нужно отобразить.
         void SetBlock(const AbstractBlockPtr block);
 
         ///@brief Возвращает тип текущего блока.
-        ///
         ///@return Тип блока.
         Model::TypeBlock GetType() const;
 
     private:
         /// @brief Переопределение метода draw для рисования блока на целевом объекте.
-        /// 
         /// @param target Целевой объект для рисования.
         /// @param states Состояния рисования.
         virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;

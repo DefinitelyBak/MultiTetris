@@ -68,10 +68,10 @@ namespace Tetris::Model
         /// @param cmd Команда
         void RotateBlock(Command cmd);
 
-        /// @brief 
-        /// @param map 
-        /// @param pos 
-        /// @return 
+        /// @brief Получить поле
+        /// @param map Карта
+        /// @param pos Положение поля
+        /// @return Значение поля
         TypeColor& GetField(std::vector<TypeColor>& map, const Position& pos);
 
         AbstractBlockPtr _activeBlock; ///< Указатель на активный блок

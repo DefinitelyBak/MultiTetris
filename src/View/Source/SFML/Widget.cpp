@@ -39,14 +39,9 @@ namespace Tetris::View::SFML
         while (const std::optional event = _window.pollEvent())
         {
             if (event->is<sf::Event::Closed>())
-            {
-                _window.close();
                 _windowOpen = false;
-            }
             else if (const auto* keyPressed = event->getIf<sf::Event::KeyPressed>())
-            {
                 HandleKeyPress(keyPressed->scancode);
-            }
         }
     }
 

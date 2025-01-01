@@ -1,4 +1,4 @@
-.TH "Tetris::View::SFML::SFMLApplication" 3 "project(MultiTetris LANGUAGES CXX)" \" -*- nroff -*-
+.TH "Tetris::View::SFML::SFMLApplication" 3 "MultiTetris" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -23,13 +23,17 @@ Tetris::View::SFML::SFMLApplication \- Класс, реализующий инт
 .br
 .RI "Деструктор\&. "
 .ti -1c
-.RI "void \fBRun\fP () override"
-.br
-.RI "Запускает основной цикл приложения\&. "
-.ti -1c
 .RI "bool \fBisExecution\fP () const override"
 .br
 .RI "Проверяет, выполняется ли приложение\&. "
+.in -1c
+
+Открытые члены унаследованные от \fBTetris::View::IApplication\fP
+.in +1c
+.ti -1c
+.RI "virtual \fB~IApplication\fP ()=default"
+.br
+.RI "Дефолтный деструктор "
 .in -1c
 .SH "Подробное описание"
 .PP 
@@ -66,13 +70,7 @@ true, если приложение выполняется; false в проти�
 
 .PP
 Замещает \fBTetris::View::IApplication\fP\&.
-.SS "void Tetris::View::SFML::SFMLApplication::Run ()\fR [override]\fP, \fR [virtual]\fP"
-
-.PP
-Запускает основной цикл приложения\&. 
-.PP
-Замещает \fBTetris::View::IApplication\fP\&.
 
 .SH "Автор"
 .PP 
-Автоматически создано Doxygen для project(MultiTetris LANGUAGES CXX) из исходного текста\&.
+Автоматически создано Doxygen для MultiTetris из исходного текста\&.

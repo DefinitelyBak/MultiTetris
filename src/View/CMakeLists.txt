@@ -47,9 +47,7 @@ add_library(View::View ALIAS View)
 
 include(FetchContent)
 
-find_package(SFML)
 find_package(Qt5 REQUIRED COMPONENTS Core Widgets Gui)
-
 find_package(Boost REQUIRED)
 FetchContent_Declare(SFML
     GIT_REPOSITORY https://github.com/SFML/SFML.git
@@ -72,6 +70,7 @@ target_link_libraries(
         SFML::Graphics
         SFML::Window
         SFML::Main
+        Boost::boost
   )
 
 #----------------------------------------------------------------------------------------------------------------------
@@ -101,7 +100,7 @@ set(sources
     Include/View/SFML/Text.h
     Include/View/SFML/Widget.h
     Include/View/SFML/WidgetPreviewBlock.h
-
+# Common headers
     Include/View/Forwards.h
     Include/View/IApplication.h
     Include/View/Precompile.h

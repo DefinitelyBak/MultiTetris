@@ -8,8 +8,8 @@
 #include <View/IApplication.h>
 
 
-namespace Tetris::View::SFML{
-    /// @class SFMLApplication
+namespace Tetris::View::SFML
+{
     /// @brief Класс, реализующий интерфейс IApplication для графического приложения на базе SFML.
     class VIEW_EXPORT SFMLApplication final: public IApplication
     {
@@ -23,14 +23,14 @@ namespace Tetris::View::SFML{
         /// @brief Деструктор.
         ~SFMLApplication();
 
-        /// @brief Запускает основной цикл приложения.
-        void Run() override;
-
         /// @brief Проверяет, выполняется ли приложение.
         /// @return true, если приложение выполняется; false в противном случае.
         bool isExecution() const override; 
 
     private:
+        /// @brief Запускает основной цикл приложения.
+        void Run() override;
+
         /// @brief Создает виджеты приложения.
         void CreateWidgets();
 

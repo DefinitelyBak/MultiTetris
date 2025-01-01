@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.10.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>project(MultiTetris LANGUAGES CXX): Исходный файл View/Include/View/SFML/Widget.h</title>
+<title>MultiTetris: Исходный файл src/View/Include/View/SFML/Widget.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -23,8 +23,9 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">project(MultiTetris LANGUAGES CXX)
+   <div id="projectname">MultiTetris
    </div>
+   <div id="projectbrief">multi-window tetris using various graphics libraries and frameworks</div>
   </td>
  </tr>
  </tbody>
@@ -76,7 +77,7 @@ $(function() { codefold.init(0); });
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_f2ee84e8e3a17eaa7015d788fa443c27.html">View</a></li><li class="navelem"><a class="el" href="dir_aa1a499b834b67c208d56ee2172cc4e1.html">Include</a></li><li class="navelem"><a class="el" href="dir_d9f6c224199bc35465fac9d9ff96d6a4.html">View</a></li><li class="navelem"><a class="el" href="dir_afb86fdd484aff66e1696ba973cc566c.html">SFML</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_7784d12364ef0ec21cd188ca9cb3a89c.html">View</a></li><li class="navelem"><a class="el" href="dir_78b904149794e2d9c6c61eef02e504f5.html">Include</a></li><li class="navelem"><a class="el" href="dir_e436872a7595fe766f316ecfdaf3d607.html">View</a></li><li class="navelem"><a class="el" href="dir_7c38731e15e7014f7939d1fc9005eebe.html">SFML</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -85,8 +86,8 @@ $(function() { codefold.init(0); });
 <div class="contents">
 <div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;View/Export.h&gt;</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;View/Precompile.h&gt;</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;View/Precompile.h&gt;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;View/Export.h&gt;</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;View/Forwards.h&gt;</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;Model/AbstractWidget.h&gt;</span></div>
@@ -99,69 +100,55 @@ $(function() { codefold.init(0); });
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keyword">namespace </span>Tetris::View::SFML</div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>{</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <span class="comment">// Класс Widget представляет собой графический интерфейс для игры Tetris,</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="comment">// реализующий методы для отображения и обновления состояния игры.</span></div>
 <div class="foldopen" id="foldopen00019" data-start="{" data-end="};">
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="class_tetris_1_1_view_1_1_s_f_m_l_1_1_widget.html">   19</a></span>    <span class="keyword">class </span>VIEW_EXPORT <a class="code hl_class" href="class_tetris_1_1_view_1_1_s_f_m_l_1_1_widget.html">Widget</a> final : <span class="keyword">public</span> <a class="code hl_class" href="class_tetris_1_1_model_1_1_abstract_widget.html">Model::AbstractWidget</a></div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    {</div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        <span class="comment">// Конструктор класса, инициализирующий виджет с моделью и путем к шрифту.</span></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        <a class="code hl_class" href="class_tetris_1_1_view_1_1_s_f_m_l_1_1_widget.html">Widget</a>(AbstractModelPtr model, <span class="keyword">const</span> std::string&amp; pathFont);</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        <span class="comment">// Деструктор класса, по умолчанию.</span></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        <a class="code hl_class" href="class_tetris_1_1_view_1_1_s_f_m_l_1_1_widget.html">~Widget</a>() <span class="keyword">override</span> = <span class="keywordflow">default</span>;</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        <span class="comment">// Метод для обновления состояния виджета, вызывается в каждом кадре.</span></div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        <span class="keywordtype">void</span> Update() <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        <span class="comment">// Метод для проверки, открыт ли виджет.</span></div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        <span class="keywordtype">bool</span> IsOpen() <span class="keyword">const override</span>;</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        <span class="comment">// Метод для закрытия виджета.</span></div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        <span class="keywordtype">void</span> SlotCloseWidget() <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <span class="comment">// Метод для инициализации отображения счета.</span></div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        <span class="keywordtype">void</span> InitializeScore();</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        <span class="comment">// Метод для инициализации блока предварительного просмотра.</span></div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        <span class="keywordtype">void</span> InitializePreviewBlock();</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        <span class="comment">// Метод для обработки событий ввода от пользователя.</span></div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        <span class="keywordtype">void</span> HandleEvents();</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        <span class="comment">// Метод для обработки нажатий клавиш.</span></div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        <span class="keywordtype">void</span> HandleKeyPress(sf::Keyboard::Scancode scancode);</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        <span class="comment">// Метод для обновления карты на основе состояния модели.</span></div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        <span class="keywordtype">void</span> UpdateMap(<span class="keyword">const</span> DescriptionModelPtr&amp; descriptionModel);</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        <a class="code hl_class" href="class_tetris_1_1_view_1_1_s_f_m_l_1_1_widget.html">Widget</a>(AbstractModelPtr model, <span class="keyword">const</span> std::string&amp; pathFont);</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="class_tetris_1_1_view_1_1_s_f_m_l_1_1_widget.html#a13a65f5110d4620db7feffe9378478d6">   28</a></span>        <a class="code hl_function" href="class_tetris_1_1_view_1_1_s_f_m_l_1_1_widget.html#a13a65f5110d4620db7feffe9378478d6">~Widget</a>() <span class="keyword">override</span> = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        <span class="keywordtype">void</span> Update() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        <span class="keywordtype">bool</span> IsOpen() <span class="keyword">const override</span>;</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <span class="keywordtype">void</span> SlotCloseWidget() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        <span class="keywordtype">void</span> InitializeScore();</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        <span class="keywordtype">void</span> InitializePreviewBlock();</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        <span class="keywordtype">void</span> HandleEvents();</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        <span class="keywordtype">void</span> HandleKeyPress(sf::Keyboard::Scancode scancode);</div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        <span class="comment">// Метод для обновления блока предварительного просмотра.</span></div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        <span class="keywordtype">void</span> UpdatePreviewBlock(<span class="keyword">const</span> DescriptionModelPtr&amp; descriptionModel);</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        <span class="comment">// Метод для обновления отображаемого счета.</span></div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        <span class="keywordtype">void</span> UpdateScore(<span class="keyword">const</span> DescriptionModelPtr&amp; descriptionModel);</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        <span class="comment">// Метод для отрисовки всех компонентов виджета на экране.</span></div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        <span class="keywordtype">void</span> Render();</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        sf::RenderWindow _window; <span class="comment">//&lt; Окно для рендеринга графики.</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        <span class="keywordtype">void</span> UpdateMap(<span class="keyword">const</span> DescriptionModelPtr&amp; descriptionModel);</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        <span class="keywordtype">void</span> UpdatePreviewBlock(<span class="keyword">const</span> DescriptionModelPtr&amp; descriptionModel);</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        <span class="keywordtype">void</span> UpdateScore(<span class="keyword">const</span> DescriptionModelPtr&amp; descriptionModel);</div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        <a class="code hl_class" href="class_tetris_1_1_controller_1_1_move_controller.html">Controller::MoveController</a> _controller; <span class="comment">//&lt; Контроллер для управления движением объектов в игре.</span></div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        <a class="code hl_class" href="class_tetris_1_1_view_1_1_s_f_m_l_1_1_map.html">Map</a> _map; <span class="comment">//&lt; Объект карты, отображающий игровое поле.</span></div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        <a class="code hl_class" href="class_tetris_1_1_view_1_1_s_f_m_l_1_1_widget_preview_block.html">WidgetPreviewBlock</a> _previewBlock; <span class="comment">//&lt; Виджет отобраения следующего блока.</span></div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        <a class="code hl_class" href="class_tetris_1_1_view_1_1_s_f_m_l_1_1_text.html">Text</a> _score; <span class="comment">//&lt; Объект для отображения текущего счета игрока.</span></div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        std::atomic&lt;bool&gt; _windowOpen{<span class="keyword">true</span>}; <span class="comment">//&lt; Флаг, указывающий, открыто ли окно.</span></div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    };</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        <span class="keywordtype">void</span> Render();</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        sf::RenderWindow _window; <span class="comment">//&lt; Окно для рендеринга графики </span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        <a class="code hl_class" href="class_tetris_1_1_controller_1_1_move_controller.html">Controller::MoveController</a> _controller; <span class="comment">//&lt; Контроллер для управления движением объектов в игре </span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        <a class="code hl_class" href="class_tetris_1_1_view_1_1_s_f_m_l_1_1_map.html">Map</a> _map; <span class="comment">//&lt; Объект карты, отображающий игровое поле </span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        <a class="code hl_class" href="class_tetris_1_1_view_1_1_s_f_m_l_1_1_widget_preview_block.html">WidgetPreviewBlock</a> _previewBlock; <span class="comment">//&lt; Виджет отобраения следующего блока </span></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        <a class="code hl_class" href="class_tetris_1_1_view_1_1_s_f_m_l_1_1_text.html">Text</a> _score; <span class="comment">//&lt; Объект для отображения текущего счета игрока </span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        std::atomic&lt;bool&gt; _windowOpen{<span class="keyword">true</span>}; <span class="comment">//&lt; Флаг, указывающий, открыто ли окно </span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    };</div>
 </div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>}<span class="comment">// namespace Tetris::View::SFML</span></div>
-<div class="ttc" id="aclass_tetris_1_1_controller_1_1_move_controller_html"><div class="ttname"><a href="class_tetris_1_1_controller_1_1_move_controller.html">Tetris::Controller::MoveController</a></div><div class="ttdef"><b>Definition</b> MoveController.h:15</div></div>
-<div class="ttc" id="aclass_tetris_1_1_model_1_1_abstract_widget_html"><div class="ttname"><a href="class_tetris_1_1_model_1_1_abstract_widget.html">Tetris::Model::AbstractWidget</a></div><div class="ttdoc">Интерфейс для виджетов в игре Тетрис</div><div class="ttdef"><b>Definition</b> AbstractWidget.h:15</div></div>
-<div class="ttc" id="aclass_tetris_1_1_view_1_1_s_f_m_l_1_1_map_html"><div class="ttname"><a href="class_tetris_1_1_view_1_1_s_f_m_l_1_1_map.html">Tetris::View::SFML::Map</a></div><div class="ttdef"><b>Definition</b> Map.h:16</div></div>
-<div class="ttc" id="aclass_tetris_1_1_view_1_1_s_f_m_l_1_1_text_html"><div class="ttname"><a href="class_tetris_1_1_view_1_1_s_f_m_l_1_1_text.html">Tetris::View::SFML::Text</a></div><div class="ttdoc">Класс Text представляет собой текстовое поле в игре Тетрис.</div><div class="ttdef"><b>Definition</b> Text.h:13</div></div>
-<div class="ttc" id="aclass_tetris_1_1_view_1_1_s_f_m_l_1_1_widget_html"><div class="ttname"><a href="class_tetris_1_1_view_1_1_s_f_m_l_1_1_widget.html">Tetris::View::SFML::Widget</a></div><div class="ttdef"><b>Definition</b> Widget.h:20</div></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>}<span class="comment">// namespace Tetris::View::SFML</span></div>
+<div class="ttc" id="aclass_tetris_1_1_controller_1_1_move_controller_html"><div class="ttname"><a href="class_tetris_1_1_controller_1_1_move_controller.html">Tetris::Controller::MoveController</a></div><div class="ttdoc">Контроллер движения фигур</div><div class="ttdef"><b>Definition</b> MoveController.h:14</div></div>
+<div class="ttc" id="aclass_tetris_1_1_model_1_1_abstract_widget_html"><div class="ttname"><a href="class_tetris_1_1_model_1_1_abstract_widget.html">Tetris::Model::AbstractWidget</a></div><div class="ttdoc">Интерфейс для виджетов в игре Тетрис</div><div class="ttdef"><b>Definition</b> AbstractWidget.h:14</div></div>
+<div class="ttc" id="aclass_tetris_1_1_view_1_1_s_f_m_l_1_1_map_html"><div class="ttname"><a href="class_tetris_1_1_view_1_1_s_f_m_l_1_1_map.html">Tetris::View::SFML::Map</a></div><div class="ttdoc">Класс карты игры на основе SFML.</div><div class="ttdef"><b>Definition</b> Map.h:17</div></div>
+<div class="ttc" id="aclass_tetris_1_1_view_1_1_s_f_m_l_1_1_text_html"><div class="ttname"><a href="class_tetris_1_1_view_1_1_s_f_m_l_1_1_text.html">Tetris::View::SFML::Text</a></div><div class="ttdoc">Класс Text представляет собой текстовое поле в игре Тетрис. Этот класс наследуется от sf::Text и доба...</div><div class="ttdef"><b>Definition</b> Text.h:12</div></div>
+<div class="ttc" id="aclass_tetris_1_1_view_1_1_s_f_m_l_1_1_widget_html"><div class="ttname"><a href="class_tetris_1_1_view_1_1_s_f_m_l_1_1_widget.html">Tetris::View::SFML::Widget</a></div><div class="ttdoc">Класс Widget представляет собой графический интерфейс для игры Tetris, реализующий методы для отображ...</div><div class="ttdef"><b>Definition</b> Widget.h:20</div></div>
+<div class="ttc" id="aclass_tetris_1_1_view_1_1_s_f_m_l_1_1_widget_html_a13a65f5110d4620db7feffe9378478d6"><div class="ttname"><a href="class_tetris_1_1_view_1_1_s_f_m_l_1_1_widget.html#a13a65f5110d4620db7feffe9378478d6">Tetris::View::SFML::Widget::~Widget</a></div><div class="ttdeci">~Widget() override=default</div><div class="ttdoc">Деструктор класса, по умолчанию</div></div>
 <div class="ttc" id="aclass_tetris_1_1_view_1_1_s_f_m_l_1_1_widget_preview_block_html"><div class="ttname"><a href="class_tetris_1_1_view_1_1_s_f_m_l_1_1_widget_preview_block.html">Tetris::View::SFML::WidgetPreviewBlock</a></div><div class="ttdoc">Класс WidgetPreviewBlock отвечает за отображение предварительного просмотра блока в игре Тетрис.</div><div class="ttdef"><b>Definition</b> WidgetPreviewBlock.h:15</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

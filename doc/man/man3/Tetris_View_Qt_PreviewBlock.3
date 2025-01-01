@@ -1,11 +1,14 @@
-.TH "Tetris::View::Qt::PreviewBlock" 3 "project(MultiTetris LANGUAGES CXX)" \" -*- nroff -*-
+.TH "Tetris::View::Qt::PreviewBlock" 3 "MultiTetris" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-Tetris::View::Qt::PreviewBlock
+Tetris::View::Qt::PreviewBlock \- Класс \fBPreviewBlock\fP представляет собой блок предварительного просмотра в игре Тетрис\&.  
+
 .SH SYNOPSIS
 .br
 .PP
+.PP
+\fR#include <PreviewBlock\&.h>\fP
 .PP
 Базовые классы:\fBTetris::View::Qt::Map\fP\&.
 .SS "Открытые члены"
@@ -14,12 +17,15 @@ Tetris::View::Qt::PreviewBlock
 .ti -1c
 .RI "\fBPreviewBlock\fP (QWindow *parent=nullptr, bool withBorder=false)"
 .br
+.RI "Конструктор класса \fBPreviewBlock\fP\&. "
 .ti -1c
 .RI "void \fBSetBlock\fP (const AbstractBlockPtr block)"
 .br
+.RI "Устанавливает блок для предварительного просмотра\&. "
 .ti -1c
 .RI "Model::TypeBlock \fBGetType\fP () const"
 .br
+.RI "Возвращает тип блока\&. "
 .in -1c
 
 Открытые члены унаследованные от \fBTetris::View::Qt::Map\fP
@@ -51,7 +57,38 @@ Tetris::View::Qt::PreviewBlock
 .br
 .RI "Обработка события отображения окна "
 .in -1c
+.SH "Подробное описание"
+.PP 
+Класс \fBPreviewBlock\fP представляет собой блок предварительного просмотра в игре Тетрис\&. 
+.SH "Конструктор(ы)"
+.PP 
+.SS "Tetris::View::Qt::PreviewBlock::PreviewBlock (QWindow * parent = \fRnullptr\fP, bool withBorder = \fRfalse\fP)"
+
+.PP
+Конструктор класса \fBPreviewBlock\fP\&. 
+.PP
+\fBАргументы\fP
+.RS 4
+\fIparent\fP - родительское окно, по умолчанию nullptr\&. 
+.br
+\fIwithBorder\fP - флаг, указывающий, нужно ли отображать границу блока\&. 
+.RE
+.PP
+
+.SH "Методы"
+.PP 
+.SS "void Tetris::View::Qt::PreviewBlock::SetBlock (const AbstractBlockPtr block)"
+
+.PP
+Устанавливает блок для предварительного просмотра\&. 
+.PP
+\fBАргументы\fP
+.RS 4
+\fIblock\fP - указатель на блок, который нужно установить\&. 
+.RE
+.PP
+
 
 .SH "Автор"
 .PP 
-Автоматически создано Doxygen для project(MultiTetris LANGUAGES CXX) из исходного текста\&.
+Автоматически создано Doxygen для MultiTetris из исходного текста\&.

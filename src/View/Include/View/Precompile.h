@@ -2,12 +2,12 @@
 
 #include <thread>
 #include <utility>
-#include <stdexcept>
 #include <atomic>
 
 #include <boost/signals2.hpp>
 
-#include <SFML/Graphics.hpp>
+#include <SFML/Graphics/RenderWindow.hpp>
+#include <SFML/Graphics/Font.hpp>
 #include <SFML/Graphics/Drawable.hpp>
 #include <SFML/Graphics/Transformable.hpp>
 #include <SFML/Graphics/RectangleShape.hpp>

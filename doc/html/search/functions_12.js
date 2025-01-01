@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['zblock_0',['Zblock',['../class_tetris_1_1_model_1_1_blocks_1_1_zblock.html#a93f397c74c864e6a1fc69e09ade0dd57',1,'Tetris::Model::Blocks::Zblock']]]
+  ['widget_0',['Widget',['../class_tetris_1_1_view_1_1_qt_1_1_widget.html#a0c1bf2c7741b2e114992a6ca08e48166',1,'Tetris::View::Qt::Widget::Widget()'],['../class_tetris_1_1_view_1_1_s_f_m_l_1_1_widget.html#ae88caeecc788d3423bce969611bfc76e',1,'Tetris::View::SFML::Widget::Widget()']]],
+  ['widgetpreviewblock_1',['WidgetPreviewBlock',['../class_tetris_1_1_view_1_1_s_f_m_l_1_1_widget_preview_block.html#a80daf7f7b943492349f31b6182f42f47',1,'Tetris::View::SFML::WidgetPreviewBlock']]]
 ];

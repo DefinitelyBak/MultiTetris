@@ -8,29 +8,21 @@ add_subdirectory(src/Model)
 add_subdirectory(src/View)
 add_subdirectory(src/Controller)
 
-set(BOOST_INCLUDE_LIBRARIES math filesystem system program_options thread)
-set(BOOST_ENABLE_CMAKE ON)
-FetchContent_Declare(
-  Boost
-  URL https://github.com/boostorg/boost/releases/download/boost-1.87.0/boost-1.87.0.7z
-  USES_TERMINAL_DOWNLOAD TRUE
-  DOWNLOAD_NO_EXTRACT FALSE
-)
-FetchContent_MakeAvailable(Boost)
+set(Boost_USE_STATIC_LIBS ON)  # Установите в ON для статических библиотек
+set(Boost_USE_STATIC_RUNTIME ON)  # Установите в ON для статических библиотек
+
+find_package(Boost REQUIRED COMPONENTS program_options) 
 
 set(sources src/main.cpp)
 source_group(TREE "${CMAKE_CURRENT_SOURCE_DIR}" FILES ${sources})
 
 add_executable(MultiTetris)
 target_sources(MultiTetris PRIVATE ${sources})
-target_link_libraries(MultiTetris PUBLIC 
+target_link_libraries(MultiTetris PRIVATE 
     Model::Model 
     View::View 
     Controller::Controller
-    Boost::math 
-    Boost::filesystem
     Boost::program_options
-    Boost::thread
 )
 set_target_properties(MultiTetris PROPERTIES LINK_FLAGS "-Wl,-Bstatic")
 

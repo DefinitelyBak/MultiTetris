@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.10.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>project(MultiTetris LANGUAGES CXX): Класс Tetris::View::IApplication</title>
+<title>MultiTetris: Класс Tetris::View::IApplication</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -23,8 +23,9 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">project(MultiTetris LANGUAGES CXX)
+   <div id="projectname">MultiTetris
    </div>
+   <div id="projectbrief">multi-window tetris using various graphics libraries and frameworks</div>
   </td>
  </tr>
  </tbody>
@@ -81,25 +82,35 @@ $(function() {
   <div class="headertitle"><div class="title">Класс Tetris::View::IApplication<span class="mlabels"><span class="mlabel">abstract</span></span></div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Интерфейсный класс приложения  
+ <a href="#details">Подробнее...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_i_application_8h_source.html">IApplication.h</a>&gt;</code></p>
 <div class="dynheader">
 Граф наследования:Tetris::View::IApplication:</div>
 <div class="dyncontent">
  <div class="center">
   <img src="class_tetris_1_1_view_1_1_i_application.png" usemap="#Tetris::View::IApplication_map" alt=""/>
   <map id="Tetris::View::IApplication_map" name="Tetris::View::IApplication_map">
-<area href="class_tetris_1_1_view_1_1_qt_1_1_qt_applicaion.html" title="Класс, реализующий интерфейс IApplication для создания приложения Tetris." alt="Tetris::View::Qt::QtApplicaion" shape="rect" coords="0,56,220,80"/>
+<area href="class_tetris_1_1_view_1_1_qt_1_1_qt_applicaion.html" title="Класс, реализующий интерфейс IApplication для графического приложения на базе Qt." alt="Tetris::View::Qt::QtApplicaion" shape="rect" coords="0,56,220,80"/>
 <area href="class_tetris_1_1_view_1_1_s_f_m_l_1_1_s_f_m_l_application.html" title="Класс, реализующий интерфейс IApplication для графического приложения на базе SFML." alt="Tetris::View::SFML::SFMLApplication" shape="rect" coords="230,56,450,80"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Открытые члены</h2></td></tr>
-<tr class="memitem:aaf55f5c6ccb91fbfa18bcf9a76b0059c" id="r_aaf55f5c6ccb91fbfa18bcf9a76b0059c"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaf55f5c6ccb91fbfa18bcf9a76b0059c">Run</a> ()=0</td></tr>
-<tr class="separator:aaf55f5c6ccb91fbfa18bcf9a76b0059c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a042c2e562afa54237e5014a984767a5c" id="r_a042c2e562afa54237e5014a984767a5c"><td class="memItemLeft" align="right" valign="top"><a id="a042c2e562afa54237e5014a984767a5c" name="a042c2e562afa54237e5014a984767a5c"></a>
+virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~IApplication</b> ()=default</td></tr>
+<tr class="memdesc:a042c2e562afa54237e5014a984767a5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Дефолтный деструктор <br /></td></tr>
+<tr class="separator:a042c2e562afa54237e5014a984767a5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6f920fb7065dac4cddd42c75e7fadeb3" id="r_a6f920fb7065dac4cddd42c75e7fadeb3"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6f920fb7065dac4cddd42c75e7fadeb3">isExecution</a> () const =0</td></tr>
+<tr class="memdesc:a6f920fb7065dac4cddd42c75e7fadeb3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Приложение выполняется  <br /></td></tr>
 <tr class="separator:a6f920fb7065dac4cddd42c75e7fadeb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Методы</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Интерфейсный класс приложения </p>
+</div><h2 class="groupheader">Методы</h2>
 <a id="a6f920fb7065dac4cddd42c75e7fadeb3" name="a6f920fb7065dac4cddd42c75e7fadeb3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6f920fb7065dac4cddd42c75e7fadeb3">&#9670;&#160;</a></span>isExecution()</h2>
 
@@ -123,39 +134,14 @@ $(function() {
 </table>
 </div><div class="memdoc">
 
+<p>Приложение выполняется </p>
+
 <p>Замещается в <a class="el" href="class_tetris_1_1_view_1_1_qt_1_1_qt_applicaion.html#a135f2c36ee2af5441771497a4f2c078f">Tetris::View::Qt::QtApplicaion</a> и <a class="el" href="class_tetris_1_1_view_1_1_s_f_m_l_1_1_s_f_m_l_application.html#a4d9d695ca6f1bd0998e8bf36f0a71be8">Tetris::View::SFML::SFMLApplication</a>.</p>
 
 </div>
 </div>
-<a id="aaf55f5c6ccb91fbfa18bcf9a76b0059c" name="aaf55f5c6ccb91fbfa18bcf9a76b0059c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaf55f5c6ccb91fbfa18bcf9a76b0059c">&#9670;&#160;</a></span>Run()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual void Tetris::View::IApplication::Run </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Замещается в <a class="el" href="class_tetris_1_1_view_1_1_qt_1_1_qt_applicaion.html#a5eb7cca3ac72a03091a05a335ba637e4">Tetris::View::Qt::QtApplicaion</a> и <a class="el" href="class_tetris_1_1_view_1_1_s_f_m_l_1_1_s_f_m_l_application.html#a02030c00d267638e490245e10245dabd">Tetris::View::SFML::SFMLApplication</a>.</p>
-
-</div>
-</div>
 <hr/>Объявления и описания членов класса находятся в файле:<ul>
-<li>View/Include/View/<a class="el" href="_i_application_8h_source.html">IApplication.h</a></li>
+<li>src/View/Include/View/<a class="el" href="_i_application_8h_source.html">IApplication.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

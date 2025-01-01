@@ -125,6 +125,7 @@
         "qwindow": "cpp",
         "qresizeevent": "cpp",
         "qdebug": "cpp",
-        "qobject": "cpp"
+        "qobject": "cpp",
+        "filesystem": "cpp"
     }
 }

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.10.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>project(MultiTetris LANGUAGES CXX): Класс Tetris::Controller::MoveController</title>
+<title>MultiTetris: Класс Tetris::Controller::MoveController</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -23,8 +23,9 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">project(MultiTetris LANGUAGES CXX)
+   <div id="projectname">MultiTetris
    </div>
+   <div id="projectbrief">multi-window tetris using various graphics libraries and frameworks</div>
   </td>
  </tr>
  </tbody>
@@ -81,19 +82,79 @@ $(function() {
   <div class="headertitle"><div class="title">Класс Tetris::Controller::MoveController</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Контроллер движения фигур  
+ <a href="#details">Подробнее...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_move_controller_8h_source.html">MoveController.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Открытые члены</h2></td></tr>
-<tr class="memitem:ae8eaafffbd77dd4a0669b814900f4676" id="r_ae8eaafffbd77dd4a0669b814900f4676"><td class="memItemLeft" align="right" valign="top"><a id="ae8eaafffbd77dd4a0669b814900f4676" name="ae8eaafffbd77dd4a0669b814900f4676"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>MoveController</b> (AbstractModelPtr model)</td></tr>
+<tr class="memitem:ae8eaafffbd77dd4a0669b814900f4676" id="r_ae8eaafffbd77dd4a0669b814900f4676"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae8eaafffbd77dd4a0669b814900f4676">MoveController</a> (AbstractModelPtr model)</td></tr>
+<tr class="memdesc:ae8eaafffbd77dd4a0669b814900f4676"><td class="mdescLeft">&#160;</td><td class="mdescRight">Конструктор  <br /></td></tr>
 <tr class="separator:ae8eaafffbd77dd4a0669b814900f4676"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac5a9f212a71624e8f25bd4e3953e97ef" id="r_ac5a9f212a71624e8f25bd4e3953e97ef"><td class="memItemLeft" align="right" valign="top"><a id="ac5a9f212a71624e8f25bd4e3953e97ef" name="ac5a9f212a71624e8f25bd4e3953e97ef"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>Move</b> (Model::Command cmn)</td></tr>
+<tr class="memitem:ac5a9f212a71624e8f25bd4e3953e97ef" id="r_ac5a9f212a71624e8f25bd4e3953e97ef"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac5a9f212a71624e8f25bd4e3953e97ef">Move</a> (Model::Command cmn)</td></tr>
+<tr class="memdesc:ac5a9f212a71624e8f25bd4e3953e97ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Переместить фигуру  <br /></td></tr>
 <tr class="separator:ac5a9f212a71624e8f25bd4e3953e97ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Контроллер движения фигур </p>
+</div><h2 class="groupheader">Конструктор(ы)</h2>
+<a id="ae8eaafffbd77dd4a0669b814900f4676" name="ae8eaafffbd77dd4a0669b814900f4676"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae8eaafffbd77dd4a0669b814900f4676">&#9670;&#160;</a></span>MoveController()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Tetris::Controller::MoveController::MoveController </td>
+          <td>(</td>
+          <td class="paramtype">AbstractModelPtr</td>          <td class="paramname"><span class="paramname"><em>model</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Конструктор </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">model</td><td>Модель игры на которую воздействует контроллер </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Методы</h2>
+<a id="ac5a9f212a71624e8f25bd4e3953e97ef" name="ac5a9f212a71624e8f25bd4e3953e97ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac5a9f212a71624e8f25bd4e3953e97ef">&#9670;&#160;</a></span>Move()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Tetris::Controller::MoveController::Move </td>
+          <td>(</td>
+          <td class="paramtype">Model::Command</td>          <td class="paramname"><span class="paramname"><em>cmn</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Переместить фигуру </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cmn</td><td>Комманда <br  />
+ </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>Объявления и описания членов классов находятся в файлах:<ul>
-<li>Controller/Include/Controller/<a class="el" href="_move_controller_8h_source.html">MoveController.h</a></li>
-<li>Controller/Source/<b>MoveController.cpp</b></li>
+<li>src/Controller/Include/Controller/<a class="el" href="_move_controller_8h_source.html">MoveController.h</a></li>
+<li>src/Controller/Source/<b>MoveController.cpp</b></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

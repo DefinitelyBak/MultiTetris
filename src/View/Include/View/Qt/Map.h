@@ -15,6 +15,7 @@ namespace Tetris::View::Qt
     /// @return Цвет в формате QColor
     QColor ColorFromTypeColor(Model::TypeColor color);
 
+    /// @brief Класс карты игры на основе Qt
     class VIEW_EXPORT Map: public QWindow
     {
         Q_OBJECT

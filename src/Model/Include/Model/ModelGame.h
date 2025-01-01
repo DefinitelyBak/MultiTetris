@@ -116,7 +116,6 @@ namespace Tetris::Model
 
     private:
         Map _map; //< Карта игры, представляющая игровое поле
-
         Blocks::BlocksFactory _factory; //< Фабрика блоков для создания игровых блоков
 
         unsigned int _score{0}; //< Текущий счет игрока

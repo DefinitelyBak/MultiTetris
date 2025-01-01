@@ -7,9 +7,13 @@ namespace Tetris::View::Qt
 {
 
     QtApplicaion::QtApplicaion(AbstractModelPtr model, unsigned int countWidgets)
-        : _model(model), _count(countWidgets), _execution(true)
+        : _model(model), _count(countWidgets), _execution(false)
     {
-        _thread = std::thread(&QtApplicaion::Run, this);
+        if (_count > 0)
+        {
+            _execution = true;
+            _thread = std::thread(&QtApplicaion::Run, this);
+        }
     }
 
     QtApplicaion::~QtApplicaion()

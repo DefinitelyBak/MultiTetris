@@ -1,11 +1,14 @@
-.TH "Tetris::View::SFML::Widget" 3 "project(MultiTetris LANGUAGES CXX)" \" -*- nroff -*-
+.TH "Tetris::View::SFML::Widget" 3 "MultiTetris" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-Tetris::View::SFML::Widget
+Tetris::View::SFML::Widget \- Класс \fBWidget\fP представляет собой графический интерфейс для игры Tetris, реализующий методы для отображения и обновления состояния игры  
+
 .SH SYNOPSIS
 .br
 .PP
+.PP
+\fR#include <Widget\&.h>\fP
 .PP
 Базовые классы:\fBTetris::Model::AbstractWidget\fP\&.
 .SS "Открытые члены"
@@ -14,18 +17,23 @@ Tetris::View::SFML::Widget
 .ti -1c
 .RI "\fBWidget\fP (AbstractModelPtr model, const std::string &pathFont)"
 .br
+.RI "Конструктор класса, инициализирующий виджет с моделью и путем к шрифту "
+.ti -1c
+.RI "\fB~Widget\fP () override=default"
+.br
+.RI "Деструктор класса, по умолчанию "
 .ti -1c
 .RI "void \fBUpdate\fP () override"
 .br
-.RI "Обновление состояния виджета "
+.RI "Метод для обновления состояния виджета, вызывается в каждом кадре "
 .ti -1c
 .RI "bool \fBIsOpen\fP () const override"
 .br
-.RI "Проверка, открыт ли виджет "
+.RI "Метод для проверки, открыт ли виджет "
 .ti -1c
 .RI "void \fBSlotCloseWidget\fP () override"
 .br
-.RI "Закрытие виджета "
+.RI "Метод для закрытия виджета "
 .in -1c
 
 Открытые члены унаследованные от \fBTetris::Model::AbstractWidget\fP
@@ -43,34 +51,45 @@ Tetris::View::SFML::Widget
 .br
 .RI "Обновление виджета на основе описания модели "
 .in -1c
+.SH "Подробное описание"
+.PP 
+Класс \fBWidget\fP представляет собой графический интерфейс для игры Tetris, реализующий методы для отображения и обновления состояния игры 
+.SH "Конструктор(ы)"
+.PP 
+.SS "Tetris::View::SFML::Widget::Widget (AbstractModelPtr model, const std::string & pathFont)"
+
+.PP
+Конструктор класса, инициализирующий виджет с моделью и путем к шрифту 
+.PP
+\fBАргументы\fP
+.RS 4
+\fImodel\fP Модель игры 
+.br
+\fIpathFont\fP Путь до шрифта 
+.RE
+.PP
+
 .SH "Методы"
 .PP 
 .SS "bool Tetris::View::SFML::Widget::IsOpen () const\fR [override]\fP, \fR [virtual]\fP"
 
 .PP
-Проверка, открыт ли виджет 
-.PP
-\fBВозвращает\fP
-.RS 4
-true, если виджет открыт; иначе false 
-.RE
-.PP
-
+Метод для проверки, открыт ли виджет 
 .PP
 Замещает \fBTetris::Model::AbstractWidget\fP\&.
 .SS "void Tetris::View::SFML::Widget::SlotCloseWidget ()\fR [override]\fP, \fR [virtual]\fP"
 
 .PP
-Закрытие виджета 
+Метод для закрытия виджета 
 .PP
 Замещает \fBTetris::Model::AbstractWidget\fP\&.
 .SS "void Tetris::View::SFML::Widget::Update ()\fR [override]\fP, \fR [virtual]\fP"
 
 .PP
-Обновление состояния виджета 
+Метод для обновления состояния виджета, вызывается в каждом кадре 
 .PP
 Замещает \fBTetris::Model::AbstractWidget\fP\&.
 
 .SH "Автор"
 .PP 
-Автоматически создано Doxygen для project(MultiTetris LANGUAGES CXX) из исходного текста\&.
+Автоматически создано Doxygen для MultiTetris из исходного текста\&.
