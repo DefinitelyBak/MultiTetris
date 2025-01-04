@@ -6,6 +6,7 @@
 
 #include <boost/signals2.hpp>
 
+#include <SFML/Graphics.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/Graphics/Font.hpp>
 #include <SFML/Graphics/Drawable.hpp>

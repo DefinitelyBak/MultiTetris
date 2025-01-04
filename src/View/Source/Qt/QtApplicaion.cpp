@@ -1,6 +1,9 @@
 #include <View/Qt/QtApplication.h>
 #include <QApplication>
 #include <View/Qt/QAdapterWidget.h>
+#include <QtPlugin>
+
+Q_IMPORT_PLUGIN(QWindowsIntegrationPlugin)
 
 
 namespace Tetris::View::Qt

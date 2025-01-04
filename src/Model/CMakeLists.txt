@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.14)
+cmake_minimum_required(VERSION 3.20)
 project(Model
     VERSION 1.0.0
     DESCRIPTION "Tetris Game Model Library"

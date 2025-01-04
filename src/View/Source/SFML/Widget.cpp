@@ -36,12 +36,12 @@ namespace Tetris::View::SFML
 
     void Widget::HandleEvents()
     {
-        while (const std::optional event = _window.pollEvent())
+        for (sf::Event event;_window.pollEvent(event);)
         {
-            if (event->is<sf::Event::Closed>())
+            if (event.type == sf::Event::Closed)
                 _windowOpen = false;
-            else if (const auto* keyPressed = event->getIf<sf::Event::KeyPressed>())
-                HandleKeyPress(keyPressed->scancode);
+            else if (event.type == sf::Event::KeyPressed)
+                HandleKeyPress(event.key.scancode);
         }
     }
 

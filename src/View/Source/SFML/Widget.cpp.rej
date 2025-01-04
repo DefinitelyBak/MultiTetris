@@ -1,0 +1,7 @@
+diff a/src/View/Source/SFML/Widget.cpp b/src/View/Source/SFML/Widget.cpp	(rejected hunks)
+@@ -45,5 +45,4 @@
+             }
+-            else if (event.type == sf::Event::KeyPressed)
+             else if (const auto* keyPressed = event->getIf<sf::Event::KeyPressed>())
+             {
+                 HandleKeyPress(keyPressed->scancode);

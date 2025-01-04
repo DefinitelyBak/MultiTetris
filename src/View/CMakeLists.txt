@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.14)
+cmake_minimum_required(VERSION 3.20)
 project(View
     VERSION 1.0.0
     DESCRIPTION "Tetris Game View Library"
@@ -45,17 +45,9 @@ add_library(View::View ALIAS View)
 # View dependencies
 #----------------------------------------------------------------------------------------------------------------------
 
-include(FetchContent)
-
-find_package(Qt5 REQUIRED COMPONENTS Core Widgets Gui)
-find_package(Boost REQUIRED)
-FetchContent_Declare(SFML
-    GIT_REPOSITORY https://github.com/SFML/SFML.git
-    GIT_TAG 3.0.0
-    GIT_SHALLOW ON
-    EXCLUDE_FROM_ALL
-    SYSTEM)
-FetchContent_MakeAvailable(SFML)
+find_package(Qt5 COMPONENTS Core Widgets Gui REQUIRED )
+find_package(Boost)
+find_package(SFML)
 
 target_link_libraries(
         View
@@ -63,15 +55,17 @@ target_link_libraries(
         Model
         Controller
     PUBLIC
+	    qt::qt
+        Boost::boost
+        sfml::sfml
         Qt5::Core
         Qt5::Widgets
         Qt5::Gui
-        SFML::System
-        SFML::Graphics
-        SFML::Window
-        SFML::Main
-        Boost::boost
   )
+
+qt_import_plugins(View
+    INCLUDE_BY_TYPE platforms Qt::MinimalIntegrationPlugin
+)
 
 #----------------------------------------------------------------------------------------------------------------------
 # View sources

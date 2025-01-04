@@ -19,7 +19,7 @@
 namespace opt = boost::program_options;
 
 void addApplication(std::list<Tetris::View::AbstractApplicationPtr>& applications, 
-                    const std::shared_ptr<Tetris::Model::ModelGame>& modelPtr, 
+                    Tetris::View::AbstractModelPtr modelPtr, 
                     const std::string& appType, int count, const std::string& fontPath = "")
 {
     if (count > 0)

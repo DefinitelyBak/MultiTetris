@@ -1,0 +1,8 @@
+[requires]
+boost/1.77.0
+sfml/2.6.2
+qt/5.15.16
+
+[generators]
+CMakeToolchain
+CMakeDeps
