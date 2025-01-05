@@ -1,8 +1,8 @@
 #pragma once
 
+#include <Model/Forwards.h>
 #include <Model/Export.h>
 
-#include <Model/Forwards.h>
 #include <Model/Factory/ObjectFactory.h>
 
 
@@ -16,14 +16,14 @@ namespace Tetris::Model::Blocks
         /// @param id Идентификатор блока.
         /// @param color Цвет блока.
         /// @return Указатель на созданный блок.
-        AbstractBlock* Create(TypeBlock id, TypeColor color) 
+        [[nodiscard]] AbstractBlock* Create(TypeBlock id, TypeColor color)
         {
             return _factory[id]->Create(color);
         }
 
         /// @brief Получить количество инициализированных блоков.
         /// @return Количество зарегистрированных блоков.
-        int Size() const 
+        [[nodiscard]] int Size() const
         {
             return _factory.size();
         }

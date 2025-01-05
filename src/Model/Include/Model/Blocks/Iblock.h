@@ -14,8 +14,8 @@ namespace Tetris::Model::Blocks
         /// @param color цвет блока
         Iblock(TypeColor color) : AbstractBlock(color)
         {
-            _stateToPositions = {
-                {State::Up,
+            _orientationToPositions = {
+                {Orientation::Up,
                     {
                         Position(-1, 0), // *  *  *  *  *
                         Position( 0, 0), // *  *  *  *  *
@@ -23,7 +23,7 @@ namespace Tetris::Model::Blocks
                         Position( 2, 0)  // *  *  *  *  *
                     }                    // *  *  *  *  *
                 },
-                {State::Right,
+                {Orientation::Right,
                     {
                         Position(0, 1), // *  *  *  *  *
                         Position(0, 0), // *  *  о  *  *
@@ -31,7 +31,7 @@ namespace Tetris::Model::Blocks
                         Position(0,-2)  // *  *  о  *  *
                     }                   // *  *  о  *  *
                 },                       
-                {State::Down,
+                {Orientation::Down,
                     {
                         Position( 1, 0), // *  *  *  *  *
                         Position( 0, 0), // *  *  *  *  *
@@ -39,7 +39,7 @@ namespace Tetris::Model::Blocks
                         Position(-2, 0)  // *  *  *  *  *
                     }                    // *  *  *  *  *
                 },                         
-                {State::Left,
+                {Orientation::Left,
                     {
                         Position( 0,-1), // *  *  о  *  *
                         Position( 0, 0), // *  *  о  *  *
@@ -49,12 +49,12 @@ namespace Tetris::Model::Blocks
                 } 
             };
 
-            _stateToOffset = IOffset;
+            _orientationToOffset = IOffset;
         };
 
         /// @brief Получение типа блока
         /// @return Идентификатор формы блока
-        TypeBlock GetType() const override
+        [[nodiscard]] TypeBlock GetType() const override
         {
             return TypeBlock::Iblock;
         };

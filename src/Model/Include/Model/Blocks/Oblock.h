@@ -13,26 +13,26 @@ namespace Tetris::Model::Blocks
         /// @param color цвет блока
         Oblock(TypeColor color) : AbstractBlock(color) 
         {
-            _stateToPositions = {
-                {State::Up, {
+            _orientationToPositions = {
+                {Orientation::Up, {
                     Position(0, 1),  // *  o  O 
                     Position(1, 1),  // *  0  O
                     Position(1, 0),  // *  *  *
                     Position(0, 0)
                 }},
-                {State::Right, {
+                {Orientation::Right, {
                     Position(1, 0),  // *  *  *  
                     Position(1, -1), // *  0  o  
                     Position(0, -1), // *  o  o  
                     Position(0, 0)
                 }},
-                {State::Down, {
+                {Orientation::Down, {
                     Position(0, -1), // *  *  *
                     Position(-1, -1), // o  0  *
                     Position(-1, 0),  // o  o  *
                     Position(0, 0)
                 }},
-                {State::Left, {
+                {Orientation::Left, {
                     Position(0, 1),  // o  o  *
                     Position(-1, 1), // o  0  *
                     Position(-1, 0), // *  *  *
@@ -40,12 +40,12 @@ namespace Tetris::Model::Blocks
                 }}
             };
 
-            _stateToOffset = OOffset;
+            _orientationToOffset = OOffset;
         }
 
         /// @brief Получение типа блока
         /// @return Идентификатор формы блока
-        TypeBlock GetType() const override
+        [[nodiscard]] TypeBlock GetType() const override
         {
             return TypeBlock::Oblock;
         }

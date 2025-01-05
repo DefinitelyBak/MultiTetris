@@ -8,8 +8,8 @@
 
 namespace Tetris::Model::Blocks
 {
-    /// @brief Состояние фигуры
-    enum class State : int
+    /// @brief Оринетации фигуры
+    enum class Orientation : int
     {
         Up,
         Right,
@@ -22,10 +22,10 @@ namespace Tetris::Model::Blocks
     {
     public:
         /// @brief Тип состояния - описание блока
-        using StateToPositions = std::unordered_map<State, Positions>;
+        using OrientationToPositions = std::unordered_map<Orientation, Positions>;
 
         /// @brief Тип состояния - смещения
-        using StateToOffsets = std::unordered_map<State, Offsets>;
+        using OrientationToOffsets = std::unordered_map<Orientation, Offsets>;
 
         /// @brief Дефолдный конструктор
         AbstractBlock(TypeColor color);
@@ -35,76 +35,67 @@ namespace Tetris::Model::Blocks
 
         /// @brief Вернуть цвет блока
         /// @return Цвет блока 
-        TypeColor GetColor() const;
+        [[nodiscard]] TypeColor GetColor() const;
 
-        virtual TypeBlock GetType() const
-        {
-            return TypeBlock::None;
-        }
+        /// @brief Получить тип блока
+        /// @return Тип блока
+        [[nodiscard]] virtual TypeBlock GetType() const;
 
-        /// @brief Получить текущее положение блока
-        /// @return Описание блока
-        Positions GetCurrentDescription();
-
-        /// @brief Получить положение блока по состоянию блока
-        /// @param state Состояние блока
-        /// @return Положение блока
-        Positions GetDescription(State state);
+        /// @brief Получить текущее положение тетрамино блока
+        /// @param orientation Необязательный параметр, при какой ориентации получить положение, по умочанию текущее положение
+        /// @return Положение тетрамино блока
+        [[nodiscard]] Positions GetFields(std::optional<Orientation> orientation = std::optional<Orientation>()) const;
 
         /// @brief Получить текущее состояние блока
-        /// @return состояние блока
-        State GetCurrentState() const;
-
-        /// @brief Получить следующее состояние блока по переданной команде
-        /// @param cmd Команда
-        /// @return Состояние
-        State GetNextState(Command cmd) const;
+        /// @param cmd Необязательный параметр, при какой комманде будет ориентация
+        /// @return Ориентация
+        [[nodiscard]] Orientation GetOrientatio(std::optional<Command> cmd = std::optional<Command>()) const;
 
         /// @brief Получить смещение для блока
         /// @param from Начальное состояние 
         /// @param to К которому необходимо прийти
         /// @return Смещения
-        Offsets GetOffsets(State from, State to);
+        [[nodiscard]] Offsets GetOffsets(Orientation from, Orientation to) const;
 
         /// @brief Повернуть блок
         void RotateBlock(Command cmd);
 
     protected:
         /// @brief Контейнер состояние - положение
-        StateToPositions _stateToPositions;
+        OrientationToPositions _orientationToPositions;
 
         /// @brief Контейнер состояние - смещение
-        StateToOffsets _stateToOffset;
+        OrientationToOffsets _orientationToOffset;
 
     private:
         /// @brief Состояние блока
-        State _state { State::Up };
+        Orientation _orientation { Orientation::Up };
 
         /// @brief Цвет блока
         TypeColor _color; 
     };
 
-    inline const AbstractBlock::StateToOffsets JLSTZOffset
+    inline const AbstractBlock::OrientationToOffsets JLSTZOffset
     {
-        { State::Up, { Position(0, 0), Position(0, 0), Position(0, 0), Position(0, 0), Position(0, 0) } },
-        { State::Right, { Position(0, 0), Position(1, 0), Position(1, -1), Position(0, 2), Position(1, 2) } },
-        { State::Down, { Position(0, 0), Position(0, 0), Position(0, 0), Position(0, 0), Position(0, 0) } },
-        { State::Left, { Position(0, 0), Position(-1, 0), Position(-1, -1), Position(0, 2), Position(-1, 2) } }
+        { Orientation::Up, { Position(0, 0), Position(0, 0), Position(0, 0), Position(0, 0), Position(0, 0) } },
+        { Orientation::Right, { Position(0, 0), Position(1, 0), Position(1, -1), Position(0, 2), Position(1, 2) } },
+        { Orientation::Down, { Position(0, 0), Position(0, 0), Position(0, 0), Position(0, 0), Position(0, 0) } },
+        { Orientation::Left, { Position(0, 0), Position(-1, 0), Position(-1, -1), Position(0, 2), Position(-1, 2) } }
     };
 
-    inline const AbstractBlock::StateToOffsets IOffset
+    inline const AbstractBlock::OrientationToOffsets IOffset
     {
-        { State::Up, { Position(0, 0), Position(-1, 0), Position(2, 0), Position(-1, 0), Position(2, 0) } },
-        { State::Right, { Position(-1, 0), Position(0, 0), Position(0, 0), Position(0, 1), Position(0, -2) } },
-        { State::Down, { Position(-1, 1), Position(1, 1), Position(-2, 1), Position(1, 0), Position(-2, 0) } },
-        { State::Left, { Position(0, 1), Position(0, 1), Position(0, 1), Position(0, -1), Position(0, 2) } }
+        { Orientation::Up, { Position(0, 0), Position(-1, 0), Position(2, 0), Position(-1, 0), Position(2, 0) } },
+        { Orientation::Right, { Position(-1, 0), Position(0, 0), Position(0, 0), Position(0, 1), Position(0, -2) } },
+        { Orientation::Down, { Position(-1, 1), Position(1, 1), Position(-2, 1), Position(1, 0), Position(-2, 0) } },
+        { Orientation::Left, { Position(0, 1), Position(0, 1), Position(0, 1), Position(0, -1), Position(0, 2) } }
     };
 
-    inline const AbstractBlock::StateToOffsets OOffset
+    inline const AbstractBlock::OrientationToOffsets OOffset
     {
-        { State::Up, { Position(0, 0), Position(0, 0), Position(0, 0), Position(0, 0), Position(0, 0) } },
-        { State::Right, { Position(0, -1), Position(0, -1), Position(0, -1), Position(0, -1), Position(0, -1) } },
-        { State::Down, { Position(-1, -1), Position(-1, -1), Position(-1, -1), Position(-1, -1), Position(-1, -1) } },
-        { State::Left, { Position(-1, 0), Position(-1, 0), Position(-1, 0), Position(-1, 0), Position(-1, 0) } }
+        { Orientation::Up, { Position(0, 0), Position(0, 0), Position(0, 0), Position(0, 0), Position(0, 0) } },
+        { Orientation::Right, { Position(0, -1), Position(0, -1), Position(0, -1), Position(0, -1), Position(0, -1) } },
+        { Orientation::Down, { Position(-1, -1), Position(-1, -1), Position(-1, -1), Position(-1, -1), Position(-1, -1) } },
+        { Orientation::Left, { Position(-1, 0), Position(-1, 0), Position(-1, 0), Position(-1, 0), Position(-1, 0) } }
     };
 } // namespace Tetris::Model::Blocks

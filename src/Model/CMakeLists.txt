@@ -63,7 +63,7 @@ generate_export_header(Model EXPORT_FILE_NAME Include/Model/${export_file_name})
 set(sources
     include/Model/AbstractModel.h
     include/Model/AbstractWidget.h
-    include/Model/DescriptionModel.h
+    include/Model/MementoModel.h
     include/Model/Export.h
     include/Model/ModelGame.h
     include/Model/Types.h

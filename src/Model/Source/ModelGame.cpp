@@ -29,58 +29,55 @@ namespace Tetris::Model
         _factory.add<Blocks::Zblock>(TypeBlock::Zblock);
     }
 
-    void ModelGame::UpdateModel(Command command, DescriptionModelPtr &desc)
+    MementoModelPtr ModelGame::UpdateModel(Command command)
     {
-        if (_map.IsFullMap())
-        {
-            ResetGame(desc);
-        }
-
+        if (_map.IsFull())
+            ResetGame();
         if (!_map.HasActiveBlock())
-        {
-            SpawnNewBlock(desc);
-        }
+            SpawnNewBlock();
 
         _map.MoveBlock(command);
-        UpdateScore(desc);
-        desc->map = _map.GetMap();
-        desc->size = _map.GetSize(); 
+
+        if (_map.GetCountDeletedLines() > 0)
+            UpdateScore();
+
+        return MakeMementoModel();
     }
 
-    void ModelGame::ResetGame(DescriptionModelPtr &desc)
+    void ModelGame::ResetGame()
     {
         _map.Restart();
         _score = 0;
-        desc->score = _score;
     }
 
-    void ModelGame::SpawnNewBlock(DescriptionModelPtr &desc)
+    void ModelGame::SpawnNewBlock()
     {
         _currentBlock = _nextBlock;
         _nextBlock = CreateRandomBlock(_nextBlock);
         _map.SetBlock(_currentBlock);
-        desc->nextBlock = _nextBlock;
     }
 
-    void ModelGame::UpdateScore(DescriptionModelPtr &desc)
+    MementoModelPtr ModelGame::MakeMementoModel()
     {
+        MementoModelPtr desc = std::make_shared<Model::MementoModel>();
+        desc->map = _map.GetMap();
+        desc->size = _map.GetSize();
+        desc->nextBlock = _nextBlock;
+        desc->score = _score;
+
+        return desc;
+    }
+
+    void ModelGame::UpdateScore()
+    {
+        static const std::array<int, 5> scorePoints = { 0, 100, 300, 700, 1500 };
+
         if (auto deletedLines = _map.GetCountDeletedLines(); deletedLines)
         {
-            AddScore(deletedLines);
-            desc->score = _score;
-        }
-    }
-
-    void ModelGame::AddScore(unsigned int lines)
-    {
-        static const std::array<int, 5> scorePoints = {0, 100, 300, 700, 1500};
-        if (lines > 0 && lines <= 4)
-        {
-            _score += scorePoints[lines];
-        }
-        else if (lines > 4)
-        {
-            _score += scorePoints[4];
+            if (deletedLines > 0 && deletedLines <= 4)
+                _score += scorePoints[deletedLines];
+            else if (deletedLines > 4)
+                _score += scorePoints[4];
         }
     }
 
@@ -95,46 +92,16 @@ namespace Tetris::Model
             TypeColor::Red, TypeColor::Green, TypeColor::Yellow, TypeColor::Blue
         };
 
-        if (withoutBlock == nullptr)
-        {
-            return CreateBlock(allTypesBlocks, allTypesColor);
-        }
-
-        return CreateBlockExcluding(withoutBlock, allTypesBlocks, allTypesColor);
-    }
-
-    AbstractBlockPtr ModelGame::CreateBlock(const std::array<TypeBlock, 7>& blockTypes, const std::array<TypeColor, 4>& colorTypes)
-    {
         int randomShape = std::uniform_int_distribution<int>(0, 6)(_randomEngine);
         int randomColor = std::uniform_int_distribution<int>(0, 3)(_randomEngine);
-        return AbstractBlockPtr{_factory.Create(blockTypes[randomShape], colorTypes[randomColor])};
-    }
 
-    AbstractBlockPtr ModelGame::CreateBlockExcluding(AbstractBlockPtr withoutBlock, const std::array<TypeBlock, 7>& blockTypes, const std::array<TypeColor, 4>& colorTypes)
-    {
-        std::array<TypeBlock, 6> typesBlocks;
-        std::array<TypeColor, 3> typesColor;
-
-        FillExcludingArray(blockTypes, withoutBlock->GetType(), typesBlocks);
-        FillExcludingArray(colorTypes, withoutBlock->GetColor(), typesColor);
-
-        int randomShape = std::uniform_int_distribution<int>(0, 5)(_randomEngine);
-        int randomColor = std::uniform_int_distribution<int>(0, 2)(_randomEngine);
-
-        return AbstractBlockPtr{_factory.Create(typesBlocks[randomShape], typesColor[randomColor])};
-    }
-
-    template<typename T, size_t N>
-    void ModelGame::FillExcludingArray(const std::array<T, N>& source, T excluded, std::array<T, N-1>& dest)
-    {
-        size_t index = 0;
-        for (const auto& item : source)
+        if (withoutBlock)
         {
-            if (item != excluded)
-            {
-                dest[index++] = item;
-            }
+            if (withoutBlock->GetColor() == allTypesColor[randomColor]) randomColor = (randomColor + 1) % allTypesColor.size();
+            if (withoutBlock->GetType() == allTypesBlocks[randomShape]) randomShape = (randomShape + 1) % allTypesBlocks.size();
         }
+
+        return AbstractBlockPtr{ _factory.Create(allTypesBlocks[randomShape], allTypesColor[randomColor]) };
     }
 
 } // namespace Tetris::Model

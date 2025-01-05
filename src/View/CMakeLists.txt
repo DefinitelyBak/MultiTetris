@@ -82,9 +82,8 @@ generate_export_header(View EXPORT_FILE_NAME Include/View/${export_file_name})
 
 set(sources
 #Qt headers
-    Include/View/Qt/KeyPressFilter.h
     Include/View/Qt/Map.h
-    Include/View/Qt/PreviewBlock.h
+    Include/View/Qt/WidgetPreviewBlock.h
     Include/View/Qt/QAdapterWidget.h
     Include/View/Qt/QtApplication.h
     Include/View/Qt/Widget.h
@@ -96,12 +95,12 @@ set(sources
     Include/View/SFML/WidgetPreviewBlock.h
 # Common headers
     Include/View/Forwards.h
-    Include/View/IApplication.h
+    Include/View/AbstractApplication.h
     Include/View/Precompile.h
     Include/View/Export.h
 #Qt cpp files
     Source/Qt/Map.cpp
-    Source/Qt/PreviewBlock.cpp
+    Source/Qt/WidgetPreviewBlock.cpp
     Source/Qt/QtApplicaion.cpp
     Source/Qt/Widget.cpp
 #SFML cpp files

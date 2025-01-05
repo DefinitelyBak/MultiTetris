@@ -24,9 +24,7 @@ namespace Tetris::View::SFML
         : _windowSize(windowSize), _rows(0), _columns(0)
     {
         if (withBorder)
-        {
             InitializeBorders();
-        }
     }
 
     void Map::InitializeBorders()
@@ -51,7 +49,7 @@ namespace Tetris::View::SFML
         return border;
     }
 
-    void Map::SetMap(const std::vector<Model::TypeColor>& map, Model::MapSize size)
+    void Map::SetMap(const std::vector<Model::TypeColor>& map, const Model::MapSize& size)
     {
         if (map.empty() || size.rows <= 0 || size.columns <= 0)
             return;
@@ -86,17 +84,13 @@ namespace Tetris::View::SFML
         states.transform *= getTransform();
 
         for (const auto& border : _borders)
-        {
             target.draw(border, states);
-        }
-
+        
         if (_map.empty() || _fields.empty())
             return;
 
         for (const auto& field : _fields)
-        {
             target.draw(field, states);
-        }
     }
 
     void Map::UpdateView()

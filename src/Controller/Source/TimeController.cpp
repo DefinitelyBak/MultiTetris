@@ -3,19 +3,17 @@
 
 namespace Tetris::Controller
 {
-	TimeController::TimeController(AbstractModelPtr model, std::chrono::seconds interval): _interval(interval)
-    {
-        SignalUpdateModel.connect(boost::signals2::signal<void(Model::Command)>::slot_type
-            (&Model::AbstractModel::SlotUpdate, model.get(), boost::placeholders::_1).track_foreign(model));
-         _start = std::chrono::system_clock::now();
-    }
+	TimeController::TimeController(AbstractModelPtr model, std::chrono::duration<double> interval):
+        _interval(interval), _moveController(model), _start(std::chrono::system_clock::now())
+    {}
 
-	void TimeController::CheckTimer()
+    void TimeController::CheckTimer()
     {
-        if(!(std::chrono::system_clock::now() - _start > _interval))
+        auto now = std::chrono::system_clock::now();
+        if (now - _start < _interval)
             return;
 
-        SignalUpdateModel(Model::Command::Down);
-        _start = std::chrono::system_clock::now();
+        _moveController.Move(Model::Command::Down);
+        _start = now;
     }
 }

@@ -21,7 +21,6 @@
 #include <Qt>
 #include <QEvent>
 #include <QKeyEvent>
-#include <QWindow>
 #include <QBackingStore>
 #include <iostream>
 #include <QVBoxLayout>

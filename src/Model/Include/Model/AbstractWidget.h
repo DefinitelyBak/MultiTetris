@@ -16,34 +16,31 @@ namespace Tetris::Model
         /// @brief Деструктор по умолчанию
         virtual ~AbstractWidget() = default;
 
-        /// @brief Обновление состояния виджета
-        virtual void Update() = 0;
-
         /// @brief Проверка, открыт ли виджет
         /// @return true, если виджет открыт; иначе false
-        virtual bool IsOpen() const = 0;
+        [[nodiscard]] virtual bool IsOpen() const = 0;
 
         /// @brief Закрытие виджета
         virtual void SlotCloseWidget() = 0;
 
-        /// @brief Обновление виджета на основе описания модели
-        /// @param descp Описание текущего состояния модели
-        virtual void SlotUpdateWidget(DescriptionModelPtr descp)
+        /// @brief Обновление виджета на основе снимка модели
+        /// @param memento Снимок текущего состояния модели
+        virtual void SlotUpdateWidget(MementoModelPtr memento)
         {
             std::scoped_lock<std::mutex> l(_mutex);
-            _descriptionModel = descp;
+            _mementoModel = memento;
         }
 
-        /// @brief Обновление виджета на основе описания модели
-        /// @return descp Описание текущего состояния модели
-        DescriptionModelPtr GetDescriptionModel()
+        /// @brief Получить снимок модели игры
+        /// @return Снимок модели игры
+        [[nodiscard]] MementoModelPtr GetMementoModel()
         {
             std::scoped_lock<std::mutex> l(_mutex);
-            return _descriptionModel;
+            return _mementoModel;
         }
 
     private:
         std::mutex _mutex;
-        DescriptionModelPtr _descriptionModel;
+        MementoModelPtr _mementoModel;
     };
 } // namespace Tetris::Model

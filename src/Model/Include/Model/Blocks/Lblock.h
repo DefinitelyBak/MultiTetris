@@ -13,8 +13,8 @@ namespace Tetris::Model::Blocks
         /// @param color цвет блока
         Lblock(TypeColor color) : AbstractBlock(color) 
         {
-            _stateToPositions = {
-                {State::Up,
+            _orientationToPositions = {
+                {Orientation::Up,
                     {
                         Position(1, 1),  // *  *  o
                         Position(1, 0),  // o  0  o
@@ -22,7 +22,7 @@ namespace Tetris::Model::Blocks
                         Position(-1, 0)
                     }
                 },
-                {State::Right,
+                {Orientation::Right,
                     {
                         Position(1, -1), // *  o  *
                         Position(0, -1), // *  0  *
@@ -30,7 +30,7 @@ namespace Tetris::Model::Blocks
                         Position(0, 1)
                     }
                 },
-                {State::Down,
+                {Orientation::Down,
                     {
                         Position(-1, -1), // *  *  *
                         Position(-1, 0),  // o  0  o
@@ -38,7 +38,7 @@ namespace Tetris::Model::Blocks
                         Position(1, 0)
                     }
                 },
-                {State::Left,
+                {Orientation::Left,
                     {
                         Position(-1, 1),  // o  o  *
                         Position(0, 1),   // *  0  *
@@ -48,12 +48,12 @@ namespace Tetris::Model::Blocks
                 }
             };
 
-            _stateToOffset = JLSTZOffset;
+            _orientationToOffset = JLSTZOffset;
         }
 
 		/// @brief Получение типа блока
 		/// @return Идентификатор формы блока
-        TypeBlock GetType() const override
+        [[nodiscard]] TypeBlock GetType() const override
         {
             return TypeBlock::Lblock;
         }
