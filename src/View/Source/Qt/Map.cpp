@@ -21,31 +21,8 @@ namespace Tetris::View::Qt
         }
     }
 
-    Map::Map(QWindow *parent, bool withBorder)
-        : QWindow(parent), m_backingStore(new QBackingStore(this)), _borderWidth(0), _rows(0), _columns(0)
-    {
-        if (withBorder)
-        {
-            InitializeBorders();
-        }
-    }
-
-    void Map::InitializeBorders()
-    {
-        // Граница будет 0.01 от ширины или высоты.  
-        float borderY = float(size().height()) / 100;
-        float borderX = float(size().width()) / 100;
-
-        _borderWidth = std::max(borderY, borderX);
-
-        // Инициализация вертикальных и горизонтальных границ
-        _borders = {
-            QRect(0, 0, _borderWidth, size().height()), // Левый
-            QRect(size().width() - _borderWidth, 0, _borderWidth, size().height()), // Правый
-            QRect(0, 0, size().width(), _borderWidth), // Верхний
-            QRect(0, size().height() - _borderWidth, size().width(), _borderWidth) // Нижний
-        };
-    }
+    Map::Map(QWidget* parent): QWidget(parent), _rows(0), _columns(0)
+    {}
 
     void Map::SetMap(const std::vector<Model::TypeColor>& map, Model::MapSize sizeMap)
     {
@@ -55,72 +32,26 @@ namespace Tetris::View::Qt
         _map = map;
         _rows = sizeMap.rows;
         _columns = sizeMap.columns;
-        _offsetX = (size().width() - 2 * _borderWidth) / _columns;
-        _offsetY = (size().height() - 2 * _borderWidth) / _rows;
-
-        renderNow();
+        _offsetX = size().width() / _columns;
+        _offsetY = size().height() / _rows;
     }
 
-    bool Map::event(QEvent *event)
+    void Map::paintEvent(QPaintEvent* event)
     {
-        if (event->type() == QEvent::UpdateRequest) {
-            renderNow();
-            return true;
-        }
-        return QWindow::event(event);
+        if (isVisible())
+            Render();
     }
 
-    void Map::resizeEvent(QResizeEvent *resizeEvent)
+    void Map::Render()
     {
-        m_backingStore->resize(resizeEvent->size());
-        if (isExposed())
-        {
-            renderNow();
-        }
-    }
-
-    void Map::exposeEvent(QExposeEvent *)
-    {
-        if (isExposed())
-        {
-            renderNow();
-        }
-    }
-
-    void Map::renderLater()
-    {
-        requestUpdate();
-    }
-
-    void Map::renderNow()
-    {
-        if (!isExposed())
-        {
+        if (!isVisible())
             return;
-        }
 
         QRect rect(0, 0, width(), height());
-        m_backingStore->beginPaint(rect);
-
-        QPainter painter(m_backingStore->paintDevice());
+        QPainter painter(this);
         painter.fillRect(rect, ::Qt::black);
-        render(&painter);
-
-        painter.end();
-        m_backingStore->endPaint();
-        m_backingStore->flush(rect);
-    }
-
-    void Map::render(QPainter* painter)
-    {
-        painter->setRenderHint(QPainter::Antialiasing);
-
-        if (!_borders.empty())
-        {
-            QBrush borderBrush(::Qt::white);
-            painter->setBrush(borderBrush);
-            painter->drawRects(_borders);
-        }
+        
+        painter.setRenderHint(QPainter::Antialiasing);
 
         for (int row = 0; row < _rows; ++row)
         {
@@ -128,16 +59,18 @@ namespace Tetris::View::Qt
             {
                 if (auto color = _map[row * _columns + column]; color != Model::TypeColor::None)
                 {
-                    painter->setBrush(QBrush(ColorFromTypeColor(color), ::Qt::BrushStyle::SolidPattern));
-                    painter->drawRect(
-                        _borderWidth + column * _offsetX,
-                        size().height() - row * _offsetY - _offsetY - _borderWidth,
+                    painter.setBrush(QBrush(ColorFromTypeColor(color), ::Qt::BrushStyle::SolidPattern));
+                    painter.drawRect(
+                        column * _offsetX,
+                        size().height() - row * _offsetY - _offsetY,
                         _offsetX,
                         _offsetY
                     );
                 }
             }
         }
+
+        painter.end();
     }
 
 }

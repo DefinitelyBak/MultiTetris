@@ -24,7 +24,7 @@ namespace Tetris::View::SFML
         /// @brief Установить карту
         /// @param map Вектор с цветами блоков
         /// @param size Размер карты (строки и столбцы)
-        void SetMap(const std::vector<Model::TypeColor>& map, Model::MapSize size);
+        void SetMap(const std::vector<Model::TypeColor>& map,const Model::MapSize& size);
 
     private:
         /// @brief Отрисовка карты
@@ -42,7 +42,7 @@ namespace Tetris::View::SFML
         /// @param size Размер границы
         /// @param position Позиция границы
         /// @return Созданная граница в виде sf::RectangleShape
-        sf::RectangleShape CreateBorder(const sf::Vector2f& size, const sf::Vector2f& position);
+        [[nodiscard]] sf::RectangleShape CreateBorder(const sf::Vector2f& size, const sf::Vector2f& position);
 
         /// @brief Обновление размеров полей карты
         void UpdateFieldSizes();
@@ -54,8 +54,8 @@ namespace Tetris::View::SFML
         sf::Vector2f _windowSize; //< Размер окна отображения
         int _rows; 
         int _columns; 
-        float _offsetX;
-        float _offsetY;
+        float _offsetX{ 0 };
+        float _offsetY{ 0 };
 
         float _borderWidth{0};
 

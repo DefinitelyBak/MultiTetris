@@ -6,6 +6,7 @@
 
 #include <boost/signals2.hpp>
 
+#include <SFML/Graphics.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/Graphics/Font.hpp>
 #include <SFML/Graphics/Drawable.hpp>
@@ -20,7 +21,6 @@
 #include <Qt>
 #include <QEvent>
 #include <QKeyEvent>
-#include <QWindow>
 #include <QBackingStore>
 #include <iostream>
 #include <QVBoxLayout>

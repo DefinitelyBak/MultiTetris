@@ -25,7 +25,7 @@ namespace Tetris::View::SFML
 
         ///@brief Возвращает тип текущего блока.
         ///@return Тип блока.
-        Model::TypeBlock GetType() const;
+        [[nodiscard]] Model::TypeBlock GetType() const;
 
     private:
         /// @brief Переопределение метода draw для рисования блока на целевом объекте.
@@ -33,11 +33,11 @@ namespace Tetris::View::SFML
         /// @param states Состояния рисования.
         virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 
-        Map _map; //< Карта, представляющая блок.
+        Map _map; ///< Карта, представляющая блок.
 
-        sf::Vector2f _windowSize; //< Размер окна для отображения блока.
+        sf::Vector2f _windowSize; ///< Размер окна для отображения блока.
 
-        Model::TypeBlock _typeShape{Model::TypeBlock::None}; //< Тип блока.
-        Model::TypeColor _typeColor{Model::TypeColor::None}; //< Цвет блока.
+        Model::TypeBlock _typeShape{Model::TypeBlock::None}; ///< Тип блока.
+        Model::TypeColor _typeColor{Model::TypeColor::None}; ///< Цвет блока.
     };
 } // namespace Tetris::View::SFML

@@ -31,17 +31,10 @@ namespace Tetris::Model
         /// передает текущее состояние модели в описание.
         /// 
         /// @param command Команда для обновления модели
-        /// @param desc Описание текущего состояния модели
-        void UpdateModel(Command command, DescriptionModelPtr& desc) override;
+        /// @return Снимок модели 
+        [[nodiscard]] MementoModelPtr UpdateModel(Command command) override;
 
     private:
-        /// @brief Добавление очков за удаленные линии
-        /// 
-        /// Увеличивает текущий счет игрока на основе количества удаленных линий.
-        /// 
-        /// @param lines Количество удаленных линий
-        void AddScore(unsigned int lines);
-
         /// @brief Создание случайного блока
         /// 
         /// Генерирует новый блок случайного типа и цвета. Если указан
@@ -49,40 +42,7 @@ namespace Tetris::Model
         /// 
         /// @param withoutBlock Указатель на блок, который следует исключить
         /// @return Указатель на новый блок
-        AbstractBlockPtr CreateRandomBlock(AbstractBlockPtr withoutBlock = nullptr);
-
-        /// @brief Создание блока на основе типов и цветов
-        /// 
-        /// Создает блок, выбирая случайный тип и цвет из переданных массивов.
-        /// 
-        /// @param blockTypes Массив типов блоков
-        /// @param colorTypes Массив цветов блоков
-        /// @return Указатель на созданный блок
-        AbstractBlockPtr CreateBlock(const std::array<TypeBlock, 7>& blockTypes, const std::array<TypeColor, 4>& colorTypes);
-
-        /// @brief Создание блока, исключая указанный
-        /// 
-        /// Создает блок, исключая указанный блок из возможных вариантов.
-        /// 
-        /// @param withoutBlock Указатель на блок, который следует исключить
-        /// @param blockTypes Массив типов блоков
-        /// @param colorTypes Массив цветов блоков
-        /// @return Указатель на созданный блок
-        AbstractBlockPtr CreateBlockExcluding(AbstractBlockPtr withoutBlock, const std::array<TypeBlock, 7>& blockTypes, const std::array<TypeColor, 4>& colorTypes);
-
-        /// @brief Заполнение массива, исключая определенное значение
-        /// 
-        /// Копирует элементы из исходного массива в целевой, пропуская
-        /// указанный элемент. Используется для создания массива без
-        /// определенных блоков или цветов.
-        /// 
-        /// @tparam T Тип элементов массива
-        /// @tparam N Размер исходного массива
-        /// @param source Исходный массив
-        /// @param excluded Элемент, который следует исключить
-        /// @param dest Целевой массив для заполнения
-        template<typename T, size_t N>
-        void FillExcludingArray(const std::array<T, N>& source, T excluded, std::array<T, N-1>& dest);
+        [[nodiscard]] AbstractBlockPtr CreateRandomBlock(AbstractBlockPtr withoutBlock = nullptr);
 
         /// @brief Регистрация доступных блоков
         /// 
@@ -94,25 +54,23 @@ namespace Tetris::Model
         /// 
         /// Обнуляет состояние игры, включая карту и счет, и
         /// обновляет описание модели.
-        /// 
-        /// @param desc Описание текущего состояния модели
-        void ResetGame(DescriptionModelPtr &desc);
+        void ResetGame();
 
         /// @brief Обновление счета
         /// 
         /// Проверяет и обновляет счет, если были удалены линии,
         /// и обновляет описание модели.
-        /// 
-        /// @param desc Описание текущего состояния модели
-        void UpdateScore(DescriptionModelPtr &desc);
+        void UpdateScore();
 
         /// @brief Спавн нового блока
         /// 
         /// Создает новый активный блок и обновляет описание модели
         /// для отображения следующего блока.
-        /// 
-        /// @param desc Описание текущего состояния модели
-        void SpawnNewBlock(DescriptionModelPtr &desc);
+        void SpawnNewBlock();
+
+        /// @brief Создать снимок модели
+        /// @return Снимок модели
+        [[nodiscard]] MementoModelPtr MakeMementoModel();
 
     private:
         Map _map; //< Карта игры, представляющая игровое поле

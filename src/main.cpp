@@ -18,21 +18,27 @@
 */
 namespace opt = boost::program_options;
 
-void addApplication(std::list<Tetris::View::AbstractApplicationPtr>& applications, 
-                    const std::shared_ptr<Tetris::Model::ModelGame>& modelPtr, 
-                    const std::string& appType, int count, const std::string& fontPath = "")
+enum class TypeApplication : int
 {
-    if (count > 0)
+    SFML,
+    Qt
+};
+
+[[nodiscard]] Tetris::View::AbstractApplicationPtr MakeApplication(const TypeApplication type, Tetris::View::AbstractModelPtr modelPtr,const int count)
+{
+    switch (type)
     {
-        if (appType == "SFML")
-            applications.push_back(std::make_shared<Tetris::View::SFML::SFMLApplication>(modelPtr, count, fontPath));
-        else if (appType == "Qt")
-            applications.push_back(std::make_shared<Tetris::View::Qt::QtApplicaion>(modelPtr, count));
+    case TypeApplication::SFML:
+        return std::make_shared<Tetris::View::SFML::SFMLApplication>(modelPtr, count, "./Resources/arial_bolditalicmt.ttf");
+    case TypeApplication::Qt:
+        return std::make_shared<Tetris::View::Qt::QtApplicaion>(modelPtr, count);
+    default:
+        return Tetris::View::AbstractApplicationPtr(nullptr);
     }
 }
 
-int main(int argc, char *argv[])
-{   
+bool Initialization(int argc, char* argv[], int& countSfWidgets, int& countQtWidgets)
+{
     opt::options_description desc("MultiTetris - multi-window tetris using STL and Qt graphics libraries.\nAll options");
     desc.add_options()
         ("QWidget", opt::value<int>(), "how many QWidgets, by default 1")
@@ -45,20 +51,30 @@ int main(int argc, char *argv[])
     if (vm.count("help"))
     {
         std::cout << desc << "\n";
-        return 1;
+        return false;
     }
-    
-    int countSfWidgets = 1, countQtWidgets = 1;
-    if(!vm["SFMLWidget"].empty())
+
+    if (!vm["SFMLWidget"].empty())
         countSfWidgets = vm["SFMLWidget"].as<int>();
-    if(!vm["QWidget"].empty())
+    if (!vm["QWidget"].empty())
         countQtWidgets = vm["QWidget"].as<int>();
+
+    return true;
+}
+
+int main(int argc, char *argv[])
+{   
+    int countSfWidgets = 1, countQtWidgets = 1;
+    if (!Initialization(argc, argv, countSfWidgets, countQtWidgets))
+        return 1;
 
     std::list<Tetris::View::AbstractApplicationPtr> applications;
     std::shared_ptr<Tetris::Model::ModelGame> modelPtr = std::make_shared<Tetris::Model::ModelGame>();
-    addApplication(applications, modelPtr, "SFML", countSfWidgets, "./Resources/arial_bolditalicmt.ttf");
-    addApplication(applications, modelPtr, "Qt", countQtWidgets);
-    Tetris::Controller::TimeController timer(modelPtr, std::chrono::seconds(1));
+    if (countSfWidgets > 0)
+        applications.push_back(MakeApplication(TypeApplication::SFML, modelPtr, countSfWidgets));
+    if (countQtWidgets > 0)
+        applications.push_back(MakeApplication(TypeApplication::Qt, modelPtr, countQtWidgets));
+    Tetris::Controller::TimeController timer(modelPtr, std::chrono::milliseconds(500));
 
     while(!applications.empty())
     {

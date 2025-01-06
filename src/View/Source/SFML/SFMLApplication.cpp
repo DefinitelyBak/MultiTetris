@@ -4,27 +4,14 @@
 namespace Tetris::View::SFML
 {
     SFMLApplication::SFMLApplication(AbstractModelPtr model, unsigned int countWidgets, const std::string& fontPath)
-        : _model(model), _count(countWidgets), _pathFont(fontPath), _execution(false)
-    {
-        if(_count > 0)
-        {
-            _execution = true;
-            _thread = std::thread(&SFMLApplication::Run, this);
-        }
-    }
-
-    SFMLApplication::~SFMLApplication()
-    {
-        _execution = false;
-        if (_thread.joinable())
-            _thread.join();
-    }
+        : _model(model), _count(countWidgets), _pathFont(fontPath)
+    {}
 
     void SFMLApplication::CreateWidgets()
     {
         for (int i = 0; i < _count; ++i)
         {
-            AbstractWidgetPtr widget = std::make_shared<SFML::Widget>(_model, _pathFont);
+            SFMLWidgetPtr widget = std::make_shared<SFML::Widget>(_model, _pathFont);
             _widgets.push_back(widget);
             _model->SetWidget(widget);
         }
@@ -32,30 +19,28 @@ namespace Tetris::View::SFML
 
     void SFMLApplication::UpdateWidgets()
     {
-        _widgets.erase(std::remove_if(_widgets.begin(), _widgets.end(),
-            [](const AbstractWidgetPtr& widget) { return !widget->IsOpen(); }), _widgets.end());
+        _widgets.remove_if([](const SFMLWidgetPtr& widget) { return !widget->IsOpen(); });
 
-        if(_widgets.empty())
+        if (_widgets.empty())
+        {
             _execution = false;
+            return;
+        }
 
         for (auto& widget : _widgets)
-        {
             widget->Update();
-        }
     }
 
     void SFMLApplication::Run()
     {
-        CreateWidgets();
-
-        while (_execution)
+        if (_count > 0)
         {
-            UpdateWidgets();
+            CreateWidgets();
+
+            while (_execution)
+                UpdateWidgets();
         }
+        _execution = false;
     }
 
-    bool SFMLApplication::isExecution() const
-    {
-        return _execution;
-    }
 }

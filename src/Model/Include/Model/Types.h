@@ -45,8 +45,8 @@ namespace Tetris::Model
     /// @brief Размер карты
     struct MapSize
     {
-        size_t columns; ///< Количество колонок
         size_t rows;    ///< Количество строк
+        size_t columns; ///< Количество колонок
     };
 
     /// @brief Координаты фигуры относительно центра

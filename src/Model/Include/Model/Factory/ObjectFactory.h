@@ -30,9 +30,9 @@ namespace Tetris::Model::Blocks
         /// @brief Виртуальный деструктор
         virtual ~ObjectFactory() 
         {
-            for (auto& pair : _factory)
+            for (auto& [_, abstractFactory] : _factory)
             {
-                delete pair.second;
+                delete abstractFactory;
             }
         }
 

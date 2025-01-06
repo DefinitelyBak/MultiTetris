@@ -7,7 +7,7 @@
 #include <Model/AbstractModel.h>
 #include <Controller/MoveController.h>
 #include <View/Qt/Map.h>
-#include <View/Qt/PreviewBlock.h>
+#include <View/Qt/WidgetPreviewBlock.h>
 
 
 namespace Tetris::View::Qt
@@ -24,7 +24,11 @@ namespace Tetris::View::Qt
         /// @brief Конструктор класса Widget.
         /// Инициализирует родительский виджет.
         /// @param parent Указатель на родительский виджет, по умолчанию nullptr.
-        Widget(QWidget* parent = nullptr);
+        Widget(AbstractModelPtr model, QWidget* parent = nullptr);
+
+        /// @brief Слот для обновления представления на основе модели описания.
+        /// @param descp Модель описания, используемая для обновления представления.
+        void SetMementoModel(MementoModelPtr descp);
 
     protected:
         /// @brief Обрабатывает события нажатия клавиш.
@@ -40,41 +44,28 @@ namespace Tetris::View::Qt
     private:
         /// @brief Настраивает контейнер для карты.
         /// Выполняет инициализацию и настройку контейнера карты.
-        void setupMapContainer();
+        void SetupMapContainer();
 
         /// @brief Настраивает контейнер для предварительного блока.
         /// Выполняет инициализацию и настройку контейнера предварительного блока.
-        void setupPreviewContainer();
+        void SetupPreviewContainer();
 
         /// @brief Создает шрифт для отображения счета.
         /// @return Созданный объект QFont для отображения счета.        
-        QFont createScoreFont();
+        [[nodiscard]] QFont CreateScoreFont();
 
         /// @brief Создает метку для отображения счета.
         /// @return Указатель на созданный объект QLabel для отображения счета.
-        QLabel* createScoreLabel();
-
-    public slots:
-        /// @brief Слот для обновления представления на основе модели описания.
-        /// @param descp Модель описания, используемая для обновления представления.
-        void SlotUpdateView(DescriptionModelPtr descp);
-
-        /// @brief Получает текущее состояние модели описания.
-        /// @return Текущая модель описания состояния игры.
-        DescriptionModelPtr GetDescriptionModel();
-
-    signals:
-        /// @brief Сигнал для обновления модели с командой.
-        /// @param command Команда для обновления модели.
-        void SignalUpdateModel(Model::Command command);
+        [[nodiscard]] QLabel* CreateScoreLabel();
 
     private:
+        Controller::MoveController _controller; ///< Указатель на объект карты
+
         Map* _map; ///< Указатель на объект карты
         QLabel* _text; ///< Указатель на метку для отображения счета
-        
-        PreviewBlock* _preview; ///< Указатель на объект предварительного блока
-        std::mutex _mutex; ///< Мьютекс для синхронизации доступа к данным
-        DescriptionModelPtr _descriptionModel; ///< Модель описания состояния игры
+        WidgetPreviewBlock* _preview; ///< Указатель на объект предварительного блока
+
+        MementoModelPtr _mementoModel{nullptr}; ///< Модель описания состояния игры
     };
 } // namespace Tetris::View::Qt
 

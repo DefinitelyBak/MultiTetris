@@ -5,13 +5,14 @@
 #include <View/Forwards.h>
 
 #include <Model/AbstractModel.h>
-#include <View/IApplication.h>
+#include <View/AbstractApplication.h>
+#include <View/SFML/Widget.h>
 
 
 namespace Tetris::View::SFML
 {
     /// @brief Класс, реализующий интерфейс IApplication для графического приложения на базе SFML.
-    class VIEW_EXPORT SFMLApplication final: public IApplication
+    class VIEW_EXPORT SFMLApplication final: public AbstractApplication
     {
     public:
         /// @brief Конструктор.
@@ -20,13 +21,6 @@ namespace Tetris::View::SFML
         /// @param fontPath Путь к файлу шрифта.
         SFMLApplication(AbstractModelPtr model, unsigned int countWidgets, const std::string& fontPath);
         
-        /// @brief Деструктор.
-        ~SFMLApplication();
-
-        /// @brief Проверяет, выполняется ли приложение.
-        /// @return true, если приложение выполняется; false в противном случае.
-        bool isExecution() const override; 
-
     private:
         /// @brief Запускает основной цикл приложения.
         void Run() override;
@@ -39,9 +33,7 @@ namespace Tetris::View::SFML
 
         std::string _pathFont; ///< Путь к шрифту.
         unsigned int _count; ///< Количество виджетов.
-        std::list<AbstractWidgetPtr> _widgets; ///< Список виджетов.
+        std::list<SFMLWidgetPtr> _widgets; ///< Список виджетов.
         AbstractModelPtr _model; ///< Указатель на модель приложения.
-        std::thread _thread; ///< Поток для выполнения приложения.
-        std::atomic<bool> _execution; ///< Флаг для управления выполнением приложения.
     };
 } // namespace Tetris::View::SFML

@@ -1,9 +1,11 @@
-#include <View/SFML/WidgetPreviewBlock.h>
+#include <View/Qt/WidgetPreviewBlock.h>
 #include <Model/Blocks/AbstractBlock.h>
 
-namespace Tetris::View::SFML
+
+namespace Tetris::View::Qt
 {
-    WidgetPreviewBlock::WidgetPreviewBlock(const sf::Vector2f& windowSize, bool withBorder) : _map(windowSize, withBorder) {}
+    WidgetPreviewBlock::WidgetPreviewBlock(QWidget* parent): Map(parent)
+    {}
 
     void WidgetPreviewBlock::SetBlock(const AbstractBlockPtr block)
     {
@@ -11,7 +13,7 @@ namespace Tetris::View::SFML
 
         if (block == nullptr)
             return;
-
+        
         // Проверка на изменение типа блока и цвета
         if (block->GetType() == _typeShape && block->GetColor() == _typeColor)
             return;
@@ -26,7 +28,7 @@ namespace Tetris::View::SFML
         switch (_typeShape)
         {
             case Model::TypeBlock::Iblock:
-                size = Model::MapSize{4, 6};
+                size = Model::MapSize{4,6};
                 map =  {None, None, None, None, None, None, // 1 строка
                         None, None, None, None, None, None,
                         None, _typeColor, _typeColor, _typeColor, _typeColor, None,
@@ -85,17 +87,11 @@ namespace Tetris::View::SFML
                 return; // Неподдерживаемый тип блока
         }
 
-        _map.SetMap(map, size);
+        SetMap(map, size);
     }
 
     Model::TypeBlock WidgetPreviewBlock::GetType() const
     {
         return _typeShape;
-    }
-
-    void WidgetPreviewBlock::draw(sf::RenderTarget &target, sf::RenderStates states) const
-    {
-        states.transform *= getTransform();
-        target.draw(_map, states);
     }
 }

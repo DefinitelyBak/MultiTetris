@@ -36,12 +36,12 @@ namespace Tetris::View::SFML
 
     void Widget::HandleEvents()
     {
-        while (const std::optional event = _window.pollEvent())
+        for (sf::Event event;_window.pollEvent(event);)
         {
-            if (event->is<sf::Event::Closed>())
+            if (event.type == sf::Event::Closed)
                 _windowOpen = false;
-            else if (const auto* keyPressed = event->getIf<sf::Event::KeyPressed>())
-                HandleKeyPress(keyPressed->scancode);
+            else if (event.type == sf::Event::KeyPressed)
+                HandleKeyPress(event.key.scancode);
         }
     }
 
@@ -68,40 +68,18 @@ namespace Tetris::View::SFML
 
     void Widget::Update()
     {
-        if (IsOpen())
+        if (!IsOpen())
+            return;
+
+        HandleEvents();
+
+        if(MementoModelPtr descriptionModel = GetMementoModel(); descriptionModel)
         {
-            HandleEvents();
-
-            DescriptionModelPtr descriptionModel = GetDescriptionModel();
-            if(descriptionModel)
-            {
-                UpdateMap(descriptionModel);
-                UpdatePreviewBlock(descriptionModel);
-                UpdateScore(descriptionModel);
-
-                Render();
-            }
-        }
-    }
-
-    void Widget::UpdateMap(const DescriptionModelPtr &descriptionModel)
-    {
-        _map.SetMap(descriptionModel->map, descriptionModel->size);
-    }
-
-    void Widget::UpdatePreviewBlock(const DescriptionModelPtr& descriptionModel)
-    {
-        if (descriptionModel->nextBlock)
-        {
+            _map.SetMap(descriptionModel->map, descriptionModel->size);
             _previewBlock.SetBlock(descriptionModel->nextBlock);
-        }
-    }
+            _score.setString("Score:\n" + std::to_string(descriptionModel->score));
 
-    void Widget::UpdateScore(const DescriptionModelPtr& descriptionModel)
-    {
-        if (descriptionModel->score)
-        {
-            _score.setString("Score:\n" + std::to_string(*descriptionModel->score));
+            Render();
         }
     }
 

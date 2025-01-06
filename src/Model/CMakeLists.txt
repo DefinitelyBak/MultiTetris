@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.14)
+cmake_minimum_required(VERSION 3.20)
 project(Model
     VERSION 1.0.0
     DESCRIPTION "Tetris Game Model Library"
@@ -63,7 +63,7 @@ generate_export_header(Model EXPORT_FILE_NAME Include/Model/${export_file_name})
 set(sources
     include/Model/AbstractModel.h
     include/Model/AbstractWidget.h
-    include/Model/DescriptionModel.h
+    include/Model/MementoModel.h
     include/Model/Export.h
     include/Model/ModelGame.h
     include/Model/Types.h

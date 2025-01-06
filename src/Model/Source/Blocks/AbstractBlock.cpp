@@ -11,58 +11,59 @@ namespace Tetris::Model::Blocks
         return _color; 
     }
 
-    Positions AbstractBlock::GetCurrentDescription()
+    TypeBlock AbstractBlock::GetType() const
     {
-        return _stateToPositions.at(_state);
+        return TypeBlock::None;
     }
 
-    Positions AbstractBlock::GetDescription(State state)
+    Positions AbstractBlock::GetFields(std::optional<Orientation> orientation) const
     {
-        return _stateToPositions.at(state);
+        if(orientation)
+            return _orientationToPositions.at(orientation.value());
+        return _orientationToPositions.at(_orientation);
     }
 
-    State AbstractBlock::GetCurrentState() const
+    Orientation AbstractBlock::GetOrientatio(std::optional<Command> cmd) const
     {
-        return _state;
-    }
-
-    State AbstractBlock::GetNextState(Command cmd) const
-    {
-        switch (cmd)
+        if (cmd)
         {
+            switch (cmd.value())
+            {
             case Command::RotateRight:
-                switch (_state)
+                switch (_orientation)
                 {
-                    case State::Up:    return State::Right;
-                    case State::Right: return State::Down;
-                    case State::Down:  return State::Left; 
-                    case State::Left:  return State::Up; 
-                    default:          return _state;
+                case Orientation::Up:    return Orientation::Right;
+                case Orientation::Right: return Orientation::Down;
+                case Orientation::Down:  return Orientation::Left;
+                case Orientation::Left:  return Orientation::Up;
+                default:          return _orientation;
                 }
 
             case Command::RotateLeft:
-                switch (_state)
+                switch (_orientation)
                 {
-                    case State::Up:    return State::Left;
-                    case State::Left:  return State::Down;
-                    case State::Down:  return State::Right; 
-                    case State::Right: return State::Up; 
-                    default:          return _state;
+                case Orientation::Up:    return Orientation::Left;
+                case Orientation::Left:  return Orientation::Down;
+                case Orientation::Down:  return Orientation::Right;
+                case Orientation::Right: return Orientation::Up;
+                default:          return _orientation;
                 }
 
             default:
-                return _state;
+                return _orientation;
+            }
         }
+        return _orientation;
     }
 
-    Offsets AbstractBlock::GetOffsets(State from, State to)
+    Offsets AbstractBlock::GetOffsets(Orientation from, Orientation to) const
     {
-        return _stateToOffset.at(from) - _stateToOffset.at(to);
+        return _orientationToOffset.at(from) - _orientationToOffset.at(to);
     }
 
     void AbstractBlock::RotateBlock(Command cmd)
     {
-        _state = GetNextState(cmd);
+        _orientation = GetOrientatio(cmd);
     }
 
 } // namespace Tetris::Model::Blocks

@@ -8,8 +8,7 @@ MultiTetris — это классическая игра Tetris с множес�
 ## Установка
 
 ### Требования
-- Qt 5.x
-- Boost
+- Conan
 - CMake (для сборки проекта)
 
 ### Клонирование репозитория
@@ -20,9 +19,9 @@ cd MultiTetris
 
 ### Сборка проекта
 ```bash
-mkdir build
+conan install . -of build --build=missing
+cmake --preset conan-default
 cd build
-cmake ..
 make
 ```
 

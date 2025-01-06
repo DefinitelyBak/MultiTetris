@@ -5,14 +5,15 @@
 #include <View/Forwards.h>
 
 #include <Model/AbstractModel.h>
-#include <View/IApplication.h>
+#include <View/AbstractApplication.h>
 #include <View/Qt/Widget.h>
+#include <View/Qt/QAdapterWidget.h>
 
 
 namespace Tetris::View::Qt
 {
     /// @brief Класс, реализующий интерфейс IApplication для графического приложения на базе Qt.
-    class VIEW_EXPORT QtApplicaion final: public IApplication
+    class VIEW_EXPORT QtApplicaion final: public AbstractApplication
     {
     public:
         /// @brief Конструктор класса.
@@ -20,24 +21,15 @@ namespace Tetris::View::Qt
         /// @param countWidgets Количество виджетов, создаваемых приложением.
         QtApplicaion(AbstractModelPtr model, unsigned int countWidgets);
         
-        /// @brief Деструктор класса.
-        /// Освобождает ресурсы, связанные с приложением.
-        ~QtApplicaion();
-
-        /// @brief Метод для проверки состояния выполнения приложения.
-        /// @return true, если приложение выполняется; false в противном случае.        
-        bool isExecution() const override; 
-
     private:
         /// @brief Метод, выполняющий основную логику приложения в отдельном потоке.
         /// Реализует основной цикл приложения.        
         void Run() override;
 
         unsigned int _count; ///< Количество виджетов, создаваемых приложением.
-        
         AbstractModelPtr _model; ///< Указатель на модель, используемую приложением.
-        std::thread _thread; ///< Поток, в котором выполняется основной цикл приложения.
-        std::atomic<bool> _execution; ///< Флаг, указывающий на текущее состояние выполнения приложения.
+
+        std::list<std::shared_ptr<Qt::QAdapterWidget>> _widgets; ///< Виджеты qt
     };
 
 } // namespace Tetris::View::Qt

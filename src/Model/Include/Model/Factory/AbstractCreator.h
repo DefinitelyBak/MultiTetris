@@ -21,7 +21,7 @@ namespace Tetris::Model::Blocks
         /// @brief Создать объект с заданным цветом.
         /// @param color Цвет создаваемого объекта.
         /// @return Указатель на созданный объект.
-        virtual Base* Create(TypeColor color) const = 0;
+        [[nodiscard]] virtual Base* Create(TypeColor color) const = 0;
     };
 
     /// @brief Реализация создателя для конкретного типа объекта.
@@ -40,6 +40,6 @@ namespace Tetris::Model::Blocks
         /// @brief Создать объект с заданным цветом.
         /// @param color Цвет создаваемого объекта.
         /// @return Указатель на созданный объект.
-        Base* Create(TypeColor color) const override { return new C(color); }
+        [[nodiscard]] Base* Create(TypeColor color) const override { return new C(color); }
     };
 } // namespace Tetris::Model::Blocks

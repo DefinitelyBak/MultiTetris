@@ -18,12 +18,19 @@ namespace Tetris
     
     namespace View
     {
-        class IApplication;
+        class AbstractApplication;
 
-        typedef std::shared_ptr<IApplication> AbstractApplicationPtr;
+        namespace SFML
+        {
+            class Widget;   
+        }
+
+        typedef std::shared_ptr<AbstractApplication> AbstractApplicationPtr;
         typedef std::shared_ptr<Model::Blocks::AbstractBlock> AbstractBlockPtr;
         typedef std::shared_ptr<Model::AbstractWidget> AbstractWidgetPtr;
         typedef std::shared_ptr<Model::AbstractModel> AbstractModelPtr;
+
+        typedef std::shared_ptr<SFML::Widget> SFMLWidgetPtr;
     }
 
 } // namespace Tetris

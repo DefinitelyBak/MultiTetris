@@ -24,14 +24,11 @@ namespace Tetris::View::SFML
         /// @param pathFont Путь до шрифта
         Widget(AbstractModelPtr model, const std::string& pathFont);
 
-        /// @brief Деструктор класса, по умолчанию
-        ~Widget() override = default;
-
         /// @brief Метод для обновления состояния виджета, вызывается в каждом кадре
-        void Update() override;
+        void Update();
 
         /// @brief Метод для проверки, открыт ли виджет 
-        bool IsOpen() const override;
+        [[nodiscard]] bool IsOpen() const override;
 
         /// @brief Метод для закрытия виджета 
         void SlotCloseWidget() override;
@@ -49,18 +46,6 @@ namespace Tetris::View::SFML
         /// @brief Метод для обработки нажатий клавиш 
         /// @param scancode Код клавиши
         void HandleKeyPress(sf::Keyboard::Scancode scancode);
-
-        /// @brief Метод для обновления карты на основе состояния модели 
-        /// @param descriptionModel Описание модели
-        void UpdateMap(const DescriptionModelPtr& descriptionModel);
-
-        /// @brief Метод для обновления блока предварительного просмотра
-        /// @param descriptionModel Описание модели 
-        void UpdatePreviewBlock(const DescriptionModelPtr& descriptionModel);
-
-        /// @brief Метод для обновления отображаемого счета
-        /// @param descriptionModel Описание модели 
-        void UpdateScore(const DescriptionModelPtr& descriptionModel);
 
         /// @brief Метод для отрисовки всех компонентов виджета на экране 
         void Render();

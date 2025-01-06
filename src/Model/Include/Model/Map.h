@@ -5,7 +5,6 @@
 #include <Model/Forwards.h>
 
 #include <Model/Types.h>
-
 #include <Model/Blocks/AbstractBlock.h>
 
 
@@ -22,15 +21,15 @@ namespace Tetris::Model
 
         /// @brief Получить текущую карту
         /// @return Текущая карта
-        std::vector<TypeColor> GetMap();
+        [[nodiscard]] std::vector<TypeColor> GetMap() const;
 
         /// @brief Получить размер карты
-        /// @return Размер карты в виде MapSize
-        MapSize GetSize() const;
+        /// @return Размер карты
+        [[nodiscard]] MapSize GetSize() const;
 
         /// @brief Проверить, заполнена ли карта
         /// @return True, если карта заполнена, иначе false
-        bool IsFullMap();
+        [[nodiscard]] bool IsFull();
 
         /// @brief Перезапустить карту, очищая её
         void Restart();
@@ -41,7 +40,7 @@ namespace Tetris::Model
 
         /// @brief Проверить, имеется ли активный блок
         /// @return True, если активный блок присутствует, иначе false
-        bool HasActiveBlock() const;
+        [[nodiscard]] bool HasActiveBlock() const;
 
         /// @brief Переместить активный блок на карте
         /// @param cmn Команда для перемещения
@@ -49,7 +48,7 @@ namespace Tetris::Model
 
         /// @brief Получить количество удаленных линий
         /// @return Количество удаленных линий
-        unsigned int GetCountDeletedLines() const;
+        [[nodiscard]] unsigned int GetCountDeletedLines() const;
 
     private:
         /// @brief Удалить заполненные линии из карты
@@ -58,26 +57,33 @@ namespace Tetris::Model
         /// @brief Проверить, можно ли установить блок в указанное положение
         /// @param pos Положение блока
         /// @return True, если блок может быть установлен, иначе false
-        bool IsBlockCanMove(Positions pos);
+        [[nodiscard]] bool IsBlockCanMove(Positions pos);
 
         /// @brief Установить блок на карту
         /// @param map Ссылка на карту, на которую будет установлен блок
-        void SetBlockOnMap(std::vector<TypeColor>& map);
+        /// @param size Размер карты
+        void SetBlockOnMap(std::vector<TypeColor>& map, MapSize size) const;
 
         /// @brief Повернуть блок
-        /// @param cmd Команда
-        void RotateBlock(Command cmd);
+        /// @param cmn Команда
+        void RotateBlock(Command cmn);
+
+        /// @brief плоскопараллельное движение на карте 
+        /// @param cmn Команда
+        void PlaneParallelMotion(Command cmn);
 
         /// @brief Получить поле
         /// @param map Карта
+        /// @param size Размер карты
         /// @param pos Положение поля
         /// @return Значение поля
-        TypeColor& GetField(std::vector<TypeColor>& map, const Position& pos);
+        [[nodiscard]] static TypeColor& GetField(std::vector<TypeColor>& map, MapSize size, const Position& pos);
 
-        AbstractBlockPtr _activeBlock; ///< Указатель на активный блок
-        Position _positionBlock; ///< Положение активного блока
+    private:
+        AbstractBlockPtr _activeBlock{nullptr}; ///< Указатель на активный блок
+        Position _positionBlock{0,0}; ///< Положение активного блока
         std::vector<TypeColor> _data; ///< Данные карты
-        MapSize _size; ///< Размер карты
+        MapSize _size{0,0}; ///< Размер карты
         unsigned int _deletedLine{0}; ///< Количество удаленных линий
     };
 } // namespace Tetris::Model
