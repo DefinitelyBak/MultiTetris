@@ -3,7 +3,7 @@
 
 namespace Tetris::Controller
 {
-	TimeController::TimeController(AbstractModelPtr model, std::chrono::duration<double> interval):
+    TimeController::TimeController(AbstractModelPtr model, std::chrono::duration<double> interval):
         _interval(interval), _moveController(model), _start(std::chrono::system_clock::now())
     {}
 
