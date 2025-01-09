@@ -55,7 +55,7 @@ target_link_libraries(
         Model
         Controller
     PUBLIC
-	    qt::qt
+        qt::qt
         Boost::boost
         sfml::sfml
         Qt5::Core
